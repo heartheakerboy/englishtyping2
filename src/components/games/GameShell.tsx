@@ -1,7 +1,7 @@
 // Reusable arcade game shell: HUD, pause/resume/restart/fullscreen, sound toggle.
 // Renders the playfield via children. Keeps the design system consistent
 // across every game in the Typing Games Center.
-import { type ReactNode, useEffect, useRef } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Pause,
@@ -37,17 +37,48 @@ export interface ShellProps {
 
 export function GameShell(props: ShellProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const goFullscreen = async () => {
     const el = wrapRef.current;
     if (!el) return;
     try {
-      if (!document.fullscreenElement) await el.requestFullscreen();
-      else await document.exitFullscreen();
+      if (!document.fullscreenElement) {
+        await el.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
     } catch {
       /* ignore */
     }
   };
+
+  useEffect(() => {
+    function handleFullscreenChange() {
+      const active = !!(document.fullscreenElement && document.fullscreenElement === wrapRef.current);
+      setIsFullscreen(active);
+      if (active) {
+        const w = 1024;
+        const h = 640;
+        const scaleX = window.innerWidth / w;
+        const scaleY = window.innerHeight / h;
+        // Scale to fit, but don't blow up beyond reasonable pixel grid spacing if very small
+        const newScale = Math.min(scaleX, scaleY);
+        setScale(newScale);
+      } else {
+        setScale(1);
+      }
+    }
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    window.addEventListener("resize", handleFullscreenChange);
+    
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      window.removeEventListener("resize", handleFullscreenChange);
+    };
+  }, []);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -68,65 +99,82 @@ export function GameShell(props: ShellProps) {
   }, [props]);
 
   return (
-    <div ref={wrapRef} className="relative mx-auto w-full max-w-5xl">
-      {/* HUD */}
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border/60 bg-surface/70 px-3 py-2 backdrop-blur">
-        <div className="flex flex-wrap items-center gap-3 text-sm">
-          <span className="font-display text-base font-semibold">{props.title}</span>
-          <Stat label="Score" value={props.score.toLocaleString()} accent />
-          {typeof props.combo === "number" && props.combo > 0 && (
-            <Stat label="Combo" value={`x${props.combo}`} />
-          )}
-          {typeof props.lives === "number" && (
-            <Stat label="Lives" value={"❤".repeat(Math.max(0, props.lives))} />
-          )}
-          {typeof props.level === "number" && <Stat label="Wave" value={props.level} />}
-          {props.timeLeft != null && (
-            <Stat label="Time" value={`${Math.max(0, Math.ceil(props.timeLeft))}s`} />
-          )}
-        </div>
-        <div className="flex items-center gap-1">
-          {props.status === "playing" ? (
-            <Button size="sm" variant="ghost" onClick={props.onPause} title="Pause (Esc)">
-              <Pause className="h-4 w-4" />
-            </Button>
-          ) : props.status === "paused" ? (
-            <Button size="sm" variant="ghost" onClick={props.onResume} title="Resume (Space)">
-              <Play className="h-4 w-4" />
-            </Button>
-          ) : null}
-          <Button size="sm" variant="ghost" onClick={props.onRestart} title="Restart">
-            <RotateCcw className="h-4 w-4" />
-          </Button>
-          <Button size="sm" variant="ghost" onClick={props.onToggleMute} title="Mute (F2)">
-            {props.muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-          </Button>
-          <Button size="sm" variant="ghost" onClick={goFullscreen} title="Fullscreen">
-            {typeof document !== "undefined" && document.fullscreenElement ? (
-              <Minimize2 className="h-4 w-4" />
-            ) : (
-              <Maximize2 className="h-4 w-4" />
+    <div
+      ref={wrapRef}
+      className={`relative mx-auto w-full max-w-5xl ${
+        isFullscreen
+          ? "flex h-screen w-screen items-center justify-center overflow-hidden bg-[#0b0f19] p-4"
+          : ""
+      }`}
+    >
+      <div
+        className="w-full flex flex-col"
+        style={
+          isFullscreen
+            ? {
+                transform: `scale(${scale})`,
+                transformOrigin: "center center",
+                width: "1024px",
+                flexShrink: 0,
+              }
+            : undefined
+        }
+      >
+        {/* HUD */}
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border/60 bg-surface/70 px-3 py-2 backdrop-blur">
+          <div className="flex flex-wrap items-center gap-3 text-sm">
+            <span className="font-display text-base font-semibold">{props.title}</span>
+            <Stat label="Score" value={props.score.toLocaleString()} accent />
+            {typeof props.combo === "number" && props.combo > 0 && (
+              <Stat label="Combo" value={`x${props.combo}`} />
             )}
-          </Button>
-          {props.onShowLeaderboard && (
-            <Button size="sm" variant="ghost" onClick={props.onShowLeaderboard} title="Leaderboard">
-              <Trophy className="h-4 w-4" />
+            {typeof props.lives === "number" && (
+              <Stat label="Lives" value={"❤".repeat(Math.max(0, props.lives))} />
+            )}
+            {typeof props.level === "number" && <Stat label="Wave" value={props.level} />}
+            {props.timeLeft != null && (
+              <Stat label="Time" value={`${Math.max(0, Math.ceil(props.timeLeft))}s`} />
+            )}
+          </div>
+          <div className="flex items-center gap-1">
+            {props.status === "playing" ? (
+              <Button size="sm" variant="ghost" onClick={props.onPause} title="Pause (Esc)">
+                <Pause className="h-4 w-4" />
+              </Button>
+            ) : props.status === "paused" ? (
+              <Button size="sm" variant="ghost" onClick={props.onResume} title="Resume (Space)">
+                <Play className="h-4 w-4" />
+              </Button>
+            ) : null}
+            <Button size="sm" variant="ghost" onClick={props.onRestart} title="Restart">
+              <RotateCcw className="h-4 w-4" />
             </Button>
-          )}
+            <Button size="sm" variant="ghost" onClick={props.onToggleMute} title="Mute (F2)">
+              {props.muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+            </Button>
+            <Button size="sm" variant="ghost" onClick={goFullscreen} title="Fullscreen">
+              {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+            </Button>
+            {props.onShowLeaderboard && (
+              <Button size="sm" variant="ghost" onClick={props.onShowLeaderboard} title="Leaderboard">
+                <Trophy className="h-4 w-4" />
+              </Button>
+            )}
+          </div>
         </div>
+
+        {/* Playfield */}
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-b from-surface/80 to-background shadow-glow">
+          {props.children}
+
+          {props.status === "paused" && <Overlay title="Paused" subtitle="Press Space to resume" />}
+        </div>
+
+        {props.shortcuts && (
+          <div className="mt-2 text-center text-[11px] text-muted-foreground">{props.shortcuts}</div>
+        )}
+        {props.footer && <div className="mt-4">{props.footer}</div>}
       </div>
-
-      {/* Playfield */}
-      <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-b from-surface/80 to-background shadow-glow">
-        {props.children}
-
-        {props.status === "paused" && <Overlay title="Paused" subtitle="Press Space to resume" />}
-      </div>
-
-      {props.shortcuts && (
-        <div className="mt-2 text-center text-[11px] text-muted-foreground">{props.shortcuts}</div>
-      )}
-      {props.footer && <div className="mt-4">{props.footer}</div>}
     </div>
   );
 }
