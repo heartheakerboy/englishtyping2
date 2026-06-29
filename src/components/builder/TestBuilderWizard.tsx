@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { saveCustomTest, getMyTest, aiGenerateTestParagraph } from "@/lib/custom-tests.functions";
+import { amIAdmin } from "@/lib/admin.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -104,10 +105,26 @@ export function TestBuilderWizard({ editId }: { editId?: string }) {
   const save = useServerFn(saveCustomTest);
   const fetchOne = useServerFn(getMyTest);
   const aiGen = useServerFn(aiGenerateTestParagraph);
+  const checkAdmin = useServerFn(amIAdmin);
   const [state, setState] = useState<FormState>(DEFAULTS);
   const [loading, setLoading] = useState(!!editId);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [saving, setSaving] = useState(false);
   const [aiBusy, setAiBusy] = useState(false);
+
+  useEffect(() => {
+    checkAdmin()
+      .then((r) => {
+        const admin = !!r.isAdmin;
+        setIsAdmin(admin);
+        if (!admin && !editId) {
+          setState((s: any) => ({ ...s, access_type: "private" }));
+        }
+      })
+      .catch(() => {
+        setIsAdmin(false);
+      });
+  }, [editId, checkAdmin]);
   const [aiOpts, setAiOpts] = useState({
     topic: "",
     style: "paragraph",
@@ -570,11 +587,13 @@ export function TestBuilderWizard({ editId }: { editId?: string }) {
                   "email_whitelist",
                   "organization",
                   "classroom",
-                ].map((v) => (
-                  <SelectItem key={v} value={v}>
-                    {v.replace("_", " ")}
-                  </SelectItem>
-                ))}
+                ]
+                  .filter((v) => isAdmin || v !== "public")
+                  .map((v) => (
+                    <SelectItem key={v} value={v}>
+                      {v.replace("_", " ")}
+                    </SelectItem>
+                  ))}
               </SelectContent>
             </Select>
           </Field>

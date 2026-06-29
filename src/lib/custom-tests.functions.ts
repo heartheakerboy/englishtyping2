@@ -1,5 +1,6 @@
 // Challenge Builder server functions: CRUD, AI gen, attempts, analytics.
 import { createServerFn } from "@tanstack/react-start";
+import { getRequest } from "@tanstack/react-start/server";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
@@ -19,6 +20,22 @@ function publicClient() {
   return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
   });
+}
+
+function getOptionalUserId(): string | null {
+  try {
+    const request = getRequest();
+    const authHeader = request?.headers?.get("authorization");
+    if (!authHeader || !authHeader.startsWith("Bearer ")) return null;
+    const token = authHeader.replace("Bearer ", "");
+    if (!token) return null;
+    const parts = token.split(".");
+    if (parts.length !== 3) return null;
+    const payload = JSON.parse(Buffer.from(parts[1], "base64").toString("utf-8"));
+    return payload?.sub || null;
+  } catch {
+    return null;
+  }
 }
 
 const FORBIDDEN_WORDS = [
@@ -149,11 +166,26 @@ export const saveCustomTest = createServerFn({ method: "POST" })
       throw new Error("Content contains inappropriate or offensive words. Please keep it clean and professional.");
     }
     const sb = context.supabase;
+
+    // Check if user is admin
+    const { data: isAdmin } = await sb.rpc("has_role", {
+      _user_id: context.userId,
+      _role: "admin",
+    });
+
     const base = data.slug || data.name;
     const slug = await ensureUniqueSlug(publicClient(), base, data.id);
     const payload: any = { ...data, slug, creator_id: context.userId };
     delete payload.password;
     if (data.password) payload.password_hash = data.password; // stored as-is; treat as shared secret
+
+    if (!isAdmin) {
+      // Force access_type to private or password (if they set a password)
+      if (!["private", "password"].includes(payload.access_type)) {
+        payload.access_type = "private";
+      }
+    }
+
     if (data.status === "published" && !data.id) payload.published_at = new Date().toISOString();
 
     if (data.id) {
@@ -264,6 +296,25 @@ export const getPublicTestBySlug = createServerFn({ method: "POST" })
       .maybeSingle();
     if (error) throw new Error(error.message);
     if (!t) return null;
+
+    // Hybrid Model Access Control:
+    if (t.access_type === "private") {
+      const userId = getOptionalUserId();
+      if (!userId) {
+        throw new Error("This is a private custom test. Please sign in to access it if you are the owner.");
+      }
+      if (userId !== t.creator_id) {
+        // Check if the user is an admin
+        const { data: isAdmin } = await sb.rpc("has_role", {
+          _user_id: userId,
+          _role: "admin",
+        });
+        if (!isAdmin) {
+          throw new Error("This is a private custom test.");
+        }
+      }
+    }
+
     // omit password_hash from response
     const { password_hash, ...rest } = t as any;
     return { ...rest, password_protected: !!password_hash };
