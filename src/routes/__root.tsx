@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  useLocation,
 } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 
@@ -148,6 +149,8 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  const location = useLocation();
+  const showFooter = !location.pathname.startsWith("/admin");
 
   useEffect(() => {
     const { data: sub } = supabase.auth.onAuthStateChange((event) => {
@@ -165,7 +168,7 @@ function RootComponent() {
           <SkipLink />
           <AnnouncementBar />
           <Outlet />
-          <Footer />
+          {showFooter && <Footer />}
           <OfflineBanner />
           <Toaster position="top-center" />
           <Analytics />
