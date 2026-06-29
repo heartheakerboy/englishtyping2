@@ -1,6 +1,7 @@
 // Creator's own templates dashboard.
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Header } from "@/components/Header";
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -91,7 +92,9 @@ function MyTemplates() {
   const items = list.data ?? [];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 md:px-6">
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <div className="mx-auto max-w-6xl px-4 py-8 md:px-6 flex-1 w-full">
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
@@ -242,6 +245,7 @@ function MyTemplates() {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }
