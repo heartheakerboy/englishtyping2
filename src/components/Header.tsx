@@ -145,12 +145,6 @@ export function Header() {
               {t("templates")}
             </span>
           </Link>
-          <Link to="/pricing" className={navLink} activeProps={navActive}>
-            <span className="inline-flex items-center gap-1.5">
-              <Sparkles className="h-3.5 w-3.5" />
-              {t("pricing")}
-            </span>
-          </Link>
           {authed && (
             <Link to="/dashboard" className={navLink} activeProps={navActive}>
               <span className="inline-flex items-center gap-1.5">
@@ -246,14 +240,6 @@ export function Header() {
                   >
                     <Sparkles className="h-4 w-4 text-primary" />
                     {t("templates")}
-                  </Link>
-                  <Link
-                    to="/pricing"
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-2.5 rounded-md px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"
-                  >
-                    <Sparkles className="h-4 w-4 text-primary" />
-                    {t("pricing")}
                   </Link>
                   {authed && (
                     <Link

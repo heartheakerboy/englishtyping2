@@ -13,7 +13,6 @@ import { Route as TypingTestRouteImport } from './routes/typing-test'
 import { Route as TournamentsRouteImport } from './routes/tournaments'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RaceRouteImport } from './routes/race'
-import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as GamesRouteImport } from './routes/games'
@@ -107,11 +106,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const RaceRoute = RaceRouteImport.update({
   id: '/race',
   path: '/race',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LessonsRoute = LessonsRouteImport.update({
@@ -518,7 +512,6 @@ export interface FileRoutesByFullPath {
   '/games': typeof GamesRouteWithChildren
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
-  '/pricing': typeof PricingRoute
   '/race': typeof RaceRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
@@ -597,7 +590,6 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRouteWithChildren
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
-  '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -675,7 +667,6 @@ export interface FileRoutesById {
   '/games': typeof GamesRouteWithChildren
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
-  '/pricing': typeof PricingRoute
   '/race': typeof RaceRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
@@ -757,7 +748,6 @@ export interface FileRouteTypes {
     | '/games'
     | '/leaderboard'
     | '/lessons'
-    | '/pricing'
     | '/race'
     | '/sitemap.xml'
     | '/tournaments'
@@ -836,7 +826,6 @@ export interface FileRouteTypes {
     | '/blog'
     | '/leaderboard'
     | '/lessons'
-    | '/pricing'
     | '/sitemap.xml'
     | '/tournaments'
     | '/achievements'
@@ -913,7 +902,6 @@ export interface FileRouteTypes {
     | '/games'
     | '/leaderboard'
     | '/lessons'
-    | '/pricing'
     | '/race'
     | '/sitemap.xml'
     | '/tournaments'
@@ -995,7 +983,6 @@ export interface RootRouteChildren {
   GamesRoute: typeof GamesRouteWithChildren
   LeaderboardRoute: typeof LeaderboardRoute
   LessonsRoute: typeof LessonsRoute
-  PricingRoute: typeof PricingRoute
   RaceRoute: typeof RaceRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TournamentsRoute: typeof TournamentsRoute
@@ -1037,13 +1024,6 @@ declare module '@tanstack/react-router' {
       path: '/race'
       fullPath: '/race'
       preLoaderRoute: typeof RaceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lessons': {
@@ -1756,7 +1736,6 @@ const rootRouteChildren: RootRouteChildren = {
   GamesRoute: GamesRouteWithChildren,
   LeaderboardRoute: LeaderboardRoute,
   LessonsRoute: LessonsRoute,
-  PricingRoute: PricingRoute,
   RaceRoute: RaceRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TournamentsRoute: TournamentsRoute,
