@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 import { adminListTemplates, adminUpdateTemplate } from "@/lib/templates.functions";
-import { Eye, ShieldCheck, ShieldX, Pin, Star, Plus } from "lucide-react";
+import { Eye, ShieldCheck, ShieldX, Pin, Star, Plus, Pencil } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin/templates")({
   component: AdminTemplates,
@@ -156,9 +156,14 @@ function AdminTemplates() {
                     />
                   </td>
                   <td className="p-3 text-right space-x-1">
-                    <Button asChild size="sm" variant="ghost">
+                    <Button asChild size="sm" variant="ghost" title="View template">
                       <Link to="/templates/$slug" params={{ slug: t.slug }}>
                         <Eye className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                    <Button asChild size="sm" variant="ghost" title="Edit template">
+                      <Link to="/templates/builder/$id" params={{ id: t.id }}>
+                        <Pencil className="h-4 w-4" />
                       </Link>
                     </Button>
                     {t.status !== "published" ? (
