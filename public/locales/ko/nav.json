@@ -1,0 +1,23 @@
+{
+  "practice": "연습",
+  "tests": "테스트",
+  "race": "레이스",
+  "games": "게임",
+  "tournaments": "토너먼트",
+  "leaderboard": "리더보드",
+  "blog": "블로그",
+  "templates": "템플릿",
+  "pricing": "요금제",
+  "dashboard": "대시보드",
+  "builder": "빌더",
+  "profile": "프로필",
+  "achievements": "업적",
+  "missions": "미션",
+  "friends": "친구",
+  "admin": "관리자",
+  "signIn": "로그인",
+  "signOut": "로그아웃",
+  "getStarted": "시작하기",
+  "account": "계정",
+  "skipToContent": "콘텐츠로 건너뛰기"
+}

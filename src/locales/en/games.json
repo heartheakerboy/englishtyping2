@@ -1,0 +1,22 @@
+{
+  "page": {
+    "title": "Typing games",
+    "subtitle": "Earn XP & coins. Compete on daily, weekly and all-time leaderboards.",
+    "arcade": "Arcade",
+    "mini": "Mini games",
+    "featured": "Featured",
+    "xp": "+{{n}} XP",
+    "coins": "+{{n}} coins"
+  },
+  "mini": {
+    "race": {
+      "name": "Type Racer",
+      "desc": "Race AI typing bots — first across the finish line wins."
+    },
+    "reaction": { "name": "Reaction Time", "desc": "Click the moment the screen turns. 5 rounds." },
+    "cps": { "name": "CPS Test", "desc": "How many clicks per second can you hit?" },
+    "spacebar": { "name": "Spacebar Test", "desc": "Spam the spacebar in 10 seconds." },
+    "memory": { "name": "Memory Game", "desc": "Repeat the sequence as it grows." },
+    "trainer": { "name": "Keyboard Trainer", "desc": "Drill the home row at speed." }
+  }
+}

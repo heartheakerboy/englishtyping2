@@ -1,0 +1,48 @@
+{
+  "app": {
+    "name": "Prueba de escritura en inglés",
+    "tagline": "Mide tu velocidad de escritura en segundos"
+  },
+  "actions": {
+    "start": "Comenzar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "retry": "Intentar de nuevo",
+    "goHome": "Ir a inicio",
+    "loading": "Cargando…",
+    "search": "Buscar",
+    "submit": "Enviar",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "continue": "Continuar",
+    "back": "Volver",
+    "settings": "Configuración",
+    "language": "Idioma"
+  },
+  "labels": {
+    "wpm": "PPM",
+    "accuracy": "Precisión",
+    "cpm": "PPM",
+    "time": "Tiempo",
+    "score": "Puntuación",
+    "rank": "Clasificación",
+    "level": "Nivel",
+    "xp": "XP",
+    "coins": "Monedas"
+  },
+  "language": {
+    "switcher": "Cambiar idioma",
+    "search": "Buscar idiomas…",
+    "recent": "Usados recientemente",
+    "all": "Todos los idiomas",
+    "noResults": "No se encontraron idiomas",
+    "current": "Idioma actual"
+  },
+  "offline": {
+    "title": "Estás sin conexión",
+    "description": "Algunas funciones no funcionarán hasta que te reconectes."
+  }
+}

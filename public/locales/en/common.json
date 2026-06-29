@@ -1,0 +1,48 @@
+{
+  "app": {
+    "name": "English Typing Test",
+    "tagline": "Measure your typing speed in seconds"
+  },
+  "actions": {
+    "start": "Start",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "retry": "Try again",
+    "goHome": "Go home",
+    "loading": "Loading…",
+    "search": "Search",
+    "submit": "Submit",
+    "next": "Next",
+    "previous": "Previous",
+    "continue": "Continue",
+    "back": "Back",
+    "settings": "Settings",
+    "language": "Language"
+  },
+  "labels": {
+    "wpm": "WPM",
+    "accuracy": "Accuracy",
+    "cpm": "CPM",
+    "time": "Time",
+    "score": "Score",
+    "rank": "Rank",
+    "level": "Level",
+    "xp": "XP",
+    "coins": "Coins"
+  },
+  "language": {
+    "switcher": "Change language",
+    "search": "Search languages…",
+    "recent": "Recently used",
+    "all": "All languages",
+    "noResults": "No languages found",
+    "current": "Current language"
+  },
+  "offline": {
+    "title": "You're offline",
+    "description": "Some features won't work until you reconnect."
+  }
+}

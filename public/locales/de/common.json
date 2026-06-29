@@ -1,0 +1,48 @@
+{
+  "app": {
+    "name": "Englischer Tipptest",
+    "tagline": "Messen Sie Ihre Tippgeschwindigkeit in Sekunden"
+  },
+  "actions": {
+    "start": "Starten",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen",
+    "retry": "Erneut versuchen",
+    "goHome": "Zur Startseite",
+    "loading": "Wird geladen…",
+    "search": "Suchen",
+    "submit": "Senden",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "continue": "Fortfahren",
+    "back": "Zurück",
+    "settings": "Einstellungen",
+    "language": "Sprache"
+  },
+  "labels": {
+    "wpm": "WPM",
+    "accuracy": "Genauigkeit",
+    "cpm": "CPM",
+    "time": "Zeit",
+    "score": "Ergebnis",
+    "rank": "Rang",
+    "level": "Level",
+    "xp": "XP",
+    "coins": "Münzen"
+  },
+  "language": {
+    "switcher": "Sprache ändern",
+    "search": "Sprachen suchen…",
+    "recent": "Zuletzt verwendet",
+    "all": "Alle Sprachen",
+    "noResults": "Keine Sprachen gefunden",
+    "current": "Aktuelle Sprache"
+  },
+  "offline": {
+    "title": "Sie sind offline",
+    "description": "Einige Funktionen funktionieren erst, wenn Sie wieder eine Verbindung hergestellt haben."
+  }
+}

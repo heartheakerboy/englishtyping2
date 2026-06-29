@@ -1,0 +1,9 @@
+{
+  "default": "Loading…",
+  "fetching": "Fetching data…",
+  "preparing": "Preparing…",
+  "empty": {
+    "title": "Nothing here yet",
+    "description": "Check back soon or try a different filter."
+  }
+}

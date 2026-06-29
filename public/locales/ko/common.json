@@ -1,0 +1,48 @@
+{
+  "app": {
+    "name": "영어 타이핑 테스트",
+    "tagline": "몇 초 안에 타이핑 속도를 측정해보세요"
+  },
+  "actions": {
+    "start": "시작",
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "수정",
+    "close": "닫기",
+    "retry": "다시 시도",
+    "goHome": "홈으로 가기",
+    "loading": "로딩 중…",
+    "search": "검색",
+    "submit": "제출",
+    "next": "다음",
+    "previous": "이전",
+    "continue": "계속",
+    "back": "뒤로",
+    "settings": "설정",
+    "language": "언어"
+  },
+  "labels": {
+    "wpm": "WPM",
+    "accuracy": "정확도",
+    "cpm": "CPM",
+    "time": "시간",
+    "score": "점수",
+    "rank": "순위",
+    "level": "레벨",
+    "xp": "XP",
+    "coins": "코인"
+  },
+  "language": {
+    "switcher": "언어 변경",
+    "search": "언어 검색…",
+    "recent": "최근 사용",
+    "all": "모든 언어",
+    "noResults": "언어를 찾을 수 없습니다",
+    "current": "현재 언어"
+  },
+  "offline": {
+    "title": "오프라인 상태입니다",
+    "description": "재연결 될 때까지 일부 기능이 작동하지 않습니다."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "modes": {
+    "time": "time",
+    "words": "words",
+    "quote": "quote",
+    "story": "story",
+    "code": "code",
+    "custom": "custom",
+    "ai": "AI"
+  },
+  "labels": {
+    "shuffle": "Shuffle",
+    "customTimer": "custom",
+    "editText": "edit text",
+    "generate": "generate",
+    "keyboard": "Keyboard",
+    "language": "Language",
+    "category": "Practice category",
+    "layout": "Keyboard layout",
+    "virtualKeyboard": "Virtual keyboard",
+    "fingerGuide": "Finger guide colours"
+  },
+  "customTimer": {
+    "title": "Custom timer",
+    "seconds": "Seconds (5 – 3600)",
+    "placeholder": "e.g. 45",
+    "invalid": "Choose between 5 and 3600 seconds",
+    "apply": "Apply"
+  },
+  "customText": {
+    "title": "Custom text",
+    "placeholder": "Paste any text you'd like to practice on…",
+    "upload": "Upload .txt",
+    "chars": "{{count}} chars",
+    "tooLarge": "File too large (max 200 KB)",
+    "readFail": "Could not read file",
+    "tooShort": "Provide at least 10 characters"
+  },
+  "ai": {
+    "title": "AI paragraph generator",
+    "topic": "Topic (optional)",
+    "topicPlaceholder": "e.g. space exploration",
+    "difficulty": "Difficulty",
+    "easy": "easy",
+    "medium": "medium",
+    "hard": "hard",
+    "generating": "Generating…",
+    "generate": "Generate",
+    "success": "Generated new AI paragraph",
+    "empty": "AI returned an empty paragraph",
+    "failed": "AI generation failed"
+  }
+}

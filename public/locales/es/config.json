@@ -1,0 +1,53 @@
+{
+  "modes": {
+    "time": "tiempo",
+    "words": "palabras",
+    "quote": "cita",
+    "story": "historia",
+    "code": "código",
+    "custom": "personalizado",
+    "ai": "IA"
+  },
+  "labels": {
+    "shuffle": "Aleatorio",
+    "customTimer": "personalizado",
+    "editText": "editar texto",
+    "generate": "generar",
+    "keyboard": "Teclado",
+    "language": "Idioma",
+    "category": "Categoría de práctica",
+    "layout": "Diseño del teclado",
+    "virtualKeyboard": "Teclado virtual",
+    "fingerGuide": "Colores de la guía de dedos"
+  },
+  "customTimer": {
+    "title": "Temporizador personalizado",
+    "seconds": "Segundos (5 – 3600)",
+    "placeholder": "ej. 45",
+    "invalid": "Elija entre 5 y 3600 segundos",
+    "apply": "Aplicar"
+  },
+  "customText": {
+    "title": "Texto personalizado",
+    "placeholder": "Pega cualquier texto en el que te gustaría practicar…",
+    "upload": "Subir .txt",
+    "chars": "{{count}} caracteres",
+    "tooLarge": "Archivo demasiado grande (máx. 200 KB)",
+    "readFail": "No se pudo leer el archivo",
+    "tooShort": "Proporcione al menos 10 caracteres"
+  },
+  "ai": {
+    "title": "Generador de párrafos AI",
+    "topic": "Tema (opcional)",
+    "topicPlaceholder": "ej. exploración espacial",
+    "difficulty": "Dificultad",
+    "easy": "fácil",
+    "medium": "medio",
+    "hard": "difícil",
+    "generating": "Generando…",
+    "generate": "Generar",
+    "success": "Párrafo AI nuevo generado",
+    "empty": "AI devolvió un párrafo vacío",
+    "failed": "La generación de AI falló"
+  }
+}

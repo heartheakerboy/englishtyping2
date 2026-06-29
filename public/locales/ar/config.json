@@ -1,0 +1,53 @@
+{
+  "modes": {
+    "time": "الوقت",
+    "words": "الكلمات",
+    "quote": "الاقتباس",
+    "story": "القصة",
+    "code": "الرمز",
+    "custom": "مخصص",
+    "ai": "AI"
+  },
+  "labels": {
+    "shuffle": "تبديل عشوائي",
+    "customTimer": "مخصص",
+    "editText": "تعديل النص",
+    "generate": "إنشاء",
+    "keyboard": "لوحة المفاتيح",
+    "language": "اللغة",
+    "category": "فئة التدريب",
+    "layout": "تخطيط لوحة المفاتيح",
+    "virtualKeyboard": "لوحة المفاتيح الافتراضية",
+    "fingerGuide": "ألوان دليل الأصابع"
+  },
+  "customTimer": {
+    "title": "مؤقت مخصص",
+    "seconds": "ثوانٍ (5 – 3600)",
+    "placeholder": "على سبيل المثال: 45",
+    "invalid": "اختر ما بين 5 و 3600 ثانية",
+    "apply": "تطبيق"
+  },
+  "customText": {
+    "title": "نص مخصص",
+    "placeholder": "الصق أي نص تريد التدرب عليه…",
+    "upload": "تحميل .txt",
+    "chars": "{{count}} حرف",
+    "tooLarge": "الملف كبير جداً (200 KB كحد أقصى)",
+    "readFail": "تعذر قراءة الملف",
+    "tooShort": "يرجى توفير 10 أحرف على الأقل"
+  },
+  "ai": {
+    "title": "مولد فقرات AI",
+    "topic": "الموضوع (اختياري)",
+    "topicPlaceholder": "على سبيل المثال: استكشاف الفضاء",
+    "difficulty": "الصعوبة",
+    "easy": "سهل",
+    "medium": "متوسط",
+    "hard": "صعب",
+    "generating": "جاري الإنشاء…",
+    "generate": "إنشاء",
+    "success": "تم إنشاء فقرة AI جديدة",
+    "empty": "عادت AI بفقرة فارغة",
+    "failed": "فشل إنشاء AI"
+  }
+}

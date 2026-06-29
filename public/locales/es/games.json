@@ -1,0 +1,37 @@
+{
+  "page": {
+    "title": "Juegos de escritura",
+    "subtitle": "Gana XP y monedas. Compite en tablas de clasificación diarias, semanales y de todos los tiempos.",
+    "arcade": "Arcade",
+    "mini": "Minijuegos",
+    "featured": "Destacado",
+    "xp": "+{{n}} XP",
+    "coins": "+{{n}} monedas"
+  },
+  "mini": {
+    "race": {
+      "name": "Carrera de escritura",
+      "desc": "Compite contra bots de escritura de IA: el primero en cruzar la meta gana."
+    },
+    "reaction": {
+      "name": "Tiempo de reacción",
+      "desc": "Haz clic en el momento en que la pantalla cambia. 5 rondas."
+    },
+    "cps": {
+      "name": "Prueba de CPS",
+      "desc": "¿Cuántos clics por segundo puedes conseguir?"
+    },
+    "spacebar": {
+      "name": "Prueba de barra espaciadora",
+      "desc": "Pulsa la barra espaciadora durante 10 segundos."
+    },
+    "memory": {
+      "name": "Juego de memoria",
+      "desc": "Repite la secuencia a medida que crece."
+    },
+    "trainer": {
+      "name": "Entrenador de teclado",
+      "desc": "Practica la fila guía a gran velocidad."
+    }
+  }
+}

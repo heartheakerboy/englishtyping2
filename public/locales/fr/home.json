@@ -1,0 +1,44 @@
+{
+  "badge": "Phase 1 Polish — Moteur en temps réel, graphiques, thèmes",
+  "hero": {
+    "titleA": "Tapez plus vite.",
+    "titleB": "Pensez plus clairement.",
+    "subtitle": "Une plateforme de dactylographie ciblée et esthétique conçue pour une amélioration mesurable. WPM, précision et cohérence en temps réel — sans encombrement, sans fioritures.",
+    "ctaStart": "Commencer à taper",
+    "ctaSignup": "Créer un compte gratuit"
+  },
+  "features": {
+    "heading": "Conçu pour une amélioration sérieuse",
+    "subheading": "Tout ce dont vous avez besoin pour mesurer, analyser et améliorer votre dactylographie.",
+    "engine": {
+      "title": "Moteur en temps réel",
+      "desc": "WPM, précision, CPM et erreurs suivis en direct à chaque frappe."
+    },
+    "chart": {
+      "title": "WPM au fil du temps",
+      "desc": "Voyez où vous avez ralenti grâce à un graphique par seconde sur chaque résultat."
+    },
+    "modes": {
+      "title": "Modes flexibles",
+      "desc": "Temps, mots, citations, paragraphes, histoires, code, texte personnalisé ou téléchargement de fichier .txt."
+    },
+    "dashboard": {
+      "title": "Tableau de bord personnel",
+      "desc": "Suivez chaque essai, voyez votre moyenne augmenter et vos erreurs diminuer."
+    },
+    "mistakes": {
+      "title": "Principales erreurs",
+      "desc": "Voyez quels caractères vous posent le plus de problèmes afin de cibler votre entraînement."
+    },
+    "ai": {
+      "title": "Coach IA",
+      "desc": "Commentaires de l'IA, multilingue, clavier virtuel, détection intelligente des erreurs."
+    }
+  },
+  "cta": {
+    "title": "Prêt en 15 secondes.",
+    "desc": "Aucune inscription requise pour passer votre premier test.",
+    "button": "Faire un test"
+  },
+  "footerCopy": "Conçu pour les dactylographes."
+}

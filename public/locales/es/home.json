@@ -1,0 +1,44 @@
+{
+  "badge": "Pulido Fase 1 — Motor en tiempo real, gráficos, temas",
+  "hero": {
+    "titleA": "Escribe más rápido.",
+    "titleB": "Piensa con más claridad.",
+    "subtitle": "Una plataforma de escritura enfocada y hermosa, construida para una mejora medible. WPM, precisión y consistencia en tiempo real, sin desorden ni tonterías.",
+    "ctaStart": "Empezar a escribir",
+    "ctaSignup": "Crear cuenta gratuita"
+  },
+  "features": {
+    "heading": "Diseñado para una mejora seria",
+    "subheading": "Todo lo que necesitas para medir, analizar y elevar tu escritura.",
+    "engine": {
+      "title": "Motor en tiempo real",
+      "desc": "WPM en vivo, precisión, CPM y errores rastreados por pulsación de tecla."
+    },
+    "chart": {
+      "title": "WPM a lo largo del tiempo",
+      "desc": "Ve dónde te ralentizaste con un gráfico por segundo en cada resultado."
+    },
+    "modes": {
+      "title": "Modos flexibles",
+      "desc": "Tiempo, palabras, citas, párrafos, historias, código, texto personalizado o carga de archivos .txt."
+    },
+    "dashboard": {
+      "title": "Panel personal",
+      "desc": "Rastrea cada carrera, observa cómo aumenta tu promedio y cómo disminuyen tus errores."
+    },
+    "mistakes": {
+      "title": "Principales errores",
+      "desc": "Ve qué caracteres te presentan más dificultades para que puedas enfocar tu práctica."
+    },
+    "ai": {
+      "title": "Entrenador de IA",
+      "desc": "Retroalimentación de IA, multi-idioma, teclado virtual, detección inteligente de errores."
+    }
+  },
+  "cta": {
+    "title": "Listo en 15 segundos.",
+    "desc": "No se requiere registro para realizar tu primera prueba.",
+    "button": "Realizar una prueba"
+  },
+  "footerCopy": "Construido para mecanógrafos."
+}

@@ -1,0 +1,44 @@
+{
+  "badge": "Polimento da Fase 1 — Motor em tempo real, gráficos, temas",
+  "hero": {
+    "titleA": "Digite mais rápido.",
+    "titleB": "Pense com mais clareza.",
+    "subtitle": "Uma plataforma de digitação focada e bonita, construída para uma melhoria mensurável. WPM, precisão e consistência em tempo real — sem desordem, sem bobagens.",
+    "ctaStart": "Começar a digitar",
+    "ctaSignup": "Criar conta gratuita"
+  },
+  "features": {
+    "heading": "Construído para uma melhoria séria",
+    "subheading": "Tudo o que você precisa para medir, analisar e elevar sua digitação.",
+    "engine": {
+      "title": "Motor em tempo real",
+      "desc": "WPM, precisão, CPM e erros rastreados por cada digitação, ao vivo."
+    },
+    "chart": {
+      "title": "WPM ao longo do tempo",
+      "desc": "Veja onde você desacelerou com um gráfico por segundo em cada resultado."
+    },
+    "modes": {
+      "title": "Modos flexíveis",
+      "desc": "Tempo, palavras, citações, parágrafos, histórias, código, texto personalizado ou upload de .txt."
+    },
+    "dashboard": {
+      "title": "Painel pessoal",
+      "desc": "Acompanhe cada execução, veja sua média subir e seus erros diminuírem."
+    },
+    "mistakes": {
+      "title": "Principais erros",
+      "desc": "Veja quais caracteres mais te atrapalham para que você possa focar a prática."
+    },
+    "ai": {
+      "title": "Coach de IA",
+      "desc": "Feedback de IA, multi-idioma, teclado virtual, detecção inteligente de erros."
+    }
+  },
+  "cta": {
+    "title": "Pronto em 15 segundos.",
+    "desc": "Não é necessário se inscrever para fazer seu primeiro teste.",
+    "button": "Fazer um teste"
+  },
+  "footerCopy": "Construído para digitadores."
+}

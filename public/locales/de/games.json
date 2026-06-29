@@ -1,0 +1,37 @@
+{
+  "page": {
+    "title": "Tippspiele",
+    "subtitle": "Verdiene XP & Münzen. Trete in täglichen, wöchentlichen und ewigen Bestenlisten an.",
+    "arcade": "Arcade",
+    "mini": "Minispiele",
+    "featured": "Vorgestellt",
+    "xp": "+{{n}} XP",
+    "coins": "+{{n}} Münzen"
+  },
+  "mini": {
+    "race": {
+      "name": "Type Racer",
+      "desc": "Fahre Rennen gegen KI-Schreibbots — wer zuerst die Ziellinie überquert, gewinnt."
+    },
+    "reaction": {
+      "name": "Reaktionszeit",
+      "desc": "Klicke in dem Moment, in dem der Bildschirm wechselt. 5 Runden."
+    },
+    "cps": {
+      "name": "Klicks pro Sekunde Test",
+      "desc": "Wie viele Klicks pro Sekunde schaffst du?"
+    },
+    "spacebar": {
+      "name": "Leertaste Test",
+      "desc": "Spamme die Leertaste in 10 Sekunden."
+    },
+    "memory": {
+      "name": "Speicher-Spiel",
+      "desc": "Wiederhole die Sequenz, während sie wächst."
+    },
+    "trainer": {
+      "name": "Tastatur Trainer",
+      "desc": "Übe die Grundreihe schnell."
+    }
+  }
+}

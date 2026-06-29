@@ -1,0 +1,48 @@
+{
+  "app": {
+    "name": "Teste de Digitação em Inglês",
+    "tagline": "Meça sua velocidade de digitação em segundos"
+  },
+  "actions": {
+    "start": "Começar",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "close": "Fechar",
+    "retry": "Tentar novamente",
+    "goHome": "Ir para a página inicial",
+    "loading": "Carregando…",
+    "search": "Pesquisar",
+    "submit": "Enviar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "continue": "Continuar",
+    "back": "Voltar",
+    "settings": "Configurações",
+    "language": "Idioma"
+  },
+  "labels": {
+    "wpm": "WPM",
+    "accuracy": "Precisão",
+    "cpm": "CPM",
+    "time": "Tempo",
+    "score": "Pontuação",
+    "rank": "Classificação",
+    "level": "Nível",
+    "xp": "XP",
+    "coins": "Moedas"
+  },
+  "language": {
+    "switcher": "Mudar idioma",
+    "search": "Procurar idiomas…",
+    "recent": "Usados recentemente",
+    "all": "Todos os idiomas",
+    "noResults": "Nenhum idioma encontrado",
+    "current": "Idioma atual"
+  },
+  "offline": {
+    "title": "Você está offline",
+    "description": "Alguns recursos não funcionarão até você se reconectar."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "stats": {
+    "netWpm": "純WPM",
+    "grossWpm": "総WPM",
+    "accuracy": "正確性",
+    "cpm": "CPM",
+    "consistency": "一貫性"
+  },
+  "chart": {
+    "title": "時間経過によるパフォーマンス",
+    "wpm": "WPM",
+    "raw": "生",
+    "errors": "エラー"
+  },
+  "detail": {
+    "title": "詳細",
+    "mode": "モード",
+    "duration": "期間",
+    "characters": "文字数",
+    "charLegend": "正解 / 不正解 / 余分 / 見逃し"
+  },
+  "mistakes": {
+    "title": "主な間違い",
+    "none": "間違いなし。素晴らしい走りです。"
+  },
+  "save": {
+    "saving": "保存中…",
+    "saved": "ダッシュボードに保存されました",
+    "savedToast": "結果が保存されました",
+    "failed": "結果の保存に失敗しました",
+    "signupPrompt": "結果を保存して進捗を追跡します。",
+    "signupCta": "サインアップ",
+    "missionComplete": "ミッション完了！報酬を受け取るにはミッションにアクセスしてください。"
+  },
+  "actions": {
+    "generateCertificate": "証明書を生成",
+    "dashboard": "ダッシュボード",
+    "nextTest": "次のテスト",
+    "certIssued": "証明書 {{id}} が発行されました",
+    "certFailed": "証明書の発行に失敗しました"
+  }
+}

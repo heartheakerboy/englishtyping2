@@ -1,0 +1,42 @@
+{
+  "stats": {
+    "netWpm": "Net WPM",
+    "grossWpm": "Gross WPM",
+    "accuracy": "Accuracy",
+    "cpm": "CPM",
+    "consistency": "Consistency"
+  },
+  "chart": {
+    "title": "Performance over time",
+    "wpm": "WPM",
+    "raw": "Raw",
+    "errors": "Errors"
+  },
+  "detail": {
+    "title": "Detail",
+    "mode": "Mode",
+    "duration": "Duration",
+    "characters": "Characters",
+    "charLegend": "correct / incorrect / extra / missed"
+  },
+  "mistakes": {
+    "title": "Top mistakes",
+    "none": "No mistakes. Beautiful run."
+  },
+  "save": {
+    "saving": "Saving…",
+    "saved": "Saved to your dashboard",
+    "savedToast": "Result saved",
+    "failed": "Failed to save result",
+    "signupPrompt": "to save results and track progress.",
+    "signupCta": "Sign up",
+    "missionComplete": "Mission complete! Visit Missions to claim rewards."
+  },
+  "actions": {
+    "generateCertificate": "Generate certificate",
+    "dashboard": "Dashboard",
+    "nextTest": "Next test",
+    "certIssued": "Certificate {{id}} issued",
+    "certFailed": "Failed to issue certificate"
+  }
+}

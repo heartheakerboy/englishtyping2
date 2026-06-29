@@ -1,0 +1,44 @@
+{
+  "badge": "Phase 1 Polish — Echtzeit-Engine, Diagramme, Themen",
+  "hero": {
+    "titleA": "Schneller tippen.",
+    "titleB": "Klarer denken.",
+    "subtitle": "Eine fokussierte, schöne Tippplattform, die auf messbare Verbesserung ausgelegt ist. Echtzeit-WPM, Genauigkeit und Konsistenz – kein Schnickschnack, kein Unsinn.",
+    "ctaStart": "Tippen starten",
+    "ctaSignup": "Kostenloses Konto erstellen"
+  },
+  "features": {
+    "heading": "Für ernsthafte Verbesserungen entwickelt",
+    "subheading": "Alles, was Sie zum Messen, Analysieren und Verbessern Ihres Tippens benötigen.",
+    "engine": {
+      "title": "Echtzeit-Engine",
+      "desc": "Live-WPM, Genauigkeit, CPM und Fehler, die pro Tastenanschlag verfolgt werden."
+    },
+    "chart": {
+      "title": "WPM im Zeitverlauf",
+      "desc": "Sehen Sie, wo Sie langsamer wurden, mit einem Pro-Sekunden-Diagramm bei jedem Ergebnis."
+    },
+    "modes": {
+      "title": "Flexible Modi",
+      "desc": "Zeit, Wörter, Zitate, Absätze, Geschichten, Code, benutzerdefinierter Text oder .txt-Upload."
+    },
+    "dashboard": {
+      "title": "Persönliches Dashboard",
+      "desc": "Verfolgen Sie jeden Lauf, sehen Sie, wie Ihr Durchschnitt steigt und Ihre Fehler schrumpfen."
+    },
+    "mistakes": {
+      "title": "Häufigste Fehler",
+      "desc": "Sehen Sie, welche Zeichen Sie am häufigsten stolpern lassen, damit Sie Ihr Training darauf konzentrieren können."
+    },
+    "ai": {
+      "title": "KI-Coach",
+      "desc": "KI-Feedback, mehrsprachig, virtuelle Tastatur, intelligente Fehlererkennung."
+    }
+  },
+  "cta": {
+    "title": "Fertig in 15 Sekunden.",
+    "desc": "Keine Anmeldung erforderlich, um Ihren ersten Test zu machen.",
+    "button": "Einen Test machen"
+  },
+  "footerCopy": "Für Tipper gebaut."
+}

@@ -1,0 +1,37 @@
+{
+  "page": {
+    "title": "Jogos de digitação",
+    "subtitle": "Ganhe XP e moedas. Compita nos placares diários, semanais e de todos os tempos.",
+    "arcade": "Arcade",
+    "mini": "Minijogos",
+    "featured": "Destaque",
+    "xp": "{{n}} XP",
+    "coins": "{{n}} moedas"
+  },
+  "mini": {
+    "race": {
+      "name": "Corrida de Digitação",
+      "desc": "Corra contra bots de digitação de IA — quem chegar primeiro cruza a linha de chegada vence."
+    },
+    "reaction": {
+      "name": "Tempo de Reação",
+      "desc": "Clique no momento em que a tela girar. 5 rodadas."
+    },
+    "cps": {
+      "name": "Teste CPS",
+      "desc": "Quantos cliques por segundo você consegue fazer?"
+    },
+    "spacebar": {
+      "name": "Teste da Barra de Espaço",
+      "desc": "Pressione a barra de espaço em 10 segundos."
+    },
+    "memory": {
+      "name": "Jogo da Memória",
+      "desc": "Repita a sequência à medida que ela cresce."
+    },
+    "trainer": {
+      "name": "Treinador de Teclado",
+      "desc": "Pratique a linha base de digitação com velocidade."
+    }
+  }
+}

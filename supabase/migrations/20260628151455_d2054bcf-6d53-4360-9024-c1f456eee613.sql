@@ -1,0 +1,2 @@
+DROP POLICY IF EXISTS "Public can read enabled durations" ON public.test_durations;
+CREATE POLICY "Public can read enabled durations" ON public.test_durations FOR SELECT TO public USING (enabled = true);

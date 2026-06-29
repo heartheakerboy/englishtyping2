@@ -1,0 +1,11 @@
+{
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist."
+  },
+  "generic": {
+    "title": "Something went wrong",
+    "description": "Try refreshing or head back home."
+  }
+}

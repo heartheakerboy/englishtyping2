@@ -1,0 +1,42 @@
+{
+  "stats": {
+    "netWpm": "净 WPM",
+    "grossWpm": "毛 WPM",
+    "accuracy": "准确率",
+    "cpm": "CPM",
+    "consistency": "稳定性"
+  },
+  "chart": {
+    "title": "表现随时间变化",
+    "wpm": "WPM",
+    "raw": "原始",
+    "errors": "错误"
+  },
+  "detail": {
+    "title": "详情",
+    "mode": "模式",
+    "duration": "持续时间",
+    "characters": "字符",
+    "charLegend": "正确 / 错误 / 额外 / 遗漏"
+  },
+  "mistakes": {
+    "title": "常见错误",
+    "none": "没有错误。完美运行。"
+  },
+  "save": {
+    "saving": "正在保存…",
+    "saved": "已保存到您的仪表板",
+    "savedToast": "结果已保存",
+    "failed": "保存结果失败",
+    "signupPrompt": "以保存结果并跟踪进度。",
+    "signupCta": "注册",
+    "missionComplete": "任务完成！访问任务以领取奖励。"
+  },
+  "actions": {
+    "generateCertificate": "生成证书",
+    "dashboard": "仪表板",
+    "nextTest": "下一个测试",
+    "certIssued": "证书 {{id}} 已签发",
+    "certFailed": "签发证书失败"
+  }
+}

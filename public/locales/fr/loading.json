@@ -1,0 +1,9 @@
+{
+  "default": "Chargement…",
+  "fetching": "Récupération des données…",
+  "preparing": "Préparation…",
+  "empty": {
+    "title": "Rien ici pour l'instant",
+    "description": "Revenez bientôt ou essayez un filtre différent."
+  }
+}

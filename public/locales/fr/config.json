@@ -1,0 +1,53 @@
+{
+  "modes": {
+    "time": "Temps",
+    "words": "Mots",
+    "quote": "Citation",
+    "story": "Histoire",
+    "code": "Code",
+    "custom": "Personnalisé",
+    "ai": "IA"
+  },
+  "labels": {
+    "shuffle": "Mélanger",
+    "customTimer": "personnalisé",
+    "editText": "modifier le texte",
+    "generate": "générer",
+    "keyboard": "Clavier",
+    "language": "Langue",
+    "category": "Catégorie de pratique",
+    "layout": "Disposition du clavier",
+    "virtualKeyboard": "Clavier virtuel",
+    "fingerGuide": "Couleurs du guide des doigts"
+  },
+  "customTimer": {
+    "title": "Minuteur personnalisé",
+    "seconds": "Secondes (5 – 3600)",
+    "placeholder": "ex. 45",
+    "invalid": "Choisissez entre 5 et 3600 secondes",
+    "apply": "Appliquer"
+  },
+  "customText": {
+    "title": "Texte personnalisé",
+    "placeholder": "Collez ici le texte sur lequel vous souhaitez vous entraîner…",
+    "upload": "Télécharger .txt",
+    "chars": "{{count}} caractères",
+    "tooLarge": "Fichier trop volumineux (max 200 Ko)",
+    "readFail": "Impossible de lire le fichier",
+    "tooShort": "Veuillez fournir au moins 10 caractères"
+  },
+  "ai": {
+    "title": "Générateur de paragraphes IA",
+    "topic": "Sujet (optionnel)",
+    "topicPlaceholder": "ex. exploration spatiale",
+    "difficulty": "Difficulté",
+    "easy": "facile",
+    "medium": "moyen",
+    "hard": "difficile",
+    "generating": "Génération…",
+    "generate": "Générer",
+    "success": "Nouveau paragraphe IA généré",
+    "empty": "L'IA a renvoyé un paragraphe vide",
+    "failed": "La génération IA a échoué"
+  }
+}

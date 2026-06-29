@@ -1,0 +1,23 @@
+{
+  "practice": "練習",
+  "tests": "テスト",
+  "race": "レース",
+  "games": "ゲーム",
+  "tournaments": "トーナメント",
+  "leaderboard": "ランキング",
+  "blog": "ブログ",
+  "templates": "テンプレート",
+  "pricing": "料金",
+  "dashboard": "ダッシュボード",
+  "builder": "ビルダー",
+  "profile": "プロフィール",
+  "achievements": "実績",
+  "missions": "ミッション",
+  "friends": "フレンド",
+  "admin": "管理",
+  "signIn": "ログイン",
+  "signOut": "ログアウト",
+  "getStarted": "はじめる",
+  "account": "アカウント",
+  "skipToContent": "コンテンツへスキップ"
+}

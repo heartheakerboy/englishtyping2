@@ -1,0 +1,9 @@
+{
+  "default": "Carregando…",
+  "fetching": "Buscando dados…",
+  "preparing": "Preparando…",
+  "empty": {
+    "title": "Nada aqui ainda",
+    "description": "Volte em breve ou tente um filtro diferente."
+  }
+}

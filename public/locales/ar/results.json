@@ -1,0 +1,42 @@
+{
+  "stats": {
+    "netWpm": "صافي WPM",
+    "grossWpm": "إجمالي WPM",
+    "accuracy": "الدقة",
+    "cpm": "CPM",
+    "consistency": "الاتساق"
+  },
+  "chart": {
+    "title": "الأداء بمرور الوقت",
+    "wpm": "WPM",
+    "raw": "خام",
+    "errors": "الأخطاء"
+  },
+  "detail": {
+    "title": "التفاصيل",
+    "mode": "الوضع",
+    "duration": "المدة",
+    "characters": "الأحرف",
+    "charLegend": "صحيح / غير صحيح / إضافي / مفقود"
+  },
+  "mistakes": {
+    "title": "أبرز الأخطاء",
+    "none": "لا توجد أخطاء. تشغيل جميل."
+  },
+  "save": {
+    "saving": "جار الحفظ...",
+    "saved": "تم الحفظ في لوحة التحكم الخاصة بك",
+    "savedToast": "تم حفظ النتيجة",
+    "failed": "فشل حفظ النتيجة",
+    "signupPrompt": "لحفظ النتائج وتتبع التقدم.",
+    "signupCta": "التسجيل",
+    "missionComplete": "اكتملت المهمة! قم بزيارة المهام للمطالبة بالمكافآت."
+  },
+  "actions": {
+    "generateCertificate": "إنشاء شهادة",
+    "dashboard": "لوحة التحكم",
+    "nextTest": "الاختبار التالي",
+    "certIssued": "تم إصدار الشهادة {{id}}",
+    "certFailed": "فشل إصدار الشهادة"
+  }
+}

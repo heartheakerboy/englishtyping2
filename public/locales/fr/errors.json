@@ -1,0 +1,11 @@
+{
+  "notFound": {
+    "code": "404",
+    "title": "Page non trouvée",
+    "description": "La page que vous recherchez n'existe pas."
+  },
+  "generic": {
+    "title": "Un problème est survenu",
+    "description": "Essayez d'actualiser ou de revenir à l'accueil."
+  }
+}

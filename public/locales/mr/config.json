@@ -1,0 +1,53 @@
+{
+  "modes": {
+    "time": "वेळ",
+    "words": "शब्द",
+    "quote": "अवतरण",
+    "story": "कथा",
+    "code": "कोड",
+    "custom": "सानुकूल",
+    "ai": "AI"
+  },
+  "labels": {
+    "shuffle": "शफल",
+    "customTimer": "सानुकूल",
+    "editText": "मजकूर संपादित करा",
+    "generate": "तयार करा",
+    "keyboard": "कीबोर्ड",
+    "language": "भाषा",
+    "category": "सराव श्रेणी",
+    "layout": "कीबोर्ड लेआउट",
+    "virtualKeyboard": "आभासी कीबोर्ड",
+    "fingerGuide": "बोटांच्या मार्गदर्शकाचे रंग"
+  },
+  "customTimer": {
+    "title": "सानुकूल टाइमर",
+    "seconds": "सेकंद (5 – 3600)",
+    "placeholder": "उदा. 45",
+    "invalid": "5 ते 3600 सेकंदांमध्ये निवडा",
+    "apply": "लागू करा"
+  },
+  "customText": {
+    "title": "सानुकूल मजकूर",
+    "placeholder": "आपण सराव करू इच्छित असलेला कोणताही मजकूर पेस्ट करा…",
+    "upload": ".txt अपलोड करा",
+    "chars": "{{count}} वर्ण",
+    "tooLarge": "फाइल खूप मोठी आहे (जास्तीत जास्त 200 KB)",
+    "readFail": "फाइल वाचता आली नाही",
+    "tooShort": "किमान 10 वर्ण द्या"
+  },
+  "ai": {
+    "title": "AI परिच्छेद जनरेटर",
+    "topic": "विषय (ऐच्छिक)",
+    "topicPlaceholder": "उदा. अवकाश संशोधन",
+    "difficulty": "कठिणता",
+    "easy": "सोपे",
+    "medium": "मध्यम",
+    "hard": "कठीण",
+    "generating": "तयार करत आहे…",
+    "generate": "तयार करा",
+    "success": "नवीन AI परिच्छेद तयार झाला",
+    "empty": "AI ने एक रिकामा परिच्छेद दिला",
+    "failed": "AI निर्मिती अयशस्वी झाली"
+  }
+}

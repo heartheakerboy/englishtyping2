@@ -1,0 +1,53 @@
+{
+  "modes": {
+    "time": "時間",
+    "words": "単語",
+    "quote": "引用",
+    "story": "ストーリー",
+    "code": "コード",
+    "custom": "カスタム",
+    "ai": "AI"
+  },
+  "labels": {
+    "shuffle": "シャッフル",
+    "customTimer": "カスタム",
+    "editText": "テキストを編集",
+    "generate": "生成",
+    "keyboard": "キーボード",
+    "language": "言語",
+    "category": "練習カテゴリ",
+    "layout": "キーボードレイアウト",
+    "virtualKeyboard": "仮想キーボード",
+    "fingerGuide": "指ガイドの色"
+  },
+  "customTimer": {
+    "title": "カスタムタイマー",
+    "seconds": "秒数 (5～3600)",
+    "placeholder": "例: 45",
+    "invalid": "5～3600秒の間で選択してください",
+    "apply": "適用"
+  },
+  "customText": {
+    "title": "カスタムテキスト",
+    "placeholder": "練習したいテキストを貼り付けてください…",
+    "upload": ".txtをアップロード",
+    "chars": "{{count}}文字",
+    "tooLarge": "ファイルが大きすぎます (最大200KB)",
+    "readFail": "ファイルを読み込めませんでした",
+    "tooShort": "少なくとも10文字入力してください"
+  },
+  "ai": {
+    "title": "AI段落ジェネレーター",
+    "topic": "トピック (オプション)",
+    "topicPlaceholder": "例: 宇宙探査",
+    "difficulty": "難易度",
+    "easy": "簡単",
+    "medium": "中",
+    "hard": "難しい",
+    "generating": "生成中…",
+    "generate": "生成",
+    "success": "新しいAI段落を生成しました",
+    "empty": "AIが空の段落を返しました",
+    "failed": "AI生成に失敗しました"
+  }
+}

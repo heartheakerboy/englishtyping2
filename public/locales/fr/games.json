@@ -1,0 +1,37 @@
+{
+  "page": {
+    "title": "Jeux de dactylographie",
+    "subtitle": "Gagnez de l'XP et des pièces. Affrontez les classements quotidiens, hebdomadaires et de tous les temps.",
+    "arcade": "Arcade",
+    "mini": "Mini-jeux",
+    "featured": "En vedette",
+    "xp": "+{{n}} XP",
+    "coins": "+{{n}} pièces"
+  },
+  "mini": {
+    "race": {
+      "name": "Type Racer",
+      "desc": "Affrontez des bots de dactylographie IA — le premier à franchir la ligne d'arrivée gagne."
+    },
+    "reaction": {
+      "name": "Temps de Réaction",
+      "desc": "Cliquez au moment où l'écran change. 5 rounds."
+    },
+    "cps": {
+      "name": "Test CPS",
+      "desc": "Combien de clics par seconde pouvez-vous faire ?"
+    },
+    "spacebar": {
+      "name": "Test de la Barre d'Espace",
+      "desc": "Spammez la barre d'espace en 10 secondes."
+    },
+    "memory": {
+      "name": "Jeu de Mémoire",
+      "desc": "Répétez la séquence au fur et à mesure qu'elle grandit."
+    },
+    "trainer": {
+      "name": "Entraîneur de Clavier",
+      "desc": "Entraînez la rangée de base à toute vitesse."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "app": {
+    "name": "Test de vitesse de frappe en anglais",
+    "tagline": "Mesurez votre vitesse de frappe en quelques secondes"
+  },
+  "actions": {
+    "start": "Démarrer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "retry": "Réessayer",
+    "goHome": "Aller à l'accueil",
+    "loading": "Chargement…",
+    "search": "Rechercher",
+    "submit": "Soumettre",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "continue": "Continuer",
+    "back": "Retour",
+    "settings": "Paramètres",
+    "language": "Langue"
+  },
+  "labels": {
+    "wpm": "Mots/min",
+    "accuracy": "Précision",
+    "cpm": "Caractères/min",
+    "time": "Temps",
+    "score": "Score",
+    "rank": "Classement",
+    "level": "Niveau",
+    "xp": "XP",
+    "coins": "Pièces"
+  },
+  "language": {
+    "switcher": "Changer de langue",
+    "search": "Rechercher des langues…",
+    "recent": "Récemment utilisées",
+    "all": "Toutes les langues",
+    "noResults": "Aucune langue trouvée",
+    "current": "Langue actuelle"
+  },
+  "offline": {
+    "title": "Vous êtes hors ligne",
+    "description": "Certaines fonctionnalités ne fonctionneront pas tant que vous ne vous reconnecterez pas."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "stats": {
+    "netWpm": "Netto WPM",
+    "grossWpm": "Brutto WPM",
+    "accuracy": "Genauigkeit",
+    "cpm": "CPM",
+    "consistency": "Konsistenz"
+  },
+  "chart": {
+    "title": "Leistung im Zeitverlauf",
+    "wpm": "WPM",
+    "raw": "Roh",
+    "errors": "Fehler"
+  },
+  "detail": {
+    "title": "Detail",
+    "mode": "Modus",
+    "duration": "Dauer",
+    "characters": "Zeichen",
+    "charLegend": "korrekt / falsch / zusätzlich / verpasst"
+  },
+  "mistakes": {
+    "title": "Top-Fehler",
+    "none": "Keine Fehler. Schöner Lauf."
+  },
+  "save": {
+    "saving": "Wird gespeichert…",
+    "saved": "Im Dashboard gespeichert",
+    "savedToast": "Ergebnis gespeichert",
+    "failed": "Speichern des Ergebnisses fehlgeschlagen",
+    "signupPrompt": "um Ihre Ergebnisse zu speichern und den Fortschritt zu verfolgen.",
+    "signupCta": "Registrieren",
+    "missionComplete": "Mission abgeschlossen! Besuchen Sie Missionen, um Belohnungen abzuholen."
+  },
+  "actions": {
+    "generateCertificate": "Zertifikat generieren",
+    "dashboard": "Dashboard",
+    "nextTest": "Nächster Test",
+    "certIssued": "Zertifikat {{id}} ausgestellt",
+    "certFailed": "Ausstellung des Zertifikats fehlgeschlagen"
+  }
+}

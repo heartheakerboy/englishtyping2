@@ -1,0 +1,53 @@
+{
+  "modes": {
+    "time": "时间",
+    "words": "单词",
+    "quote": "引语",
+    "story": "故事",
+    "code": "代码",
+    "custom": "自定义",
+    "ai": "AI"
+  },
+  "labels": {
+    "shuffle": "随机",
+    "customTimer": "自定义",
+    "editText": "编辑文本",
+    "generate": "生成",
+    "keyboard": "键盘",
+    "language": "语言",
+    "category": "练习类别",
+    "layout": "键盘布局",
+    "virtualKeyboard": "虚拟键盘",
+    "fingerGuide": "手指引导颜色"
+  },
+  "customTimer": {
+    "title": "自定义计时器",
+    "seconds": "秒 (5 – 3600)",
+    "placeholder": "例如 45",
+    "invalid": "请选择 5 到 3600 秒之间",
+    "apply": "应用"
+  },
+  "customText": {
+    "title": "自定义文本",
+    "placeholder": "粘贴您要练习的任何文本…",
+    "upload": "上传 .txt",
+    "chars": "{{count}} 字符",
+    "tooLarge": "文件太大（最大 200 KB）",
+    "readFail": "无法读取文件",
+    "tooShort": "请提供至少 10 个字符"
+  },
+  "ai": {
+    "title": "AI 段落生成器",
+    "topic": "主题（可选）",
+    "topicPlaceholder": "例如，太空探索",
+    "difficulty": "难度",
+    "easy": "简单",
+    "medium": "中等",
+    "hard": "困难",
+    "generating": "正在生成…",
+    "generate": "生成",
+    "success": "成功生成新的 AI 段落",
+    "empty": "AI 返回了空段落",
+    "failed": "AI 生成失败"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "stats": {
+    "netWpm": "WPM Net",
+    "grossWpm": "WPM Brut",
+    "accuracy": "Précision",
+    "cpm": "MPC",
+    "consistency": "Cohérence"
+  },
+  "chart": {
+    "title": "Performance au fil du temps",
+    "wpm": "WPM",
+    "raw": "Brut",
+    "errors": "Erreurs"
+  },
+  "detail": {
+    "title": "Détail",
+    "mode": "Mode",
+    "duration": "Durée",
+    "characters": "Caractères",
+    "charLegend": "correct / incorrect / en trop / manqué"
+  },
+  "mistakes": {
+    "title": "Principales erreurs",
+    "none": "Aucune erreur. Excellente performance."
+  },
+  "save": {
+    "saving": "Enregistrement…",
+    "saved": "Enregistré dans votre tableau de bord",
+    "savedToast": "Résultat enregistré",
+    "failed": "Échec de l'enregistrement du résultat",
+    "signupPrompt": "pour enregistrer les résultats et suivre les progrès.",
+    "signupCta": "S'inscrire",
+    "missionComplete": "Mission accomplie ! Visitez les Missions pour récupérer les récompenses."
+  },
+  "actions": {
+    "generateCertificate": "Générer le certificat",
+    "dashboard": "Tableau de bord",
+    "nextTest": "Test suivant",
+    "certIssued": "Certificat {{id}} délivré",
+    "certFailed": "Échec de la délivrance du certificat"
+  }
+}

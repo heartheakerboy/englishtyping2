@@ -1,0 +1,53 @@
+{
+  "modes": {
+    "time": "Zeit",
+    "words": "Wörter",
+    "quote": "Zitat",
+    "story": "Geschichte",
+    "code": "Code",
+    "custom": "Benutzerdefiniert",
+    "ai": "AI"
+  },
+  "labels": {
+    "shuffle": "Zufall",
+    "customTimer": "Benutzerdefiniert",
+    "editText": "Text bearbeiten",
+    "generate": "generieren",
+    "keyboard": "Tastatur",
+    "language": "Sprache",
+    "category": "Übungskategorie",
+    "layout": "Tastaturlayout",
+    "virtualKeyboard": "Virtuelle Tastatur",
+    "fingerGuide": "Fingertyp-Farben"
+  },
+  "customTimer": {
+    "title": "Benutzerdefinierter Timer",
+    "seconds": "Sekunden (5 – 3600)",
+    "placeholder": "z.B. 45",
+    "invalid": "Wählen Sie zwischen 5 und 3600 Sekunden",
+    "apply": "Übernehmen"
+  },
+  "customText": {
+    "title": "Benutzerdefinierter Text",
+    "placeholder": "Fügen Sie hier einen beliebigen Text ein, an dem Sie üben möchten…",
+    "upload": ".txt hochladen",
+    "chars": "{{count}} Zeichen",
+    "tooLarge": "Datei zu groß (max. 200 KB)",
+    "readFail": "Datei konnte nicht gelesen werden",
+    "tooShort": "Geben Sie mindestens 10 Zeichen ein"
+  },
+  "ai": {
+    "title": "AI Absatz-Generator",
+    "topic": "Thema (optional)",
+    "topicPlaceholder": "z.B. Weltraumforschung",
+    "difficulty": "Schwierigkeitsgrad",
+    "easy": "einfach",
+    "medium": "mittel",
+    "hard": "schwer",
+    "generating": "Wird generiert…",
+    "generate": "Generieren",
+    "success": "Neuer AI Absatz generiert",
+    "empty": "AI hat einen leeren Absatz zurückgegeben",
+    "failed": "AI Generierung fehlgeschlagen"
+  }
+}

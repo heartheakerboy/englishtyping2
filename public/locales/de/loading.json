@@ -1,0 +1,9 @@
+{
+  "default": "Wird geladen…",
+  "fetching": "Daten werden abgerufen…",
+  "preparing": "Wird vorbereitet…",
+  "empty": {
+    "title": "Noch nichts vorhanden",
+    "description": "Schauen Sie bald wieder vorbei oder versuchen Sie einen anderen Filter."
+  }
+}

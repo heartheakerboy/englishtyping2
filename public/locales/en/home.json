@@ -1,0 +1,44 @@
+{
+  "badge": "Phase 1 Polish — Real-time engine, charts, themes",
+  "hero": {
+    "titleA": "Type faster.",
+    "titleB": "Think clearer.",
+    "subtitle": "A focused, beautiful typing platform built for measurable improvement. Real-time WPM, accuracy and consistency — no clutter, no nonsense.",
+    "ctaStart": "Start typing",
+    "ctaSignup": "Create free account"
+  },
+  "features": {
+    "heading": "Built for serious improvement",
+    "subheading": "Everything you need to measure, analyze and elevate your typing.",
+    "engine": {
+      "title": "Real-time engine",
+      "desc": "Live WPM, accuracy, CPM and mistakes tracked per keystroke."
+    },
+    "chart": {
+      "title": "WPM over time",
+      "desc": "See where you slowed down with a per-second chart on every result."
+    },
+    "modes": {
+      "title": "Flexible modes",
+      "desc": "Time, words, quotes, paragraphs, stories, code, custom text or .txt upload."
+    },
+    "dashboard": {
+      "title": "Personal dashboard",
+      "desc": "Track every run, watch your average climb and your errors shrink."
+    },
+    "mistakes": {
+      "title": "Top mistakes",
+      "desc": "See which characters trip you up most so you can focus practice."
+    },
+    "ai": {
+      "title": "AI coach",
+      "desc": "AI feedback, multi-language, virtual keyboard, smart error detection."
+    }
+  },
+  "cta": {
+    "title": "Ready in 15 seconds.",
+    "desc": "No signup required to take your first test.",
+    "button": "Take a test"
+  },
+  "footerCopy": "Built for typists."
+}

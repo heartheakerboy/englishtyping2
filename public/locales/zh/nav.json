@@ -1,0 +1,23 @@
+{
+  "practice": "练习",
+  "tests": "测试",
+  "race": "竞速",
+  "games": "游戏",
+  "tournaments": "锦标赛",
+  "leaderboard": "排行榜",
+  "blog": "博客",
+  "templates": "模板",
+  "pricing": "定价",
+  "dashboard": "仪表板",
+  "builder": "构建器",
+  "profile": "个人资料",
+  "achievements": "成就",
+  "missions": "任务",
+  "friends": "好友",
+  "admin": "管理",
+  "signIn": "登录",
+  "signOut": "退出",
+  "getStarted": "开始使用",
+  "account": "账户",
+  "skipToContent": "跳到内容"
+}

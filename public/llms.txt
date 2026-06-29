@@ -1,0 +1,20 @@
+# English Typing Test
+
+> Free, modern typing test platform with real-time WPM, accuracy and CPM tracking. Time, words, quotes, code and custom modes, multilingual support, multiplayer races and typing mini-games.
+
+## Pages
+
+- [Home](/): Free typing test with real-time WPM, accuracy and CPM tracking.
+- [Typing Test](/test): Take a typing test in time, words, quote, code and custom modes.
+- [Typing Tests Hub](/typing-test): Dedicated SEO pages for every typing-test duration.
+- [Touch Typing Lessons](/lessons): Touch typing guide, finger placement and a 6-lesson plan.
+- [Leaderboard](/leaderboard): Global, country, state and city leaderboards — daily, weekly, monthly, all-time.
+- [Multiplayer Race](/race): Race other typists in real time public and private rooms.
+- [Typing Games](/games): Mini-games: type racer bots, reaction time, CPS, spacebar, memory, keyboard trainer.
+- [Pricing](/pricing): Free forever core plan; Premium adds unlimited AI, no ads and advanced analytics.
+- [Blog](/blog): Typing tips, productivity insights and product updates.
+- [Sign in / Sign up](/auth): Create an account to save results, earn XP and unlock leaderboards.
+
+## Optional
+
+- [Tournaments](/tournaments): Scheduled typing tournaments.
