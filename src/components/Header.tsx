@@ -65,7 +65,7 @@ export function Header() {
       return;
     }
     adminFn()
-      .then((v: any) => setIsAdmin(!!v))
+      .then((v: any) => setIsAdmin(!!v?.isAdmin))
       .catch(() => setIsAdmin(false));
   }, [authed, adminFn]);
 
@@ -75,10 +75,10 @@ export function Header() {
   };
 
   const navLink =
-    "hidden rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground lg:inline-flex";
+    "hidden rounded-md px-1.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground xl:px-3 xl:text-sm lg:inline-flex";
   const navActive = {
     className:
-      "hidden lg:inline-flex rounded-md px-3 py-2 text-sm font-medium text-foreground bg-surface",
+      "hidden lg:inline-flex rounded-md px-1.5 py-1.5 text-xs font-medium text-foreground bg-surface xl:px-3 xl:text-sm",
   };
 
   return (
@@ -145,22 +145,7 @@ export function Header() {
               {t("templates")}
             </span>
           </Link>
-          {authed && (
-            <Link to="/dashboard" className={navLink} activeProps={navActive}>
-              <span className="inline-flex items-center gap-1.5">
-                <LayoutDashboard className="h-3.5 w-3.5" />
-                {t("dashboard")}
-              </span>
-            </Link>
-          )}
-          {authed && (
-            <Link to={"/builder" as any} className={navLink} activeProps={navActive}>
-              <span className="inline-flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5" />
-                {t("builder")}
-              </span>
-            </Link>
-          )}
+
 
           {/* Mobile Navigation Drawer (Hamburger Menu) */}
           <div className="inline-flex lg:hidden">
@@ -307,6 +292,16 @@ export function Header() {
                 <DropdownMenuItem asChild>
                   <Link to="/dashboard">
                     <LayoutDashboard className="h-4 w-4" /> {t("dashboard")}
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/builder">
+                    <Sparkles className="h-4 w-4" /> {t("builder")}
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/templates/my">
+                    <Sparkles className="h-4 w-4" /> My Templates
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
