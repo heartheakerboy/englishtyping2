@@ -363,6 +363,23 @@ function TextDisplay({
   const chars = useMemo(() => target.split(""), [target]);
   const extra = typed.length > target.length ? typed.slice(target.length) : "";
 
+  // Refs for auto-scroll (teleprompter effect)
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const caretRef = useRef<HTMLSpanElement>(null);
+
+  // Scroll so the caret line stays roughly centered in the visible window
+  useEffect(() => {
+    const container = scrollRef.current;
+    const caret = caretRef.current;
+    if (!container || !caret) return;
+    const containerTop = container.getBoundingClientRect().top;
+    const caretTop = caret.getBoundingClientRect().top;
+    const relativeTop = caretTop - containerTop + container.scrollTop;
+    // Keep caret vertically centered in the container
+    const targetScroll = relativeTop - container.clientHeight / 2 + caret.clientHeight / 2;
+    container.scrollTo({ top: Math.max(0, targetScroll), behavior: "smooth" });
+  }, [typed.length]);
+
   return (
     <div
       onClick={onFocus}
@@ -374,7 +391,9 @@ function TextDisplay({
       )}
     >
       <div
+        ref={scrollRef}
         className={cn("relative", isCode ? "max-h-96 overflow-auto" : "max-h-80 overflow-hidden")}
+        style={{ scrollbarWidth: "none" }}
       >
         {chars.map((ch, i) => {
           const t = typed[i];
@@ -400,6 +419,7 @@ function TextDisplay({
             >
               {isCaret && active && (
                 <span
+                  ref={caretRef}
                   className="pointer-events-none absolute -left-px top-0 h-[1.4em] w-0.5 bg-typing-caret animate-caret"
                   aria-hidden
                 />
@@ -418,6 +438,7 @@ function TextDisplay({
     </div>
   );
 }
+
 
 function RestartShortcut({ onRestart }: { onRestart: () => void }) {
   useEffect(() => {

@@ -292,29 +292,12 @@ export function MultiplayerRace({ room, members, meId }: Props) {
         )}
         onClick={() => inputRef.current?.focus()}
       >
-        <div className="font-mono text-2xl leading-loose tracking-wider md:text-3xl">
-          {room.text.split("").map((ch, i) => {
-            const t = typed[i];
-            const isCaret = i === typed.length && !!startedAt;
-            let cls = "text-typing-untyped";
-            if (t !== undefined)
-              cls =
-                t === ch
-                  ? "text-typing-correct"
-                  : "text-typing-incorrect underline decoration-typing-incorrect/60";
-            return (
-              <span key={i} className={cn("relative", cls)}>
-                {isCaret && (
-                  <span
-                    className="pointer-events-none absolute -left-px top-0 h-[1.4em] w-0.5 bg-typing-caret animate-caret"
-                    aria-hidden
-                  />
-                )}
-                {ch}
-              </span>
-            );
-          })}
-        </div>
+        {/* Teleprompter auto-scroll container */}
+        <RaceTextDisplay
+          text={room.text}
+          typed={typed}
+          active={!!startedAt && !finishedSelfRef.current}
+        />
       </Card>
 
       <input
@@ -396,3 +379,63 @@ function StatusBadge({ status }: { status: string }) {
     </span>
   );
 }
+
+/** Teleprompter-style text display for the race — auto-scrolls to keep caret centred. */
+function RaceTextDisplay({
+  text,
+  typed,
+  active,
+}: {
+  text: string;
+  typed: string;
+  active: boolean;
+}) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const caretRef = useRef<HTMLSpanElement>(null);
+
+  // Keep caret vertically centred inside the scroll window
+  useEffect(() => {
+    const container = scrollRef.current;
+    const caret = caretRef.current;
+    if (!container || !caret) return;
+    const containerTop = container.getBoundingClientRect().top;
+    const caretTop = caret.getBoundingClientRect().top;
+    const relativeTop = caretTop - containerTop + container.scrollTop;
+    const targetScroll = relativeTop - container.clientHeight / 2 + caret.clientHeight / 2;
+    container.scrollTo({ top: Math.max(0, targetScroll), behavior: "smooth" });
+  }, [typed.length]);
+
+  const chars = text.split("");
+
+  return (
+    <div
+      ref={scrollRef}
+      className="max-h-80 overflow-hidden font-mono text-2xl leading-loose tracking-wider md:text-3xl"
+      style={{ scrollbarWidth: "none" }}
+    >
+      {chars.map((ch, i) => {
+        const t = typed[i];
+        const isCaret = i === typed.length && active;
+        let cls = "text-typing-untyped";
+        if (t !== undefined)
+          cls =
+            t === ch
+              ? "text-typing-correct"
+              : "text-typing-incorrect underline decoration-typing-incorrect/60";
+        return (
+          <span key={i} className={cn("relative", cls)}>
+            {isCaret && (
+              <span
+                ref={caretRef}
+                className="pointer-events-none absolute -left-px top-0 h-[1.4em] w-0.5 bg-typing-caret animate-caret"
+                aria-hidden
+              />
+            )}
+            {ch}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
