@@ -1,4 +1,4 @@
-import { createFileRoute, Link, Outlet, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, redirect, useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
 import { amIAdmin } from "@/lib/admin.functions";
@@ -108,11 +108,23 @@ function AdminLayout() {
   const check = useServerFn(amIAdmin);
   const [state, setState] = useState<"loading" | "ok" | "denied">("loading");
   const [filter, setFilter] = useState("");
+  const navigate = useNavigate();
+
   useEffect(() => {
     check()
-      .then((r) => setState(r.isAdmin ? "ok" : "denied"))
-      .catch(() => setState("denied"));
-  }, [check]);
+      .then((r) => {
+        if (r.isAdmin) {
+          setState("ok");
+        } else {
+          setState("denied");
+          navigate({ to: "/dashboard" });
+        }
+      })
+      .catch(() => {
+        setState("denied");
+        navigate({ to: "/dashboard" });
+      });
+  }, [check, navigate]);
 
   if (state === "loading") {
     return (
@@ -122,7 +134,11 @@ function AdminLayout() {
     );
   }
   if (state === "denied") {
-    throw redirect({ to: "/dashboard" });
+    return (
+      <div className="mx-auto max-w-6xl px-4 py-16 text-sm text-muted-foreground">
+        Redirecting to dashboard…
+      </div>
+    );
   }
 
   const q = filter.toLowerCase();
