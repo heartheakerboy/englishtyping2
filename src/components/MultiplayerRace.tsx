@@ -41,14 +41,12 @@ type Room = {
 };
 
 interface Props {
-  initialRoom: Room;
-  initialMembers: Member[];
+  room: Room;
+  members: Member[];
   meId: string | null;
 }
 
-export function MultiplayerRace({ initialRoom, initialMembers, meId }: Props) {
-  const [room, setRoom] = useState(initialRoom);
-  const [members, setMembers] = useState<Member[]>(initialMembers);
+export function MultiplayerRace({ room, members, meId }: Props) {
   const [typed, setTyped] = useState("");
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [now, setNow] = useState(Date.now());
@@ -70,39 +68,6 @@ export function MultiplayerRace({ initialRoom, initialMembers, meId }: Props) {
   const start = useServerFn(startRoom);
   const leave = useServerFn(leaveRoom);
   const winTick = useServerFn(tickRaceWin);
-
-  // Subscribe to realtime changes.
-  useEffect(() => {
-    const channel = supabase
-      .channel(`room:${room.id}`)
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "room_members", filter: `room_id=eq.${room.id}` },
-        (payload) => {
-          setMembers((prev) => {
-            if (payload.eventType === "DELETE") {
-              const old = payload.old as { user_id: string };
-              return prev.filter((m) => m.user_id !== old.user_id);
-            }
-            const row = payload.new as Member;
-            const idx = prev.findIndex((m) => m.user_id === row.user_id);
-            if (idx === -1) return [...prev, row];
-            const next = prev.slice();
-            next[idx] = { ...next[idx], ...row };
-            return next;
-          });
-        },
-      )
-      .on(
-        "postgres_changes",
-        { event: "UPDATE", schema: "public", table: "rooms", filter: `id=eq.${room.id}` },
-        (payload) => setRoom((r) => ({ ...r, ...(payload.new as Partial<Room>) })),
-      )
-      .subscribe();
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, [room.id]);
 
   // Countdown handling.
   useEffect(() => {

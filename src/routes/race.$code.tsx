@@ -49,12 +49,49 @@ function RoomPage() {
   const [joined, setJoined] = useState(false);
   const joinFn = useServerFn(joinRoom);
 
+  const [room, setRoom] = useState(data?.room);
+  const [members, setMembers] = useState<any[]>(data?.members ?? []);
+
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setMeId(data.user?.id ?? null));
   }, []);
 
+  useEffect(() => {
+    if (!room?.id) return;
+    const channel = supabase
+      .channel(`room:${room.id}`)
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "room_members", filter: `room_id=eq.${room.id}` },
+        (payload) => {
+          setMembers((prev) => {
+            if (payload.eventType === "DELETE") {
+              const old = payload.old as { user_id: string };
+              return prev.filter((m) => m.user_id !== old.user_id);
+            }
+            const row = payload.new as any;
+            const idx = prev.findIndex((m) => m.user_id === row.user_id);
+            if (idx === -1) return [...prev, row];
+            const next = prev.slice();
+            next[idx] = { ...next[idx], ...row };
+            return next;
+          });
+        },
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "rooms", filter: `id=eq.${room.id}` },
+        (payload) => setRoom((r: any) => ({ ...r, ...(payload.new as any) })),
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [room?.id]);
+
   const isMember =
-    !!meId && (data?.members.some((m: { user_id: string }) => m.user_id === meId) ?? false);
+    !!meId && (members.some((m: { user_id: string }) => m.user_id === meId) ?? false);
   useEffect(() => {
     if (isMember) setJoined(true);
   }, [isMember]);
@@ -66,7 +103,6 @@ function RoomPage() {
   });
 
   if (!data) return <RoomError msg="Room not found" />;
-  const { room, members } = data;
 
   const copyInvite = async () => {
     const url = `${window.location.origin}/race/${room.code}`;
@@ -128,7 +164,7 @@ function RoomPage() {
             </div>
           </Card>
         ) : (
-          <MultiplayerRace initialRoom={room} initialMembers={members} meId={meId} />
+          <MultiplayerRace room={room} members={members} meId={meId} />
         )}
       </main>
     </div>
