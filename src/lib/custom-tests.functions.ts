@@ -21,6 +21,31 @@ function publicClient() {
   });
 }
 
+const FORBIDDEN_WORDS = [
+  "sexy", "porn", "fuck", "bitch", "asshole", "pussy", "bastard", "nude", "cock", "dick",
+  "madarchod", "behenchod", "bhosdike", "randi"
+];
+
+const FORBIDDEN_BOUNDED_WORDS = [
+  "sex", "shit", "ass", "gand", "chut", "lund", "lauda"
+];
+
+function hasProfanity(text: string): boolean {
+  if (!text) return false;
+  const clean = text.toLowerCase();
+  
+  for (const word of FORBIDDEN_WORDS) {
+    if (clean.includes(word)) return true;
+  }
+
+  for (const word of FORBIDDEN_BOUNDED_WORDS) {
+    const regex = new RegExp(`\\b${word}\\b`, "i");
+    if (regex.test(clean)) return true;
+  }
+
+  return false;
+}
+
 // Schema for test settings (used for create/update)
 const TestInput = z.object({
   id: z.string().uuid().optional(),
@@ -116,6 +141,13 @@ export const saveCustomTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => TestInput.parse(d))
   .handler(async ({ data, context }) => {
+    if (
+      hasProfanity(data.name) ||
+      hasProfanity(data.description || "") ||
+      hasProfanity(data.content)
+    ) {
+      throw new Error("Content contains inappropriate or offensive words. Please keep it clean and professional.");
+    }
     const sb = context.supabase;
     const base = data.slug || data.name;
     const slug = await ensureUniqueSlug(publicClient(), base, data.id);
