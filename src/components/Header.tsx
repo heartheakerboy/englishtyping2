@@ -75,21 +75,21 @@ export function Header() {
   };
 
   const navLink =
-    "hidden rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground sm:inline-flex";
+    "hidden rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground lg:inline-flex";
   const navActive = {
     className:
-      "hidden sm:inline-flex rounded-md px-3 py-2 text-sm font-medium text-foreground bg-surface",
+      "hidden lg:inline-flex rounded-md px-3 py-2 text-sm font-medium text-foreground bg-surface",
   };
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/60 backdrop-blur-xl">
-      <div className="mx-auto grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 md:px-6 h-16 max-w-7xl">
-        <Link to="/" className="group flex min-w-0 items-center gap-2.5">
+      <div className="mx-auto flex items-center justify-between gap-4 px-4 md:px-6 h-16 max-w-7xl">
+        <Link to="/" className="group flex shrink-0 items-center gap-2.5">
           <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-primary shadow-glow transition-transform group-hover:scale-105">
             <Keyboard className="h-5 w-5 text-primary-foreground" />
           </div>
-          <div className="flex min-w-0 flex-col leading-none">
-            <span className="truncate font-display text-base font-semibold tracking-tight">
+          <div className="flex flex-col leading-none">
+            <span className="font-display text-base font-semibold tracking-tight">
               englishtypingtest
             </span>
             <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -106,7 +106,7 @@ export function Header() {
               {t("practice")}
             </span>
           </Link>
-          <div className="hidden sm:inline-flex">
+          <div className="hidden lg:inline-flex">
             <TypingTestsMenu />
           </div>
           <Link to="/race" className={navLink} activeProps={navActive}>
@@ -163,7 +163,7 @@ export function Header() {
           )}
 
           {/* Mobile Navigation Drawer (Hamburger Menu) */}
-          <div className="inline-flex sm:hidden">
+          <div className="inline-flex lg:hidden">
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
                 <Button
