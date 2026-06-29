@@ -36,6 +36,8 @@ import {
   Calculator,
   BookOpen,
   HelpCircle,
+  Swords,
+  Gamepad2,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -477,31 +479,37 @@ function LandingPage() {
                 icon={Gauge}
                 title={t("features.engine.title")}
                 desc={t("features.engine.desc")}
+                linkTo="/test"
               />
               <Feature
                 icon={LineChart}
                 title={t("features.chart.title")}
                 desc={t("features.chart.desc")}
+                linkTo="/test"
+              />
+              <Feature
+                icon={Swords}
+                title={t("features.modes.title")}
+                desc={t("features.modes.desc")}
+                linkTo="/race"
+              />
+              <Feature
+                icon={Gamepad2}
+                title={t("features.dashboard.title")}
+                desc={t("features.dashboard.desc")}
+                linkTo="/games"
               />
               <Feature
                 icon={Keyboard}
-                title={t("features.modes.title")}
-                desc={t("features.modes.desc")}
-              />
-              <Feature
-                icon={Trophy}
-                title={t("features.dashboard.title")}
-                desc={t("features.dashboard.desc")}
-              />
-              <Feature
-                icon={Brain}
                 title={t("features.mistakes.title")}
                 desc={t("features.mistakes.desc")}
+                linkTo="/builder"
               />
               <Feature
                 icon={Sparkles}
                 title={t("features.ai.title")}
                 desc={t("features.ai.desc")}
+                linkTo="/templates"
               />
             </div>
           </div>
@@ -687,10 +695,12 @@ function Feature({
   icon: Icon,
   title,
   desc,
+  linkTo,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   desc: string;
+  linkTo: string;
 }) {
   return (
     <motion.div
@@ -698,13 +708,20 @@ function Feature({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5 }}
-      className="rounded-2xl border border-border/80 bg-surface/30 p-6 glass transition-all duration-300 hover:border-primary/50 hover:shadow-glow hover:-translate-y-0.5 group"
+      className="rounded-2xl border border-border/80 bg-surface/30 p-6 glass transition-all duration-300 hover:border-primary/50 hover:shadow-glow hover:-translate-y-0.5 group flex flex-col justify-between"
     >
-      <div className="grid h-11 w-11 place-items-center rounded-lg bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-        <Icon className="h-5 w-5" />
+      <div>
+        <div className="grid h-11 w-11 place-items-center rounded-lg bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+          <Icon className="h-5 w-5" />
+        </div>
+        <h3 className="mt-4 font-display text-lg font-bold text-foreground">{title}</h3>
+        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
       </div>
-      <h3 className="mt-4 font-display text-lg font-bold text-foreground">{title}</h3>
-      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+      <div className="mt-6 pt-4 border-t border-border/40 flex items-center justify-end text-xs">
+        <Link to={linkTo as any} className="flex items-center text-primary font-medium group-hover:underline">
+          Explore Tool <ArrowRight className="ml-1 h-3.5 w-3.5" />
+        </Link>
+      </div>
     </motion.div>
   );
 }

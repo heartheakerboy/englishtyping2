@@ -8,31 +8,31 @@
     "ctaSignup": "Create free account"
   },
   "features": {
-    "heading": "Built for serious improvement",
-    "subheading": "Everything you need to measure, analyze and elevate your typing.",
+    "heading": "Advanced Typing Features & Tools",
+    "subheading": "Explore the most complete suite of tools to measure, challenge, and elevate your typing speed.",
     "engine": {
-      "title": "Real-time engine",
-      "desc": "Live WPM, accuracy, CPM and mistakes tracked per keystroke."
+      "title": "Online Typing Test Engine",
+      "desc": "Measure your words per minute (WPM), accuracy, and characters per minute (CPM) in real time with precision keystroke analysis."
     },
     "chart": {
-      "title": "WPM over time",
-      "desc": "See where you slowed down with a per-second chart on every result."
+      "title": "WPM Analytics & Charts",
+      "desc": "Track your speed drops, accuracy fluctuations, and keystroke consistency over time with high-resolution interactive charts."
     },
     "modes": {
-      "title": "Flexible modes",
-      "desc": "Time, words, quotes, paragraphs, stories, code, custom text or .txt upload."
+      "title": "Multiplayer Typing Race",
+      "desc": "Join real-time typing race lobbies or create a private room to compete against friends and global players live."
     },
     "dashboard": {
-      "title": "Personal dashboard",
-      "desc": "Track every run, watch your average climb and your errors shrink."
+      "title": "Arcade Typing Games",
+      "desc": "Build lightning-fast finger reflexes with fun interactive HTML5 games like Falling Words and Zombie Typing Defense."
     },
     "mistakes": {
-      "title": "Top mistakes",
-      "desc": "See which characters trip you up most so you can focus practice."
+      "title": "Custom Typing Test Builder",
+      "desc": "Build tailored typing drills, upload files, or generate custom paragraphs using AI (powered by DeepSeek) for target training."
     },
     "ai": {
-      "title": "AI coach",
-      "desc": "AI feedback, multi-language, virtual keyboard, smart error detection."
+      "title": "Creator Templates Marketplace",
+      "desc": "Explore, practice on, or edit custom typing templates and paragraph layouts uploaded by teachers and typists worldwide."
     }
   },
   "cta": {
@@ -128,7 +128,7 @@
   },
   "faq": {
     "heading": "Frequently Asked Questions",
-    "subheading": "Got questions about typing speed tests? We've got answers.",
+    "subheading": "Got questions about typing speed tests, multiplayer races, or custom builders? We've got answers.",
     "items": [
       {
         "q": "What is a good typing speed?",
@@ -137,6 +137,22 @@
       {
         "q": "How can I increase my WPM?",
         "a": "The best way to increase your typing speed is by learning touch typing. This means using all ten fingers and keeping your hands on the home row without looking down. Focus on typing accurately, and speed will follow naturally."
+      },
+      {
+        "q": "Can I build my own custom typing test?",
+        "a": "Yes! With our Custom Typing Test Builder, you can create fully personalized typing exercises. You can paste your own text, upload text files, or generate custom themed paragraphs using our integrated DeepSeek AI coach."
+      },
+      {
+        "q": "How does the Multiplayer Typing Race work?",
+        "a": "Our real-time multiplayer mode allows you to create or join typing rooms. You can copy the invite link to challenge friends, or race other active typists online. Live leaderboards show progress bars and WPM scores instantly."
+      },
+      {
+        "q": "Are there interactive games to improve typing speed?",
+        "a": "Yes! In the Games section, you can play HTML5 typing games like 'Zombie Word Defense' (Z-Type) and 'Falling Words'. These games help you build muscle memory and finger reaction speed in an engaging way."
+      },
+      {
+        "q": "What keyboard layouts and languages are supported?",
+        "a": "We support standard layouts including QWERTY, Dvorak, and Colemak, as well as multiple languages. You can customize keyboard layout settings directly inside the typing config bar."
       },
       {
         "q": "Does accuracy affect my WPM?",
@@ -148,7 +164,7 @@
       },
       {
         "q": "Are typing tests free on this platform?",
-        "a": "Yes! All typing tests, lessons, multiplayer modes, and analytics charts on englishtypingtest.org are 100% free. You can practice without even creating an account, though an account helps track your historical stats."
+        "a": "Yes! All typing tests, lessons, multiplayer modes, arcade games, and analytics charts on englishtypingtest.org are 100% free. You can practice without even creating an account, though an account helps track your historical stats."
       }
     ]
   }
