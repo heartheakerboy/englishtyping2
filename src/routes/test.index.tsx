@@ -29,7 +29,7 @@ function TestPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="mx-auto max-w-4xl px-4 pt-8 pb-20 md:px-6 md:pt-16">
+      <main className="mx-auto max-w-5xl px-4 pt-8 pb-20 md:px-6 md:pt-16">
         <h1 className="sr-only">English Typing Test — Live WPM & Accuracy</h1>
         <AnimatePresence mode="wait">
           {run ? (

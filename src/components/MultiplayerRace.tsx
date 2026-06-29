@@ -287,12 +287,12 @@ export function MultiplayerRace({ room, members, meId }: Props) {
       {/* Text */}
       <Card
         className={cn(
-          "cursor-text border-border/60 bg-surface/30 p-6 md:p-8 backdrop-blur transition-all",
+          "cursor-text border-border/60 bg-surface/30 p-6 md:p-8 backdrop-blur transition-all glass",
           startedAt && !finishedSelfRef.current && "border-primary/40 shadow-glow",
         )}
         onClick={() => inputRef.current?.focus()}
       >
-        <div className="font-mono text-xl leading-relaxed md:text-2xl">
+        <div className="font-mono text-2xl leading-loose tracking-wider md:text-3xl">
           {room.text.split("").map((ch, i) => {
             const t = typed[i];
             const isCaret = i === typed.length && !!startedAt;

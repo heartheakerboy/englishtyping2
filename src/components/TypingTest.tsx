@@ -368,13 +368,13 @@ function TextDisplay({
       onClick={onFocus}
       dir={rtl ? "rtl" : "ltr"}
       className={cn(
-        "relative cursor-text select-none rounded-2xl border border-border/60 bg-surface/30 p-6 md:p-8 font-mono leading-relaxed tracking-wide transition-all glass",
+        "relative cursor-text select-none rounded-2xl border border-border/60 bg-surface/30 p-6 md:p-8 font-mono leading-loose tracking-wider transition-all glass",
         active ? "border-primary/40 shadow-glow" : "",
-        isCode ? "whitespace-pre text-lg md:text-xl" : "text-xl md:text-2xl",
+        isCode ? "whitespace-pre text-xl md:text-2xl" : "text-2xl md:text-3xl",
       )}
     >
       <div
-        className={cn("relative", isCode ? "max-h-80 overflow-auto" : "max-h-56 overflow-hidden")}
+        className={cn("relative", isCode ? "max-h-96 overflow-auto" : "max-h-80 overflow-hidden")}
       >
         {chars.map((ch, i) => {
           const t = typed[i];

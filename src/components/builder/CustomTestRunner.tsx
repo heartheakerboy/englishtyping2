@@ -210,7 +210,7 @@ export function CustomTestRunner({ test, onFinish }: Props) {
       </div>
 
       <div
-        className="rounded-xl border border-border bg-surface p-6 text-xl leading-relaxed tracking-wide font-mono"
+        className="rounded-xl border border-border/60 bg-surface/30 p-6 md:p-8 text-2xl md:text-3xl leading-loose tracking-wider font-mono glass"
         onClick={() => inputRef.current?.focus()}
         spellCheck={!!test.spell_check}
       >
