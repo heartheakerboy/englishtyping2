@@ -1,0 +1,9 @@
+{
+  "page": { "title": "मल्टीप्लेयर रेस", "subtitle": "दोस्तों या अजनबियों के साथ रीयल टाइम में रेस करें। पब्लिक, प्राइवेट, रैंक या कैजुअल।" },
+  "quickMatch": { "title": "क्विक मैच", "desc": "तुरंत एक पब्लिक रूम खोजें।", "casual": "कैजुअल", "ranked": "रैंक", "signInPrompt": "मल्टीप्लेयर खेलने के लिए।" },
+  "joinByCode": { "title": "कोड से जुड़ें", "desc": "6-अक्षर का इनवाइट कोड है?", "join": "जुड़ें" },
+  "createRoom": { "title": "रूम बनाएं", "desc": "कस्टमाइज़ करें और दोस्तों को आमंत्रित करें।", "namePlaceholder": "रेस का नाम", "public": "पब्लिक", "private": "प्राइवेट", "words": "{{n}} शब्द", "ranked": "रैंक", "create": "रूम बनाएं" },
+  "publicRooms": { "title": "खुले पब्लिक रूम", "refresh": "रिफ्रेश", "empty": "कोई एक्टिव रूम नहीं। पहले बनें — ऊपर एक बनाएं।", "spectate": "देखें", "join": "जुड़ें" },
+  "room": { "label": "रूम", "players": "खिलाड़ी", "spectators": "दर्शक", "waiting": "खिलाड़ियों के जुड़ने का इंतज़ार…", "startRace": "रेस शुरू", "waitingForRacers": "रेसर्स का इंतज़ार…", "leave": "छोड़ें", "spectator": "दर्शक", "joinAsRacer": "रेसर के रूप में जुड़ें", "notFound": "रूम नहीं मिला", "raceComplete": "रेस पूरी!", "cannotStart": "शुरू नहीं हो सकता", "inviteLink": "इनवाइट लिंक कॉपी!", "copyInvite": "इनवाइट लिंक कॉपी करें" },
+  "status": { "waiting": "इंतज़ार", "countdown": "उलटी गिनती", "racing": "रेस", "finished": "समाप्त" }
+}

@@ -1,0 +1,9 @@
+{
+  "page": { "title": "ಮಲ್ಟಿಪ್ಲೇಯರ್ ರೇಸ್", "subtitle": "ನೈಜ ಸಮಯದಲ್ಲಿ ಸ್ನೇಹಿತರೊಂದಿಗೆ ಸ್ಪರ್ಧಿಸಿ." },
+  "quickMatch": { "title": "ತ್ವರಿತ ಮ್ಯಾಚ್", "desc": "ತಕ್ಷಣ ಪಬ್ಲಿಕ್ ರೂಮ್ ಹುಡುಕಿ.", "casual": "ಸಾಮಾನ್ಯ", "ranked": "ರ್ಯಾಂಕ್", "signInPrompt": "ಮಲ್ಟಿಪ್ಲೇಯರ್ ಆಡಲು." },
+  "joinByCode": { "title": "ಕೋಡ್ ಮೂಲಕ ಸೇರಿ", "desc": "6-ಅಕ್ಷರ ಆಹ್ವಾನ ಕೋಡ್ ಇದೆಯೇ?", "join": "ಸೇರಿ" },
+  "createRoom": { "title": "ರೂಮ್ ರಚಿಸಿ", "desc": "ಕಸ್ಟಮೈಸ್ ಮಾಡಿ ಸ್ನೇಹಿತರನ್ನು ಆಹ್ವಾನಿಸಿ.", "namePlaceholder": "ರೇಸ್ ಹೆಸರು", "public": "ಸಾರ್ವಜನಿಕ", "private": "ಖಾಸಗಿ", "words": "{{n}} ಪದಗಳು", "ranked": "ರ್ಯಾಂಕ್", "create": "ರೂಮ್ ರಚಿಸಿ" },
+  "publicRooms": { "title": "ತೆರೆದ ಸಾರ್ವಜನಿಕ ರೂಮ್‌ಗಳು", "refresh": "ರಿಫ್ರೆಶ್", "empty": "ಯಾವುದೇ ಸಕ್ರಿಯ ರೂಮ್‌ಗಳಿಲ್ಲ.", "spectate": "ವೀಕ್ಷಿಸಿ", "join": "ಸೇರಿ" },
+  "room": { "label": "ರೂಮ್", "players": "ಆಟಗಾರರು", "spectators": "ಪ್ರೇಕ್ಷಕರು", "waiting": "ಆಟಗಾರರು ಸೇರಲು ಕಾಯುತ್ತಿದೆ…", "startRace": "ರೇಸ್ ಪ್ರಾರಂಭ", "waitingForRacers": "ರೇಸರ್‌ಗಳಿಗಾಗಿ ಕಾಯುತ್ತಿದೆ…", "leave": "ಬಿಡಿ", "spectator": "ಪ್ರೇಕ್ಷಕ", "joinAsRacer": "ರೇಸರ್ ಆಗಿ ಸೇರಿ", "notFound": "ರೂಮ್ ಸಿಗಲಿಲ್ಲ", "raceComplete": "ರೇಸ್ ಪೂರ್ಣ!", "cannotStart": "ಪ್ರಾರಂಭಿಸಲಾಗುವುದಿಲ್ಲ", "inviteLink": "ಆಹ್ವಾನ ಲಿಂಕ್ ನಕಲು!", "copyInvite": "ಆಹ್ವಾನ ಲಿಂಕ್ ನಕಲಿಸಿ" },
+  "status": { "waiting": "ಕಾಯುತ್ತಿದೆ", "countdown": "ಕೌಂಟ್‌ಡೌನ್", "racing": "ರೇಸಿಂಗ್", "finished": "ಮುಗಿದಿದೆ" }
+}

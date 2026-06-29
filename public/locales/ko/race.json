@@ -1,0 +1,9 @@
+{
+  "page": { "title": "멀티플레이어 레이스", "subtitle": "실시간으로 친구들과 경쟁하세요. 공개, 비공개, 랭크 또는 일반." },
+  "quickMatch": { "title": "빠른 매칭", "desc": "즉시 공개 방을 찾아보세요.", "casual": "일반", "ranked": "랭크", "signInPrompt": "멀티플레이어를 플레이하려면." },
+  "joinByCode": { "title": "코드로 참가", "desc": "6자리 초대 코드가 있나요?", "join": "참가" },
+  "createRoom": { "title": "방 만들기", "desc": "커스터마이즈하고 친구를 초대하세요.", "namePlaceholder": "레이스 이름", "public": "공개", "private": "비공개", "words": "{{n}}단어", "ranked": "랭크", "create": "방 만들기" },
+  "publicRooms": { "title": "열린 공개 방", "refresh": "새로고침", "empty": "활성 방이 없습니다.", "spectate": "관전", "join": "참가" },
+  "room": { "label": "방", "players": "플레이어", "spectators": "관전자", "waiting": "플레이어 참가 대기 중…", "startRace": "레이스 시작", "waitingForRacers": "레이서 대기 중…", "leave": "나가기", "spectator": "관전자", "joinAsRacer": "레이서로 참가", "notFound": "방을 찾을 수 없습니다", "raceComplete": "레이스 완료!", "cannotStart": "시작할 수 없습니다", "inviteLink": "초대 링크 복사됨!", "copyInvite": "초대 링크 복사" },
+  "status": { "waiting": "대기", "countdown": "카운트다운", "racing": "레이스 중", "finished": "완료" }
+}

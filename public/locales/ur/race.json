@@ -1,0 +1,9 @@
+{
+  "page": { "title": "ملٹی پلیئر ریس", "subtitle": "حقیقی وقت میں دوستوں کے ساتھ مقابلہ کریں۔" },
+  "quickMatch": { "title": "فوری میچ", "desc": "فوراً پبلک روم تلاش کریں۔", "casual": "عام", "ranked": "درجہ بندی", "signInPrompt": "ملٹی پلیئر کھیلنے کے لیے۔" },
+  "joinByCode": { "title": "کوڈ سے شامل ہوں", "desc": "6-حرفی دعوت نامہ کوڈ ہے؟", "join": "شامل ہوں" },
+  "createRoom": { "title": "روم بنائیں", "desc": "حسب ضرورت بنائیں اور دوستوں کو مدعو کریں۔", "namePlaceholder": "ریس کا نام", "public": "عوامی", "private": "نجی", "words": "{{n}} الفاظ", "ranked": "درجہ بندی", "create": "روم بنائیں" },
+  "publicRooms": { "title": "کھلے عوامی روم", "refresh": "تازہ کریں", "empty": "کوئی فعال روم نہیں۔", "spectate": "دیکھیں", "join": "شامل ہوں" },
+  "room": { "label": "روم", "players": "کھلاڑی", "spectators": "تماشائی", "waiting": "کھلاڑیوں کے شامل ہونے کا انتظار…", "startRace": "ریس شروع کریں", "waitingForRacers": "ریسرز کا انتظار…", "leave": "چھوڑیں", "spectator": "تماشائی", "joinAsRacer": "ریسر کے طور پر شامل ہوں", "notFound": "روم نہیں ملا", "raceComplete": "ریس مکمل!", "cannotStart": "شروع نہیں ہو سکتا", "inviteLink": "دعوت نامہ لنک کاپی!", "copyInvite": "دعوت نامہ لنک کاپی کریں" },
+  "status": { "waiting": "انتظار", "countdown": "الٹی گنتی", "racing": "دوڑ", "finished": "ختم" }
+}

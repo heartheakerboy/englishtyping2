@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Multiplayer race",
+    "subtitle": "Race friends or strangers in real time. Public, private, ranked or casual."
+  },
+  "quickMatch": {
+    "title": "Quick match",
+    "desc": "Find a public room instantly.",
+    "casual": "Casual",
+    "ranked": "Ranked",
+    "signInPrompt": "to play multiplayer."
+  },
+  "joinByCode": {
+    "title": "Join by code",
+    "desc": "Got a 6-letter invite code?",
+    "join": "Join"
+  },
+  "createRoom": {
+    "title": "Create room",
+    "desc": "Customize and invite friends.",
+    "namePlaceholder": "Race name",
+    "public": "Public",
+    "private": "Private",
+    "words": "{{n}} words",
+    "ranked": "Ranked",
+    "create": "Create room"
+  },
+  "publicRooms": {
+    "title": "Open public rooms",
+    "refresh": "Refresh",
+    "empty": "No active rooms. Be the first — create one above.",
+    "spectate": "Spectate",
+    "join": "Join"
+  },
+  "room": {
+    "label": "Room",
+    "players": "players",
+    "spectators": "spectators",
+    "waiting": "Waiting for players to join…",
+    "startRace": "Start race",
+    "waitingForRacers": "Waiting for racers…",
+    "leave": "Leave",
+    "spectator": "Spectator",
+    "joinAsRacer": "Join as racer",
+    "notFound": "Room not found",
+    "raceComplete": "Race complete!",
+    "cannotStart": "Cannot start",
+    "inviteLink": "Invite link copied!",
+    "copyInvite": "Copy invite link"
+  },
+  "status": {
+    "waiting": "Waiting",
+    "countdown": "Countdown",
+    "racing": "Racing",
+    "finished": "Finished"
+  }
+}

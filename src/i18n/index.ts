@@ -18,6 +18,11 @@ import enResults from "../locales/en/results.json";
 import enConfig from "../locales/en/config.json";
 import enGames from "../locales/en/games.json";
 import enLoading from "../locales/en/loading.json";
+import enTest from "../locales/en/test.json";
+import enRace from "../locales/en/race.json";
+import enLeaderboard from "../locales/en/leaderboard.json";
+import enDashboard from "../locales/en/dashboard.json";
+import enProfile from "../locales/en/profile.json";
 
 export const LANGUAGE_STORAGE_KEY = "ett-lang";
 export const SUPPORTED_LANGS = [
@@ -56,6 +61,11 @@ export const NAMESPACES = [
   "config",
   "games",
   "loading",
+  "test",
+  "race",
+  "leaderboard",
+  "dashboard",
+  "profile",
 ] as const;
 export type Namespace = (typeof NAMESPACES)[number];
 
@@ -90,6 +100,11 @@ export function getI18n() {
           config: enConfig,
           games: enGames,
           loading: enLoading,
+          test: enTest,
+          race: enRace,
+          leaderboard: enLeaderboard,
+          dashboard: enDashboard,
+          profile: enProfile,
         },
       },
       partialBundledLanguages: true,

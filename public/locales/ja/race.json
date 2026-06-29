@@ -1,0 +1,9 @@
+{
+  "page": { "title": "マルチプレイヤーレース", "subtitle": "リアルタイムで友達と競争しましょう。パブリック・プライベート・ランク・カジュアル。" },
+  "quickMatch": { "title": "クイックマッチ", "desc": "すぐにパブリックルームを見つける。", "casual": "カジュアル", "ranked": "ランク戦", "signInPrompt": "マルチプレイヤーに参加するには。" },
+  "joinByCode": { "title": "コードで参加", "desc": "6文字の招待コードはありますか？", "join": "参加" },
+  "createRoom": { "title": "ルームを作成", "desc": "カスタマイズして友達を招待しましょう。", "namePlaceholder": "レース名", "public": "パブリック", "private": "プライベート", "words": "{{n}}単語", "ranked": "ランク戦", "create": "ルームを作成" },
+  "publicRooms": { "title": "オープンパブリックルーム", "refresh": "更新", "empty": "アクティブなルームがありません。", "spectate": "観戦", "join": "参加" },
+  "room": { "label": "ルーム", "players": "プレイヤー", "spectators": "観戦者", "waiting": "プレイヤーの参加を待っています…", "startRace": "レースを開始", "waitingForRacers": "レーサーを待っています…", "leave": "退出", "spectator": "観戦者", "joinAsRacer": "レーサーとして参加", "notFound": "ルームが見つかりません", "raceComplete": "レース完了!", "cannotStart": "開始できません", "inviteLink": "招待リンクをコピーしました!", "copyInvite": "招待リンクをコピー" },
+  "status": { "waiting": "待機中", "countdown": "カウントダウン", "racing": "レース中", "finished": "終了" }
+}

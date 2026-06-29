@@ -1,0 +1,9 @@
+{
+  "page": { "title": "سباق متعدد اللاعبين", "subtitle": "تنافس مع الأصدقاء في الوقت الفعلي." },
+  "quickMatch": { "title": "مطابقة سريعة", "desc": "ابحث عن غرفة عامة فوراً.", "casual": "عادي", "ranked": "مرتب", "signInPrompt": "للعب متعدد اللاعبين." },
+  "joinByCode": { "title": "الانضمام بالرمز", "desc": "هل لديك رمز دعوة من 6 أحرف؟", "join": "انضم" },
+  "createRoom": { "title": "إنشاء غرفة", "desc": "خصص وادعُ الأصدقاء.", "namePlaceholder": "اسم السباق", "public": "عام", "private": "خاص", "words": "{{n}} كلمات", "ranked": "مرتب", "create": "إنشاء غرفة" },
+  "publicRooms": { "title": "الغرف العامة المفتوحة", "refresh": "تحديث", "empty": "لا توجد غرف نشطة.", "spectate": "مشاهدة", "join": "انضم" },
+  "room": { "label": "الغرفة", "players": "لاعبون", "spectators": "مشاهدون", "waiting": "في انتظار انضمام اللاعبين…", "startRace": "ابدأ السباق", "waitingForRacers": "في انتظار المتسابقين…", "leave": "المغادرة", "spectator": "مشاهد", "joinAsRacer": "الانضمام كمتسابق", "notFound": "الغرفة غير موجودة", "raceComplete": "اكتمل السباق!", "cannotStart": "لا يمكن البدء", "inviteLink": "تم نسخ رابط الدعوة!", "copyInvite": "نسخ رابط الدعوة" },
+  "status": { "waiting": "انتظار", "countdown": "العد التنازلي", "racing": "السباق", "finished": "منتهي" }
+}

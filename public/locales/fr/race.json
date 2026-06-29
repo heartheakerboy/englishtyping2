@@ -1,0 +1,9 @@
+{
+  "page": { "title": "Course multijoueur", "subtitle": "Affrontez des amis en temps réel. Publique, privée, classée ou décontractée." },
+  "quickMatch": { "title": "Partie rapide", "desc": "Trouvez une salle publique instantanément.", "casual": "Casual", "ranked": "Classée", "signInPrompt": "pour jouer en multijoueur." },
+  "joinByCode": { "title": "Rejoindre par code", "desc": "Vous avez un code d'invitation de 6 lettres?", "join": "Rejoindre" },
+  "createRoom": { "title": "Créer une salle", "desc": "Personnalisez et invitez des amis.", "namePlaceholder": "Nom de la course", "public": "Publique", "private": "Privée", "words": "{{n}} mots", "ranked": "Classée", "create": "Créer une salle" },
+  "publicRooms": { "title": "Salles publiques ouvertes", "refresh": "Actualiser", "empty": "Aucune salle active. Soyez le premier — créez-en une ci-dessus.", "spectate": "Spectateur", "join": "Rejoindre" },
+  "room": { "label": "Salle", "players": "joueurs", "spectators": "spectateurs", "waiting": "En attente de joueurs…", "startRace": "Démarrer la course", "waitingForRacers": "En attente de coureurs…", "leave": "Quitter", "spectator": "Spectateur", "joinAsRacer": "Rejoindre en tant que coureur", "notFound": "Salle introuvable", "raceComplete": "Course terminée!", "cannotStart": "Impossible de démarrer", "inviteLink": "Lien d'invitation copié!", "copyInvite": "Copier le lien d'invitation" },
+  "status": { "waiting": "Attente", "countdown": "Compte à rebours", "racing": "En course", "finished": "Terminée" }
+}

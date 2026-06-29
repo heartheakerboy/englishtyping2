@@ -1,0 +1,9 @@
+{
+  "page": { "title": "ਮਲਟੀਪਲੇਅਰ ਰੇਸ", "subtitle": "ਰੀਅਲ ਟਾਈਮ ਵਿੱਚ ਦੋਸਤਾਂ ਨਾਲ ਮੁਕਾਬਲਾ ਕਰੋ।" },
+  "quickMatch": { "title": "ਤੇਜ਼ ਮੈਚ", "desc": "ਤੁਰੰਤ ਪਬਲਿਕ ਰੂਮ ਲੱਭੋ।", "casual": "ਕੈਜ਼ੁਅਲ", "ranked": "ਰੈਂਕ", "signInPrompt": "ਮਲਟੀਪਲੇਅਰ ਖੇਡਣ ਲਈ।" },
+  "joinByCode": { "title": "ਕੋਡ ਨਾਲ ਸ਼ਾਮਲ ਹੋਵੋ", "desc": "6-ਅੱਖਰ ਸੱਦਾ ਕੋਡ ਹੈ?", "join": "ਸ਼ਾਮਲ ਹੋਵੋ" },
+  "createRoom": { "title": "ਰੂਮ ਬਣਾਓ", "desc": "ਕਸਟਮਾਈਜ਼ ਕਰੋ ਅਤੇ ਦੋਸਤਾਂ ਨੂੰ ਸੱਦੋ।", "namePlaceholder": "ਰੇਸ ਦਾ ਨਾਮ", "public": "ਜਨਤਕ", "private": "ਨਿੱਜੀ", "words": "{{n}} ਸ਼ਬਦ", "ranked": "ਰੈਂਕ", "create": "ਰੂਮ ਬਣਾਓ" },
+  "publicRooms": { "title": "ਖੁੱਲੇ ਜਨਤਕ ਰੂਮ", "refresh": "ਤਾਜ਼ਾ ਕਰੋ", "empty": "ਕੋਈ ਸਰਗਰਮ ਰੂਮ ਨਹੀਂ।", "spectate": "ਦੇਖੋ", "join": "ਸ਼ਾਮਲ ਹੋਵੋ" },
+  "room": { "label": "ਰੂਮ", "players": "ਖਿਡਾਰੀ", "spectators": "ਦਰਸ਼ਕ", "waiting": "ਖਿਡਾਰੀਆਂ ਦਾ ਇੰਤਜ਼ਾਰ…", "startRace": "ਰੇਸ ਸ਼ੁਰੂ ਕਰੋ", "waitingForRacers": "ਰੇਸਰਾਂ ਦਾ ਇੰਤਜ਼ਾਰ…", "leave": "ਛੱਡੋ", "spectator": "ਦਰਸ਼ਕ", "joinAsRacer": "ਰੇਸਰ ਵਜੋਂ ਸ਼ਾਮਲ ਹੋਵੋ", "notFound": "ਰੂਮ ਨਹੀਂ ਮਿਲਿਆ", "raceComplete": "ਰੇਸ ਪੂਰੀ!", "cannotStart": "ਸ਼ੁਰੂ ਨਹੀਂ ਹੋ ਸਕਦਾ", "inviteLink": "ਸੱਦਾ ਲਿੰਕ ਕਾਪੀ!", "copyInvite": "ਸੱਦਾ ਲਿੰਕ ਕਾਪੀ ਕਰੋ" },
+  "status": { "waiting": "ਇੰਤਜ਼ਾਰ", "countdown": "ਕਾਉਂਟਡਾਉਨ", "racing": "ਰੇਸਿੰਗ", "finished": "ਸਮਾਪਤ" }
+}

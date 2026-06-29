@@ -1,0 +1,9 @@
+{
+  "page": { "title": "Corrida multijogador", "subtitle": "Compita com amigos em tempo real. Pública, privada, ranqueada ou casual." },
+  "quickMatch": { "title": "Partida rápida", "desc": "Encontre uma sala pública instantaneamente.", "casual": "Casual", "ranked": "Ranqueada", "signInPrompt": "para jogar multijogador." },
+  "joinByCode": { "title": "Entrar por código", "desc": "Tem um código de convite de 6 letras?", "join": "Entrar" },
+  "createRoom": { "title": "Criar sala", "desc": "Personalize e convide amigos.", "namePlaceholder": "Nome da corrida", "public": "Pública", "private": "Privada", "words": "{{n}} palavras", "ranked": "Ranqueada", "create": "Criar sala" },
+  "publicRooms": { "title": "Salas públicas abertas", "refresh": "Atualizar", "empty": "Sem salas ativas. Seja o primeiro — crie uma acima.", "spectate": "Assistir", "join": "Entrar" },
+  "room": { "label": "Sala", "players": "jogadores", "spectators": "espectadores", "waiting": "Aguardando jogadores…", "startRace": "Iniciar corrida", "waitingForRacers": "Aguardando corredores…", "leave": "Sair", "spectator": "Espectador", "joinAsRacer": "Entrar como corredor", "notFound": "Sala não encontrada", "raceComplete": "Corrida concluída!", "cannotStart": "Não é possível iniciar", "inviteLink": "Link de convite copiado!", "copyInvite": "Copiar link de convite" },
+  "status": { "waiting": "Aguardando", "countdown": "Contagem regressiva", "racing": "Correndo", "finished": "Finalizado" }
+}

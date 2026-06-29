@@ -1,0 +1,8 @@
+{
+  "stats": { "time": "時間", "progress": "進捗", "wpm": "WPM", "acc": "正確率", "cpm": "CPM", "errors": "ミス" },
+  "hint": "テキストをクリックしてタイピングを始めましょう。",
+  "restart": "再スタート",
+  "restartHint": "再スタートするには。",
+  "customTest": { "title": "カスタムテスト", "noText": "テキストがありません。", "reset": "リセット", "complete": "テスト完了!" },
+  "clickToFocus": "ここをクリックしてタイピングを開始"
+}

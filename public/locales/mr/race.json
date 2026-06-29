@@ -1,0 +1,9 @@
+{
+  "page": { "title": "मल्टीप्लेयर रेस", "subtitle": "वास्तविक वेळात मित्रांशी स्पर्धा करा." },
+  "quickMatch": { "title": "त्वरित जुळणी", "desc": "तत्काळ पब्लिक रूम शोधा.", "casual": "साधी", "ranked": "क्रमांकित", "signInPrompt": "मल्टीप्लेयर खेळण्यासाठी." },
+  "joinByCode": { "title": "कोडद्वारे सामील व्हा", "desc": "6-अक्षरी आमंत्रण कोड आहे?", "join": "सामील व्हा" },
+  "createRoom": { "title": "रूम तयार करा", "desc": "कस्टमाइझ करा आणि मित्रांना आमंत्रित करा.", "namePlaceholder": "रेसचे नाव", "public": "सार्वजनिक", "private": "खाजगी", "words": "{{n}} शब्द", "ranked": "क्रमांकित", "create": "रूम तयार करा" },
+  "publicRooms": { "title": "उघडे सार्वजनिक रूम", "refresh": "रिफ्रेश", "empty": "कोणतेही सक्रिय रूम नाही.", "spectate": "पाहा", "join": "सामील व्हा" },
+  "room": { "label": "रूम", "players": "खेळाडू", "spectators": "प्रेक्षक", "waiting": "खेळाडूंची प्रतीक्षा…", "startRace": "रेस सुरू करा", "waitingForRacers": "रेसर्सची प्रतीक्षा…", "leave": "सोडा", "spectator": "प्रेक्षक", "joinAsRacer": "रेसर म्हणून सामील व्हा", "notFound": "रूम आढळला नाही", "raceComplete": "रेस पूर्ण!", "cannotStart": "सुरू करता येत नाही", "inviteLink": "आमंत्रण लिंक कॉपी!", "copyInvite": "आमंत्रण लिंक कॉपी करा" },
+  "status": { "waiting": "प्रतीक्षा", "countdown": "उलटी मोजणी", "racing": "रेस", "finished": "समाप्त" }
+}

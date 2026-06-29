@@ -1,0 +1,8 @@
+{
+  "stats": { "time": "시간", "progress": "진행", "wpm": "타수", "acc": "정확도", "cpm": "CPM", "errors": "오류" },
+  "hint": "텍스트를 클릭하고 타이핑을 시작하세요.",
+  "restart": "다시 시작",
+  "restartHint": "다시 시작하려면.",
+  "customTest": { "title": "커스텀 테스트", "noText": "텍스트가 없습니다.", "reset": "초기화", "complete": "테스트 완료!" },
+  "clickToFocus": "타이핑을 시작하려면 여기를 클릭하세요"
+}

@@ -1,0 +1,15 @@
+{
+  "page": {
+    "title": "Dashboard",
+    "subtitle": "Your typing progress, history and statistics.",
+    "recentTests": "Recent tests",
+    "noTests": "No tests yet. Take your first test!",
+    "stats": "Overall stats",
+    "averageWpm": "Avg WPM",
+    "bestWpm": "Best WPM",
+    "totalTests": "Total tests",
+    "totalTime": "Total time",
+    "streak": "Streak",
+    "days": "days"
+  }
+}

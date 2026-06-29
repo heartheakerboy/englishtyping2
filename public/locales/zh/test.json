@@ -1,0 +1,8 @@
+{
+  "stats": { "time": "时间", "progress": "进度", "wpm": "WPM", "acc": "准确率", "cpm": "CPM", "errors": "错误" },
+  "hint": "点击文字开始输入。",
+  "restart": "重新开始",
+  "restartHint": "以重新开始。",
+  "customTest": { "title": "自定义测试", "noText": "没有文字。", "reset": "重置", "complete": "测试完成！" },
+  "clickToFocus": "点击此处开始输入"
+}

@@ -1,0 +1,9 @@
+{
+  "page": { "title": "多人赛跑", "subtitle": "实时与朋友竞争。公开、私密、排名或休闲。" },
+  "quickMatch": { "title": "快速匹配", "desc": "立即找到公共房间。", "casual": "休闲", "ranked": "排名", "signInPrompt": "以参与多人游戏。" },
+  "joinByCode": { "title": "用代码加入", "desc": "有6位邀请码？", "join": "加入" },
+  "createRoom": { "title": "创建房间", "desc": "自定义并邀请朋友。", "namePlaceholder": "比赛名称", "public": "公开", "private": "私密", "words": "{{n}}个单词", "ranked": "排名", "create": "创建房间" },
+  "publicRooms": { "title": "开放公共房间", "refresh": "刷新", "empty": "没有活跃的房间。", "spectate": "观战", "join": "加入" },
+  "room": { "label": "房间", "players": "玩家", "spectators": "观众", "waiting": "等待玩家加入…", "startRace": "开始比赛", "waitingForRacers": "等待赛手…", "leave": "离开", "spectator": "观众", "joinAsRacer": "作为赛手加入", "notFound": "未找到房间", "raceComplete": "比赛完成！", "cannotStart": "无法开始", "inviteLink": "邀请链接已复制！", "copyInvite": "复制邀请链接" },
+  "status": { "waiting": "等待", "countdown": "倒计时", "racing": "比赛中", "finished": "已结束" }
+}

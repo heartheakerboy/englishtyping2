@@ -1,0 +1,8 @@
+{
+  "stats": { "time": "Zeit", "progress": "Fortschritt", "wpm": "WpM", "acc": "Genauigkeit", "cpm": "ZpM", "errors": "Fehler" },
+  "hint": "Klicken Sie auf den Text und beginnen Sie zu tippen.",
+  "restart": "neu starten",
+  "restartHint": "zum Neustart.",
+  "customTest": { "title": "Benutzerdefinierter Test", "noText": "Kein Text vorhanden.", "reset": "Zurücksetzen", "complete": "Test abgeschlossen!" },
+  "clickToFocus": "Hier klicken um zu tippen"
+}

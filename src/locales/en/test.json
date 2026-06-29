@@ -1,0 +1,20 @@
+{
+  "stats": {
+    "time": "time",
+    "progress": "progress",
+    "wpm": "wpm",
+    "acc": "acc",
+    "cpm": "cpm",
+    "errors": "errors"
+  },
+  "hint": "Click the text and start typing.",
+  "restart": "restart",
+  "restartHint": "to restart.",
+  "customTest": {
+    "title": "Custom Test",
+    "noText": "No text set. Add your text in the config bar.",
+    "reset": "Reset",
+    "complete": "Test complete!"
+  },
+  "clickToFocus": "Click here to start typing"
+}

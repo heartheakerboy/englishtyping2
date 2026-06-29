@@ -12,6 +12,7 @@ import { fireConfetti } from "@/components/Confetti";
 import { sfx } from "@/lib/sound";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 type Member = {
   user_id: string;
@@ -47,6 +48,7 @@ interface Props {
 }
 
 export function MultiplayerRace({ room, members, meId }: Props) {
+  const { t } = useTranslation("race");
   const [typed, setTyped] = useState("");
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [now, setNow] = useState(Date.now());
@@ -157,7 +159,7 @@ export function MultiplayerRace({ room, members, meId }: Props) {
           } else {
             fireConfetti({ intensity: "low" });
           }
-          toast.success("Race complete!");
+          toast.success(t("room.raceComplete"));
         })
         .catch(() => undefined);
     }
@@ -186,7 +188,7 @@ export function MultiplayerRace({ room, members, meId }: Props) {
       await start({ data: { room_id: room.id } });
       sfx.click();
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Cannot start");
+      toast.error(e instanceof Error ? e.message : t("room.cannotStart"));
     }
   };
 
@@ -205,16 +207,16 @@ export function MultiplayerRace({ room, members, meId }: Props) {
       <Card className="border-border/60 bg-surface/40 p-4 backdrop-blur">
         <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-wider text-muted-foreground">
           <span>
-            Room <span className="font-mono text-foreground">{room.code}</span> ·{" "}
-            {room.ranked ? "Ranked" : "Casual"} · {room.language}
+            {t("room.label")} <span className="font-mono text-foreground">{room.code}</span> ·{" "}
+            {room.ranked ? t("quickMatch.ranked") : t("quickMatch.casual")} · {room.language}
           </span>
           <span>
-            {racers.length}/{room.max_players} players · {spectators.length} 👁
+            {racers.length}/{room.max_players} {t("room.players")} · {spectators.length} 👁
           </span>
         </div>
         <div className="space-y-2">
           {racers.length === 0 && (
-            <p className="text-sm text-muted-foreground">Waiting for players to join…</p>
+            <p className="text-sm text-muted-foreground">{t("room.waiting")}</p>
           )}
           {racers
             .sort(
@@ -260,7 +262,7 @@ export function MultiplayerRace({ room, members, meId }: Props) {
           )}
           {!isRacer && me && (
             <span className="inline-flex items-center gap-1 text-muted-foreground">
-              <Eye className="h-3.5 w-3.5" /> Spectator
+              <Eye className="h-3.5 w-3.5" /> {t("room.spectator")}
             </span>
           )}
         </div>
@@ -270,16 +272,16 @@ export function MultiplayerRace({ room, members, meId }: Props) {
               onClick={handleStart}
               className="bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-90"
             >
-              <Play className="h-4 w-4" /> Start race
+              <Play className="h-4 w-4" /> {t("room.startRace")}
             </Button>
           )}
           {isHost && room.status === "waiting" && !canStart && (
             <Button disabled variant="outline">
-              <Loader2 className="h-4 w-4 animate-spin" /> Waiting for racers…
+              <Loader2 className="h-4 w-4 animate-spin" /> {t("room.waitingForRacers")}
             </Button>
           )}
           <Button variant="outline" onClick={handleLeave}>
-            <LogOut className="h-4 w-4" /> Leave
+            <LogOut className="h-4 w-4" /> {t("room.leave")}
           </Button>
         </div>
       </div>
@@ -366,19 +368,21 @@ function RacerRow({ member, isHost, isMe }: { member: Member; isHost: boolean; i
 }
 
 function StatusBadge({ status }: { status: string }) {
-  const map: Record<string, { label: string; cls: string }> = {
-    waiting: { label: "Waiting", cls: "bg-muted text-muted-foreground" },
-    countdown: { label: "Countdown", cls: "bg-warning/20 text-warning" },
-    racing: { label: "Racing", cls: "bg-primary/20 text-primary" },
-    finished: { label: "Finished", cls: "bg-success/20 text-success" },
+  const { t } = useTranslation("race");
+  const map: Record<string, { cls: string }> = {
+    waiting: { cls: "bg-muted text-muted-foreground" },
+    countdown: { cls: "bg-warning/20 text-warning" },
+    racing: { cls: "bg-primary/20 text-primary" },
+    finished: { cls: "bg-success/20 text-success" },
   };
   const s = map[status] ?? map.waiting;
   return (
     <span className={cn("rounded-full px-2 py-0.5 text-xs uppercase tracking-wider", s.cls)}>
-      {s.label}
+      {t(`status.${status}`, status)}
     </span>
   );
 }
+
 
 /** Teleprompter-style text display for the race — auto-scrolls to keep caret centred. */
 function RaceTextDisplay({

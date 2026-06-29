@@ -1,0 +1,16 @@
+{
+  "page": {
+    "title": "Leaderboard",
+    "subtitle": "Top typists ranked by WPM, accuracy and consistency.",
+    "allTime": "All time",
+    "weekly": "Weekly",
+    "daily": "Daily",
+    "rank": "Rank",
+    "player": "Player",
+    "wpm": "WPM",
+    "accuracy": "Accuracy",
+    "tests": "Tests",
+    "empty": "No results yet. Be the first!",
+    "loading": "Loading leaderboard…"
+  }
+}

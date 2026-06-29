@@ -1,0 +1,8 @@
+{
+  "stats": { "time": "temps", "progress": "progrès", "wpm": "mpm", "acc": "précision", "cpm": "cpm", "errors": "erreurs" },
+  "hint": "Cliquez sur le texte et commencez à taper.",
+  "restart": "redémarrer",
+  "restartHint": "pour redémarrer.",
+  "customTest": { "title": "Test personnalisé", "noText": "Aucun texte.", "reset": "Réinitialiser", "complete": "Test terminé!" },
+  "clickToFocus": "Cliquez ici pour commencer à taper"
+}

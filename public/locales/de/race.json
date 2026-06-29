@@ -1,0 +1,9 @@
+{
+  "page": { "title": "Mehrspieler-Rennen", "subtitle": "Treten Sie in Echtzeit gegen Freunde oder Fremde an." },
+  "quickMatch": { "title": "Schnelles Spiel", "desc": "Finden Sie sofort einen öffentlichen Raum.", "casual": "Casual", "ranked": "Gewertet", "signInPrompt": "um Mehrspieler zu spielen." },
+  "joinByCode": { "title": "Per Code beitreten", "desc": "Haben Sie einen 6-stelligen Einladungscode?", "join": "Beitreten" },
+  "createRoom": { "title": "Raum erstellen", "desc": "Anpassen und Freunde einladen.", "namePlaceholder": "Rennname", "public": "Öffentlich", "private": "Privat", "words": "{{n}} Wörter", "ranked": "Gewertet", "create": "Raum erstellen" },
+  "publicRooms": { "title": "Offene öffentliche Räume", "refresh": "Aktualisieren", "empty": "Keine aktiven Räume. Seien Sie der Erste — erstellen Sie einen oben.", "spectate": "Zuschauen", "join": "Beitreten" },
+  "room": { "label": "Raum", "players": "Spieler", "spectators": "Zuschauer", "waiting": "Warte auf Spieler…", "startRace": "Rennen starten", "waitingForRacers": "Warte auf Fahrer…", "leave": "Verlassen", "spectator": "Zuschauer", "joinAsRacer": "Als Fahrer beitreten", "notFound": "Raum nicht gefunden", "raceComplete": "Rennen abgeschlossen!", "cannotStart": "Kann nicht starten", "inviteLink": "Einladungslink kopiert!", "copyInvite": "Einladungslink kopieren" },
+  "status": { "waiting": "Warten", "countdown": "Countdown", "racing": "Rennen", "finished": "Beendet" }
+}

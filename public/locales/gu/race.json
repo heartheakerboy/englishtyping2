@@ -1,0 +1,9 @@
+{
+  "page": { "title": "મલ્ટીપ્લેયર રેસ", "subtitle": "રીઅલ ટાઇમમાં મિત્રો સાથે સ્પર્ધા કરો." },
+  "quickMatch": { "title": "ઝડપી મેચ", "desc": "તરત જ પબ્લિક રૂમ શોધો.", "casual": "કઝ્યુઅલ", "ranked": "રેન્ક", "signInPrompt": "મલ્ટીપ્લેયર રમવા માટે." },
+  "joinByCode": { "title": "કોડ દ્વારા જોડાઓ", "desc": "6-અક્ષર ઇનવાઇટ કોડ છે?", "join": "જોડાઓ" },
+  "createRoom": { "title": "રૂમ બનાવો", "desc": "કસ્ટમાઇઝ કરો અને મિત્રોને આમંત્રિત કરો.", "namePlaceholder": "રેસ નામ", "public": "જાહેર", "private": "ખાનગી", "words": "{{n}} શબ્દો", "ranked": "રેન્ક", "create": "રૂમ બનાવો" },
+  "publicRooms": { "title": "ખુલ્લા જાહેર રૂમ", "refresh": "રિફ્રેશ", "empty": "કોઈ સક્રિય રૂમ નથી.", "spectate": "જુઓ", "join": "જોડાઓ" },
+  "room": { "label": "રૂમ", "players": "ખેલાડીઓ", "spectators": "દર્શકો", "waiting": "ખેલાડીઓ જોડાવાની રાહ…", "startRace": "રેસ શરૂ", "waitingForRacers": "રેસર્સની રાહ…", "leave": "છોડો", "spectator": "દર્શક", "joinAsRacer": "રેસર તરીકે જોડાઓ", "notFound": "રૂમ મળ્યો નહીં", "raceComplete": "રેસ પૂર્ણ!", "cannotStart": "શરૂ કરી શકાતું નથી", "inviteLink": "ઇનવાઇટ લિંક કૉપિ!", "copyInvite": "ઇનવાઇટ લિંક કૉપિ કરો" },
+  "status": { "waiting": "રાહ", "countdown": "ઉલ્ટી ગણતરી", "racing": "રેસ", "finished": "સમાપ્ત" }
+}

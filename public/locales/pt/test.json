@@ -1,0 +1,8 @@
+{
+  "stats": { "time": "tempo", "progress": "progresso", "wpm": "ppm", "acc": "precisão", "cpm": "cpm", "errors": "erros" },
+  "hint": "Clique no texto e comece a digitar.",
+  "restart": "reiniciar",
+  "restartHint": "para reiniciar.",
+  "customTest": { "title": "Teste personalizado", "noText": "Sem texto.", "reset": "Redefinir", "complete": "Teste concluído!" },
+  "clickToFocus": "Clique aqui para começar a digitar"
+}

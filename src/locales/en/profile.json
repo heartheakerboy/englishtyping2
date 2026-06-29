@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Profile",
+    "subtitle": "Your public typing profile.",
+    "editProfile": "Edit profile",
+    "joinedOn": "Joined {{date}}",
+    "totalTests": "Total tests",
+    "bestWpm": "Best WPM",
+    "avgAccuracy": "Avg accuracy",
+    "noActivity": "No activity yet."
+  }
+}

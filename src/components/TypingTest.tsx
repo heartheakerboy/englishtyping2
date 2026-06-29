@@ -18,6 +18,7 @@ import { TestConfigBar } from "@/components/TestConfigBar";
 import { VirtualKeyboard } from "@/components/VirtualKeyboard";
 import { RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 export interface FinishedRun {
   mode: TestMode;
@@ -80,6 +81,7 @@ function buildTarget(cfg: ReturnType<typeof useTestConfig.getState>): string {
 
 export function TypingTest({ onFinish }: Props) {
   const cfg = useTestConfig();
+  const { t } = useTranslation("test");
   const [target, setTarget] = useState<string>("");
   const [typed, setTyped] = useState("");
   const [startedAt, setStartedAt] = useState<number | null>(null);
@@ -216,18 +218,18 @@ export function TypingTest({ onFinish }: Props) {
         <div className="flex items-center gap-5">
           <Stat
             highlight
-            label={cfg.mode === "time" ? "time" : "progress"}
+            label={cfg.mode === "time" ? t("stats.time") : t("stats.progress")}
             value={
               cfg.mode === "time"
                 ? `${Math.max(0, Math.ceil(cfg.timeSeconds - elapsed))}s`
                 : `${Math.round(progress)}%`
             }
           />
-          <Stat label="wpm" value={live.wpm} />
-          <Stat label="acc" value={`${live.accuracy}%`} />
-          <Stat label="cpm" value={live.cpm} />
+          <Stat label={t("stats.wpm")} value={live.wpm} />
+          <Stat label={t("stats.acc")} value={`${live.accuracy}%`} />
+          <Stat label={t("stats.cpm")} value={live.cpm} />
           <Stat
-            label="errors"
+            label={t("stats.errors")}
             value={mistakeCount}
             tone={mistakeCount > 0 ? "destructive" : undefined}
           />
@@ -236,7 +238,7 @@ export function TypingTest({ onFinish }: Props) {
           onClick={reset}
           className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"
         >
-          <RotateCcw className="h-3.5 w-3.5" /> restart
+          <RotateCcw className="h-3.5 w-3.5" /> {t("restart")}
         </button>
       </div>
 
@@ -290,7 +292,7 @@ export function TypingTest({ onFinish }: Props) {
       </AnimatePresence>
 
       <p className="text-center text-xs text-muted-foreground">
-        Click the text and start typing.{" "}
+        {t("hint")}{" "}
         <kbd className="rounded border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px]">
           Tab
         </kbd>
@@ -298,7 +300,7 @@ export function TypingTest({ onFinish }: Props) {
         <kbd className="rounded border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px]">
           Enter
         </kbd>{" "}
-        to restart.
+        {t("restartHint")}
       </p>
 
       <RestartShortcut onRestart={reset} />

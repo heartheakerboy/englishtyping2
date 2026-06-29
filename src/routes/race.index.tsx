@@ -20,6 +20,7 @@ import { LANGUAGE_LIST } from "@/lib/languages";
 import { Zap, Users, Plus, LogIn, Crown, Loader2, Globe, Lock } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/race/")({
   head: () => ({
@@ -37,6 +38,7 @@ export const Route = createFileRoute("/race/")({
 
 function RacePage() {
   const navigate = useNavigate();
+  const { t } = useTranslation("race");
   const [authed, setAuthed] = useState(false);
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setAuthed(!!data.session));
@@ -65,13 +67,13 @@ function RacePage() {
         data: { name, visibility, ranked, language, word_count: wordCount, max_players: 6 },
       }),
     onSuccess: (room) => navigate({ to: "/race/$code", params: { code: room.code } }),
-    onError: (e) => toast.error(e instanceof Error ? e.message : "Could not create room"),
+    onError: (e) => toast.error(e instanceof Error ? e.message : t("room.cannotStart")),
   });
 
   const joinMutation = useMutation({
     mutationFn: (c: string) => joinFn({ data: { code: c, spectator: false } }),
     onSuccess: (_d, c) => navigate({ to: "/race/$code", params: { code: c.toUpperCase() } }),
-    onError: (e) => toast.error(e instanceof Error ? e.message : "Could not join"),
+    onError: (e) => toast.error(e instanceof Error ? e.message : t("joinByCode.join")),
   });
 
   const matchMutation = useMutation({
@@ -85,9 +87,9 @@ function RacePage() {
       <Header />
       <main className="mx-auto w-full max-w-6xl px-4 py-8 md:px-6 md:py-12">
         <div className="mb-8">
-          <h1 className="font-display text-3xl font-semibold md:text-4xl">Multiplayer race</h1>
+          <h1 className="font-display text-3xl font-semibold md:text-4xl">{t("page.title")}</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Race friends or strangers in real time. Public, private, ranked or casual.
+            {t("page.subtitle")}
           </p>
         </div>
 
@@ -95,9 +97,9 @@ function RacePage() {
         <div className="grid gap-4 md:grid-cols-3">
           <Card className="border-border/60 bg-surface/40 p-5 backdrop-blur">
             <div className="flex items-center gap-2 text-sm font-medium">
-              <Zap className="h-4 w-4 text-primary" /> Quick match
+              <Zap className="h-4 w-4 text-primary" /> {t("quickMatch.title")}
             </div>
-            <p className="mt-1 text-xs text-muted-foreground">Find a public room instantly.</p>
+            <p className="mt-1 text-xs text-muted-foreground">{t("quickMatch.desc")}</p>
             <div className="mt-4 flex gap-2">
               <Button
                 disabled={!authed || matchMutation.isPending}
@@ -109,7 +111,7 @@ function RacePage() {
                 ) : (
                   <Users className="h-4 w-4" />
                 )}{" "}
-                Casual
+                {t("quickMatch.casual")}
               </Button>
               <Button
                 disabled={!authed || matchMutation.isPending}
@@ -117,24 +119,24 @@ function RacePage() {
                 variant="outline"
                 className="flex-1"
               >
-                <Crown className="h-4 w-4" /> Ranked
+                <Crown className="h-4 w-4" /> {t("quickMatch.ranked")}
               </Button>
             </div>
             {!authed && (
               <p className="mt-2 text-xs text-muted-foreground">
                 <Link to="/auth" className="text-primary underline-offset-4 hover:underline">
-                  Sign in
+                  {t("joinByCode.join")}
                 </Link>{" "}
-                to play multiplayer.
+                {t("quickMatch.signInPrompt")}
               </p>
             )}
           </Card>
 
           <Card className="border-border/60 bg-surface/40 p-5 backdrop-blur">
             <div className="flex items-center gap-2 text-sm font-medium">
-              <LogIn className="h-4 w-4 text-primary" /> Join by code
+              <LogIn className="h-4 w-4 text-primary" /> {t("joinByCode.title")}
             </div>
-            <p className="mt-1 text-xs text-muted-foreground">Got a 6-letter invite code?</p>
+            <p className="mt-1 text-xs text-muted-foreground">{t("joinByCode.desc")}</p>
             <div className="mt-4 flex gap-2">
               <Input
                 value={code}
@@ -147,21 +149,21 @@ function RacePage() {
                 disabled={!authed || code.length < 4 || joinMutation.isPending}
                 onClick={() => joinMutation.mutate(code)}
               >
-                {joinMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Join"}
+                {joinMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : t("joinByCode.join")}
               </Button>
             </div>
           </Card>
 
           <Card className="border-border/60 bg-surface/40 p-5 backdrop-blur">
             <div className="flex items-center gap-2 text-sm font-medium">
-              <Plus className="h-4 w-4 text-primary" /> Create room
+              <Plus className="h-4 w-4 text-primary" /> {t("createRoom.title")}
             </div>
-            <p className="mt-1 text-xs text-muted-foreground">Customize and invite friends.</p>
+            <p className="mt-1 text-xs text-muted-foreground">{t("createRoom.desc")}</p>
             <div className="mt-3 space-y-2">
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Race name"
+                placeholder={t("createRoom.namePlaceholder")}
               />
               <div className="grid grid-cols-2 gap-2">
                 <Select
@@ -173,10 +175,10 @@ function RacePage() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="public">
-                      <Globe className="mr-1.5 inline h-3.5 w-3.5" /> Public
+                      <Globe className="mr-1.5 inline h-3.5 w-3.5" /> {t("createRoom.public")}
                     </SelectItem>
                     <SelectItem value="private">
-                      <Lock className="mr-1.5 inline h-3.5 w-3.5" /> Private
+                      <Lock className="mr-1.5 inline h-3.5 w-3.5" /> {t("createRoom.private")}
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -201,14 +203,14 @@ function RacePage() {
                   <SelectContent>
                     {[20, 30, 40, 60, 80].map((n) => (
                       <SelectItem key={n} value={String(n)}>
-                        {n} words
+                        {t("createRoom.words", { n })}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
                 <div className="flex items-center justify-between rounded-md border border-border/60 bg-background/40 px-3">
                   <Label htmlFor="ranked" className="text-xs">
-                    Ranked
+                    {t("createRoom.ranked")}
                   </Label>
                   <Switch id="ranked" checked={ranked} onCheckedChange={setRanked} />
                 </div>
@@ -223,7 +225,7 @@ function RacePage() {
                 ) : (
                   <Plus className="h-4 w-4" />
                 )}{" "}
-                Create room
+                {t("createRoom.create")}
               </Button>
             </div>
           </Card>
@@ -232,18 +234,18 @@ function RacePage() {
         {/* Public rooms */}
         <div className="mt-10">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="font-display text-lg font-semibold">Open public rooms</h2>
+            <h2 className="font-display text-lg font-semibold">{t("publicRooms.title")}</h2>
             <button
               onClick={() => refetch()}
               className="text-xs text-muted-foreground hover:text-foreground"
             >
-              Refresh
+              {t("publicRooms.refresh")}
             </button>
           </div>
           <Card className="border-border/60 bg-surface/40 backdrop-blur">
             {(rooms ?? []).length === 0 && (
               <div className="p-10 text-center text-sm text-muted-foreground">
-                No active rooms. Be the first — create one above.
+                {t("publicRooms.empty")}
               </div>
             )}
             <div className="divide-y divide-border/60">
@@ -268,7 +270,7 @@ function RacePage() {
                     {r.players}/{r.max_players}
                   </span>
                   <Button size="sm" variant="outline">
-                    {r.status === "racing" ? "Spectate" : "Join"}
+                    {r.status === "racing" ? t("publicRooms.spectate") : t("publicRooms.join")}
                   </Button>
                 </Link>
               ))}
