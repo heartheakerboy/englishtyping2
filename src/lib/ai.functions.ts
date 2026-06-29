@@ -3,20 +3,12 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { generateText } from "ai";
-import { createLovableAiGatewayProvider } from "./ai-gateway.server";
-
-const MODEL_ID = "google/gemini-3-flash-preview";
-
-function getGateway() {
-  const key = process.env.LOVABLE_API_KEY;
-  if (!key) throw new Error("AI is unavailable (missing key).");
-  return createLovableAiGatewayProvider(key);
-}
+import { getAiModel } from "./ai-gateway.server";
 
 async function callAI(system: string, prompt: string, maxTokens = 600): Promise<string> {
-  const gateway = getGateway();
+  const model = getAiModel();
   const { text } = await generateText({
-    model: gateway(MODEL_ID),
+    model,
     system,
     prompt,
     maxOutputTokens: maxTokens,

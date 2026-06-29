@@ -6,7 +6,7 @@ import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { z } from "zod";
 import { generateText } from "ai";
-import { createLovableAiGatewayProvider } from "./ai-gateway.server";
+import { getAiModel } from "./ai-gateway.server";
 
 const slugify = (s: string) =>
   s
@@ -717,14 +717,12 @@ export const generateTemplateFromBrief = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data }) => {
-    const key = process.env.LOVABLE_API_KEY;
-    if (!key) throw new Error("AI is unavailable.");
-    const gateway = createLovableAiGatewayProvider(key);
+    const model = getAiModel();
     const targetWords = Math.max(40, Math.min(500, Math.round(data.duration_seconds * 0.8)));
     const sys = `You generate complete typing-test templates as STRICT JSON. Output ONLY a JSON object with these keys: name (string ≤120), description (string ≤300), content_text (a natural ${data.difficulty} prose passage in ${data.language} of about ${targetWords} words — no markdown, no quotes, no headings), tags (array of 3-6 short lowercase strings), seo_title (≤60 chars), seo_description (≤155 chars). No commentary.`;
     const prompt = `Topic: ${data.topic}\nDifficulty: ${data.difficulty}\nLanguage: ${data.language}\nDuration: ${data.duration_seconds}s${data.purpose ? `\nPurpose: ${data.purpose}` : ""}`;
     const { text } = await generateText({
-      model: gateway("google/gemini-3-flash-preview"),
+      model,
       system: sys,
       prompt,
       maxOutputTokens: 1200,

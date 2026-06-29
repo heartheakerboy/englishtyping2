@@ -5,7 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { z } from "zod";
 import { generateText } from "ai";
-import { createLovableAiGatewayProvider } from "./ai-gateway.server";
+import { getAiModel } from "./ai-gateway.server";
 
 const slugify = (s: string) =>
   s
@@ -446,9 +446,7 @@ export const aiGenerateTestParagraph = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data }) => {
-    const key = process.env.LOVABLE_API_KEY;
-    if (!key) throw new Error("AI is unavailable.");
-    const gateway = createLovableAiGatewayProvider(key);
+    const model = getAiModel();
     const sys =
       "You generate typing-practice content. Output ONLY the requested text — no titles, quotes, markdown, or commentary.";
     const styleHint = {
@@ -461,7 +459,7 @@ export const aiGenerateTestParagraph = createServerFn({ method: "POST" })
     }[data.style];
     const prompt = `Write ${styleHint} of about ${data.words} words in ${data.language}. Difficulty: ${data.difficulty}. Reading level: ${data.readingLevel}.${data.topic ? ` Topic: "${data.topic}".` : ""}${data.industry ? ` Industry context: ${data.industry}.` : ""} Plain text only.`;
     const { text } = await generateText({
-      model: gateway("google/gemini-3-flash-preview"),
+      model,
       system: sys,
       prompt,
       maxOutputTokens: 900,
