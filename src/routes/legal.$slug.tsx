@@ -1,5 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getLegalPage } from "@/lib/footer.functions";
+import { Header } from "@/components/Header";
 
 export const Route = createFileRoute("/legal/$slug")({
   loader: async ({ params }) => {
@@ -98,7 +99,9 @@ function LegalPage() {
   const { page } = Route.useLoaderData();
   const html = page.format === "html" ? page.content : renderMarkdown(page.content);
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
+    <>
+      <Header />
+      <main className="mx-auto max-w-3xl px-4 py-12">
       <h1 className="font-display text-4xl font-bold tracking-tight">{page.title}</h1>
       <div className="mt-2 text-xs text-muted-foreground">
         Last updated: {new Date(page.updated_at).toLocaleDateString()}
@@ -107,6 +110,7 @@ function LegalPage() {
         className="prose prose-invert mt-8 max-w-none [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:mt-8 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-4 [&_p]:mt-3 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mt-1"
         dangerouslySetInnerHTML={{ __html: html }}
       />
-    </main>
+      </main>
+    </>
   );
 }

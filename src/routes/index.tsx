@@ -27,9 +27,7 @@ import {
   Gauge,
   Sparkles,
   Trophy,
-  Keyboard,
   Zap,
-  Brain,
   LineChart,
   Clock,
   Play,
@@ -38,30 +36,52 @@ import {
   HelpCircle,
   Swords,
   Gamepad2,
+  Globe,
+  Upload,
+  LayoutGrid,
+  GraduationCap,
+  Medal,
+  Crown,
+  ChevronRight,
+  Star,
 } from "lucide-react";
+
+const LEADERBOARD_DATA = [
+  { rank: 1, name: "shadow_keys", country: "JP", wpm: 187, accuracy: 99.1, badge: "crown" },
+  { rank: 2, name: "velocirapter", country: "US", wpm: 172, accuracy: 98.6, badge: "gold" },
+  { rank: 3, name: "key_wizard_in", country: "IN", wpm: 164, accuracy: 97.9, badge: "silver" },
+  { rank: 4, name: "pixel_typer", country: "DE", wpm: 158, accuracy: 98.2, badge: "bronze" },
+  { rank: 5, name: "swift_fingers", country: "BR", wpm: 151, accuracy: 96.8, badge: "none" },
+  { rank: 6, name: "qwerty_ninja", country: "KR", wpm: 147, accuracy: 97.4, badge: "none" },
+  { rank: 7, name: "type_storm", country: "FR", wpm: 143, accuracy: 96.1, badge: "none" },
+];
+const FLAG_MAP: Record<string, string> = {
+  JP: "🇯🇵", US: "🇺🇸", IN: "🇮🇳", DE: "🇩🇪", BR: "🇧🇷", KR: "🇰🇷", FR: "🇫🇷",
+};
+const LANG_BADGES = ["EN", "हि", "मर", "ES", "FR", "DE", "日", "中", "AR", "+34"];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "English Typing Test — Measure your WPM & typing speed" },
+      { title: "English Typing Test — Free WPM & Speed Tracker | EnglishtypingTest.org" },
       {
         name: "description",
         content:
-          "Free, modern typing test platform. Track WPM, accuracy, and CPM in real time. Take a 1, 3, or 5-minute online typing test with detailed analytics and sitemaps.",
+          "Take the ultimate free English typing test online. Track WPM, accuracy, and CPM in real-time. Practice in any language, race globally, and improve with detailed analytics. No signup needed.",
       },
-      { property: "og:title", content: "English Typing Test — Measure WPM & Speed" },
+      { property: "og:title", content: "English Typing Test — Free WPM & Speed Tracker" },
       {
         property: "og:description",
         content:
-          "Free typing tests with real-time WPM, accuracy, CPM tracking and detailed analysis charts.",
+          "Free typing tests with real-time WPM, accuracy, CPM tracking. Multi-language support, multiplayer races, arcade games, and detailed analytics.",
       },
       { property: "og:url", content: "https://englishtypingtest.org/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "English Typing Test — Measure WPM & Speed" },
+      { name: "twitter:title", content: "English Typing Test — Free WPM & Speed Tracker" },
       {
         name: "twitter:description",
-        content: "Free typing tests with real-time WPM, accuracy, and CPM tracking.",
+        content: "Free typing tests with real-time WPM, accuracy, and CPM tracking. Multi-language, multiplayer, gamified.",
       },
     ],
     links: [{ rel: "canonical", href: "https://englishtypingtest.org/" }],
@@ -160,6 +180,7 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
+
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.2, 0.8, 0.2, 1] as const } },
@@ -169,13 +190,15 @@ function LandingPage() {
   const { t } = useTranslation("home");
   const [wpm, setWpm] = useState(40);
 
-  // Fetch active public test configurations
   const fetchList = useServerFn(listEnabledDurations);
   const { data: durationItems } = useQuery({
     queryKey: ["public-durations"],
     queryFn: () => fetchList(),
   });
   const items = durationItems ?? [];
+  const _rawArticles = t("seoBlock.articles", { returnObjects: true });
+  const seoArticles: Array<{ title: string; body: string }> = Array.isArray(_rawArticles) ? _rawArticles : [];
+
 
   // Speed rank helper function based on WPM
   const getWpmCategory = (val: number) => {
@@ -220,78 +243,67 @@ function LandingPage() {
     <div className="min-h-screen">
       <Header />
       <main id="main">
-        {/* Cinematic Hero */}
-        <section className="relative overflow-hidden px-4 pt-20 pb-24 md:px-6 md:pt-28 md:pb-32 bg-radial-gradient">
+
+        {/* ── HERO SECTION ─────────────────────────────────── */}
+        <section aria-label="Hero — Start English Typing Test" className="relative overflow-hidden px-4 pt-20 pb-24 md:px-6 md:pt-28 md:pb-32">
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={{ show: { transition: { staggerChildren: 0.08 } } }}
-            className="mx-auto max-w-5xl text-center"
-          >
-            <motion.div
-              variants={fadeUp}
-              className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3.5 py-1.5 text-xs text-muted-foreground glass"
-            >
+          <div className="absolute -top-40 left-1/2 -z-10 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
+          <div className="absolute top-60 right-0 -z-10 h-[300px] w-[400px] rounded-full bg-accent/8 blur-[100px]" />
+
+          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.08 } } }} className="mx-auto max-w-5xl text-center">
+            <motion.div variants={fadeUp} className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3.5 py-1.5 text-xs text-muted-foreground glass">
               <Sparkles className="h-3 w-3 text-primary animate-pulse" />
               {t("badge")}
             </motion.div>
 
-            <motion.h1
-              variants={fadeUp}
-              className="mt-6 font-display text-5xl font-extrabold leading-[1.05] tracking-tight md:text-7xl lg:text-8xl"
-            >
+            <motion.h1 variants={fadeUp} className="mt-6 font-display text-5xl font-extrabold leading-[1.05] tracking-tight md:text-7xl lg:text-[5.5rem]">
               {t("hero.titleA")}{" "}
               <span className="text-gradient drop-shadow-sm">{t("hero.titleB")}</span>
+              <br />
+              <span className="text-foreground/70 text-4xl md:text-5xl lg:text-6xl">{t("hero.titleC")}</span>
             </motion.h1>
 
-            <motion.p
-              variants={fadeUp}
-              className="mx-auto mt-6 max-w-2xl text-balance text-lg md:text-xl text-muted-foreground"
-            >
+            <motion.p variants={fadeUp} className="mx-auto mt-6 max-w-2xl text-balance text-lg md:text-xl text-muted-foreground">
               {t("hero.subtitle")}
             </motion.p>
 
-            <motion.div
-              variants={fadeUp}
-              className="mt-10 flex flex-wrap items-center justify-center gap-3"
-            >
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-95 text-base px-6 py-6 cursor-pointer"
-              >
-                <Link to="/test">
-                  {t("hero.ctaStart")} <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+            {/* Language badges */}
+            <motion.div variants={fadeUp} className="mt-5 flex flex-wrap items-center justify-center gap-2">
+              {LANG_BADGES.map((lang) => (
+                <span key={lang} className="rounded-full border border-border bg-surface/70 px-2.5 py-0.5 text-xs font-semibold text-muted-foreground glass hover:border-primary/50 hover:text-primary transition-colors cursor-default">
+                  {lang}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-95 text-base px-7 py-6 cursor-pointer">
+                <Link to="/test">{t("hero.ctaStart")} <ArrowRight className="ml-2 h-5 w-5" /></Link>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="text-base px-6 py-6 cursor-pointer"
-              >
-                <Link to="/auth" search={{ mode: "signup" }}>
-                  {t("hero.ctaSignup")}
-                </Link>
+              <Button asChild size="lg" variant="outline" className="text-base px-7 py-6 cursor-pointer">
+                <Link to="/auth" search={{ mode: "signup" }}>{t("hero.ctaSignup")}</Link>
               </Button>
             </motion.div>
 
-            {/* Live Interactive/Breathing Typing Console Mockup */}
+            {/* Enhanced Glassmorphism Typing Mockup — with language dropdown + upload */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.7, ease: [0.2, 0.8, 0.2, 1] as const }}
-              className="mx-auto mt-16 max-w-4xl rounded-2xl border border-border/80 bg-surface/40 p-6 text-left font-mono shadow-elegant glass md:p-8"
+              className="mx-auto mt-14 max-w-4xl rounded-2xl border border-border/80 bg-surface/40 p-6 text-left font-mono shadow-elegant glass md:p-8"
             >
-              <div className="mb-6 flex items-center justify-between border-b border-border/50 pb-4 text-xs">
-                <div className="flex items-center gap-4">
+              <div className="mb-5 flex items-center justify-between border-b border-border/50 pb-4 text-xs">
+                <div className="flex flex-wrap items-center gap-3">
                   <span className="flex items-center gap-1.5 font-sans text-primary font-semibold">
-                    <span className="h-2 w-2 rounded-full bg-primary animate-ping" />
-                    Live Engine Active
+                    <span className="h-2 w-2 rounded-full bg-primary animate-ping" /> Live Engine Active
                   </span>
-                  <span className="font-sans text-muted-foreground">● English Mode</span>
-                  <span className="font-sans text-muted-foreground">● 30 Seconds</span>
+                  <span className="flex items-center gap-1 rounded-lg border border-border bg-surface/80 px-2.5 py-1 font-sans text-foreground cursor-pointer hover:border-primary/50 transition-colors">
+                    <Globe className="h-3 w-3 text-primary" /> English ▾
+                  </span>
+                  <span className="flex items-center gap-1 rounded-lg border border-border bg-surface/80 px-2.5 py-1 font-sans text-muted-foreground cursor-pointer hover:border-primary/50 transition-colors">
+                    <Upload className="h-3 w-3" /> Upload .txt
+                  </span>
+                  <span className="font-sans text-muted-foreground hidden sm:block">● 60 Seconds</span>
                 </div>
                 <div className="flex gap-1">
                   <span className="h-3.5 w-3.5 rounded-full bg-red-500/30 border border-red-500/20" />
@@ -301,61 +313,61 @@ function LandingPage() {
               </div>
               <p className="text-2xl leading-relaxed tracking-wide md:text-3xl">
                 <span className="text-typing-correct">the quick brown </span>
-                <span className="text-typing-incorrect underline decoration-typing-incorrect/60 decoration-2">
-                  fox
-                </span>
+                <span className="text-typing-incorrect underline decoration-typing-incorrect/60 decoration-2">fox</span>
                 <span className="relative inline-block w-[2px] h-[1.25em] align-middle bg-typing-caret animate-caret mx-[1px]" />
-                <span className="text-typing-untyped">
-                  {" "}
-                  jumps over the lazy dog and runs through the beautiful meadow
-                </span>
+                <span className="text-typing-untyped">{" "}jumps over the lazy dog and runs through the beautiful meadow</span>
               </p>
               <div className="mt-8 flex flex-wrap items-baseline gap-8 border-t border-border/50 pt-6 font-sans text-sm text-muted-foreground">
                 <div className="flex flex-col">
-                  <span className="text-2xl md:text-3xl font-extrabold text-primary font-display tabular-nums">
-                    78
-                  </span>
-                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">
-                    WPM (Speed)
-                  </span>
+                  <span className="text-2xl md:text-3xl font-extrabold text-primary font-display tabular-nums">78</span>
+                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">WPM (Speed)</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-2xl md:text-3xl font-extrabold text-foreground font-display tabular-nums">
-                    97.4%
-                  </span>
-                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">
-                    Accuracy
-                  </span>
+                  <span className="text-2xl md:text-3xl font-extrabold text-foreground font-display tabular-nums">97.4%</span>
+                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">Accuracy</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-2xl md:text-3xl font-extrabold text-foreground font-display tabular-nums">
-                    386
-                  </span>
-                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">
-                    CPM (Chars)
-                  </span>
+                  <span className="text-2xl md:text-3xl font-extrabold text-foreground font-display tabular-nums">386</span>
+                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">CPM (Chars)</span>
                 </div>
                 <div className="flex flex-col ml-auto">
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded bg-secondary text-secondary-foreground border border-border">
-                    Touch Typing Practice Mode
-                  </span>
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded bg-secondary text-secondary-foreground border border-border">Touch Typing Mode</span>
                 </div>
               </div>
             </motion.div>
           </motion.div>
         </section>
 
-        {/* Dynamic Typing Tests Quick-Launch Section (SEO Link Juice) */}
+        {/* ── SOCIAL PROOF BAR ─────────────────────────────── */}
+        <section aria-label="Platform statistics" className="border-y border-border/50 bg-surface/30 py-8 px-4 md:px-6">
+          <div className="mx-auto max-w-5xl">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+              {([
+                { value: t("stats.tests"), label: t("stats.testsLabel"), Icon: Zap },
+                { value: t("stats.rating"), label: t("stats.ratingLabel"), Icon: Star },
+                { value: t("stats.countries"), label: t("stats.countriesLabel"), Icon: Globe },
+                { value: t("stats.signup"), label: t("stats.signupLabel"), Icon: Sparkles },
+              ] as const).map(({ value, label, Icon }) => (
+                <div key={label} className="flex flex-col items-center gap-1 text-center">
+                  <Icon className="h-4 w-4 text-primary mb-1" />
+                  <span className="font-display text-3xl font-extrabold text-gradient tabular-nums">{value}</span>
+                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── QUICK LAUNCH TYPING TESTS ─────────────────────── */}
         {items.length > 0 && (
-          <section className="border-t border-border/50 bg-background py-16 px-4 md:px-6">
+          <section aria-label="Quick-launch typing test durations" className="border-t border-border/50 bg-background py-16 px-4 md:px-6">
             <div className="mx-auto max-w-6xl">
               <div className="text-center max-w-2xl mx-auto mb-10">
                 <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-                  Take a Quick Typing Test
+                  Start Your English Typing Test in Seconds
                 </h2>
                 <p className="mt-3 text-muted-foreground">
-                  Choose a predefined typing test duration to benchmark your writing speed. Each
-                  duration features its own global leaderboard.
+                  Choose a predefined test duration. Each one has its own global leaderboard and WPM analytics.
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -407,7 +419,7 @@ function LandingPage() {
               <div className="mt-10 text-center">
                 <Button asChild variant="outline">
                   <Link to="/typing-test">
-                    View All Durations ({items.length}) <ArrowRight className="ml-2 h-4 w-4" />
+                    View All Test Durations ({items.length}) <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>
@@ -415,8 +427,119 @@ function LandingPage() {
           </section>
         )}
 
-        {/* Interactive Speed Rank Estimator (Increases dwell time & interaction) */}
-        <section className="border-t border-border/50 bg-surface/10 py-20 px-4 md:px-6">
+        {/* ── CORE FEATURES 8-CARD GRID ────────────────────── */}
+        <section aria-label="Core platform features" className="border-t border-border/50 bg-surface/5 px-4 py-20 md:px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="text-center max-w-xl mx-auto mb-14">
+              <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t("features.heading")}</h2>
+              <p className="mt-3 text-muted-foreground">{t("features.subheading")}</p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <FeatureCard icon={Globe} title={t("features.multilang.title")} desc={t("features.multilang.desc")} linkTo="/test" accent="from-violet-500/20 to-purple-500/10" iconColor="text-violet-400" />
+              <FeatureCard icon={Gauge} title={t("features.engine.title")} desc={t("features.engine.desc")} linkTo="/test" accent="from-primary/20 to-primary/5" iconColor="text-primary" />
+              <FeatureCard icon={LineChart} title={t("features.chart.title")} desc={t("features.chart.desc")} linkTo="/test" accent="from-cyan-500/20 to-blue-500/10" iconColor="text-cyan-400" />
+              <FeatureCard icon={Swords} title={t("features.race.title")} desc={t("features.race.desc")} linkTo="/race" accent="from-red-500/20 to-orange-500/10" iconColor="text-red-400" />
+              <FeatureCard icon={Gamepad2} title={t("features.games.title")} desc={t("features.games.desc")} linkTo="/games" accent="from-green-500/20 to-emerald-500/10" iconColor="text-green-400" />
+              <FeatureCard icon={LayoutGrid} title={t("features.templates.title")} desc={t("features.templates.desc")} linkTo="/templates" accent="from-amber-500/20 to-yellow-500/10" iconColor="text-amber-400" />
+              <FeatureCard icon={Calculator} title={t("features.calculator.title")} desc={t("features.calculator.desc")} linkTo="/" accent="from-pink-500/20 to-rose-500/10" iconColor="text-pink-400" />
+              <FeatureCard icon={GraduationCap} title={t("features.lessons.title")} desc={t("features.lessons.desc")} linkTo="/lessons" accent="from-indigo-500/20 to-blue-500/10" iconColor="text-indigo-400" />
+            </div>
+          </div>
+        </section>
+
+        {/* ── SEO CONTENT BLOCK — 3 rich-text articles ──────── */}
+        <section aria-label="How the English Typing Test works" className="border-t border-border/50 bg-background px-4 py-20 md:px-6">
+          <div className="mx-auto max-w-5xl">
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary mb-4"><BookOpen className="h-5 w-5" /></div>
+              <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t("seoBlock.heading")}</h2>
+              <p className="mt-3 text-muted-foreground">{t("seoBlock.subheading")}</p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {seoArticles.map((article, i) => (
+                <motion.article
+                  key={i}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="rounded-2xl border border-border/80 bg-surface/30 p-6 glass hover:border-primary/30 transition-colors"
+                >
+                  <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary text-sm font-bold font-mono">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-foreground mb-3 leading-snug">{article.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{article.body}</p>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── GAMIFIED LEADERBOARD PREVIEW ─────────────────── */}
+        <section aria-label="Global typing leaderboard preview" className="border-t border-border/50 bg-surface/10 px-4 py-20 md:px-6">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center mb-12">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber-500/10 text-amber-500 mb-4"><Trophy className="h-5 w-5" /></div>
+              <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t("leaderboard.heading")}</h2>
+              <p className="mt-3 text-muted-foreground">{t("leaderboard.subheading")}</p>
+            </div>
+            <div className="rounded-2xl border border-border/80 bg-surface/40 overflow-hidden glass shadow-elegant">
+              <div className="grid grid-cols-[2.5rem_1fr_auto_auto] items-center gap-4 border-b border-border/50 bg-secondary/30 px-5 py-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <span>#</span><span>Typist</span><span className="text-right hidden sm:block">WPM</span><span className="text-right">Acc.</span>
+              </div>
+              {LEADERBOARD_DATA.map((entry, i) => (
+                <motion.div
+                  key={entry.rank}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className={`grid grid-cols-[2.5rem_1fr_auto_auto] items-center gap-4 px-5 py-3.5 border-b border-border/30 last:border-0 hover:bg-primary/5 transition-colors ${i === 0 ? "bg-amber-500/5" : ""}`}
+                >
+                  <div className="flex items-center justify-center">
+                    {entry.badge === "crown" && <Crown className="h-5 w-5 text-amber-400" />}
+                    {entry.badge === "gold" && <Medal className="h-5 w-5 text-amber-500" />}
+                    {entry.badge === "silver" && <Medal className="h-5 w-5 text-slate-400" />}
+                    {entry.badge === "bronze" && <Medal className="h-5 w-5 text-orange-600" />}
+                    {entry.badge === "none" && <span className="text-sm font-bold text-muted-foreground font-mono">{entry.rank}</span>}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm">{FLAG_MAP[entry.country]}</span>
+                      <span className={`font-semibold text-sm truncate ${i === 0 ? "text-amber-400" : "text-foreground"}`}>{entry.name}</span>
+                      {i === 0 && <span className="hidden sm:inline-flex rounded-full bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 text-[9px] font-bold text-amber-500 uppercase tracking-wider">#1 Global</span>}
+                    </div>
+                    <div className="h-1.5 w-full rounded-full bg-border/50 overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${(entry.wpm / 200) * 100}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: i * 0.06, ease: "easeOut" }}
+                        className={`h-full rounded-full ${i === 0 ? "bg-gradient-to-r from-amber-400 to-amber-300" : "bg-primary/60"}`}
+                      />
+                    </div>
+                  </div>
+                  <div className="text-right hidden sm:block">
+                    <span className={`font-display text-lg font-bold tabular-nums ${i === 0 ? "text-amber-400" : "text-foreground"}`}>{entry.wpm}</span>
+                    <span className="text-xs text-muted-foreground"> wpm</span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-sm font-semibold text-emerald-500 font-mono">{entry.accuracy}%</span>
+                  </div>
+                </motion.div>
+              ))}
+              <div className="border-t border-border/50 bg-secondary/10 px-5 py-4 text-center">
+                <Button asChild variant="ghost" size="sm" className="text-primary hover:text-primary hover:bg-primary/10">
+                  <Link to="/leaderboard">{t("leaderboard.ctaBtn")} <ChevronRight className="ml-1 h-4 w-4" /></Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── WPM RANK CALCULATOR ───────────────────────────── */}
+        <section aria-label="Interactive WPM rank calculator" className="border-t border-border/50 bg-surface/10 py-20 px-4 md:px-6">
           <div className="mx-auto max-w-4xl text-center">
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
               <Calculator className="h-5 w-5" />
@@ -464,56 +587,7 @@ function LandingPage() {
           </div>
         </section>
 
-        {/* Feature Cards Grid */}
-        <section className="border-t border-border/50 bg-background px-4 py-20 md:px-6">
-          <div className="mx-auto max-w-6xl">
-            <div className="text-center max-w-xl mx-auto mb-14">
-              <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-                {t("features.heading")}
-              </h2>
-              <p className="mt-3 text-muted-foreground">{t("features.subheading")}</p>
-            </div>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <Feature
-                icon={Gauge}
-                title={t("features.engine.title")}
-                desc={t("features.engine.desc")}
-                linkTo="/test"
-              />
-              <Feature
-                icon={LineChart}
-                title={t("features.chart.title")}
-                desc={t("features.chart.desc")}
-                linkTo="/test"
-              />
-              <Feature
-                icon={Swords}
-                title={t("features.modes.title")}
-                desc={t("features.modes.desc")}
-                linkTo="/race"
-              />
-              <Feature
-                icon={Gamepad2}
-                title={t("features.dashboard.title")}
-                desc={t("features.dashboard.desc")}
-                linkTo="/games"
-              />
-              <Feature
-                icon={Keyboard}
-                title={t("features.mistakes.title")}
-                desc={t("features.mistakes.desc")}
-                linkTo="/builder"
-              />
-              <Feature
-                icon={Sparkles}
-                title={t("features.ai.title")}
-                desc={t("features.ai.desc")}
-                linkTo="/templates"
-              />
-            </div>
-          </div>
-        </section>
 
         {/* WPM Reference Table (SEO Rich Text Content) */}
         <section className="border-t border-border/50 bg-surface/5 py-20 px-4 md:px-6">
@@ -547,15 +621,9 @@ function LandingPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {(
-                    (t("wpmTiersTable.rows", {
-                      returnObjects: true,
-                    }) as Array<{
-                      wpm: string;
-                      category: string;
-                      percentile: string;
-                      description: string;
-                    }>) || []
+                  {(Array.isArray(t("wpmTiersTable.rows", { returnObjects: true }))
+                    ? (t("wpmTiersTable.rows", { returnObjects: true }) as Array<{ wpm: string; category: string; percentile: string; description: string }>)
+                    : []
                   ).map((row, i) => (
                     <TableRow
                       key={i}
@@ -609,7 +677,10 @@ function LandingPage() {
                   {t("howItWorks.tipsTitle")}
                 </h3>
                 <ul className="space-y-3">
-                  {((t("howItWorks.tips", { returnObjects: true }) as string[]) || []).map(
+                  {(Array.isArray(t("howItWorks.tips", { returnObjects: true }))
+                    ? (t("howItWorks.tips", { returnObjects: true }) as string[])
+                    : []
+                  ).map(
                     (tip, i) => (
                       <li key={i} className="flex gap-3 text-sm text-muted-foreground">
                         <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/15 text-xs font-bold text-primary font-mono">
@@ -639,8 +710,9 @@ function LandingPage() {
             </div>
 
             <Accordion type="single" collapsible className="w-full space-y-4">
-              {(
-                (t("faq.items", { returnObjects: true }) as Array<{ q: string; a: string }>) || []
+              {(Array.isArray(t("faq.items", { returnObjects: true }))
+                ? (t("faq.items", { returnObjects: true }) as Array<{ q: string; a: string }>)
+                : []
               ).map((item, idx) => (
                 <AccordionItem
                   key={idx}
@@ -659,48 +731,44 @@ function LandingPage() {
           </div>
         </section>
 
-        {/* Premium CTA Box */}
-        <section className="px-4 py-20 md:px-6 md:py-28 bg-gradient-radial">
+        {/* ── FINAL CTA ─────────────────────────────────────── */}
+        <section aria-label="Final call to action" className="px-4 py-20 md:px-6 md:py-28">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mx-auto max-w-4xl rounded-3xl border border-border bg-surface/40 p-10 text-center glass shadow-glow md:p-16"
+            className="mx-auto max-w-4xl rounded-3xl border border-border bg-surface/40 p-10 text-center glass shadow-glow md:p-16 relative overflow-hidden"
           >
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,oklch(0.68_0.22_290/0.15),transparent_70%)]" />
             <Zap className="mx-auto h-12 w-12 text-primary animate-pulse" />
-            <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight md:text-5xl">
-              {t("cta.title")}
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-base md:text-lg">
-              {t("cta.desc")}
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="mt-8 bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-95 text-base px-6 py-6 cursor-pointer"
-            >
-              <Link to="/test">
-                {t("cta.button")} <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+            <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight md:text-5xl">{t("cta.title")}</h2>
+            <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-base md:text-lg">{t("cta.desc")}</p>
+            <Button asChild size="lg" className="mt-8 bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-95 text-base px-8 py-6 cursor-pointer">
+              <Link to="/test">{t("cta.button")} <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
           </motion.div>
         </section>
+
       </main>
     </div>
   );
 }
 
-function Feature({
+function FeatureCard({
   icon: Icon,
   title,
   desc,
   linkTo,
+  accent,
+  iconColor,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   desc: string;
   linkTo: string;
+  accent: string;
+  iconColor: string;
 }) {
   return (
     <motion.div
@@ -708,18 +776,18 @@ function Feature({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5 }}
-      className="rounded-2xl border border-border/80 bg-surface/30 p-6 glass transition-all duration-300 hover:border-primary/50 hover:shadow-glow hover:-translate-y-0.5 group flex flex-col justify-between"
+      className="rounded-2xl border border-border/80 bg-surface/30 p-5 glass transition-all duration-300 hover:border-primary/40 hover:shadow-glow hover:-translate-y-0.5 group flex flex-col justify-between"
     >
       <div>
-        <div className="grid h-11 w-11 place-items-center rounded-lg bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-          <Icon className="h-5 w-5" />
+        <div className={`grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br ${accent} transition-all duration-300 group-hover:scale-110`}>
+          <Icon className={`h-5 w-5 ${iconColor}`} />
         </div>
-        <h3 className="mt-4 font-display text-lg font-bold text-foreground">{title}</h3>
-        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+        <h3 className="mt-4 font-display text-base font-bold text-foreground leading-snug">{title}</h3>
+        <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{desc}</p>
       </div>
-      <div className="mt-6 pt-4 border-t border-border/40 flex items-center justify-end text-xs">
+      <div className="mt-5 pt-4 border-t border-border/40 flex items-center justify-end text-xs">
         <Link to={linkTo as any} className="flex items-center text-primary font-medium group-hover:underline">
-          Explore Tool <ArrowRight className="ml-1 h-3.5 w-3.5" />
+          Explore <ArrowRight className="ml-1 h-3.5 w-3.5" />
         </Link>
       </div>
     </motion.div>

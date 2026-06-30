@@ -1,171 +1,159 @@
 {
-  "badge": "Phase 1 Polish — Real-time engine, charts, themes",
+  "badge": "Free · No Signup · 47 Countries · 4.9★ Rated",
   "hero": {
-    "titleA": "Type faster.",
-    "titleB": "Think clearer.",
-    "subtitle": "A focused, beautiful typing platform built for measurable improvement. Real-time WPM, accuracy and consistency — no clutter, no nonsense.",
-    "ctaStart": "Start typing",
-    "ctaSignup": "Create free account"
+    "titleA": "The Ultimate Free",
+    "titleB": "English Typing Test",
+    "titleC": "& Speed Tracker",
+    "subtitle": "Master your typing speed. Take tests in English, or upload your own text to practice in ANY language. Compete globally with zero signup.",
+    "ctaStart": "Start English Typing Test Now",
+    "ctaSignup": "Create Free Account"
+  },
+  "stats": {
+    "tests": "1.2M+",
+    "testsLabel": "Tests Taken",
+    "rating": "4.9★",
+    "ratingLabel": "User Rating",
+    "countries": "47+",
+    "countriesLabel": "Countries",
+    "signup": "Zero",
+    "signupLabel": "Signup Needed"
   },
   "features": {
-    "heading": "Advanced Typing Features & Tools",
-    "subheading": "Explore the most complete suite of tools to measure, challenge, and elevate your typing speed.",
+    "heading": "Everything You Need to Type Faster",
+    "subheading": "A full e-sports-grade typing platform — gamified, multilingual, and data-driven.",
+    "multilang": {
+      "title": "Multi-Language & Custom Text",
+      "desc": "Practice in Hindi, Marathi, Spanish, French, Arabic, or ANY language. Paste custom text, upload a .txt file, and start your session instantly."
+    },
     "engine": {
-      "title": "Online Typing Test Engine",
-      "desc": "Measure your words per minute (WPM), accuracy, and characters per minute (CPM) in real time with precision keystroke analysis."
+      "title": "Live Typing Engine",
+      "desc": "Real-time tracking of WPM, Accuracy, and CPM per keystroke. Zero-lag, zero-distraction feedback loop."
     },
     "chart": {
       "title": "WPM Analytics & Charts",
-      "desc": "Track your speed drops, accuracy fluctuations, and keystroke consistency over time with high-resolution interactive charts."
+      "desc": "Interactive per-second graphs show exactly where your speed dropped and your accuracy dipped. Identify and fix your weak zones."
     },
-    "modes": {
-      "title": "Multiplayer Typing Race",
-      "desc": "Join real-time typing race lobbies or create a private room to compete against friends and global players live."
+    "race": {
+      "title": "Multiplayer Races",
+      "desc": "Jump into real-time global public lobbies or create a private room to race your friends. Leaderboards update live."
     },
-    "dashboard": {
+    "games": {
       "title": "Arcade Typing Games",
-      "desc": "Build lightning-fast finger reflexes with fun interactive HTML5 games like Falling Words and Zombie Typing Defense."
+      "desc": "Gamified practice with 'Falling Words', 'Zombie Defense', 'Balloon Burst', and more. Learn while you play."
     },
-    "mistakes": {
-      "title": "Custom Typing Test Builder",
-      "desc": "Build tailored typing drills, upload files, or generate custom paragraphs using AI (powered by DeepSeek) for target training."
+    "templates": {
+      "title": "Templates Marketplace",
+      "desc": "Access, use, and remix typing layouts created by global users, teachers, and professionals. Build your own custom test too."
     },
-    "ai": {
-      "title": "Creator Templates Marketplace",
-      "desc": "Explore, practice on, or edit custom typing templates and paragraph layouts uploaded by teachers and typists worldwide."
+    "calculator": {
+      "title": "WPM Rank Calculator",
+      "desc": "Drag the slider to your speed. Instantly see how you rank against the global average and which career paths your speed unlocks."
+    },
+    "lessons": {
+      "title": "Touch Typing Lessons",
+      "desc": "Structured lessons from home-row basics to full touch typing. Each lesson tracks your progress and adapts to your weak fingers."
     }
   },
-  "cta": {
-    "title": "Ready in 15 seconds.",
-    "desc": "No signup required to take your first test.",
-    "button": "Take a test"
+  "seoBlock": {
+    "heading": "How the English Typing Test Works",
+    "subheading": "Learn how daily practice measurably improves your WPM, accuracy, and fluency across languages.",
+    "articles": [
+      {
+        "title": "Why Take a Daily English Typing Test?",
+        "body": "Taking a daily English typing test is the single most effective habit for building long-term typing fluency. Research shows that consistent, deliberate practice for even 10–15 minutes per day can increase your words-per-minute speed by 20–40% over 30 days. Our real-time engine provides instant feedback on every keystroke, so you never practice mistakes without knowing it."
+      },
+      {
+        "title": "How Custom Language & Text Upload Works",
+        "body": "Most typing platforms lock you into English. We don't. Our custom text engine lets you paste any text — in Hindi, Marathi, Spanish, German, Arabic, Japanese, or any Unicode language — and begin a precision typing session in seconds. You can also upload a .txt file directly, invaluable for students drilling their own notes or professionals practicing domain vocabulary."
+      },
+      {
+        "title": "How to Improve Your WPM Score",
+        "body": "Improving your WPM is a structured process, not a talent. Start with touch typing lessons to build proper muscle memory from the home row (ASDF / JKL;). Use the WPM analytics chart to identify your slowest character pairs. Then target those pairs with custom text sessions. Progress through Beginner (< 30 WPM) → Average (30–50) → Professional (50–80) → Elite (80–100+)."
+      }
+    ]
   },
-  "footerCopy": "Built for typists.",
+  "leaderboard": {
+    "heading": "Global Leaderboard — Where Do You Rank?",
+    "subheading": "Compete with typists from 47+ countries. Your best score is automatically submitted after every test.",
+    "ctaBtn": "View Full Leaderboard"
+  },
   "speedEstimator": {
-    "heading": "Calculate Your Typing Speed Rank",
-    "subheading": "Drag the slider below to see how your WPM compares to the average population and what it means.",
-    "wpmLabel": "WPM (Words Per Minute)",
+    "heading": "What's Your WPM Rank?",
+    "subheading": "Drag the slider to your typing speed and instantly see where you stand in the global typing community.",
+    "wpmLabel": "Your Typing Speed",
     "tiers": {
       "slow": {
-        "title": "Beginner Typist",
-        "desc": "You are typing with visual search and hunt-and-peck. With proper hand posture and touch typing practice, you can easily double this score!"
+        "title": "Beginner",
+        "desc": "Below 30 WPM — Most people hunt-and-peck at this level. Touch typing lessons will get you to 45+ WPM in 30 days."
       },
       "average": {
         "title": "Average Typist",
-        "desc": "This is the global average typing speed. You can handle basic office tasks, but learning touch typing could save you dozens of hours every month."
+        "desc": "30–45 WPM — The global average for casual typists. Daily English typing test practice will accelerate your growth significantly."
       },
       "aboveAverage": {
-        "title": "Productive Typist",
-        "desc": "You are faster than 70% of people! You can comfortably write emails, reports, and code without feeling held back by your fingers."
+        "title": "Above Average",
+        "desc": "45–65 WPM — Top 30% globally. Suitable for most office and data-entry roles. Focus on accuracy to push higher."
       },
       "pro": {
-        "title": "Professional Typist",
-        "desc": "Outstanding! You are faster than 95% of people. This speed is typical for professional programmers, journalists, and transcriptionists."
+        "title": "Professional",
+        "desc": "65–85 WPM — Top 10%. At the level of skilled secretaries, journalists, and programmers. Excellent for any knowledge-work career."
       },
       "god": {
-        "title": "Typing Grandmaster",
-        "desc": "Phenomenal! You are in the top 1% of typists globally. Your typing speed matches the speed of thought. You are a typing machine!"
+        "title": "Elite Typist",
+        "desc": "85+ WPM — Top 1% globally. Faster than 99% of the internet. Court reporters and competitive typists operate here."
       }
     }
   },
   "wpmTiersTable": {
-    "heading": "Typing Speed (WPM) Reference Guide",
-    "subheading": "Wondering where you stand? Here is the breakdown of typing speeds and their percentiles.",
+    "heading": "WPM Speed Reference Table",
+    "subheading": "Understand exactly what your typing speed means for your career and daily productivity.",
     "cols": {
       "wpm": "WPM Range",
-      "category": "Category",
+      "category": "Skill Level",
       "percentile": "Percentile",
-      "description": "Daily Capability"
+      "description": "What it means"
     },
     "rows": [
-      {
-        "wpm": "Below 30 WPM",
-        "category": "Beginner",
-        "percentile": "Bottom 15%",
-        "description": "Uses hunt-and-peck typing. Needs to look at keys."
-      },
-      {
-        "wpm": "30 - 45 WPM",
-        "category": "Average",
-        "percentile": "Average 50%",
-        "description": "Standard speed for casual typists and social media users."
-      },
-      {
-        "wpm": "46 - 65 WPM",
-        "category": "Above Average",
-        "percentile": "Top 30%",
-        "description": "Good speed for office workers, bloggers, and software developers."
-      },
-      {
-        "wpm": "66 - 85 WPM",
-        "category": "Fluent / Professional",
-        "percentile": "Top 10%",
-        "description": "Highly productive. Excellent for speed writers and coders."
-      },
-      {
-        "wpm": "86 - 100+ WPM",
-        "category": "Elite / Grandmaster",
-        "percentile": "Top 1%",
-        "description": "Extreme typing mastery. Matches speed of verbal speech."
-      }
+      { "wpm": "< 30 WPM", "category": "Beginner", "percentile": "Bottom 15%", "description": "Hunting and pecking. Learning touch typing is the #1 priority." },
+      { "wpm": "30–45 WPM", "category": "Average", "percentile": "~50th", "description": "Functional for casual use. Most people plateau here without practice." },
+      { "wpm": "45–65 WPM", "category": "Above Average", "percentile": "Top 30%", "description": "Comfortable for office work, emails, and general productivity tasks." },
+      { "wpm": "65–85 WPM", "category": "Professional", "percentile": "Top 10%", "description": "Journalist, developer, or executive level. Thought flows faster than typing." },
+      { "wpm": "85–100 WPM", "category": "Expert", "percentile": "Top 3%", "description": "Transcription-grade speed. Hands keep up with any verbal conversation." },
+      { "wpm": "100+ WPM", "category": "Elite / Competitive", "percentile": "Top 1%", "description": "Competitive typist or court reporter speed. Rare and impressive." }
     ]
   },
   "howItWorks": {
-    "heading": "How is WPM Calculated?",
-    "subheading": "The science behind typing speed calculation.",
+    "heading": "How WPM is Calculated",
     "formulaTitle": "The WPM Formula",
-    "formulaDesc": "One standard 'word' is defined as exactly 5 keystrokes (including spaces and punctuation). The formula is:",
-    "formulaText": "WPM = (Total Keystrokes / 5) / Time (Minutes)",
-    "accuracyTitle": "Why Accuracy Matters",
-    "accuracyDesc": "Raw speed is nothing without control. An error-filled paragraph slows down comprehension. The net WPM score subtracts uncorrected errors to ensure real-world capability.",
-    "tipsTitle": "Tips to Improve",
+    "formulaDesc": "WPM standardizes typing speed by treating every 5 characters as one 'word'. This accounts for long words vs. short words fairly across all languages.",
+    "formulaText": "Net WPM = (Total Characters Typed ÷ 5 ÷ Minutes) − Error Penalty",
+    "accuracyDesc": "Accuracy directly impacts your Net WPM. Typing fast but incorrectly is penalized, so our engine rewards precision just as much as speed.",
+    "tipsTitle": "5 Tips to Improve Faster",
     "tips": [
-      "Keep hands in the home row position (ASDF for left hand, JKL; for right hand).",
-      "Do not look at the keyboard. Build muscle memory through touch typing.",
-      "Focus on accuracy first. Speed will naturally follow as you make fewer errors.",
-      "Practice daily for at least 10-15 minutes using different typing tests."
+      "Always use all 10 fingers — never revert to 2-finger typing.",
+      "Fix accuracy first, then push speed. Mistakes cost more time than they save.",
+      "Use the per-second WPM chart to find and drill your slowest character pairs.",
+      "Practice 15 minutes daily rather than 2 hours once a week — consistency wins.",
+      "Challenge friends with a private multiplayer race to add competitive pressure."
     ]
   },
   "faq": {
     "heading": "Frequently Asked Questions",
-    "subheading": "Got questions about typing speed tests, multiplayer races, or custom builders? We've got answers.",
+    "subheading": "Common questions about our English typing test platform, WPM calculation, and how to improve.",
     "items": [
-      {
-        "q": "What is a good typing speed?",
-        "a": "For most professional jobs (like writers, programmers, or office admins), a good typing speed is between 50 to 80 WPM. Anything above 80 WPM is considered highly fluent, while speeds over 100 WPM are elite."
-      },
-      {
-        "q": "How can I increase my WPM?",
-        "a": "The best way to increase your typing speed is by learning touch typing. This means using all ten fingers and keeping your hands on the home row without looking down. Focus on typing accurately, and speed will follow naturally."
-      },
-      {
-        "q": "Can I build my own custom typing test?",
-        "a": "Yes! With our Custom Typing Test Builder, you can create fully personalized typing exercises. You can paste your own text, upload text files, or generate custom themed paragraphs using our integrated DeepSeek AI coach."
-      },
-      {
-        "q": "How does the Multiplayer Typing Race work?",
-        "a": "Our real-time multiplayer mode allows you to create or join typing rooms. You can copy the invite link to challenge friends, or race other active typists online. Live leaderboards show progress bars and WPM scores instantly."
-      },
-      {
-        "q": "Are there interactive games to improve typing speed?",
-        "a": "Yes! In the Games section, you can play HTML5 typing games like 'Zombie Word Defense' (Z-Type) and 'Falling Words'. These games help you build muscle memory and finger reaction speed in an engaging way."
-      },
-      {
-        "q": "What keyboard layouts and languages are supported?",
-        "a": "We support standard layouts including QWERTY, Dvorak, and Colemak, as well as multiple languages. You can customize keyboard layout settings directly inside the typing config bar."
-      },
-      {
-        "q": "Does accuracy affect my WPM?",
-        "a": "Yes, accuracy is vital. While 'Raw WPM' measures how fast you physically hit keys, 'Net WPM' deducts penalties for mistakes. Practicing with high accuracy prevents you from spending extra time pressing backspace to correct errors."
-      },
-      {
-        "q": "How is WPM different from CPM?",
-        "a": "WPM stands for Words Per Minute, which counts a 'word' as 5 characters. CPM stands for Characters Per Minute, which measures the exact number of individual keystrokes (letters, numbers, spaces, and punctuation) you type in one minute."
-      },
-      {
-        "q": "Are typing tests free on this platform?",
-        "a": "Yes! All typing tests, lessons, multiplayer modes, arcade games, and analytics charts on englishtypingtest.org are 100% free. You can practice without even creating an account, though an account helps track your historical stats."
-      }
+      { "q": "What is a good typing speed?", "a": "For most professional jobs (writers, programmers, office admins), a good typing speed is 50–80 WPM. Anything above 80 WPM is highly fluent, and speeds over 100 WPM are elite-level, placing you in the top 1% globally." },
+      { "q": "How can I increase my WPM?", "a": "Start with touch typing lessons to build proper home-row muscle memory. Then take a daily English typing test for 10–15 minutes. Use the WPM chart to identify slow character pairs and drill those with custom text. Consistent, focused practice beats long sporadic sessions." },
+      { "q": "Does accuracy affect my WPM?", "a": "Yes. While 'Raw WPM' measures raw keystroke speed, 'Net WPM' deducts error penalties. Typing with 95%+ accuracy and pressing backspace less is faster overall than typing carelessly at a higher raw rate." },
+      { "q": "How is WPM different from CPM?", "a": "WPM (Words Per Minute) counts a 'word' as 5 characters. CPM (Characters Per Minute) counts every individual keystroke including spaces and punctuation. CPM ≈ WPM × 5." },
+      { "q": "Can I practice in Hindi, Spanish, or other languages?", "a": "Absolutely. Paste any text in any Unicode language into the custom text box and start your session. You can also upload a .txt file. The engine tracks WPM, CPM, and accuracy identically regardless of language." },
+      { "q": "Are all features free?", "a": "Yes — all typing tests, multiplayer races, arcade games, analytics charts, and lessons are 100% free. An account helps track historical stats, but signup is completely optional." }
     ]
-  }
+  },
+  "cta": {
+    "title": "Ready to Test Your Speed?",
+    "desc": "Your first English Typing Test takes 60 seconds. No account needed. Results are instant.",
+    "button": "Start English Typing Test Now"
+  },
+  "footerCopy": "Built for typists who mean business."
 }
+
