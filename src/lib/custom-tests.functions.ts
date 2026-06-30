@@ -179,10 +179,12 @@ export const saveCustomTest = createServerFn({ method: "POST" })
     delete payload.password;
     if (data.password) payload.password_hash = data.password; // stored as-is; treat as shared secret
 
+    // Admin-only: certain advanced access types (invite, email_whitelist, organization, classroom)
+    // Non-admins can create public, private, or password-protected tests normally.
     if (!isAdmin) {
-      // Force access_type to private or password (if they set a password)
-      if (!["private", "password"].includes(payload.access_type)) {
-        payload.access_type = "private";
+      const advancedTypes = ["invite", "email_whitelist", "organization", "classroom"];
+      if (advancedTypes.includes(payload.access_type)) {
+        payload.access_type = "public";
       }
     }
 
@@ -286,24 +288,31 @@ export const getPublicTestBySlug = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => z.object({ slug: z.string().min(1).max(100) }).parse(d))
   .handler(async ({ data }) => {
     const sb = publicClient();
-    const { data: t, error } = await sb
+    const userId = getOptionalUserId();
+
+    // Build query — allow creator to see their own test regardless of status
+    let q = sb
       .from("custom_tests")
       .select(
         "id, slug, name, description, cover_image_url, banner_url, category, tags, content, language, duration_seconds, difficulty, allow_numbers, allow_symbols, allow_punctuation, allow_capitals, allow_quotes, allow_linebreaks, backspace_mode, backspace_limit, spell_check, access_type, password_hash, start_at, expires_at, leaderboard_enabled, leaderboard_visibility, leaderboard_size, certificate_enabled, cert_min_wpm, cert_min_accuracy, result_visible_stats, anticheat_flags, monetization_enabled, price_cents, currency, status, views_count, attempts_count, creator_id",
       )
-      .eq("slug", data.slug)
-      .eq("status", "published")
-      .maybeSingle();
+      .eq("slug", data.slug);
+
+    const { data: t, error } = await q.maybeSingle();
     if (error) throw new Error(error.message);
     if (!t) return null;
 
-    // Hybrid Model Access Control:
+    const isCreator = userId && userId === t.creator_id;
+
+    // Only published tests are publicly accessible (unless the requester is the creator)
+    if (t.status !== "published" && !isCreator) return null;
+
+    // Private access control: non-creators can't access private tests
     if (t.access_type === "private") {
-      const userId = getOptionalUserId();
       if (!userId) {
         throw new Error("This is a private custom test. Please sign in to access it if you are the owner.");
       }
-      if (userId !== t.creator_id) {
+      if (!isCreator) {
         // Check if the user is an admin
         const { data: isAdmin } = await sb.rpc("has_role", {
           _user_id: userId,
@@ -315,10 +324,11 @@ export const getPublicTestBySlug = createServerFn({ method: "POST" })
       }
     }
 
-    // omit password_hash from response
+    // Omit password_hash from response
     const { password_hash, ...rest } = t as any;
     return { ...rest, password_protected: !!password_hash };
   });
+
 
 export const verifyTestPassword = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => z.object({ slug: z.string(), password: z.string() }).parse(d))
