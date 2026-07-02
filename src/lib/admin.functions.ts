@@ -72,7 +72,7 @@ export const listUsersAdmin = createServerFn({ method: "GET" })
     let q = supabaseAdmin
       .from("profiles")
       .select(
-        "id, username, display_name, avatar_url, xp, level, tests_completed, best_wpm, country, created_at",
+        "id, username, display_name, avatar_url, xp, level, tests_completed, best_wpm, country, created_at, banned_at, ban_reason",
       )
       .order("created_at", { ascending: false })
       .limit(data.limit);
@@ -237,4 +237,58 @@ export const exportTableCSV = createServerFn({ method: "POST" })
       ...rows.map((r: any) => headers.map((h) => escape(r[h])).join(",")),
     ].join("\n");
     return { csv, count: rows.length };
+  });
+
+export const banUser = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { userId: string; reason?: string }) =>
+    z
+      .object({ userId: z.string().uuid(), reason: z.string().optional() })
+      .parse(d),
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin
+      .from("profiles")
+      .update({ banned_at: new Date().toISOString(), ban_reason: data.reason ?? null })
+      .eq("id", data.userId);
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });
+
+export const unbanUser = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { userId: string }) =>
+    z.object({ userId: z.string().uuid() }).parse(d),
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin
+      .from("profiles")
+      .update({ banned_at: null, ban_reason: null })
+      .eq("id", data.userId);
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });
+
+export const deleteUser = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { userId: string }) =>
+    z.object({ userId: z.string().uuid() }).parse(d),
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    // Delete profile first (cascade will handle related data)
+    const { error: profileError } = await supabaseAdmin
+      .from("profiles")
+      .delete()
+      .eq("id", data.userId);
+    if (profileError) throw new Error(profileError.message);
+    // Delete auth user
+    const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(data.userId);
+    if (authError) throw new Error(authError.message);
+    return { ok: true };
   });
