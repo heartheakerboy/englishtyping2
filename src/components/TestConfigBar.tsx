@@ -49,6 +49,8 @@ import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { generateParagraph } from "@/lib/ai.functions";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
+import { getPublicSettings } from "@/lib/cms.functions";
 
 const MODES: { id: TestMode; key: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { id: "time", key: "time", icon: Clock },
@@ -260,6 +262,27 @@ function CategoryPicker({
   disabled: boolean;
 }) {
   const { t } = useTranslation("config");
+  const fetchSettings = useServerFn(getPublicSettings);
+  const { data: settings } = useQuery({
+    queryKey: ["public-settings"],
+    queryFn: () => fetchSettings(),
+  });
+
+  const activeCategories = React.useMemo(() => settings?.practice_categories ?? {}, [settings]);
+
+  // Filter categories. By default, if settings aren't loaded or activeCategories is empty,
+  // we assume all are enabled (or general is always enabled).
+  const visibleCategories = CATEGORIES.filter((c) => {
+    if (c.id === "general") return true;
+    return activeCategories[c.id] !== false;
+  });
+
+  React.useEffect(() => {
+    if (settings && activeCategories[value] === false) {
+      onChange("general");
+    }
+  }, [settings, activeCategories, value, onChange]);
+
   const current = CATEGORIES.find((c) => c.id === value);
   return (
     <DropdownMenu>
@@ -271,7 +294,7 @@ function CategoryPicker({
       <DropdownMenuContent>
         <DropdownMenuLabel>{t("labels.category")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {CATEGORIES.map((c) => (
+        {visibleCategories.map((c) => (
           <DropdownMenuItem key={c.id} onSelect={() => onChange(c.id)}>
             <span
               className={cn(
