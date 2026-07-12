@@ -49,6 +49,7 @@ function PostPage() {
   const { slug } = Route.useParams();
   const fn = useServerFn(getPostBySlug);
   const getAnchors = useServerFn(getActiveAnchorTexts);
+  const getSuggestions = useServerFn(getApprovedSuggestionsForPage);
 
   const { data, isLoading } = useQuery({
     queryKey: ["blog-post", slug],
@@ -62,7 +63,7 @@ function PostPage() {
 
   const { data: suggestions } = useQuery({
     queryKey: ["approved-linking-suggestions", `/blog/${slug}`],
-    queryFn: () => useServerFn(getApprovedSuggestionsForPage)({ data: { path: `/blog/${slug}` } }),
+    queryFn: () => getSuggestions({ data: { path: `/blog/${slug}` } }),
   });
 
   const html = useMemo(() => {

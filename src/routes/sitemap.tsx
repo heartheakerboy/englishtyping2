@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 import { getSiteSitemap } from "@/lib/linking-system.functions";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -108,5 +109,3 @@ function SitemapPage() {
     </div>
   );
 }
-
-import { useMemo } from "react";
