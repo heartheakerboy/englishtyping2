@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TypingTestRouteImport } from './routes/typing-test'
 import { Route as TournamentsRouteImport } from './routes/tournaments'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as RaceRouteImport } from './routes/race'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
@@ -103,6 +104,11 @@ const TournamentsRoute = TournamentsRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RaceRoute = RaceRouteImport.update({
@@ -527,6 +533,7 @@ export interface FileRoutesByFullPath {
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
   '/race': typeof RaceRouteWithChildren
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
@@ -606,6 +613,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRouteWithChildren
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -686,6 +694,7 @@ export interface FileRoutesById {
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
   '/race': typeof RaceRouteWithChildren
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
@@ -769,6 +778,7 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/lessons'
     | '/race'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/tournaments'
     | '/typing-test'
@@ -848,6 +858,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/leaderboard'
     | '/lessons'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/tournaments'
     | '/achievements'
@@ -927,6 +938,7 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/lessons'
     | '/race'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/tournaments'
     | '/typing-test'
@@ -1010,6 +1022,7 @@ export interface RootRouteChildren {
   LeaderboardRoute: typeof LeaderboardRoute
   LessonsRoute: typeof LessonsRoute
   RaceRoute: typeof RaceRouteWithChildren
+  SitemapRoute: typeof SitemapRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TournamentsRoute: typeof TournamentsRoute
   TypingTestRoute: typeof TypingTestRouteWithChildren
@@ -1043,6 +1056,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/race': {
@@ -1781,6 +1801,7 @@ const rootRouteChildren: RootRouteChildren = {
   LeaderboardRoute: LeaderboardRoute,
   LessonsRoute: LessonsRoute,
   RaceRoute: RaceRouteWithChildren,
+  SitemapRoute: SitemapRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TournamentsRoute: TournamentsRoute,
   TypingTestRoute: TypingTestRouteWithChildren,

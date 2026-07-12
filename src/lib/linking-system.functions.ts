@@ -374,3 +374,390 @@ export const getActiveAnchorTexts = createServerFn({ method: "GET" })
       .eq("is_active", true);
     return data ?? [];
   });
+
+// ───────────────────────── AI Suggestions Settings ─────────────────────────
+export const getLinkingSettings = createServerFn({ method: "GET" })
+  .handler(async () => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data } = await (supabaseAdmin as any)
+      .from("seo_linking_settings")
+      .select("*");
+    
+    const settings: Record<string, any> = {
+      auto_linking_enabled: true,
+      max_links_per_page: 5,
+      whitelist_paths: ["/typing-test", "/games", "/blog", "/calculators"],
+      blacklist_paths: ["/auth", "/profile", "/admin", "/legal/privacy", "/legal/terms"],
+    };
+    (data ?? []).forEach((row: any) => {
+      settings[row.key] = row.value;
+    });
+    return settings;
+  });
+
+export const updateLinkingSetting = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { key: string; value: any }) =>
+    z.object({ key: z.string(), value: z.any() }).parse(d)
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const db = await getAdminClient();
+    const { error } = await db
+      .from("seo_linking_settings")
+      .upsert(
+        { key: data.key, value: data.value, updated_at: new Date().toISOString() },
+        { onConflict: "key" }
+      );
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });
+
+// ───────────────────────── Suggestions CRUD ─────────────────────────
+export const listLinkSuggestions = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await requireAdmin(context);
+    const db = await getAdminClient();
+    const { data, error } = await db
+      .from("internal_link_suggestions")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (error) throw new Error(error.message);
+    return data ?? [];
+  });
+
+export const updateSuggestionStatus = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { id: string; status: "approved" | "rejected" }) =>
+    z.object({ id: z.string().uuid(), status: z.enum(["approved", "rejected"]) }).parse(d)
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const db = await getAdminClient();
+    const { error } = await db
+      .from("internal_link_suggestions")
+      .update({ status: data.status, updated_at: new Date().toISOString() })
+      .eq("id", data.id);
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });
+
+export const bulkUpdateSuggestions = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { ids: string[]; status: "approved" | "rejected" }) =>
+    z.object({ ids: z.array(z.string().uuid()), status: z.enum(["approved", "rejected"]) }).parse(d)
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const db = await getAdminClient();
+    const { error } = await db
+      .from("internal_link_suggestions")
+      .update({ status: data.status, updated_at: new Date().toISOString() })
+      .in("id", data.ids);
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });
+
+// ───────────────────────── Helper to compile all site pages ─────────────────────────
+export async function getAllAvailablePages() {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  const db = supabaseAdmin as any;
+
+  const pages = [
+    { label: "Home", path: "/" },
+    { label: "Typing Test Hub", path: "/typing-test" },
+    { label: "Games Hub", path: "/games" },
+    { label: "Memory Sequence Game", path: "/games/memory" },
+    { label: "Reaction Time Test", path: "/games/reaction" },
+    { label: "CPS Clicks Test", path: "/games/cps" },
+    { label: "Spacebar Speed Test", path: "/games/spacebar" },
+    { label: "Keyboard Trainer", path: "/games/trainer" },
+    { label: "Type Racer (Race Bots)", path: "/games/race-bots" },
+    { label: "Leaderboards", path: "/leaderboard" },
+    { label: "Blog Hub", path: "/blog" },
+    { label: "WPM Calculator", path: "/calculators/wpm" },
+    { label: "CPM Calculator", path: "/calculators/cpm" },
+  ];
+
+  // Fetch blog posts
+  const { data: posts } = await db.from("blog_posts").select("slug, title").eq("status", "published");
+  (posts ?? []).forEach((p: any) => {
+    pages.push({ label: p.title, path: `/blog/${p.slug}` });
+  });
+
+  // Fetch test durations
+  try {
+    const { data: durs } = await db.from("test_durations").select("slug, name").eq("enabled", true);
+    (durs ?? []).forEach((d: any) => {
+      pages.push({ label: `${d.name} Typing Test`, path: `/typing-test/${d.slug}` });
+    });
+  } catch {}
+
+  // Fetch legal pages
+  try {
+    const { data: legal } = await db.from("legal_pages").select("slug, title").eq("status", "published");
+    (legal ?? []).forEach((l: any) => {
+      pages.push({ label: l.title, path: `/legal/${l.slug}` });
+    });
+  } catch {}
+
+  return pages;
+}
+
+// ───────────────────────── AI Linking Engine ─────────────────────────
+export const generateInternalLinksForPage = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { path: string; content: string }) =>
+    z.object({ path: z.string(), content: z.string() }).parse(d)
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const db = await getAdminClient();
+    
+    // Get all candidate pages on the site
+    const candidates = await getAllAvailablePages();
+    
+    // Filter out source page and blacklisted pages
+    const settings = await getLinkingSettings();
+    const blacklist = (settings.blacklist_paths as string[]) || [];
+    const filteredCandidates = candidates.filter(
+      (c) => c.path !== data.path && !blacklist.some((b) => c.path.startsWith(b))
+    );
+    
+    if (filteredCandidates.length === 0) return { suggestions: [] };
+    
+    // Load AI model
+    const { generateText } = await import("ai");
+    const { getAiModel } = await import("./ai-gateway.server");
+    
+    let model;
+    try {
+      model = getAiModel();
+    } catch {
+      return { suggestions: [] };
+    }
+    
+    const systemPrompt = `You are an SEO internal linking expert. Your task is to analyze the content of a page and suggest highly relevant, natural internal links.
+You will be provided with:
+1. The path of the source page.
+2. The content of the source page.
+3. A list of candidate destination pages on the website.
+
+Output a strict JSON array of objects with the following format:
+[
+  {
+    "keyword": "exact word or phrase in the content to link",
+    "target_path": "the path of the destination page from the candidate list",
+    "anchor_type": "exact" | "partial" | "branded" | "generic" | "long-tail",
+    "score": 0.95
+  }
+]
+
+SEO Rules:
+- The keyword MUST exist in the content (case-insensitive).
+- Do not suggest linking to the source page itself.
+- Avoid duplicate links.
+- Max 8 link recommendations.
+- Anchor types classification:
+  - 'exact': exact match of page name/topic (e.g. "WPM Calculator", "typing test")
+  - 'partial': partial match (e.g. "speed testing tool")
+  - 'branded': brand name references (e.g. "englishtypingtest.org practice")
+  - 'generic': e.g. "click here", "read more" (use sparingly)
+  - 'long-tail': descriptive phrases (e.g. "calculate your character count typing speed")
+`;
+
+    const userPrompt = `Source Path: ${data.path}
+Content:
+${data.content.slice(0, 8000)}
+
+Candidate Destination Pages:
+${JSON.stringify(filteredCandidates.slice(0, 80), null, 2)}
+`;
+
+    try {
+      const { text } = await generateText({
+        model,
+        system: systemPrompt,
+        prompt: userPrompt,
+        maxOutputTokens: 1200,
+      });
+      
+      const match = text.match(/\[\s*\{[\s\S]*\}\s*\]/);
+      if (!match) return { suggestions: [] };
+      const suggestionsList: any[] = JSON.parse(match[0]);
+      
+      const inserted = [];
+      for (const sug of suggestionsList) {
+        if (sug.keyword && sug.target_path) {
+          const { error } = await db.from("internal_link_suggestions").upsert({
+            source_path: data.path,
+            target_path: sug.target_path,
+            keyword: sug.keyword,
+            anchor_type: sug.anchor_type || 'exact',
+            status: 'pending',
+            score: sug.score || 1.0,
+            updated_at: new Date().toISOString()
+          }, { onConflict: "source_path,target_path,keyword" });
+          
+          if (!error) {
+            inserted.push(sug);
+          }
+        }
+      }
+      return { suggestions: inserted };
+    } catch (e: any) {
+      console.error("AI linking failed:", e);
+      throw new Error(`AI linking generation failed: ${e.message}`);
+    }
+  });
+
+export const rebuildAllInternalLinks = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await requireAdmin(context);
+    const db = await getAdminClient();
+    
+    // Clear all pending suggestions first
+    await db.from("internal_link_suggestions").delete().eq("status", "pending");
+    
+    const pages = [];
+    
+    // 1. Get blog posts
+    const { data: posts } = await db.from("blog_posts").select("slug, body_markdown, title").eq("status", "published");
+    (posts ?? []).forEach((p: any) => {
+      pages.push({ path: `/blog/${p.slug}`, content: `${p.title}\n\n${p.body_markdown}` });
+    });
+    
+    // 2. Static pages content
+    pages.push({ path: "/games/memory", content: "Memory Sequence Game. Test your visual memory by recalling color patterns." });
+    pages.push({ path: "/games/reaction", content: "Reaction Time Test. Click as fast as you can when the screen turns green." });
+    pages.push({ path: "/games/cps", content: "CPS Clicks per Second Test. Jitter click, butterfly click, drag click speed check." });
+    pages.push({ path: "/games/spacebar", content: "Spacebar speed test. Mashing space bar key as fast as possible." });
+    pages.push({ path: "/games/trainer", content: "Keyboard trainer row keys practice. Learn touch typing finger placements." });
+    pages.push({ path: "/games/race-bots", content: "Type racer Bots sprint challenge. Compete against computer bots." });
+    
+    let processedCount = 0;
+    for (const page of pages) {
+      try {
+        await generateInternalLinksForPage({ data: page });
+        processedCount++;
+        await new Promise(r => setTimeout(r, 1000));
+      } catch (err) {
+        console.error(`Skipping ${page.path}:`, err);
+      }
+    }
+    
+    return { processed: processedCount };
+  });
+
+// ───────────────────────── SEO Link Health Scores ─────────────────────────
+export interface PageHealth {
+  path: string;
+  label: string;
+  inboundCount: number;
+  outboundCount: number;
+  brokenCount: number;
+  isOrphan: boolean;
+  depth: number;
+  score: number;
+  recommendations: string[];
+}
+
+export const calculatePageHealthScores = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }): Promise<PageHealth[]> => {
+    await requireAdmin(context);
+    const db = await getAdminClient();
+    
+    const [pages, suggestions, manualAnchors, brokenLinks] = await Promise.all([
+      getAllAvailablePages(),
+      db.from("internal_link_suggestions").select("source_path, target_path").eq("status", "approved"),
+      db.from("anchor_texts").select("keyword, target_url").eq("is_active", true),
+      db.from("broken_links").select("source_url, target_url").eq("is_fixed", false),
+    ]);
+
+    const activeSuggestions = suggestions.data || [];
+    const activeAnchors = manualAnchors.data || [];
+    const activeBroken = brokenLinks.data || [];
+
+    // Calculate depth based on path segments
+    const getPathDepth = (p: string) => {
+      if (p === "/") return 0;
+      return p.split("/").filter(Boolean).length;
+    };
+
+    return pages.map((page) => {
+      // Inbound links match (AI approved target_path == page.path OR manual target_url == page.path)
+      const inboundCount = 
+        activeSuggestions.filter((s: any) => s.target_path === page.path).length +
+        activeAnchors.filter((a: any) => a.target_url === page.path).length;
+
+      // Outbound links match (AI approved source_path == page.path)
+      const outboundCount = activeSuggestions.filter((s: any) => s.source_path === page.path).length;
+
+      // Broken count matches (broken source_url == page.path)
+      const brokenCount = activeBroken.filter((b: any) => b.source_url === page.path).length;
+
+      const isOrphan = inboundCount === 0 && page.path !== "/";
+      const depth = getPathDepth(page.path);
+
+      // Score logic (starts at 100)
+      let score = 100;
+      const recs: string[] = [];
+
+      if (isOrphan) {
+        score -= 40;
+        recs.push("Orphan status! Add at least 2 inbound links from relevant pages.");
+      } else if (inboundCount < 2 && page.path !== "/") {
+        score -= 10;
+        recs.push("Low inbound links. Link to this page from more related articles.");
+      }
+
+      if (brokenCount > 0) {
+        score -= Math.min(brokenCount * 15, 45);
+        recs.push(`Fix ${brokenCount} broken links detected on this page.`);
+      }
+
+      if (outboundCount === 0 && page.path !== "/sitemap") {
+        score -= 10;
+        recs.push("Dead end page! Add outbound links to relevant tests or games.");
+      } else if (outboundCount > 12) {
+        score -= 5;
+        recs.push("High link density. Consider reducing outbound links to avoid search penalties.");
+      }
+
+      if (recs.length === 0) {
+        recs.push("Excellent SEO linking health. Keep updating content regularly.");
+      }
+
+      return {
+        path: page.path,
+        label: page.label,
+        inboundCount,
+        outboundCount,
+        brokenCount,
+        isOrphan,
+        depth,
+        score: Math.max(0, score),
+        recommendations: recs,
+      };
+    });
+  });
+
+export const getSiteSitemap = createServerFn({ method: "GET" })
+  .handler(async () => {
+    return getAllAvailablePages();
+  });
+
+export const getApprovedSuggestionsForPage = createServerFn({ method: "GET" })
+  .inputValidator((d: { path: string }) => z.object({ path: z.string() }).parse(d))
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: rows } = await (supabaseAdmin as any)
+      .from("internal_link_suggestions")
+      .select("keyword, target_path")
+      .eq("source_path", data.path)
+      .eq("status", "approved");
+    return rows ?? [];
+  });

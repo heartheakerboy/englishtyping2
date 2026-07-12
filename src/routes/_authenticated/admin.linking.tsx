@@ -16,13 +16,20 @@ import {
   listBrokenLinks,
   markBrokenLinkFixed,
   runBrokenLinkCheck,
+  getLinkingSettings,
+  updateLinkingSetting,
+  listLinkSuggestions,
+  updateSuggestionStatus,
+  bulkUpdateSuggestions,
+  rebuildAllInternalLinks,
+  calculatePageHealthScores,
 } from "@/lib/linking-system.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { DataTable } from "@/components/admin/DataTable";
-import { Play, Trash2, CheckCircle2, RotateCcw, AlertTriangle, ExternalLink } from "lucide-react";
+import { Play, Trash2, CheckCircle2, RotateCcw, AlertTriangle, ExternalLink, Brain, Settings, HeartPulse, Check, X } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin/linking")({
   component: LinkingPage,
@@ -76,10 +83,17 @@ type AnchorText = {
 };
 
 function LinkingPage() {
-  const [activeTab, setActiveTab] = useState<"internal" | "external" | "broken" | "404" | "analytics">("internal");
+  const [activeTab, setActiveTab] = useState<"internal" | "external" | "broken" | "404" | "analytics" | "suggestions" | "health" | "settings">("internal");
   const [editingResource, setEditingResource] = useState<ExtRes | null>(null);
   const [editingAnchor, setEditingAnchor] = useState<AnchorText | null>(null);
   const [checking, setChecking] = useState(false);
+  const [rebuilding, setRebuilding] = useState(false);
+
+  // Settings State for local edits
+  const [settingsAutoEnabled, setSettingsAutoEnabled] = useState(true);
+  const [settingsMaxLinks, setSettingsMaxLinks] = useState(5);
+  const [settingsWhitelist, setSettingsWhitelist] = useState("");
+  const [settingsBlacklist, setSettingsBlacklist] = useState("");
 
   // External Resources Queries
   const fetchExts = useServerFn(listExternalResources);
@@ -121,6 +135,38 @@ function LinkingPage() {
   const { data: linkAnalytics, refetch: refetchAnalytics } = useQuery({
     queryKey: ["admin-link-analytics"],
     queryFn: () => fetchAnalytics(),
+  });
+
+  // AI suggestions Queries
+  const fetchSuggestions = useServerFn(listLinkSuggestions);
+  const approveSg = useServerFn(updateSuggestionStatus);
+  const bulkSg = useServerFn(bulkUpdateSuggestions);
+  const rebuildLinks = useServerFn(rebuildAllInternalLinks);
+  const { data: suggestions, refetch: refetchSuggestions } = useQuery({
+    queryKey: ["admin-link-suggestions"],
+    queryFn: () => fetchSuggestions(),
+  });
+
+  // Settings Queries
+  const fetchSettings = useServerFn(getLinkingSettings);
+  const saveSetting = useServerFn(updateLinkingSetting);
+  const { data: settingsData, refetch: refetchSettings } = useQuery({
+    queryKey: ["admin-linking-settings"],
+    queryFn: async () => {
+      const res = await fetchSettings();
+      setSettingsAutoEnabled(!!res.auto_linking_enabled);
+      setSettingsMaxLinks(Number(res.max_links_per_page ?? 5));
+      setSettingsWhitelist(JSON.stringify(res.whitelist_paths ?? [], null, 2));
+      setSettingsBlacklist(JSON.stringify(res.blacklist_paths ?? [], null, 2));
+      return res;
+    },
+  });
+
+  // Page Health Queries
+  const fetchHealth = useServerFn(calculatePageHealthScores);
+  const { data: healthReport, refetch: refetchHealth } = useQuery({
+    queryKey: ["admin-seo-health"],
+    queryFn: () => fetchHealth(),
   });
 
   // External Resource Handlers
@@ -217,26 +263,32 @@ function LinkingPage() {
       </header>
 
       {/* Tabs */}
-      <div className="flex border-b border-border/60">
-        {(["internal", "external", "broken", "404", "analytics"] as const).map((tab) => (
+      <div className="flex border-b border-border/60 overflow-x-auto flex-nowrap shrink-0">
+        {(["internal", "suggestions", "health", "external", "broken", "404", "analytics", "settings"] as const).map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2.5 text-sm font-semibold capitalize border-b-2 transition-all ${
+            className={`px-4 py-2.5 text-sm font-semibold capitalize border-b-2 transition-all whitespace-nowrap ${
               activeTab === tab
                 ? "border-primary text-primary"
                 : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
             {tab === "internal"
-              ? "Anchor Mappings (Internal)"
-              : tab === "broken"
-                ? "Broken Links"
-                : tab === "404"
-                  ? "404 Monitor"
-                  : tab === "analytics"
-                    ? "Link Clicks"
-                    : "External Resources"}
+              ? "Anchor Mappings"
+              : tab === "suggestions"
+                ? "AI Suggestions"
+                : tab === "health"
+                  ? "SEO Health Report"
+                  : tab === "broken"
+                    ? "Broken Links"
+                    : tab === "404"
+                      ? "404 Monitor"
+                      : tab === "analytics"
+                        ? "Link Clicks"
+                        : tab === "settings"
+                          ? "Linking Settings"
+                          : "External Resources"}
           </button>
         ))}
       </div>
@@ -561,6 +613,347 @@ function LinkingPage() {
               },
             ]}
           />
+        </div>
+      )}
+
+      {/* AI Link Suggestions Tab */}
+      {activeTab === "suggestions" && (
+        <div className="space-y-4">
+          <div className="flex justify-between items-center flex-wrap gap-4">
+            <div>
+              <h2 className="text-lg font-semibold flex items-center gap-2">
+                <Brain className="h-5 w-5 text-primary" />
+                AI-Powered Link Suggestions
+              </h2>
+              <p className="text-xs text-muted-foreground">Approve or reject automated contextual link suggestions discovered across pages.</p>
+            </div>
+            <Button
+              onClick={async () => {
+                setRebuilding(true);
+                toast.info("AI is analyzing all pages. This may take up to a minute...");
+                try {
+                  const res = await rebuildLinks();
+                  toast.success(`Completed. Analyzed ${res.processed} pages.`);
+                  refetchSuggestions();
+                  refetchHealth();
+                } catch (e: any) {
+                  toast.error(e.message);
+                } finally {
+                  setRebuilding(false);
+                }
+              }}
+              disabled={rebuilding}
+              className="bg-gradient-primary"
+            >
+              <RotateCcw className="h-4 w-4 mr-2" />
+              {rebuilding ? "Analyzing..." : "Rebuild AI Suggestions"}
+            </Button>
+          </div>
+
+          <DataTable<any>
+            rows={(suggestions ?? []) as any}
+            search
+            searchFields={["source_path", "target_path", "keyword"]}
+            bulkActions={[
+              {
+                label: "Approve Selected",
+                onRun: async (ids) => {
+                  try {
+                    await bulkSg({ data: { ids: ids as string[], status: "approved" } });
+                    toast.success("Suggestions approved");
+                    refetchSuggestions();
+                    refetchHealth();
+                  } catch (e: any) {
+                    toast.error(e.message);
+                  }
+                },
+              },
+              {
+                label: "Reject Selected",
+                destructive: true,
+                onRun: async (ids) => {
+                  try {
+                    await bulkSg({ data: { ids: ids as string[], status: "rejected" } });
+                    toast.success("Suggestions rejected");
+                    refetchSuggestions();
+                    refetchHealth();
+                  } catch (e: any) {
+                    toast.error(e.message);
+                  }
+                },
+              },
+            ]}
+            columns={[
+              {
+                key: "source",
+                header: "Source Page",
+                cell: (row) => <code className="text-xs">{row.source_path}</code>,
+                sortBy: (row) => row.source_path,
+              },
+              {
+                key: "target",
+                header: "Suggested Destination",
+                cell: (row) => <code className="text-xs text-primary">{row.target_path}</code>,
+                sortBy: (row) => row.target_path,
+              },
+              {
+                key: "keyword",
+                header: "Anchor Keyword",
+                cell: (row) => <span className="font-semibold">"{row.keyword}"</span>,
+              },
+              {
+                key: "type",
+                header: "Anchor Type",
+                cell: (row) => <span className="text-xs px-2 py-0.5 bg-surface-elevated rounded border border-border">{row.anchor_type}</span>,
+              },
+              {
+                key: "score",
+                header: "AI Score",
+                cell: (row) => <span className="font-mono font-bold text-xs">{(row.score * 100).toFixed(0)}%</span>,
+                sortBy: (row) => row.score,
+              },
+              {
+                key: "status",
+                header: "Status",
+                cell: (row) => (
+                  <span
+                    className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
+                      row.status === "approved"
+                        ? "bg-success/15 text-success"
+                        : row.status === "rejected"
+                          ? "bg-destructive/15 text-destructive"
+                          : "bg-warning/15 text-warning"
+                    }`}
+                  >
+                    {row.status}
+                  </span>
+                ),
+              },
+            ]}
+            actions={(row) => (
+              <div className="flex gap-1 justify-end">
+                {row.status !== "approved" && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="h-7 px-2 text-success hover:bg-success/10 border-success/30"
+                    onClick={async () => {
+                      try {
+                        await approveSg({ data: { id: row.id, status: "approved" } });
+                        toast.success("Approved");
+                        refetchSuggestions();
+                        refetchHealth();
+                      } catch (e: any) {
+                        toast.error(e.message);
+                      }
+                    }}
+                  >
+                    <Check className="h-3.5 w-3.5" />
+                  </Button>
+                )}
+                {row.status !== "rejected" && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="h-7 px-2 text-destructive hover:bg-destructive/10 border-destructive/30"
+                    onClick={async () => {
+                      try {
+                        await approveSg({ data: { id: row.id, status: "rejected" } });
+                        toast.success("Rejected");
+                        refetchSuggestions();
+                        refetchHealth();
+                      } catch (e: any) {
+                        toast.error(e.message);
+                      }
+                    }}
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </Button>
+                )}
+              </div>
+            )}
+          />
+        </div>
+      )}
+
+      {/* SEO Health Tab */}
+      {activeTab === "health" && (
+        <div className="space-y-4">
+          <div className="flex justify-between items-center">
+            <div>
+              <h2 className="text-lg font-semibold flex items-center gap-2">
+                <HeartPulse className="h-5 w-5 text-success" />
+                SEO Linking Health Scorecard
+              </h2>
+              <p className="text-xs text-muted-foreground">Scans your link graph to calculate absolute page-level health ratings and flag critical orphans.</p>
+            </div>
+            <Button variant="outline" onClick={() => refetchHealth()}>
+              <RotateCcw className="h-4 w-4 mr-2" /> Recompute Scores
+            </Button>
+          </div>
+
+          <DataTable<any>
+            rows={(healthReport ?? []) as any}
+            search
+            searchFields={["path", "label"]}
+            columns={[
+              {
+                key: "path",
+                header: "Page Title & URL",
+                cell: (row) => (
+                  <div>
+                    <span className="font-semibold block text-sm">{row.label}</span>
+                    <code className="text-[10px] text-muted-foreground">{row.path}</code>
+                  </div>
+                ),
+                sortBy: (row) => row.label,
+              },
+              {
+                key: "score",
+                header: "SEO Score",
+                cell: (row) => (
+                  <span
+                    className={`inline-flex items-center rounded px-2.5 py-1 text-sm font-bold border ${
+                      row.score >= 80
+                        ? "bg-success/10 text-success border-success/30"
+                        : row.score >= 50
+                          ? "bg-warning/10 text-warning border-warning/30"
+                          : "bg-destructive/10 text-destructive border-destructive/30"
+                    }`}
+                  >
+                    {row.score} / 100
+                  </span>
+                ),
+                sortBy: (row) => row.score,
+              },
+              {
+                key: "links",
+                header: "Links (In / Out)",
+                cell: (row) => (
+                  <span className="font-mono text-sm font-medium">
+                    {row.inboundCount} in / {row.outboundCount} out
+                  </span>
+                ),
+              },
+              {
+                key: "broken",
+                header: "Broken",
+                cell: (row) => (
+                  <span className={`font-mono text-sm ${row.brokenCount > 0 ? "text-destructive font-bold" : "text-muted-foreground"}`}>
+                    {row.brokenCount}
+                  </span>
+                ),
+              },
+              {
+                key: "orphan",
+                header: "Orphan Status",
+                cell: (row) => (
+                  <span
+                    className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ${
+                      row.isOrphan ? "bg-destructive/15 text-destructive" : "bg-success/15 text-success"
+                    }`}
+                  >
+                    {row.isOrphan ? "Orphan" : "Healthy"}
+                  </span>
+                ),
+              },
+              {
+                key: "depth",
+                header: "Link Depth",
+                cell: (row) => <span className="font-mono text-xs">{row.depth}</span>,
+              },
+              {
+                key: "recommendation",
+                header: "Actionable Recommendations",
+                cell: (row) => (
+                  <ul className="text-xs text-muted-foreground space-y-1 list-disc pl-4 max-w-sm">
+                    {row.recommendations.map((rec: string, index: number) => (
+                      <li key={index}>{rec}</li>
+                    ))}
+                  </ul>
+                ),
+              },
+            ]}
+          />
+        </div>
+      )}
+
+      {/* Linking Settings Tab */}
+      {activeTab === "settings" && (
+        <div className="max-w-2xl space-y-6">
+          <Card className="p-6 border-border/60 bg-surface/20 space-y-6">
+            <h2 className="text-lg font-semibold flex items-center gap-2 border-b border-border pb-3">
+              <Settings className="h-5 w-5 text-primary" />
+              SEO Internal Linking Configuration
+            </h2>
+
+            <div className="space-y-4">
+              <div className="flex items-center justify-between border-b border-border/40 pb-3">
+                <div>
+                  <h3 className="text-sm font-semibold">Enable Automated AI Suggestions</h3>
+                  <p className="text-xs text-muted-foreground">Scans newly published documents and posts automatically.</p>
+                </div>
+                <input
+                  type="checkbox"
+                  className="h-4 w-4 rounded border-border bg-surface text-primary outline-none"
+                  checked={settingsAutoEnabled}
+                  onChange={(e) => setSettingsAutoEnabled(e.target.checked)}
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <h3 className="text-sm font-semibold">Maximum Internal Links Per Page</h3>
+                <p className="text-xs text-muted-foreground">Cap suggested links injected into content to prevent search engine over-linking penalties.</p>
+                <Input
+                  type="number"
+                  min={1}
+                  max={20}
+                  className="max-w-[120px]"
+                  value={settingsMaxLinks}
+                  onChange={(e) => setSettingsMaxLinks(Number(e.target.value))}
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <h3 className="text-sm font-semibold font-display">Path Whitelist (JSON Array)</h3>
+                <p className="text-xs text-muted-foreground">Only suggest links referencing or starting with these target routes.</p>
+                <textarea
+                  className="w-full min-h-[80px] rounded-md border border-border bg-surface px-3 py-2 text-xs font-mono outline-none focus:border-primary"
+                  value={settingsWhitelist}
+                  onChange={(e) => setSettingsWhitelist(e.target.value)}
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <h3 className="text-sm font-semibold font-display">Path Blacklist (JSON Array)</h3>
+                <p className="text-xs text-muted-foreground">Never link to or generate recommendations from these paths.</p>
+                <textarea
+                  className="w-full min-h-[80px] rounded-md border border-border bg-surface px-3 py-2 text-xs font-mono outline-none focus:border-primary"
+                  value={settingsBlacklist}
+                  onChange={(e) => setSettingsBlacklist(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-2 border-t border-border pt-4">
+              <Button
+                onClick={async () => {
+                  try {
+                    await saveSetting({ data: { key: "auto_linking_enabled", value: settingsAutoEnabled } });
+                    await saveSetting({ data: { key: "max_links_per_page", value: settingsMaxLinks } });
+                    await saveSetting({ data: { key: "whitelist_paths", value: JSON.parse(settingsWhitelist) } });
+                    await saveSetting({ data: { key: "blacklist_paths", value: JSON.parse(settingsBlacklist) } });
+                    toast.success("SEO Configurations saved successfully");
+                    refetchSettings();
+                  } catch (e: any) {
+                    toast.error(`Invalid JSON or save failed: ${e.message}`);
+                  }
+                }}
+              >
+                Save Configuration
+              </Button>
+            </div>
+          </Card>
         </div>
       )}
 

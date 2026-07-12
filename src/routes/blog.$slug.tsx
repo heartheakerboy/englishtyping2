@@ -8,7 +8,7 @@ import { getPostBySlug } from "@/lib/blog.functions";
 import { Header } from "@/components/Header";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { RelatedContentWidget } from "@/components/seo/RelatedContentWidget";
-import { getActiveAnchorTexts } from "@/lib/linking-system.functions";
+import { getActiveAnchorTexts, getApprovedSuggestionsForPage } from "@/lib/linking-system.functions";
 import { injectInternalLinks } from "@/lib/linking.utils";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -60,12 +60,24 @@ function PostPage() {
     queryFn: () => getAnchors(),
   });
 
+  const { data: suggestions } = useQuery({
+    queryKey: ["approved-linking-suggestions", `/blog/${slug}`],
+    queryFn: () => useServerFn(getApprovedSuggestionsForPage)({ data: { path: `/blog/${slug}` } }),
+  });
+
   const html = useMemo(() => {
     if (!data?.body_markdown) return "";
     const raw = marked.parse(data.body_markdown, { async: false }) as string;
     const sanitized = typeof window === "undefined" ? raw : DOMPurify.sanitize(raw);
-    return injectInternalLinks(sanitized, (anchors as any) ?? []);
-  }, [data?.body_markdown, anchors]);
+    
+    // Combine manual anchors and approved AI suggestions
+    const combined = [
+      ...((anchors as any) ?? []).map((a: any) => ({ keyword: a.keyword, target_url: a.target_url })),
+      ...((suggestions as any) ?? []).map((s: any) => ({ keyword: s.keyword, target_url: s.target_path })),
+    ];
+    
+    return injectInternalLinks(sanitized, combined);
+  }, [data?.body_markdown, anchors, suggestions]);
 
   return (
     <div className="min-h-screen">
