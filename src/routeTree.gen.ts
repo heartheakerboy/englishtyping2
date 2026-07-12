@@ -30,6 +30,7 @@ import { Route as UUsernameRouteImport } from './routes/u.$username'
 import { Route as TypingTestSlugRouteImport } from './routes/typing-test.$slug'
 import { Route as TestSlugRouteImport } from './routes/test.$slug'
 import { Route as TemplatesSlugRouteImport } from './routes/templates.$slug'
+import { Route as SitemapLangRouteImport } from './routes/sitemap.$lang'
 import { Route as RaceCodeRouteImport } from './routes/race.$code'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as GamesZombieTypingRouteImport } from './routes/games.zombie-typing'
@@ -194,6 +195,11 @@ const TemplatesSlugRoute = TemplatesSlugRouteImport.update({
   id: '/templates/$slug',
   path: '/templates/$slug',
   getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapLangRoute = SitemapLangRouteImport.update({
+  id: '/$lang',
+  path: '/$lang',
+  getParentRoute: () => SitemapRoute,
 } as any)
 const RaceCodeRoute = RaceCodeRouteImport.update({
   id: '/$code',
@@ -533,7 +539,7 @@ export interface FileRoutesByFullPath {
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
   '/race': typeof RaceRouteWithChildren
-  '/sitemap': typeof SitemapRoute
+  '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
@@ -557,6 +563,7 @@ export interface FileRoutesByFullPath {
   '/games/zombie-typing': typeof GamesZombieTypingRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/race/$code': typeof RaceCodeRoute
+  '/sitemap/$lang': typeof SitemapLangRoute
   '/templates/$slug': typeof TemplatesSlugRoute
   '/test/$slug': typeof TestSlugRoute
   '/typing-test/$slug': typeof TypingTestSlugRoute
@@ -613,7 +620,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRouteWithChildren
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
-  '/sitemap': typeof SitemapRoute
+  '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -634,6 +641,7 @@ export interface FileRoutesByTo {
   '/games/zombie-typing': typeof GamesZombieTypingRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/race/$code': typeof RaceCodeRoute
+  '/sitemap/$lang': typeof SitemapLangRoute
   '/templates/$slug': typeof TemplatesSlugRoute
   '/test/$slug': typeof TestSlugRoute
   '/typing-test/$slug': typeof TypingTestSlugRoute
@@ -694,7 +702,7 @@ export interface FileRoutesById {
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
   '/race': typeof RaceRouteWithChildren
-  '/sitemap': typeof SitemapRoute
+  '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
@@ -718,6 +726,7 @@ export interface FileRoutesById {
   '/games/zombie-typing': typeof GamesZombieTypingRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/race/$code': typeof RaceCodeRoute
+  '/sitemap/$lang': typeof SitemapLangRoute
   '/templates/$slug': typeof TemplatesSlugRoute
   '/test/$slug': typeof TestSlugRoute
   '/typing-test/$slug': typeof TypingTestSlugRoute
@@ -802,6 +811,7 @@ export interface FileRouteTypes {
     | '/games/zombie-typing'
     | '/legal/$slug'
     | '/race/$code'
+    | '/sitemap/$lang'
     | '/templates/$slug'
     | '/test/$slug'
     | '/typing-test/$slug'
@@ -879,6 +889,7 @@ export interface FileRouteTypes {
     | '/games/zombie-typing'
     | '/legal/$slug'
     | '/race/$code'
+    | '/sitemap/$lang'
     | '/templates/$slug'
     | '/test/$slug'
     | '/typing-test/$slug'
@@ -962,6 +973,7 @@ export interface FileRouteTypes {
     | '/games/zombie-typing'
     | '/legal/$slug'
     | '/race/$code'
+    | '/sitemap/$lang'
     | '/templates/$slug'
     | '/test/$slug'
     | '/typing-test/$slug'
@@ -1022,7 +1034,7 @@ export interface RootRouteChildren {
   LeaderboardRoute: typeof LeaderboardRoute
   LessonsRoute: typeof LessonsRoute
   RaceRoute: typeof RaceRouteWithChildren
-  SitemapRoute: typeof SitemapRoute
+  SitemapRoute: typeof SitemapRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TournamentsRoute: typeof TournamentsRoute
   TypingTestRoute: typeof TypingTestRouteWithChildren
@@ -1183,6 +1195,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/templates/$slug'
       preLoaderRoute: typeof TemplatesSlugRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/sitemap/$lang': {
+      id: '/sitemap/$lang'
+      path: '/$lang'
+      fullPath: '/sitemap/$lang'
+      preLoaderRoute: typeof SitemapLangRouteImport
+      parentRoute: typeof SitemapRoute
     }
     '/race/$code': {
       id: '/race/$code'
@@ -1778,6 +1797,17 @@ const RaceRouteChildren: RaceRouteChildren = {
 
 const RaceRouteWithChildren = RaceRoute._addFileChildren(RaceRouteChildren)
 
+interface SitemapRouteChildren {
+  SitemapLangRoute: typeof SitemapLangRoute
+}
+
+const SitemapRouteChildren: SitemapRouteChildren = {
+  SitemapLangRoute: SitemapLangRoute,
+}
+
+const SitemapRouteWithChildren =
+  SitemapRoute._addFileChildren(SitemapRouteChildren)
+
 interface TypingTestRouteChildren {
   TypingTestSlugRoute: typeof TypingTestSlugRoute
   TypingTestIndexRoute: typeof TypingTestIndexRoute
@@ -1801,7 +1831,7 @@ const rootRouteChildren: RootRouteChildren = {
   LeaderboardRoute: LeaderboardRoute,
   LessonsRoute: LessonsRoute,
   RaceRoute: RaceRouteWithChildren,
-  SitemapRoute: SitemapRoute,
+  SitemapRoute: SitemapRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TournamentsRoute: TournamentsRoute,
   TypingTestRoute: TypingTestRouteWithChildren,
