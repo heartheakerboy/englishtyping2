@@ -86,6 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "google-site-verification", content: "kHRehjzXkf-vr8y7HpQiB5uzuDXDSfosncplUBi_dRs" },
       { name: "theme-color", content: "#0a0a0f", media: "(prefers-color-scheme: dark)" },
       { name: "theme-color", content: "#ffffff", media: "(prefers-color-scheme: light)" },
       { title: "English Typing Test — Measure your typing speed" },
