@@ -11,6 +11,15 @@ import { GameLeaderboard } from "@/components/games/GameLeaderboard";
 import { useGameAudio } from "@/components/games/useGameAudio";
 import { pickWord } from "@/lib/game-words";
 import { supabase } from "@/integrations/supabase/client";
+import { Zap, Keyboard } from "lucide-react";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { SmartLink } from "@/components/ui/SmartLink";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/games/falling-words")({
   head: () => ({
@@ -39,7 +48,8 @@ function FallingWordsPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main className="mx-auto w-full max-w-5xl px-4 py-8 md:px-6 md:py-10">
-        <h1 className="font-display text-3xl font-semibold md:text-4xl">Falling Words</h1>
+        <Breadcrumbs />
+        <h1 className="font-display text-3xl font-semibold md:text-4xl mt-4">Falling Words</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Type before they hit the floor. Speed ramps every wave.
         </p>
@@ -47,6 +57,116 @@ function FallingWordsPage() {
           <Game />
           <GameLeaderboard slug={SLUG} />
         </div>
+
+        {/* Informational Guide & FAQs */}
+        <section className="mt-16 border-t border-border/40 pt-12 max-w-4xl space-y-12">
+          {/* Guide content */}
+          <div className="space-y-6">
+            <h2 className="font-display text-2xl font-bold tracking-tight">Falling Words: Master Touch Typing Under Real-Time Pressure</h2>
+            
+            <p className="text-muted-foreground leading-relaxed">
+              If you want to transition from slow, conscious typing to rapid, sub-conscious touch typing, 
+              <strong> Falling Words</strong> is the ultimate training ground. This arcade-style game drops words from the 
+              top of your screen at accelerating velocities, forcing you to type them before they touch the ground. 
+              By shifting your focus to the falling targets, your brain builds automated reflex pathways—commonly called 
+              muscle memory. You no longer have time to look at your fingers; instead, your eyes feed the visual spelling 
+              directly to your hands.
+            </p>
+
+            <p className="text-muted-foreground leading-relaxed">
+              Before jumping into intensive arcade sprints, we recommend checking your current speed and accuracy on the 
+              <SmartLink href="/typing-test" className="text-primary hover:underline font-semibold font-display">standard online typing test</SmartLink> to 
+              set a performance baseline. This helps you track how many WPM you gain through gamified practice.
+            </p>
+
+            <div className="grid gap-6 md:grid-cols-2 mt-8">
+              <div className="space-y-3">
+                <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-primary">
+                  <Zap className="h-5 w-5" />
+                  Visual Tracking & Automaticity
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  In Falling Words, words fall down vertical tracks. This trains your eyes to remain fixed on the screen, 
+                  breaking the bad habit of looking down at your keyboard. As waves progress, spawn intervals decrease and 
+                  speeds increase. This pressure forces your fingers to type familiar letter sequences automatically, bypassing 
+                  cognitive hesitation.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-success">
+                  <Keyboard className="h-5 w-5" />
+                  Tactical Typing Strategies
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  To achieve high scores on the global leaderboards, focus on target prioritization. Always target the lowest 
+                  words first, as they represent the most immediate threat. If a word starts with the same letters you've already 
+                  typed, type the spacebar to reset your input and clear the correct target. Maintain a steady, calm breathing 
+                  pace to prevent typo panic.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-muted-foreground leading-relaxed">
+              If you find yourself struggling with specific key groupings, step away from the arcade and isolate row patterns 
+              in the <SmartLink href="/games/trainer" className="text-primary hover:underline font-semibold">interactive keyboard trainer</SmartLink> or 
+              test your raw cognitive sequencing under strict color recall constraints in the <SmartLink href="/games/memory" className="text-primary hover:underline font-semibold">visual recall memory drill</SmartLink>. 
+              Furthermore, you can measure physical motor responses on the <SmartLink href="/games/reaction" className="text-primary hover:underline">reflex reaction test</SmartLink>, 
+              or challenge physical mashing limits on the <SmartLink href="/games/cps" className="text-primary hover:underline">clicks per second test</SmartLink> and 
+              the <SmartLink href="/games/spacebar" className="text-primary hover:underline">spacebar speed check</SmartLink>.
+            </p>
+
+            <p className="text-muted-foreground leading-relaxed">
+              To check how your raw character counts translate into standard WPM speeds, use our 
+              <SmartLink href="/calculators/wpm" className="text-primary hover:underline font-semibold font-display">WPM converter tool</SmartLink> to 
+              keep a precise log of your learning progress. Explore our full catalog of games in the 
+              <SmartLink href="/games" className="text-primary hover:underline font-semibold font-display">arcade typing games directory</SmartLink> to 
+              diversify your daily practice routine.
+            </p>
+          </div>
+
+          {/* FAQs */}
+          <div className="space-y-6">
+            <h2 className="font-display text-xl font-bold tracking-tight">Frequently Asked Questions</h2>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  How does Falling Words help with touch typing?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Touch typing requires typing without looking at the keyboard. Falling Words forces your eyes to track targets on the screen under a time limit, which quickly overrides the urge to look down at your hands.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  Is it better to type fast or focus on accuracy in this game?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Accuracy is vital. Missed keystrokes break your combo multiplier and delay your firing time. Typing at a steady, accurate pace is much more effective for high scores than typing in erratic bursts.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  How do I reset my current typed word in the game?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  If you make a typo or want to target a different word, simply hit the Spacebar. This clears your input buffer and allows you to start typing a new target immediately.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  Can I choose the difficulty level in Falling Words?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Yes, the game offers Easy, Medium, and Hard difficulty configurations on the start panel. Easy grants 5 lives and slower speeds, while Hard reduces your lives to 2 and accelerates word spawning.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </section>
       </main>
     </div>
   );
