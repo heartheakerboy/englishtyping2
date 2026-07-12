@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
@@ -6,6 +6,10 @@ import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { getPostBySlug } from "@/lib/blog.functions";
 import { Header } from "@/components/Header";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { RelatedContentWidget } from "@/components/seo/RelatedContentWidget";
+import { getActiveAnchorTexts } from "@/lib/linking-system.functions";
+import { injectInternalLinks } from "@/lib/linking.utils";
 
 export const Route = createFileRoute("/blog/$slug")({
   component: PostPage,
@@ -44,34 +48,37 @@ export const Route = createFileRoute("/blog/$slug")({
 function PostPage() {
   const { slug } = Route.useParams();
   const fn = useServerFn(getPostBySlug);
+  const getAnchors = useServerFn(getActiveAnchorTexts);
+
   const { data, isLoading } = useQuery({
     queryKey: ["blog-post", slug],
     queryFn: () => fn({ data: { slug } }),
   });
 
+  const { data: anchors } = useQuery({
+    queryKey: ["active-anchor-texts"],
+    queryFn: () => getAnchors(),
+  });
+
   const html = useMemo(() => {
     if (!data?.body_markdown) return "";
     const raw = marked.parse(data.body_markdown, { async: false }) as string;
-    if (typeof window === "undefined") return raw;
-    return DOMPurify.sanitize(raw);
-  }, [data?.body_markdown]);
+    const sanitized = typeof window === "undefined" ? raw : DOMPurify.sanitize(raw);
+    return injectInternalLinks(sanitized, (anchors as any) ?? []);
+  }, [data?.body_markdown, anchors]);
 
   return (
     <div className="min-h-screen">
       <Header />
       <main className="mx-auto max-w-3xl px-4 py-10">
-        <nav className="mb-6 text-xs text-muted-foreground">
-          <Link to="/blog" className="hover:text-foreground">
-            Blog
-          </Link>{" "}
-          / <span className="text-foreground">{slug}</span>
-        </nav>
-        {isLoading && <div className="text-sm text-muted-foreground">Loading…</div>}
+        <Breadcrumbs />
+        
+        {isLoading && <div className="text-sm text-muted-foreground mt-4">Loading…</div>}
         {!isLoading && !data && (
-          <div className="text-sm text-muted-foreground">Post not found.</div>
+          <div className="text-sm text-muted-foreground mt-4">Post not found.</div>
         )}
         {data && (
-          <article>
+          <article className="mt-4">
             <header className="mb-6">
               <div className="text-xs uppercase tracking-wider text-muted-foreground">
                 {data.published_at ? new Date(data.published_at).toLocaleDateString() : ""}
@@ -111,6 +118,8 @@ function PostPage() {
             />
           </article>
         )}
+
+        <RelatedContentWidget />
       </main>
     </div>
   );
