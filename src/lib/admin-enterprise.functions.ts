@@ -976,3 +976,74 @@ export const markPaymentRefunded = createServerFn({ method: "POST" })
     await audit(context.userId, "refund", "payments", data.id, null, null);
     return { ok: true };
   });
+
+// ───────────────────── Visitor Banners ─────────────────────
+const VisitorBannerInput = z.object({
+  id: z.string().uuid().optional(),
+  title: z.string().min(1).max(200),
+  description: z.string().min(1).max(2000),
+  primary_btn_text: z.string().min(1).max(80).default("🚀 Create Free Account"),
+  primary_btn_action: z.string().min(1).max(200).default("signup"),
+  secondary_btn_text: z.string().min(1).max(80).default("Learn More"),
+  secondary_btn_href: z.string().max(500).nullable().optional(),
+  colors: z.any().optional(),
+  image_url: z.string().max(500).nullable().optional(),
+  icon_url: z.string().max(500).nullable().optional(),
+  starts_at: z.string().nullable().optional(),
+  ends_at: z.string().nullable().optional(),
+  is_active: z.boolean().default(true),
+  target_audience: z.string().max(20).default("guests"),
+  display_pages: z.string().max(200).default("all"),
+});
+
+export const listVisitorBanners = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data } = await (supabaseAdmin as any)
+      .from("visitor_announcements")
+      .select("*")
+      .order("created_at", { ascending: false });
+    return (data ?? []) as any[];
+  });
+
+export const upsertVisitorBanner = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: z.input<typeof VisitorBannerInput>) => VisitorBannerInput.parse(d))
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error, data: row } = data.id
+      ? await (supabaseAdmin as any).from("visitor_announcements").update(data).eq("id", data.id).select().single()
+      : await (supabaseAdmin as any).from("visitor_announcements").insert(data).select().single();
+    if (error) throw new Error(error.message);
+    await audit(context.userId, data.id ? "update" : "create", "visitor_announcements", row.id, null, null);
+    return { ok: true, id: row.id };
+  });
+
+export const deleteVisitorBanner = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    await (supabaseAdmin as any).from("visitor_announcements").delete().eq("id", data.id);
+    await audit(context.userId, "delete", "visitor_announcements", data.id, null, null);
+    return { ok: true };
+  });
+
+export const getActiveVisitorBanner = createServerFn({ method: "GET" }).handler(async () => {
+  const sb = publicClient();
+  const now = new Date().toISOString();
+  const { data } = await (sb as any)
+    .from("visitor_announcements")
+    .select("*")
+    .eq("is_active", true)
+    .order("created_at", { ascending: false });
+  const row = (data ?? []).find(
+    (a: any) => (!a.starts_at || a.starts_at <= now) && (!a.ends_at || a.ends_at >= now),
+  );
+  return row ?? null;
+});
+

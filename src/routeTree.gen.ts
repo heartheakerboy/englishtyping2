@@ -54,6 +54,7 @@ import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authentic
 import { Route as AuthenticatedTemplatesMyRouteImport } from './routes/_authenticated/templates.my'
 import { Route as AuthenticatedTemplatesFavoritesRouteImport } from './routes/_authenticated/templates.favorites'
 import { Route as AuthenticatedBuilderNewRouteImport } from './routes/_authenticated/builder.new'
+import { Route as AuthenticatedAdminVisitorBannersRouteImport } from './routes/_authenticated/admin.visitor-banners'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedAdminTextsRouteImport } from './routes/_authenticated/admin.texts'
 import { Route as AuthenticatedAdminTemplatesRouteImport } from './routes/_authenticated/admin.templates'
@@ -316,6 +317,12 @@ const AuthenticatedBuilderNewRoute = AuthenticatedBuilderNewRouteImport.update({
   path: '/new',
   getParentRoute: () => AuthenticatedBuilderRoute,
 } as any)
+const AuthenticatedAdminVisitorBannersRoute =
+  AuthenticatedAdminVisitorBannersRouteImport.update({
+    id: '/visitor-banners',
+    path: '/visitor-banners',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
   id: '/users',
   path: '/users',
@@ -575,6 +582,7 @@ export interface FileRoutesByFullPath {
   '/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/admin/visitor-banners': typeof AuthenticatedAdminVisitorBannersRoute
   '/builder/new': typeof AuthenticatedBuilderNewRoute
   '/templates/favorites': typeof AuthenticatedTemplatesFavoritesRoute
   '/templates/my': typeof AuthenticatedTemplatesMyRoute
@@ -649,6 +657,7 @@ export interface FileRoutesByTo {
   '/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/admin/visitor-banners': typeof AuthenticatedAdminVisitorBannersRoute
   '/builder/new': typeof AuthenticatedBuilderNewRoute
   '/templates/favorites': typeof AuthenticatedTemplatesFavoritesRoute
   '/templates/my': typeof AuthenticatedTemplatesMyRoute
@@ -730,6 +739,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/_authenticated/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/_authenticated/admin/visitor-banners': typeof AuthenticatedAdminVisitorBannersRoute
   '/_authenticated/builder/new': typeof AuthenticatedBuilderNewRoute
   '/_authenticated/templates/favorites': typeof AuthenticatedTemplatesFavoritesRoute
   '/_authenticated/templates/my': typeof AuthenticatedTemplatesMyRoute
@@ -811,6 +821,7 @@ export interface FileRouteTypes {
     | '/admin/templates'
     | '/admin/texts'
     | '/admin/users'
+    | '/admin/visitor-banners'
     | '/builder/new'
     | '/templates/favorites'
     | '/templates/my'
@@ -885,6 +896,7 @@ export interface FileRouteTypes {
     | '/admin/templates'
     | '/admin/texts'
     | '/admin/users'
+    | '/admin/visitor-banners'
     | '/builder/new'
     | '/templates/favorites'
     | '/templates/my'
@@ -965,6 +977,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/templates'
     | '/_authenticated/admin/texts'
     | '/_authenticated/admin/users'
+    | '/_authenticated/admin/visitor-banners'
     | '/_authenticated/builder/new'
     | '/_authenticated/templates/favorites'
     | '/_authenticated/templates/my'
@@ -1313,6 +1326,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBuilderNewRouteImport
       parentRoute: typeof AuthenticatedBuilderRoute
     }
+    '/_authenticated/admin/visitor-banners': {
+      id: '/_authenticated/admin/visitor-banners'
+      path: '/visitor-banners'
+      fullPath: '/admin/visitor-banners'
+      preLoaderRoute: typeof AuthenticatedAdminVisitorBannersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/users': {
       id: '/_authenticated/admin/users'
       path: '/users'
@@ -1578,6 +1598,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminTemplatesRoute: typeof AuthenticatedAdminTemplatesRoute
   AuthenticatedAdminTextsRoute: typeof AuthenticatedAdminTextsRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
+  AuthenticatedAdminVisitorBannersRoute: typeof AuthenticatedAdminVisitorBannersRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
@@ -1612,6 +1633,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminTemplatesRoute: AuthenticatedAdminTemplatesRoute,
   AuthenticatedAdminTextsRoute: AuthenticatedAdminTextsRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
+  AuthenticatedAdminVisitorBannersRoute: AuthenticatedAdminVisitorBannersRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 

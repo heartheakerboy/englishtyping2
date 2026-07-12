@@ -8,7 +8,9 @@ import {
   Scripts,
   useLocation,
 } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode, lazy, Suspense } from "react";
+
+const VisitorAnnouncement = lazy(() => import("@/components/VisitorAnnouncement"));
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -174,6 +176,9 @@ function RootComponent() {
           <Toaster position="top-center" />
           <Analytics />
           <PageViewTracker />
+          <Suspense fallback={null}>
+            <VisitorAnnouncement />
+          </Suspense>
         </LanguageProvider>
       </ThemeProvider>
     </QueryClientProvider>

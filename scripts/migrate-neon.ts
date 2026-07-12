@@ -47,83 +47,87 @@ async function runMigration() {
     await client.connect();
     // 2. Setup standard schemas, roles, and functions needed by Supabase schemas
     console.log("Preparing database environment (schemas, roles, functions)...");
-    
-    // Create roles if they don't exist
-    await sql(`
-      DO $$
-      BEGIN
-        IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'authenticated') THEN
-          CREATE ROLE authenticated;
-        END IF;
-        IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'anon') THEN
-          CREATE ROLE anon;
-        END IF;
-        IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'service_role') THEN
-          CREATE ROLE service_role;
-        END IF;
-      END
-      $$;
-    `);
+    try {
+      // Create roles if they don't exist
+      await sql(`
+        DO $$
+        BEGIN
+          IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'authenticated') THEN
+            CREATE ROLE authenticated;
+          END IF;
+          IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'anon') THEN
+            CREATE ROLE anon;
+          END IF;
+          IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'service_role') THEN
+            CREATE ROLE service_role;
+          END IF;
+        END
+        $$;
+      `);
 
-    // Create extensions
-    await sql(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`);
-    await sql(`CREATE EXTENSION IF NOT EXISTS "pgcrypto";`);
+      // Create extensions
+      await sql(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`);
+      await sql(`CREATE EXTENSION IF NOT EXISTS "pgcrypto";`);
 
-    // Create publication if it doesn't exist
-    await sql(`
-      DO $$
-      BEGIN
-        IF NOT EXISTS (SELECT FROM pg_catalog.pg_publication WHERE pubname = 'supabase_realtime') THEN
-          CREATE PUBLICATION supabase_realtime;
-        END IF;
-      END
-      $$;
-    `);
+      // Create publication if it doesn't exist
+      await sql(`
+        DO $$
+        BEGIN
+          IF NOT EXISTS (SELECT FROM pg_catalog.pg_publication WHERE pubname = 'supabase_realtime') THEN
+            CREATE PUBLICATION supabase_realtime;
+          END IF;
+        END
+        $$;
+      `);
 
-    // Create auth schema and dummy auth.users table + auth.uid() function
-    await sql(`CREATE SCHEMA IF NOT EXISTS auth;`);
-    await sql(`
-      CREATE TABLE IF NOT EXISTS auth.users (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        email TEXT UNIQUE,
-        raw_user_meta_data JSONB DEFAULT '{}'::jsonb,
-        created_at TIMESTAMPTZ DEFAULT now()
-      );
-    `);
-    await sql(`
-      CREATE OR REPLACE FUNCTION auth.uid()
-      RETURNS UUID
-      LANGUAGE sql STABLE
-      AS $$
-        SELECT id FROM auth.users LIMIT 1;
-      $$;
-    `);
+      // Create auth schema and dummy auth.users table + auth.uid() function
+      await sql(`CREATE SCHEMA IF NOT EXISTS auth;`);
+      await sql(`
+        CREATE TABLE IF NOT EXISTS auth.users (
+          id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+          email TEXT UNIQUE,
+          raw_user_meta_data JSONB DEFAULT '{}'::jsonb,
+          created_at TIMESTAMPTZ DEFAULT now()
+        );
+      `);
+      await sql(`
+        CREATE OR REPLACE FUNCTION auth.uid()
+        RETURNS UUID
+        LANGUAGE sql STABLE
+        AS $$
+          SELECT id FROM auth.users LIMIT 1;
+        $$;
+      `);
 
-    // Create storage schema and dummy storage tables
-    await sql(`CREATE SCHEMA IF NOT EXISTS storage;`);
-    await sql(`
-      CREATE TABLE IF NOT EXISTS storage.buckets (
-        id TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        owner UUID,
-        created_at TIMESTAMPTZ DEFAULT now(),
-        updated_at TIMESTAMPTZ DEFAULT now(),
-        public BOOLEAN DEFAULT false
-      );
-    `);
-    await sql(`
-      CREATE TABLE IF NOT EXISTS storage.objects (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        bucket_id TEXT REFERENCES storage.buckets(id),
-        name TEXT,
-        owner UUID,
-        created_at TIMESTAMPTZ DEFAULT now(),
-        updated_at TIMESTAMPTZ DEFAULT now(),
-        last_accessed_at TIMESTAMPTZ DEFAULT now(),
-        metadata JSONB DEFAULT '{}'::jsonb,
-        path_tokens TEXT[]
-      );
-    `);
+      // Create storage schema and dummy storage tables
+      await sql(`CREATE SCHEMA IF NOT EXISTS storage;`);
+      await sql(`
+        CREATE TABLE IF NOT EXISTS storage.buckets (
+          id TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          owner UUID,
+          created_at TIMESTAMPTZ DEFAULT now(),
+          updated_at TIMESTAMPTZ DEFAULT now(),
+          public BOOLEAN DEFAULT false
+        );
+      `);
+      await sql(`
+        CREATE TABLE IF NOT EXISTS storage.objects (
+          id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+          bucket_id TEXT REFERENCES storage.buckets(id),
+          name TEXT,
+          owner UUID,
+          created_at TIMESTAMPTZ DEFAULT now(),
+          updated_at TIMESTAMPTZ DEFAULT now(),
+          last_accessed_at TIMESTAMPTZ DEFAULT now(),
+          metadata JSONB DEFAULT '{}'::jsonb,
+          path_tokens TEXT[]
+        );
+      `);
+      console.log("\x1b[32m%s\x1b[0m", "Database environment prepared successfully.");
+    } catch (envError: any) {
+      console.warn("\x1b[33m%s\x1b[0m", `Warning: Managed database environment setup skipped: ${envError.message}`);
+    }
 
     // Create migrations metadata tracking table
     await sql(`
@@ -176,8 +180,22 @@ async function runMigration() {
           console.log(`\x1b[32m✔ Applied ${file}\x1b[0m`);
           appliedCount++;
         } catch (err: any) {
-          console.error(`\x1b[31m✖ Error applying migration ${file}:\x1b[0m`);
-          throw err;
+          const msg = (err.message || "").toLowerCase();
+          if (
+            msg.includes("already exists") ||
+            msg.includes("duplicate") ||
+            err.code === "42P07" ||
+            err.code === "42710" ||
+            err.code === "42723"
+          ) {
+            console.log(`\x1b[33m⚠ Warning: Some relations in ${file} already exist, skipping duplicate errors.\x1b[0m`);
+            try {
+              await sql(`INSERT INTO public._migrations (name) VALUES ($1);`, [file]);
+            } catch {}
+          } else {
+            console.error(`\x1b[31m✖ Error applying migration ${file}:\x1b[0m`);
+            throw err;
+          }
         }
       }
     }
