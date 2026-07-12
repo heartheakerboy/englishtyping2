@@ -260,24 +260,14 @@ export default function VisitorAnnouncement() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-2 mt-2 w-full">
+          <div className="flex items-center mt-2 w-full">
             <Button
               onClick={handlePrimaryClick}
               style={primaryBtnStyle}
-              className="flex-1 font-medium shadow-lg hover:brightness-110 active:scale-[0.98] transition-all py-2.5 rounded-xl border-0 h-auto text-sm"
+              className="w-full font-medium shadow-lg hover:brightness-110 active:scale-[0.98] transition-all py-2.5 rounded-xl border-0 h-auto text-sm"
             >
               {banner.primary_btn_text}
             </Button>
-            {banner.secondary_btn_text && (
-              <Button
-                variant="outline"
-                onClick={handleSecondaryClick}
-                style={secondaryBtnStyle}
-                className="flex-1 font-medium hover:bg-white/5 active:scale-[0.98] transition-all py-2.5 rounded-xl h-auto text-sm border"
-              >
-                {banner.secondary_btn_text}
-              </Button>
-            )}
           </div>
         </motion.div>
       </div>

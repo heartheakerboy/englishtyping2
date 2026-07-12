@@ -272,30 +272,7 @@ function VisitorBannersPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-3">
-                <label className="block text-sm font-medium">Secondary Button Text</label>
-                <Input
-                  value={editorState.secondary_btn_text}
-                  onChange={(e) =>
-                    setEditorState({ ...editorState, secondary_btn_text: e.target.value })
-                  }
-                />
-              </div>
-              <div className="space-y-3">
-                <label className="block text-sm font-medium">Secondary Button URL</label>
-                <Input
-                  placeholder="https://... (optional)"
-                  value={editorState.secondary_btn_href ?? ""}
-                  onChange={(e) =>
-                    setEditorState({
-                      ...editorState,
-                      secondary_btn_href: e.target.value || null,
-                    })
-                  }
-                />
-              </div>
-            </div>
+
 
             {/* Media Uploads */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-border pt-4">
@@ -570,39 +547,7 @@ function VisitorBannersPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="block text-xs text-muted-foreground">
-                    Secondary Button Background
-                  </label>
-                  <Input
-                    className="h-8 text-xs py-1"
-                    placeholder="Hex or RGBA"
-                    value={editorState.colors.secondaryBtnBg}
-                    onChange={(e) =>
-                      setEditorState({
-                        ...editorState,
-                        colors: { ...editorState.colors, secondaryBtnBg: e.target.value },
-                      })
-                    }
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="block text-xs text-muted-foreground">
-                    Secondary Button Text
-                  </label>
-                  <Input
-                    className="h-8 text-xs py-1"
-                    value={editorState.colors.secondaryBtnText}
-                    onChange={(e) =>
-                      setEditorState({
-                        ...editorState,
-                        colors: { ...editorState.colors, secondaryBtnText: e.target.value },
-                      })
-                    }
-                  />
-                </div>
-              </div>
+
             </div>
 
             <div className="flex items-center gap-4 border-t border-border pt-4 text-sm">
@@ -700,23 +645,14 @@ function VisitorBannersPage() {
                 </div>
 
                 {/* Buttons */}
-                <div className="flex items-center gap-2 mt-1">
+                <div className="flex items-center mt-1">
                   <Button
                     onClick={triggerPreviewConfetti}
                     style={primaryBtnStyle}
-                    className="flex-1 font-medium hover:brightness-110 active:scale-[0.98] transition-all py-1.5 h-auto text-xs rounded-lg border-0"
+                    className="w-full font-medium hover:brightness-110 active:scale-[0.98] transition-all py-1.5 h-auto text-xs rounded-lg border-0"
                   >
                     {editorState.primary_btn_text}
                   </Button>
-                  {editorState.secondary_btn_text && (
-                    <Button
-                      variant="outline"
-                      style={secondaryBtnStyle}
-                      className="flex-1 font-medium hover:bg-white/5 active:scale-[0.98] transition-all py-1.5 h-auto text-xs rounded-lg border"
-                    >
-                      {editorState.secondary_btn_text}
-                    </Button>
-                  )}
                 </div>
               </div>
             </div>
