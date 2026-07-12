@@ -12,6 +12,15 @@ import { GameLeaderboard } from "@/components/games/GameLeaderboard";
 import { useGameAudio } from "@/components/games/useGameAudio";
 import { pickBossWord, pickWord } from "@/lib/game-words";
 import { supabase } from "@/integrations/supabase/client";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { SmartLink } from "@/components/ui/SmartLink";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Skull, Shield, Trophy } from "lucide-react";
 import zombieImg from "@/assets/games/zombie.png";
 import zombieBossImg from "@/assets/games/zombie-boss.png";
 
@@ -51,7 +60,8 @@ function ZombiePage() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main className="mx-auto w-full max-w-5xl px-4 py-8 md:px-6 md:py-10">
-        <h1 className="font-display text-3xl font-semibold md:text-4xl">Zombie Typing</h1>
+        <Breadcrumbs />
+        <h1 className="font-display text-3xl font-semibold md:text-4xl mt-4">Zombie Typing</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Type words to vaporize the horde before they reach you.
         </p>
@@ -59,6 +69,112 @@ function ZombiePage() {
           <Game />
           <GameLeaderboard slug={SLUG} />
         </div>
+
+        {/* Informational Guide & FAQs */}
+        <section className="mt-16 border-t border-border/40 pt-12 max-w-4xl space-y-12">
+          {/* Guide content */}
+          <div className="space-y-6">
+            <h2 className="font-display text-2xl font-bold tracking-tight">Zombie Typing: Survive the Horde with Tactical Speed</h2>
+            
+            <p className="text-muted-foreground leading-relaxed">
+              If standard practice drills feel uninspiring, <strong>Zombie Typing</strong> turns touch typing into an 
+              action-oriented survival defense. Hordes of zombies crawl horizontally across four lanes toward your shield. 
+              Each zombie carries a word that acts as its health bar; typing the spelling correctly and pressing Spacebar 
+              vaporizes the target. This game forces you to develop rapid visual scanning, prioritize immediate threats, 
+              and build key muscle memory under pressure.
+            </p>
+
+            <p className="text-muted-foreground leading-relaxed">
+              To evaluate your baseline typing speed before facing the undead, run a 
+              <SmartLink href="/typing-test" className="text-primary hover:underline font-semibold font-display">free typing speed check</SmartLink> to 
+              measure your baseline Words Per Minute (WPM) and accuracy.
+            </p>
+
+            <div className="grid gap-6 md:grid-cols-2 mt-8">
+              <div className="space-y-3">
+                <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-rose-500">
+                  <Skull className="h-5 w-5" />
+                  Lane Prioritization & Multitasking
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Zombies spawn randomly across four tracks and walk at varying speeds. Rather than typing the first word you see, 
+                  you must tactical-prioritize: check which zombie is closest to your defensive shield (on the left) and clear it 
+                  first. Every 5 waves, a giant boss zombie spawns with a much longer, complex word, testing your accuracy limits.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-success">
+                  <Shield className="h-5 w-5" />
+                  Home Row Habits Prevent Panic
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  As the horde multiplies, panic typing causes errors, which halts your character and clears your score combo 
+                  multiplier. The key to surviving is keeping your fingers resting on the Home Row (A, S, D, F for your left hand, 
+                  and J, K, L, ; for your right). Let your fingers glide to the letters naturally without looking down.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-muted-foreground leading-relaxed">
+              If you struggle with longer terms or boss words, step away from the survival lanes and practice row drills on the 
+              <SmartLink href="/games/trainer" className="text-primary hover:underline font-semibold font-display">interactive keyboard trainer</SmartLink>, 
+              or test your cognitive recall and typing endurance on the <SmartLink href="/games/memory" className="text-primary hover:underline font-semibold">visual recall memory drill</SmartLink>. 
+              For raw reflex conditioning, try the <SmartLink href="/games/reaction" className="text-primary hover:underline">reflex reaction test</SmartLink> to 
+              minimize response delay. You can also benchmark raw physical clicking speeds using the <SmartLink href="/games/cps" className="text-primary hover:underline">clicks per second test</SmartLink> and 
+              the mashing-based <SmartLink href="/games/spacebar" className="text-primary hover:underline">spacebar speed check</SmartLink>.
+            </p>
+
+            <p className="text-muted-foreground leading-relaxed">
+              To check if your survival practice has increased your average word count, type a custom article and run your metrics 
+              through our <SmartLink href="/calculators/wpm" className="text-primary hover:underline font-semibold">WPM converter tool</SmartLink> to 
+              log your speed gains. Browse through other premium arcade games on our <SmartLink href="/games" className="text-primary hover:underline font-semibold">arcade typing games directory</SmartLink> to 
+              find your next training challenge.
+            </p>
+          </div>
+
+          {/* FAQs */}
+          <div className="space-y-6">
+            <h2 className="font-display text-xl font-bold tracking-tight">Frequently Asked Questions</h2>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  How does Zombie Typing improve visual tracking?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Unlike top-down falling words, Zombie Typing features multiple parallel horizontal lanes. This forces your eyes to scan horizontally and make rapid priority decisions, which matches real-world typing and editing tasks.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  What happens when a zombie reaches the left side?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  When a zombie reaches the left edge, your player's shield HP drops. Standard zombies deal 14 HP damage, while giant boss zombies deal 35 HP damage. If your HP drops to 0, the game is over.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  Can I change my target word mid-typing?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Yes. If you start typing a word and decide a different zombie is a more immediate threat, just type the Spacebar to clear your current input buffer. This allows you to target another word immediately.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  How do difficulty levels affect the game?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Easy starts with 130 HP, slower zombies, and shorter words. Medium starts with 100 HP, and Hard drops your starting HP to 70 while significantly accelerating zombie walking speeds and spawning frequencies.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </section>
       </main>
     </div>
   );

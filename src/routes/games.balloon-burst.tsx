@@ -12,6 +12,15 @@ import { useGameAudio } from "@/components/games/useGameAudio";
 import { pickWord } from "@/lib/game-words";
 import { supabase } from "@/integrations/supabase/client";
 import balloonImg from "@/assets/games/balloon.png";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { SmartLink } from "@/components/ui/SmartLink";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Sparkles, Gamepad2, Award } from "lucide-react";
 
 export const Route = createFileRoute("/games/balloon-burst")({
   head: () => ({
@@ -39,7 +48,8 @@ function BalloonPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main className="mx-auto w-full max-w-5xl px-4 py-8 md:px-6 md:py-10">
-        <h1 className="font-display text-3xl font-semibold md:text-4xl">Balloon Burst</h1>
+        <Breadcrumbs />
+        <h1 className="font-display text-3xl font-semibold md:text-4xl mt-4">Balloon Burst</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Pop each balloon by typing its word before it floats away.
         </p>
@@ -47,6 +57,113 @@ function BalloonPage() {
           <Game />
           <GameLeaderboard slug={SLUG} />
         </div>
+
+        {/* Informational Guide & FAQs */}
+        <section className="mt-16 border-t border-border/40 pt-12 max-w-4xl space-y-12">
+          {/* Guide content */}
+          <div className="space-y-6">
+            <h2 className="font-display text-2xl font-bold tracking-tight">Balloon Burst: Learn Keyboard Geography with Visual Sprints</h2>
+            
+            <p className="text-muted-foreground leading-relaxed">
+              If standard layout drills feel dry, <strong>Balloon Burst</strong> offers a relaxed and colorful environment 
+              to sharpen your touch typing skills. Colorful balloons carry words upward from the bottom of your screen. 
+              Your goal is to type the correct spelling and press Spacebar to pop them before they drift off the top of the 
+              screen. This game is ideal for intermediate typists who want to build spatial muscle memory and improve 
+              visual tracking without the high-pressure environment of survival defense games.
+            </p>
+
+            <p className="text-muted-foreground leading-relaxed">
+              Before starting your balloon popping practice, we recommend testing your baseline WPM and accuracy on the 
+              <SmartLink href="/typing-test" className="text-primary hover:underline font-semibold font-display">standard online typing test</SmartLink> to 
+              set a performance benchmark. This allows you to track your improvement over time.
+            </p>
+
+            <div className="grid gap-6 md:grid-cols-2 mt-8">
+              <div className="space-y-3">
+                <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-info">
+                  <Sparkles className="h-5 w-5" />
+                  Relaxed Visual Pacing & Tracking
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  In Balloon Burst, balloons ascend at moderate, steady speeds. This slower pacing allows you to practice 
+                  visual tracking—scanning the screen to find target words while keeping your hands resting on the keyboard. 
+                  This builds automaticity: mapping visual letters directly to finger movements without needing to look at your hands.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-success">
+                  <Award className="h-5 w-5" />
+                  Combo Multipliers & Bonuses
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Surviving waves rewards accuracy and consistency. Every balloon popped increases your score combo multiplier. 
+                  Additionally, hitting a combo milestone (every 5 consecutive pops) awards a +50 point bonus, encouraging 
+                  steady and accurate typing over erratic bursts.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-muted-foreground leading-relaxed">
+              If you find certain letter keys or keyboard rows challenging, take a break from the arcade and practice row-specific drills 
+              in the <SmartLink href="/games/trainer" className="text-primary hover:underline font-semibold font-display">interactive keyboard trainer</SmartLink>, 
+              or test your memory and finger coordination on the <SmartLink href="/games/memory" className="text-primary hover:underline font-semibold">visual recall memory drill</SmartLink>. 
+              For raw reflex conditioning, challenge your response time on the <SmartLink href="/games/reaction" className="text-primary hover:underline">reflex reaction test</SmartLink>, 
+              or check your finger clicking speed limits using the <SmartLink href="/games/cps" className="text-primary hover:underline">clicks per second test</SmartLink> and 
+              the mashing-based <SmartLink href="/games/spacebar" className="text-primary hover:underline">spacebar speed check</SmartLink>.
+            </p>
+
+            <p className="text-muted-foreground leading-relaxed">
+              To check if your popping drills have improved your average typing speed, calculate your characters per minute 
+              using our <SmartLink href="/calculators/wpm" className="text-primary hover:underline font-semibold">WPM converter tool</SmartLink> to 
+              keep a precise log of your learning progress. Explore our full library of interactive games in the 
+              <SmartLink href="/games" className="text-primary hover:underline font-semibold font-display">arcade typing games directory</SmartLink> to 
+              find new challenges and keep your practice sessions engaging.
+            </p>
+          </div>
+
+          {/* FAQs */}
+          <div className="space-y-6">
+            <h2 className="font-display text-xl font-bold tracking-tight">Frequently Asked Questions</h2>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  How does Balloon Burst help with key row spatial memory?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Since balloons float upward from the bottom, you have more time to read the word, plan your keystrokes, and guide your fingers. This builds muscle memory for row transitions without causing the typo panic common in faster games.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  What happens if a balloon exits the top of the screen?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  If a balloon escapes off the top of the field, it costs 1 life and resets your combo multiplier to 0. Easy difficulty starts with 7 lives, Medium starts with 5, and Hard starts with 3.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  Can I clear my current input if I type the wrong word?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Yes. If you make a mistake or want to target a different balloon, press the Spacebar. This empties your input buffer and allows you to target a new balloon immediately.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  How do difficulty settings change balloon spawning?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Easy spawns shorter words with slower float speeds. Medium introduces longer words and moderate speeds, while Hard significantly increases the ascend speed and reduces your total lives to 3.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </section>
       </main>
     </div>
   );
