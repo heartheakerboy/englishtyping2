@@ -24,7 +24,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { DataTable } from "@/components/admin/DataTable";
 import { Play, Trash2, CheckCircle2, RotateCcw, AlertTriangle, ExternalLink } from "lucide-react";
 
-export const Route = createFileRoute("/_authenticated/admin/linking" as any)({
+export const Route = createFileRoute("/_authenticated/admin/linking")({
   component: LinkingPage,
 });
 

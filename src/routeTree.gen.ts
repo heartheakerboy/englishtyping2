@@ -66,6 +66,7 @@ import { Route as AuthenticatedAdminPaymentsRouteImport } from './routes/_authen
 import { Route as AuthenticatedAdminNewsletterRouteImport } from './routes/_authenticated/admin.newsletter'
 import { Route as AuthenticatedAdminModerationRouteImport } from './routes/_authenticated/admin.moderation'
 import { Route as AuthenticatedAdminMediaRouteImport } from './routes/_authenticated/admin.media'
+import { Route as AuthenticatedAdminLinkingRouteImport } from './routes/_authenticated/admin.linking'
 import { Route as AuthenticatedAdminLegalRouteImport } from './routes/_authenticated/admin.legal'
 import { Route as AuthenticatedAdminLeaderboardsRouteImport } from './routes/_authenticated/admin.leaderboards'
 import { Route as AuthenticatedAdminLanguagesRouteImport } from './routes/_authenticated/admin.languages'
@@ -385,6 +386,12 @@ const AuthenticatedAdminMediaRoute = AuthenticatedAdminMediaRouteImport.update({
   path: '/media',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminLinkingRoute =
+  AuthenticatedAdminLinkingRouteImport.update({
+    id: '/linking',
+    path: '/linking',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminLegalRoute = AuthenticatedAdminLegalRouteImport.update({
   id: '/legal',
   path: '/legal',
@@ -571,6 +578,7 @@ export interface FileRoutesByFullPath {
   '/admin/languages': typeof AuthenticatedAdminLanguagesRoute
   '/admin/leaderboards': typeof AuthenticatedAdminLeaderboardsRoute
   '/admin/legal': typeof AuthenticatedAdminLegalRoute
+  '/admin/linking': typeof AuthenticatedAdminLinkingRoute
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/moderation': typeof AuthenticatedAdminModerationRoute
   '/admin/newsletter': typeof AuthenticatedAdminNewsletterRoute
@@ -646,6 +654,7 @@ export interface FileRoutesByTo {
   '/admin/languages': typeof AuthenticatedAdminLanguagesRoute
   '/admin/leaderboards': typeof AuthenticatedAdminLeaderboardsRoute
   '/admin/legal': typeof AuthenticatedAdminLegalRoute
+  '/admin/linking': typeof AuthenticatedAdminLinkingRoute
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/moderation': typeof AuthenticatedAdminModerationRoute
   '/admin/newsletter': typeof AuthenticatedAdminNewsletterRoute
@@ -728,6 +737,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/languages': typeof AuthenticatedAdminLanguagesRoute
   '/_authenticated/admin/leaderboards': typeof AuthenticatedAdminLeaderboardsRoute
   '/_authenticated/admin/legal': typeof AuthenticatedAdminLegalRoute
+  '/_authenticated/admin/linking': typeof AuthenticatedAdminLinkingRoute
   '/_authenticated/admin/media': typeof AuthenticatedAdminMediaRoute
   '/_authenticated/admin/moderation': typeof AuthenticatedAdminModerationRoute
   '/_authenticated/admin/newsletter': typeof AuthenticatedAdminNewsletterRoute
@@ -810,6 +820,7 @@ export interface FileRouteTypes {
     | '/admin/languages'
     | '/admin/leaderboards'
     | '/admin/legal'
+    | '/admin/linking'
     | '/admin/media'
     | '/admin/moderation'
     | '/admin/newsletter'
@@ -885,6 +896,7 @@ export interface FileRouteTypes {
     | '/admin/languages'
     | '/admin/leaderboards'
     | '/admin/legal'
+    | '/admin/linking'
     | '/admin/media'
     | '/admin/moderation'
     | '/admin/newsletter'
@@ -966,6 +978,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/languages'
     | '/_authenticated/admin/leaderboards'
     | '/_authenticated/admin/legal'
+    | '/_authenticated/admin/linking'
     | '/_authenticated/admin/media'
     | '/_authenticated/admin/moderation'
     | '/_authenticated/admin/newsletter'
@@ -1410,6 +1423,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminMediaRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/linking': {
+      id: '/_authenticated/admin/linking'
+      path: '/linking'
+      fullPath: '/admin/linking'
+      preLoaderRoute: typeof AuthenticatedAdminLinkingRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/legal': {
       id: '/_authenticated/admin/legal'
       path: '/legal'
@@ -1587,6 +1607,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminLanguagesRoute: typeof AuthenticatedAdminLanguagesRoute
   AuthenticatedAdminLeaderboardsRoute: typeof AuthenticatedAdminLeaderboardsRoute
   AuthenticatedAdminLegalRoute: typeof AuthenticatedAdminLegalRoute
+  AuthenticatedAdminLinkingRoute: typeof AuthenticatedAdminLinkingRoute
   AuthenticatedAdminMediaRoute: typeof AuthenticatedAdminMediaRoute
   AuthenticatedAdminModerationRoute: typeof AuthenticatedAdminModerationRoute
   AuthenticatedAdminNewsletterRoute: typeof AuthenticatedAdminNewsletterRoute
@@ -1622,6 +1643,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminLanguagesRoute: AuthenticatedAdminLanguagesRoute,
   AuthenticatedAdminLeaderboardsRoute: AuthenticatedAdminLeaderboardsRoute,
   AuthenticatedAdminLegalRoute: AuthenticatedAdminLegalRoute,
+  AuthenticatedAdminLinkingRoute: AuthenticatedAdminLinkingRoute,
   AuthenticatedAdminMediaRoute: AuthenticatedAdminMediaRoute,
   AuthenticatedAdminModerationRoute: AuthenticatedAdminModerationRoute,
   AuthenticatedAdminNewsletterRoute: AuthenticatedAdminNewsletterRoute,
