@@ -26,8 +26,6 @@ const TESTS_LIST: RelatedItem[] = [
 ];
 
 const TOOLS_LIST: RelatedItem[] = [
-  { label: "WPM Calculator", to: "/calculators/wpm", desc: "Translate key clicks to Words Per Minute" },
-  { label: "CPM Calculator", to: "/calculators/cpm", desc: "Calculate characters per minute" },
   { label: "Typing Leaderboards", to: "/leaderboard", desc: "Compete with global typists" },
 ];
 

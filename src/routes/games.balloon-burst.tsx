@@ -114,9 +114,7 @@ function BalloonPage() {
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
-              To check if your popping drills have improved your average typing speed, calculate your characters per minute 
-              using our <SmartLink href="/calculators/wpm" className="text-primary hover:underline font-semibold">WPM converter tool</SmartLink> to 
-              keep a precise log of your learning progress. Explore our full library of interactive games in the 
+              Explore our full library of interactive games in the 
               <SmartLink href="/games" className="text-primary hover:underline font-semibold font-display">arcade typing games directory</SmartLink> to 
               find new challenges and keep your practice sessions engaging.
             </p>

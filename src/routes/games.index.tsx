@@ -196,8 +196,7 @@ function GamesIndex() {
             <p className="text-muted-foreground leading-relaxed">
               For targeted finger drill configurations, the <SmartLink href="/games/trainer" className="text-primary hover:underline font-semibold">virtual keyboard typing trainer</SmartLink> lets 
               you isolate specific key rows. Combining these drills with cognitive sequencing in the <SmartLink href="/games/memory" className="text-primary hover:underline font-semibold">color pattern recall trainer</SmartLink> will 
-              keep your brain engaged and prevent typing fatigue. To convert characters to standard metrics, run your counts through our 
-              <SmartLink href="/calculators/wpm" className="text-primary hover:underline font-semibold">words per minute calculator</SmartLink> to audit accuracy conversions.
+              keep your brain engaged and prevent typing fatigue.
             </p>
           </div>
 

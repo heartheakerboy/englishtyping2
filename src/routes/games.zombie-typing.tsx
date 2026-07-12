@@ -126,9 +126,7 @@ function ZombiePage() {
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
-              To check if your survival practice has increased your average word count, type a custom article and run your metrics 
-              through our <SmartLink href="/calculators/wpm" className="text-primary hover:underline font-semibold">WPM converter tool</SmartLink> to 
-              log your speed gains. Browse through other premium arcade games on our <SmartLink href="/games" className="text-primary hover:underline font-semibold">arcade typing games directory</SmartLink> to 
+              Browse through other premium arcade games on our <SmartLink href="/games" className="text-primary hover:underline font-semibold font-display">arcade typing games directory</SmartLink> to 
               find your next training challenge.
             </p>
           </div>

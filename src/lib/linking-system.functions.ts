@@ -476,8 +476,6 @@ export async function getAllAvailablePages() {
     { label: "Type Racer (Race Bots)", path: "/games/race-bots" },
     { label: "Leaderboards", path: "/leaderboard" },
     { label: "Blog Hub", path: "/blog" },
-    { label: "WPM Calculator", path: "/calculators/wpm" },
-    { label: "CPM Calculator", path: "/calculators/cpm" },
   ];
 
   // Fetch blog posts

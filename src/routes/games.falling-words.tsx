@@ -117,9 +117,7 @@ function FallingWordsPage() {
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
-              To check how your raw character counts translate into standard WPM speeds, use our 
-              <SmartLink href="/calculators/wpm" className="text-primary hover:underline font-semibold font-display">WPM converter tool</SmartLink> to 
-              keep a precise log of your learning progress. Explore our full catalog of games in the 
+              Explore our full catalog of games in the 
               <SmartLink href="/games" className="text-primary hover:underline font-semibold font-display">arcade typing games directory</SmartLink> to 
               diversify your daily practice routine.
             </p>
