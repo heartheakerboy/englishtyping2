@@ -21,6 +21,27 @@ export const getMyProfile = createServerFn({ method: "GET" })
       .eq("id", context.userId)
       .maybeSingle();
     if (error) throw new Error(error.message);
+
+    // If welcome email has not been sent yet, send it and update flag
+    if (data && !(data as any).welcome_email_sent) {
+      try {
+        const { data: authData } = await context.supabase.auth.getUser();
+        if (authData?.user?.email) {
+          const { sendWelcomeEmail } = await import("./resend.server");
+          const sent = await sendWelcomeEmail(authData.user.email, data.display_name || "");
+          if (sent) {
+            await context.supabase
+              .from("profiles")
+              .update({ welcome_email_sent: true } as any)
+              .eq("id", context.userId);
+            (data as any).welcome_email_sent = true;
+          }
+        }
+      } catch (err) {
+        console.error("[WelcomeEmail] Failed to process welcome email:", err);
+      }
+    }
+
     return data;
   });
 
