@@ -136,6 +136,11 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
         <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9602707669345879"
+          crossOrigin="anonymous"
+        />
+        <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('ett-theme');var c=document.documentElement.classList;if(t==='light'){c.remove('dark')}else{c.add('dark')}var m=document.cookie.match(/(?:^|;\\s*)lang=([^;]+)/);var l=(m&&m[1])||localStorage.getItem('ett-lang')||(navigator.language||'en').split('-')[0];var s=['en','hi','mr','gu','ta','te','kn','ml','pa','bn','ur','ar','es','fr','de','pt','ru','ja','ko','zh'];if(s.indexOf(l)<0)l='en';document.documentElement.lang=l;document.documentElement.dir=(l==='ar'||l==='ur')?'rtl':'ltr';}catch(e){}})();`,
           }}
