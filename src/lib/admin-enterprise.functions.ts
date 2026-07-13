@@ -48,18 +48,9 @@ export const getDashboardMetrics = createServerFn({ method: "GET" })
 
     const [pv1, pv7, pv30, u1, u7, u30, t1, t7, t30, rev30, sub, pvAll, devBreak] =
       await Promise.all([
-        supabaseAdmin
-          .from("page_views")
-          .select("id", { count: "exact", head: true })
-          .gte("created_at", since(1)),
-        supabaseAdmin
-          .from("page_views")
-          .select("id", { count: "exact", head: true })
-          .gte("created_at", since(7)),
-        supabaseAdmin
-          .from("page_views")
-          .select("id", { count: "exact", head: true })
-          .gte("created_at", since(30)),
+        supabaseAdmin.rpc("get_unique_visitors_count", { _since: since(1) }),
+        supabaseAdmin.rpc("get_unique_visitors_count", { _since: since(7) }),
+        supabaseAdmin.rpc("get_unique_visitors_count", { _since: since(30) }),
         supabaseAdmin
           .from("profiles")
           .select("id", { count: "exact", head: true })
@@ -91,17 +82,26 @@ export const getDashboardMetrics = createServerFn({ method: "GET" })
         supabaseAdmin.from("subscriptions").select("plan, status"),
         supabaseAdmin
           .from("page_views")
-          .select("created_at, device, browser, country")
+          .select("created_at, device, browser, country, session_id, id")
           .gte("created_at", since(30))
           .limit(20000),
         supabaseAdmin.from("page_views").select("device").gte("created_at", since(7)).limit(20000),
       ]);
 
-    // daily series: pageviews & signups (last 30 days)
+    // daily series: unique visitors & signups (last 30 days)
     const dayKey = (iso: string) => iso.slice(0, 10);
     const dailyPV: Record<string, number> = {};
+    const dailySessions: Record<string, Set<string>> = {};
     (pvAll.data ?? []).forEach((r: any) => {
-      dailyPV[dayKey(r.created_at)] = (dailyPV[dayKey(r.created_at)] ?? 0) + 1;
+      const day = dayKey(r.created_at);
+      const sid = r.session_id || r.id;
+      if (!dailySessions[day]) {
+        dailySessions[day] = new Set();
+      }
+      if (!dailySessions[day].has(sid)) {
+        dailySessions[day].add(sid);
+        dailyPV[day] = (dailyPV[day] ?? 0) + 1;
+      }
     });
     const signups = await supabaseAdmin
       .from("profiles")
@@ -153,7 +153,11 @@ export const getDashboardMetrics = createServerFn({ method: "GET" })
     ).length;
 
     return {
-      pageViews: { d1: pv1.count ?? 0, d7: pv7.count ?? 0, d30: pv30.count ?? 0 },
+      pageViews: {
+        d1: Number(pv1.data ?? 0),
+        d7: Number(pv7.data ?? 0),
+        d30: Number(pv30.data ?? 0),
+      },
       signups: { d1: u1.count ?? 0, d7: u7.count ?? 0, d30: u30.count ?? 0 },
       tests: { d1: t1.count ?? 0, d7: t7.count ?? 0, d30: t30.count ?? 0 },
       revenueCents,
