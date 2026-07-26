@@ -110,7 +110,8 @@ export function getI18n() {
       partialBundledLanguages: true,
       backend: { loadPath: "/locales/{{lng}}/{{ns}}.json" },
       detection: {
-        order: ["cookie", "localStorage", "navigator", "htmlTag"],
+        order: ["querystring", "cookie", "localStorage", "navigator", "htmlTag"],
+        lookupQuerystring: "lang",
         lookupCookie: "lang",
         lookupLocalStorage: LANGUAGE_STORAGE_KEY,
         caches: isBrowser ? ["localStorage", "cookie"] : [],

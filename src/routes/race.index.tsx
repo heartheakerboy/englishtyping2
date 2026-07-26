@@ -17,10 +17,17 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { LANGUAGE_LIST } from "@/lib/languages";
-import { Zap, Users, Plus, LogIn, Crown, Loader2, Globe, Lock } from "lucide-react";
+import { Zap, Users, Plus, LogIn, Crown, Loader2, Globe, Lock, Swords, Trophy, Car, Target, HelpCircle, Keyboard, Gamepad2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { SmartLink } from "@/components/ui/SmartLink";
 
 export const Route = createFileRoute("/race/")({
   head: () => ({
@@ -277,6 +284,120 @@ function RacePage() {
             </div>
           </Card>
         </div>
+
+        {/* Informational Guide & FAQs */}
+        <section className="mt-16 border-t border-border/40 pt-12 max-w-4xl space-y-12">
+          {/* Guide content */}
+          <div className="space-y-6">
+            <h2 className="font-display text-2xl font-bold tracking-tight flex items-center gap-2">
+              <Swords className="h-6 w-6 text-primary" />
+              Mastering Multiplayer Typing Races: How to Play, Compete, and Win
+            </h2>
+            
+            <p className="text-muted-foreground leading-relaxed">
+              Multiplayer Typing Races offer the ultimate test of a typist's speed and composure. While practicing solo on our standard 
+              {" "}<SmartLink href="/test" className="text-primary hover:underline font-semibold">free typing test</SmartLink> helps 
+              build baseline raw speed, racing against real-world opponents introduces competitive adrenaline. Under real-time pressure, 
+              your brain is forced to rely on pure muscle memory rather than conscious key placement—a process known as 
+              {" "}<strong>automaticity</strong>.
+            </p>
+            
+            <div className="grid gap-6 md:grid-cols-2 mt-8">
+              <div className="space-y-3 p-5 rounded-xl border border-border/50 bg-surface/20 backdrop-blur">
+                <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-primary">
+                  <Gamepad2 className="h-5 w-5" />
+                  Different Ways to Race
+                </h3>
+                <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed list-disc list-inside">
+                  <li>
+                    <strong>Quick Match:</strong> Join a public match instantly. Play <span className="text-foreground font-medium">Casual</span> to race risk-free, or <span className="text-foreground font-medium">Ranked</span> to climb the competitive ladder.
+                  </li>
+                  <li>
+                    <strong>Join by Code:</strong> Paste a 6-letter room code from your friends or colleagues to join their private lobby.
+                  </li>
+                  <li>
+                    <strong>Create Room:</strong> Configure a custom room with custom visibility (public/private), custom word count, and multiple language choices.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-3 p-5 rounded-xl border border-border/50 bg-surface/20 backdrop-blur">
+                <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-success">
+                  <Target className="h-5 w-5" />
+                  Core Rules & Mechanics
+                </h3>
+                <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed list-disc list-inside">
+                  <li>
+                    <strong>The Countdown:</strong> A 5-second countdown starts once the lobby launches. Align your fingers and prepare!
+                  </li>
+                  <li>
+                    <strong>Real-time Progress:</strong> Watch your vehicle speed across the track as you type, tracking other players in real-time.
+                  </li>
+                  <li>
+                    <strong>Error Penalty:</strong> Mistyped words are highlighted in red. You must correct errors before you can advance further.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-muted-foreground leading-relaxed">
+              To build the skill required for multiplayer victory, we recommend a balanced practice regimen. 
+              Start by learning correct finger placement through our interactive {" "}
+              <SmartLink href="/lessons" className="text-primary hover:underline font-semibold">typing lessons</SmartLink>. 
+              If you aren't quite ready to face human opponents, you can hone your skills in our {" "}
+              <SmartLink href="/games/race-bots" className="text-primary hover:underline font-semibold">typing race against bots</SmartLink>. 
+              For fun and quick reflexes, browse our full collection of arcade typing games in the {" "}
+              <SmartLink href="/games" className="text-primary hover:underline font-semibold">typing games lobby</SmartLink>, including 
+              favorites like {" "}<SmartLink href="/games/falling-words" className="text-primary hover:underline">Falling Words</SmartLink> and {" "}
+              <SmartLink href="/games/zombie-typing" className="text-primary hover:underline">Zombie Typing</SmartLink>.
+            </p>
+          </div>
+
+          {/* FAQs */}
+          <div className="space-y-6">
+            <h2 className="font-display text-xl font-bold tracking-tight flex items-center gap-2">
+              <HelpCircle className="h-5 w-5 text-primary" />
+              Frequently Asked Questions
+            </h2>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  Do I need an account to play multiplayer races?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  While you can view public rooms as a spectator, you must be logged in to participate as a racer or create your own custom rooms. This keeps the environment fair, competitive, and tracks your progress. You can easily sign up via the <SmartLink href="/auth" className="text-primary hover:underline">Authentication page</SmartLink>.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  Can I play typing races in other languages besides English?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Yes! When you create a custom room, you can select from a wide range of supported languages (including English, Spanish, German, French, Hindi, and more). Lobbies filter and match based on the chosen language.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  How does Ranked matchmaking work?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Ranked matchmaking pairs you against players of similar typing speeds (WPM). Wins and high-placement finishes will increase your competitive rating and place you higher on the global <SmartLink href="/leaderboard" className="text-primary hover:underline">Leaderboard</SmartLink>, while low finishes will lower it.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary">
+                  Why does accuracy matter more than speed in race rooms?
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  Because of the strict error correction rule, every typo completely stops your vehicle until it is corrected. High raw speed with low accuracy results in jerky movement and lower overall WPM. Focus on typing smoothly at 96%+ accuracy to maximize your efficiency.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </section>
       </main>
     </div>
   );

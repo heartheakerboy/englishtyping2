@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { listPublishedPosts } from "@/lib/blog.functions";
 import { Card } from "@/components/ui/card";
 import { Header } from "@/components/Header";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const Route = createFileRoute("/blog")({
   component: BlogIndex,
@@ -42,7 +43,8 @@ function BlogIndex() {
     <div className="min-h-screen">
       <Header />
       <main className="mx-auto max-w-5xl px-4 py-10">
-        <h1 className="font-display text-4xl font-bold tracking-tight">Blog</h1>
+        <Breadcrumbs />
+        <h1 className="font-display text-4xl font-bold tracking-tight mt-4">Blog</h1>
         <p className="mt-2 text-muted-foreground">Typing tips, product updates and deep dives.</p>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {isLoading && <div className="text-sm text-muted-foreground">Loading…</div>}

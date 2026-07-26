@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TypingTestRouteImport } from './routes/typing-test'
 import { Route as TournamentsRouteImport } from './routes/tournaments'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as RaceRouteImport } from './routes/race'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
@@ -29,6 +30,7 @@ import { Route as UUsernameRouteImport } from './routes/u.$username'
 import { Route as TypingTestSlugRouteImport } from './routes/typing-test.$slug'
 import { Route as TestSlugRouteImport } from './routes/test.$slug'
 import { Route as TemplatesSlugRouteImport } from './routes/templates.$slug'
+import { Route as SitemapLangRouteImport } from './routes/sitemap.$lang'
 import { Route as RaceCodeRouteImport } from './routes/race.$code'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as GamesZombieTypingRouteImport } from './routes/games.zombie-typing'
@@ -54,6 +56,7 @@ import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authentic
 import { Route as AuthenticatedTemplatesMyRouteImport } from './routes/_authenticated/templates.my'
 import { Route as AuthenticatedTemplatesFavoritesRouteImport } from './routes/_authenticated/templates.favorites'
 import { Route as AuthenticatedBuilderNewRouteImport } from './routes/_authenticated/builder.new'
+import { Route as AuthenticatedAdminVisitorBannersRouteImport } from './routes/_authenticated/admin.visitor-banners'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedAdminTextsRouteImport } from './routes/_authenticated/admin.texts'
 import { Route as AuthenticatedAdminTemplatesRouteImport } from './routes/_authenticated/admin.templates'
@@ -66,6 +69,7 @@ import { Route as AuthenticatedAdminPaymentsRouteImport } from './routes/_authen
 import { Route as AuthenticatedAdminNewsletterRouteImport } from './routes/_authenticated/admin.newsletter'
 import { Route as AuthenticatedAdminModerationRouteImport } from './routes/_authenticated/admin.moderation'
 import { Route as AuthenticatedAdminMediaRouteImport } from './routes/_authenticated/admin.media'
+import { Route as AuthenticatedAdminLinkingRouteImport } from './routes/_authenticated/admin.linking'
 import { Route as AuthenticatedAdminLegalRouteImport } from './routes/_authenticated/admin.legal'
 import { Route as AuthenticatedAdminLeaderboardsRouteImport } from './routes/_authenticated/admin.leaderboards'
 import { Route as AuthenticatedAdminLanguagesRouteImport } from './routes/_authenticated/admin.languages'
@@ -102,6 +106,11 @@ const TournamentsRoute = TournamentsRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RaceRoute = RaceRouteImport.update({
@@ -187,6 +196,11 @@ const TemplatesSlugRoute = TemplatesSlugRouteImport.update({
   id: '/templates/$slug',
   path: '/templates/$slug',
   getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapLangRoute = SitemapLangRouteImport.update({
+  id: '/$lang',
+  path: '/$lang',
+  getParentRoute: () => SitemapRoute,
 } as any)
 const RaceCodeRoute = RaceCodeRouteImport.update({
   id: '/$code',
@@ -317,6 +331,12 @@ const AuthenticatedBuilderNewRoute = AuthenticatedBuilderNewRouteImport.update({
   path: '/new',
   getParentRoute: () => AuthenticatedBuilderRoute,
 } as any)
+const AuthenticatedAdminVisitorBannersRoute =
+  AuthenticatedAdminVisitorBannersRouteImport.update({
+    id: '/visitor-banners',
+    path: '/visitor-banners',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
   id: '/users',
   path: '/users',
@@ -385,6 +405,12 @@ const AuthenticatedAdminMediaRoute = AuthenticatedAdminMediaRouteImport.update({
   path: '/media',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminLinkingRoute =
+  AuthenticatedAdminLinkingRouteImport.update({
+    id: '/linking',
+    path: '/linking',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminLegalRoute = AuthenticatedAdminLegalRouteImport.update({
   id: '/legal',
   path: '/legal',
@@ -520,6 +546,7 @@ export interface FileRoutesByFullPath {
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
   '/race': typeof RaceRouteWithChildren
+  '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
@@ -543,6 +570,7 @@ export interface FileRoutesByFullPath {
   '/games/zombie-typing': typeof GamesZombieTypingRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/race/$code': typeof RaceCodeRoute
+  '/sitemap/$lang': typeof SitemapLangRoute
   '/templates/$slug': typeof TemplatesSlugRoute
   '/test/$slug': typeof TestSlugRoute
   '/typing-test/$slug': typeof TypingTestSlugRoute
@@ -571,6 +599,7 @@ export interface FileRoutesByFullPath {
   '/admin/languages': typeof AuthenticatedAdminLanguagesRoute
   '/admin/leaderboards': typeof AuthenticatedAdminLeaderboardsRoute
   '/admin/legal': typeof AuthenticatedAdminLegalRoute
+  '/admin/linking': typeof AuthenticatedAdminLinkingRoute
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/moderation': typeof AuthenticatedAdminModerationRoute
   '/admin/newsletter': typeof AuthenticatedAdminNewsletterRoute
@@ -583,6 +612,7 @@ export interface FileRoutesByFullPath {
   '/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/admin/visitor-banners': typeof AuthenticatedAdminVisitorBannersRoute
   '/builder/new': typeof AuthenticatedBuilderNewRoute
   '/templates/favorites': typeof AuthenticatedTemplatesFavoritesRoute
   '/templates/my': typeof AuthenticatedTemplatesMyRoute
@@ -598,6 +628,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRouteWithChildren
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
+  '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -618,6 +649,7 @@ export interface FileRoutesByTo {
   '/games/zombie-typing': typeof GamesZombieTypingRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/race/$code': typeof RaceCodeRoute
+  '/sitemap/$lang': typeof SitemapLangRoute
   '/templates/$slug': typeof TemplatesSlugRoute
   '/test/$slug': typeof TestSlugRoute
   '/typing-test/$slug': typeof TypingTestSlugRoute
@@ -646,6 +678,7 @@ export interface FileRoutesByTo {
   '/admin/languages': typeof AuthenticatedAdminLanguagesRoute
   '/admin/leaderboards': typeof AuthenticatedAdminLeaderboardsRoute
   '/admin/legal': typeof AuthenticatedAdminLegalRoute
+  '/admin/linking': typeof AuthenticatedAdminLinkingRoute
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/moderation': typeof AuthenticatedAdminModerationRoute
   '/admin/newsletter': typeof AuthenticatedAdminNewsletterRoute
@@ -658,6 +691,7 @@ export interface FileRoutesByTo {
   '/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/admin/visitor-banners': typeof AuthenticatedAdminVisitorBannersRoute
   '/builder/new': typeof AuthenticatedBuilderNewRoute
   '/templates/favorites': typeof AuthenticatedTemplatesFavoritesRoute
   '/templates/my': typeof AuthenticatedTemplatesMyRoute
@@ -677,6 +711,7 @@ export interface FileRoutesById {
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
   '/race': typeof RaceRouteWithChildren
+  '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
@@ -700,6 +735,7 @@ export interface FileRoutesById {
   '/games/zombie-typing': typeof GamesZombieTypingRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/race/$code': typeof RaceCodeRoute
+  '/sitemap/$lang': typeof SitemapLangRoute
   '/templates/$slug': typeof TemplatesSlugRoute
   '/test/$slug': typeof TestSlugRoute
   '/typing-test/$slug': typeof TypingTestSlugRoute
@@ -728,6 +764,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/languages': typeof AuthenticatedAdminLanguagesRoute
   '/_authenticated/admin/leaderboards': typeof AuthenticatedAdminLeaderboardsRoute
   '/_authenticated/admin/legal': typeof AuthenticatedAdminLegalRoute
+  '/_authenticated/admin/linking': typeof AuthenticatedAdminLinkingRoute
   '/_authenticated/admin/media': typeof AuthenticatedAdminMediaRoute
   '/_authenticated/admin/moderation': typeof AuthenticatedAdminModerationRoute
   '/_authenticated/admin/newsletter': typeof AuthenticatedAdminNewsletterRoute
@@ -740,6 +777,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/_authenticated/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/_authenticated/admin/visitor-banners': typeof AuthenticatedAdminVisitorBannersRoute
   '/_authenticated/builder/new': typeof AuthenticatedBuilderNewRoute
   '/_authenticated/templates/favorites': typeof AuthenticatedTemplatesFavoritesRoute
   '/_authenticated/templates/my': typeof AuthenticatedTemplatesMyRoute
@@ -759,6 +797,7 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/lessons'
     | '/race'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/tournaments'
     | '/typing-test'
@@ -782,6 +821,7 @@ export interface FileRouteTypes {
     | '/games/zombie-typing'
     | '/legal/$slug'
     | '/race/$code'
+    | '/sitemap/$lang'
     | '/templates/$slug'
     | '/test/$slug'
     | '/typing-test/$slug'
@@ -810,6 +850,7 @@ export interface FileRouteTypes {
     | '/admin/languages'
     | '/admin/leaderboards'
     | '/admin/legal'
+    | '/admin/linking'
     | '/admin/media'
     | '/admin/moderation'
     | '/admin/newsletter'
@@ -821,6 +862,7 @@ export interface FileRouteTypes {
     | '/admin/templates'
     | '/admin/texts'
     | '/admin/users'
+    | '/admin/visitor-banners'
     | '/builder/new'
     | '/templates/favorites'
     | '/templates/my'
@@ -836,6 +878,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/leaderboard'
     | '/lessons'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/tournaments'
     | '/achievements'
@@ -856,6 +899,7 @@ export interface FileRouteTypes {
     | '/games/zombie-typing'
     | '/legal/$slug'
     | '/race/$code'
+    | '/sitemap/$lang'
     | '/templates/$slug'
     | '/test/$slug'
     | '/typing-test/$slug'
@@ -884,6 +928,7 @@ export interface FileRouteTypes {
     | '/admin/languages'
     | '/admin/leaderboards'
     | '/admin/legal'
+    | '/admin/linking'
     | '/admin/media'
     | '/admin/moderation'
     | '/admin/newsletter'
@@ -895,6 +940,7 @@ export interface FileRouteTypes {
     | '/admin/templates'
     | '/admin/texts'
     | '/admin/users'
+    | '/admin/visitor-banners'
     | '/builder/new'
     | '/templates/favorites'
     | '/templates/my'
@@ -913,6 +959,7 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/lessons'
     | '/race'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/tournaments'
     | '/typing-test'
@@ -936,6 +983,7 @@ export interface FileRouteTypes {
     | '/games/zombie-typing'
     | '/legal/$slug'
     | '/race/$code'
+    | '/sitemap/$lang'
     | '/templates/$slug'
     | '/test/$slug'
     | '/typing-test/$slug'
@@ -964,6 +1012,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/languages'
     | '/_authenticated/admin/leaderboards'
     | '/_authenticated/admin/legal'
+    | '/_authenticated/admin/linking'
     | '/_authenticated/admin/media'
     | '/_authenticated/admin/moderation'
     | '/_authenticated/admin/newsletter'
@@ -975,6 +1024,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/templates'
     | '/_authenticated/admin/texts'
     | '/_authenticated/admin/users'
+    | '/_authenticated/admin/visitor-banners'
     | '/_authenticated/builder/new'
     | '/_authenticated/templates/favorites'
     | '/_authenticated/templates/my'
@@ -994,6 +1044,7 @@ export interface RootRouteChildren {
   LeaderboardRoute: typeof LeaderboardRoute
   LessonsRoute: typeof LessonsRoute
   RaceRoute: typeof RaceRouteWithChildren
+  SitemapRoute: typeof SitemapRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TournamentsRoute: typeof TournamentsRoute
   TypingTestRoute: typeof TypingTestRouteWithChildren
@@ -1027,6 +1078,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/race': {
@@ -1147,6 +1205,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/templates/$slug'
       preLoaderRoute: typeof TemplatesSlugRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/sitemap/$lang': {
+      id: '/sitemap/$lang'
+      path: '/$lang'
+      fullPath: '/sitemap/$lang'
+      preLoaderRoute: typeof SitemapLangRouteImport
+      parentRoute: typeof SitemapRoute
     }
     '/race/$code': {
       id: '/race/$code'
@@ -1323,6 +1388,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBuilderNewRouteImport
       parentRoute: typeof AuthenticatedBuilderRoute
     }
+    '/_authenticated/admin/visitor-banners': {
+      id: '/_authenticated/admin/visitor-banners'
+      path: '/visitor-banners'
+      fullPath: '/admin/visitor-banners'
+      preLoaderRoute: typeof AuthenticatedAdminVisitorBannersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/users': {
       id: '/_authenticated/admin/users'
       path: '/users'
@@ -1405,6 +1477,13 @@ declare module '@tanstack/react-router' {
       path: '/media'
       fullPath: '/admin/media'
       preLoaderRoute: typeof AuthenticatedAdminMediaRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/linking': {
+      id: '/_authenticated/admin/linking'
+      path: '/linking'
+      fullPath: '/admin/linking'
+      preLoaderRoute: typeof AuthenticatedAdminLinkingRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
     '/_authenticated/admin/legal': {
@@ -1584,6 +1663,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminLanguagesRoute: typeof AuthenticatedAdminLanguagesRoute
   AuthenticatedAdminLeaderboardsRoute: typeof AuthenticatedAdminLeaderboardsRoute
   AuthenticatedAdminLegalRoute: typeof AuthenticatedAdminLegalRoute
+  AuthenticatedAdminLinkingRoute: typeof AuthenticatedAdminLinkingRoute
   AuthenticatedAdminMediaRoute: typeof AuthenticatedAdminMediaRoute
   AuthenticatedAdminModerationRoute: typeof AuthenticatedAdminModerationRoute
   AuthenticatedAdminNewsletterRoute: typeof AuthenticatedAdminNewsletterRoute
@@ -1595,6 +1675,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminTemplatesRoute: typeof AuthenticatedAdminTemplatesRoute
   AuthenticatedAdminTextsRoute: typeof AuthenticatedAdminTextsRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
+  AuthenticatedAdminVisitorBannersRoute: typeof AuthenticatedAdminVisitorBannersRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
@@ -1618,6 +1699,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminLanguagesRoute: AuthenticatedAdminLanguagesRoute,
   AuthenticatedAdminLeaderboardsRoute: AuthenticatedAdminLeaderboardsRoute,
   AuthenticatedAdminLegalRoute: AuthenticatedAdminLegalRoute,
+  AuthenticatedAdminLinkingRoute: AuthenticatedAdminLinkingRoute,
   AuthenticatedAdminMediaRoute: AuthenticatedAdminMediaRoute,
   AuthenticatedAdminModerationRoute: AuthenticatedAdminModerationRoute,
   AuthenticatedAdminNewsletterRoute: AuthenticatedAdminNewsletterRoute,
@@ -1630,6 +1712,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminTemplatesRoute: AuthenticatedAdminTemplatesRoute,
   AuthenticatedAdminTextsRoute: AuthenticatedAdminTextsRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
+  AuthenticatedAdminVisitorBannersRoute: AuthenticatedAdminVisitorBannersRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 
@@ -1732,6 +1815,17 @@ const RaceRouteChildren: RaceRouteChildren = {
 
 const RaceRouteWithChildren = RaceRoute._addFileChildren(RaceRouteChildren)
 
+interface SitemapRouteChildren {
+  SitemapLangRoute: typeof SitemapLangRoute
+}
+
+const SitemapRouteChildren: SitemapRouteChildren = {
+  SitemapLangRoute: SitemapLangRoute,
+}
+
+const SitemapRouteWithChildren =
+  SitemapRoute._addFileChildren(SitemapRouteChildren)
+
 interface TypingTestRouteChildren {
   TypingTestSlugRoute: typeof TypingTestSlugRoute
   TypingTestIndexRoute: typeof TypingTestIndexRoute
@@ -1755,6 +1849,7 @@ const rootRouteChildren: RootRouteChildren = {
   LeaderboardRoute: LeaderboardRoute,
   LessonsRoute: LessonsRoute,
   RaceRoute: RaceRouteWithChildren,
+  SitemapRoute: SitemapRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TournamentsRoute: TournamentsRoute,
   TypingTestRoute: TypingTestRouteWithChildren,

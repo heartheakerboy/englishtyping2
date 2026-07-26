@@ -48,18 +48,9 @@ export const getDashboardMetrics = createServerFn({ method: "GET" })
 
     const [pv1, pv7, pv30, u1, u7, u30, t1, t7, t30, rev30, sub, pvAll, devBreak] =
       await Promise.all([
-        supabaseAdmin
-          .from("page_views")
-          .select("id", { count: "exact", head: true })
-          .gte("created_at", since(1)),
-        supabaseAdmin
-          .from("page_views")
-          .select("id", { count: "exact", head: true })
-          .gte("created_at", since(7)),
-        supabaseAdmin
-          .from("page_views")
-          .select("id", { count: "exact", head: true })
-          .gte("created_at", since(30)),
+        supabaseAdmin.rpc("get_unique_visitors_count", { _since: since(1) }),
+        supabaseAdmin.rpc("get_unique_visitors_count", { _since: since(7) }),
+        supabaseAdmin.rpc("get_unique_visitors_count", { _since: since(30) }),
         supabaseAdmin
           .from("profiles")
           .select("id", { count: "exact", head: true })
@@ -91,17 +82,26 @@ export const getDashboardMetrics = createServerFn({ method: "GET" })
         supabaseAdmin.from("subscriptions").select("plan, status"),
         supabaseAdmin
           .from("page_views")
-          .select("created_at, device, browser, country")
+          .select("created_at, device, browser, country, session_id, id")
           .gte("created_at", since(30))
           .limit(20000),
         supabaseAdmin.from("page_views").select("device").gte("created_at", since(7)).limit(20000),
       ]);
 
-    // daily series: pageviews & signups (last 30 days)
+    // daily series: unique visitors & signups (last 30 days)
     const dayKey = (iso: string) => iso.slice(0, 10);
     const dailyPV: Record<string, number> = {};
+    const dailySessions: Record<string, Set<string>> = {};
     (pvAll.data ?? []).forEach((r: any) => {
-      dailyPV[dayKey(r.created_at)] = (dailyPV[dayKey(r.created_at)] ?? 0) + 1;
+      const day = dayKey(r.created_at);
+      const sid = r.session_id || r.id;
+      if (!dailySessions[day]) {
+        dailySessions[day] = new Set();
+      }
+      if (!dailySessions[day].has(sid)) {
+        dailySessions[day].add(sid);
+        dailyPV[day] = (dailyPV[day] ?? 0) + 1;
+      }
     });
     const signups = await supabaseAdmin
       .from("profiles")
@@ -153,7 +153,11 @@ export const getDashboardMetrics = createServerFn({ method: "GET" })
     ).length;
 
     return {
-      pageViews: { d1: pv1.count ?? 0, d7: pv7.count ?? 0, d30: pv30.count ?? 0 },
+      pageViews: {
+        d1: Number(pv1.data ?? 0),
+        d7: Number(pv7.data ?? 0),
+        d30: Number(pv30.data ?? 0),
+      },
       signups: { d1: u1.count ?? 0, d7: u7.count ?? 0, d30: u30.count ?? 0 },
       tests: { d1: t1.count ?? 0, d7: t7.count ?? 0, d30: t30.count ?? 0 },
       revenueCents,
@@ -976,3 +980,74 @@ export const markPaymentRefunded = createServerFn({ method: "POST" })
     await audit(context.userId, "refund", "payments", data.id, null, null);
     return { ok: true };
   });
+
+// ───────────────────── Visitor Banners ─────────────────────
+const VisitorBannerInput = z.object({
+  id: z.string().uuid().optional(),
+  title: z.string().min(1).max(200),
+  description: z.string().min(1).max(2000),
+  primary_btn_text: z.string().min(1).max(80).default("🚀 Create Free Account"),
+  primary_btn_action: z.string().min(1).max(200).default("signup"),
+  secondary_btn_text: z.string().min(1).max(80).default("Learn More"),
+  secondary_btn_href: z.string().max(500).nullable().optional(),
+  colors: z.any().optional(),
+  image_url: z.string().max(500).nullable().optional(),
+  icon_url: z.string().max(500).nullable().optional(),
+  starts_at: z.string().nullable().optional(),
+  ends_at: z.string().nullable().optional(),
+  is_active: z.boolean().default(true),
+  target_audience: z.string().max(20).default("guests"),
+  display_pages: z.string().max(200).default("all"),
+});
+
+export const listVisitorBanners = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data } = await (supabaseAdmin as any)
+      .from("visitor_announcements")
+      .select("*")
+      .order("created_at", { ascending: false });
+    return (data ?? []) as any[];
+  });
+
+export const upsertVisitorBanner = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: z.input<typeof VisitorBannerInput>) => VisitorBannerInput.parse(d))
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error, data: row } = data.id
+      ? await (supabaseAdmin as any).from("visitor_announcements").update(data).eq("id", data.id).select().single()
+      : await (supabaseAdmin as any).from("visitor_announcements").insert(data).select().single();
+    if (error) throw new Error(error.message);
+    await audit(context.userId, data.id ? "update" : "create", "visitor_announcements", row.id, null, null);
+    return { ok: true, id: row.id };
+  });
+
+export const deleteVisitorBanner = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    await (supabaseAdmin as any).from("visitor_announcements").delete().eq("id", data.id);
+    await audit(context.userId, "delete", "visitor_announcements", data.id, null, null);
+    return { ok: true };
+  });
+
+export const getActiveVisitorBanner = createServerFn({ method: "GET" }).handler(async () => {
+  const sb = publicClient();
+  const now = new Date().toISOString();
+  const { data } = await (sb as any)
+    .from("visitor_announcements")
+    .select("*")
+    .eq("is_active", true)
+    .order("created_at", { ascending: false });
+  const row = (data ?? []).find(
+    (a: any) => (!a.starts_at || a.starts_at <= now) && (!a.ends_at || a.ends_at >= now),
+  );
+  return row ?? null;
+});
+

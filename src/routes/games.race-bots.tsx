@@ -7,6 +7,13 @@ import { Car, Trophy, RefreshCw } from "lucide-react";
 import { STORIES, BOOKS, QUOTES } from "@/lib/corpus";
 import { sfx } from "@/lib/sound";
 import confetti from "canvas-confetti";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 
 export const Route = createFileRoute("/games/race-bots")({
   head: () => ({
@@ -349,6 +356,220 @@ function RaceBotsGame() {
             </div>
           </Card>
         )}
+
+        {/* Informative & SEO Section */}
+        <div className="mx-auto max-w-4xl mt-16 border-t border-border/40 pt-12 space-y-16">
+          {/* Section 1: Intro */}
+          <section className="space-y-4">
+            <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl bg-gradient-to-r from-foreground via-foreground/90 to-muted-foreground bg-clip-text text-transparent">
+              Master the Type Racer Arena: Outrun Bots and Accelerate Your WPM
+            </h2>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              Learning to type fast is a journey that moves from slow key recognition to fluid muscle automation. However, practicing in isolation can sometimes lead to stagnation. The <strong>Type Racer (Race Against Bots)</strong> game introduces a competitive edge to standard typing drills. By racing head-to-head against AI opponents in real time, you simulate the pressure of competitive environments, forcing your mind and hands to coordinate at their absolute limits.
+            </p>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              This interactive race board tracks your Words Per Minute (WPM), Characters Per Minute (CPM), and error counts live. As you speed through classic literary excerpts, quotes, and stories, you train your eyes to scan ahead and your fingers to execute precise keystroke sequences under stress. It is the perfect tool for competitive typists, students, and professionals aiming to break their typing speed plateaus.
+            </p>
+          </section>
+
+          {/* Section 2: How to Play & Benefits Grid */}
+          <div className="grid gap-6 md:grid-cols-2">
+            <Card className="border-border/60 bg-surface/20 p-6 backdrop-blur">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <BookOpen className="h-4 w-4" />
+                </div>
+                <h3 className="font-display text-lg font-semibold">Rules of the Typing Race</h3>
+              </div>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex gap-2">
+                  <span className="font-semibold text-foreground">1. Countdown:</span> Click "Start Race" to trigger a 3-second countdown. Position your hands on the home row.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold text-foreground">2. Race:</span> As the light hits zero, type the highlighted paragraph. The cars track your progress and WPM live.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold text-foreground">3. Errors:</span> If you hit a wrong key, the text turns red. You must press Backspace and correct it to move forward.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold text-foreground">4. Finish:</span> The first car to reach the checkered flag wins the race. Live accuracy and speed statistics are calculated.
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="border-border/60 bg-surface/20 p-6 backdrop-blur">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-success/10 text-success">
+                  <Sparkles className="h-4 w-4" />
+                </div>
+                <h3 className="font-display text-lg font-semibold">Competitive Typing Benefits</h3>
+              </div>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex gap-2">
+                  <span className="font-semibold text-foreground">Under-Pressure Focus:</span> Racing against bots teaches you to ignore distractions and maintain rhythm when trailing behind.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold text-foreground">Instant Error Correction:</span> Trains your reflexes to hit Backspace instantly when a mistake occurs, minimizing speed drops.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold text-foreground">Visual Scanning:</span> Forces your eyes to scan 2-3 words ahead of your typing position to maintain fluid speed.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold text-foreground">Diverse Vocabulary:</span> Exposes you to paragraphs from books, quotes, and stories to expand your muscle memory database.
+                </li>
+              </ul>
+            </Card>
+          </div>
+
+          {/* Section 3: Deep Dive */}
+          <Card className="border-border/60 bg-surface/10 p-8 backdrop-blur">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-warning/10 text-warning">
+                <Brain className="h-5 w-5" />
+              </div>
+              <h3 className="font-display text-xl font-bold tracking-tight">The Psychology of Competitive Typing</h3>
+            </div>
+            <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+              <p>
+                In psychology, the phenomenon where individuals perform better on simple tasks when competing against others is known as <strong>Social Facilitation</strong>. When you practice typing by yourself, your focus can easily drift, and you may settle into a comfortable, sub-optimal pace. The presence of visual competitors—even simulated AI opponents—increases your physiological arousal, sharpening your visual focus and motor reflexes.
+              </p>
+              <p>
+                However, competition also introduces the risk of "racing panic." When you see a bot's car pull ahead of you, your brain may try to force your fingers to move faster than your current muscle memory supports. This leads to typing mistakes, which require corrections and ultimately slow you down. The key to mastering Type Racer is maintaining **cognitive equilibrium**—the ability to recognize that an opponent is ahead while keeping your hands relaxed and focusing purely on the accuracy of your own inputs.
+              </p>
+              <p>
+                WPM is calculated using a standard formula: <code>(Total Characters Typed / 5) / (Time Elapsed in Minutes)</code>. Because errors require you to press Backspace and retype the correct character, a single mistake effectively costs you three keystrokes (the wrong key, the backspace, and the correct key). Keeping your accuracy above 96% is scientifically proven to produce higher overall WPM scores than mashing keys at a frantic, error-prone pace.
+              </p>
+            </div>
+          </Card>
+
+          {/* Section 4: Tips */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Target className="h-4 w-4" />
+              </div>
+              <h3 className="font-display text-xl font-bold">Advanced Strategies to Outrun Typing Bots</h3>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="space-y-2">
+                <h4 className="font-semibold text-foreground flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Expand Your Lookahead
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Do not look at the character you are currently typing. Train your eyes to read one or two words ahead. This allows your brain to plan the motor sequences in advance, creating seamless transitions.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <h4 className="font-semibold text-foreground flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Master Home Row Discipline
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Keep your fingers resting lightly on the home row (ASDF JKL;). Letting your hands float too far from the home row introduces key alignment errors, especially under racing pressure.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <h4 className="font-semibold text-foreground flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Focus on Typing Rhythm
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Type with a steady, metronome-like beat. Rushing through easy words (like "the" or "and") only to pause on harder words breaks your momentum. A steady, consistent speed is always faster.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <h4 className="font-semibold text-foreground flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Leverage Wrist Ergonomics
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Keep your elbows at a 90-degree angle and your wrists elevated slightly above the keyboard. Letting your wrists rest on the desk or bend downwards slows finger movement and leads to fatigue.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 5: FAQs */}
+          <section className="space-y-6 pb-12">
+            <div className="flex items-center gap-3">
+              <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <HelpCircle className="h-4 w-4" />
+              </div>
+              <h3 className="font-display text-xl font-bold">Frequently Asked Questions</h3>
+            </div>
+
+            <Accordion type="single" collapsible className="w-full space-y-3">
+              <AccordionItem
+                value="faq-1"
+                className="rounded-xl border border-border/60 bg-surface/30 px-5 glass transition-all duration-300 data-[state=open]:border-primary/40"
+              >
+                <AccordionTrigger className="text-base font-semibold text-foreground py-4 hover:no-underline text-left">
+                  What is Type Racer (Race Bots) and how does it work?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4 pt-1">
+                  Type Racer is a competitive typing game where you race against AI opponents (bots) to finish typing a selected paragraph. The cars at the top of the screen move forward in real-time based on your active WPM compared to the speed of the bots. The first one to type the entire text correctly wins.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="faq-2"
+                className="rounded-xl border border-border/60 bg-surface/30 px-5 glass transition-all duration-300 data-[state=open]:border-primary/40"
+              >
+                <AccordionTrigger className="text-base font-semibold text-foreground py-4 hover:no-underline text-left">
+                  How are the bots' speeds determined?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4 pt-1">
+                  The AI opponents are generated with random typing speeds ranging from 30 WPM to 80 WPM, representing typical average to advanced typist profiles. To make the race realistic, they have minor speed fluctuations (jitter) simulating natural typing pauses.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="faq-3"
+                className="rounded-xl border border-border/60 bg-surface/30 px-5 glass transition-all duration-300 data-[state=open]:border-primary/40"
+              >
+                <AccordionTrigger className="text-base font-semibold text-foreground py-4 hover:no-underline text-left">
+                  What is considered a good typing speed (WPM) to win?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4 pt-1">
+                  An average typing speed is around 40 WPM. To consistently beat the AI opponents on this page, you should aim for a typing speed of 50 WPM to 60 WPM. Professional typists and programmers often maintain speeds between 70 WPM and 100+ WPM.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="faq-4"
+                className="rounded-xl border border-border/60 bg-surface/30 px-5 glass transition-all duration-300 data-[state=open]:border-primary/40"
+              >
+                <AccordionTrigger className="text-base font-semibold text-foreground py-4 hover:no-underline text-left">
+                  Should I focus on speed or accuracy first?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4 pt-1">
+                  Always prioritize accuracy! Hitting a wrong key triggers a red block, and you cannot advance until you fix it. The time spent realizing a mistake, pressing backspace, and typing the right key ruins your speed far more than typing slightly slower but with 100% accuracy.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="faq-5"
+                className="rounded-xl border border-border/60 bg-surface/30 px-5 glass transition-all duration-300 data-[state=open]:border-primary/40"
+              >
+                <AccordionTrigger className="text-base font-semibold text-foreground py-4 hover:no-underline text-left">
+                  How is WPM calculated in this game?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4 pt-1">
+                  WPM is calculated using a standard formula: <code>(Total Correct Characters / 5) / (Time Elapsed in Minutes)</code>. The division by 5 standardizes the measurement, as different words have different lengths (e.g. typing "a" vs "establishment").
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="faq-6"
+                className="rounded-xl border border-border/60 bg-surface/30 px-5 glass transition-all duration-300 data-[state=open]:border-primary/40"
+              >
+                <AccordionTrigger className="text-base font-semibold text-foreground py-4 hover:no-underline text-left">
+                  Can playing this game help me learn touch typing?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4 pt-1">
+                  Yes, competitive gamification is highly effective for building muscle memory. Once you know the basic placement of keys, racing against bots pushes you to stop looking down at your fingers and instead rely entirely on physical touch and reflexes, which is the core of touch typing.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </section>
+        </div>
       </main>
     </div>
   );

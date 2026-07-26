@@ -30,6 +30,7 @@ import {
   GitBranchPlus,
   FileBadge,
   Database,
+  Link2,
 } from "lucide-react";
 
 type NavItem = { to: string; label: string; icon: any; exact?: boolean };
@@ -84,9 +85,11 @@ const SECTIONS: Array<{ title: string; items: NavItem[] }> = [
     title: "Marketing",
     items: [
       { to: "/admin/announcements", label: "Announcements", icon: Megaphone },
+      { to: "/admin/visitor-banners", label: "Visitor Banners", icon: Megaphone },
       { to: "/admin/newsletter", label: "Newsletter", icon: Mail },
       { to: "/admin/seo", label: "SEO", icon: Search },
       { to: "/admin/redirects", label: "Redirects", icon: GitBranchPlus },
+      { to: "/admin/linking", label: "Linking System", icon: Link2 },
       { to: "/admin/footer", label: "Footer", icon: LayoutDashboard },
       { to: "/admin/legal", label: "Legal Pages", icon: FileText },
     ],

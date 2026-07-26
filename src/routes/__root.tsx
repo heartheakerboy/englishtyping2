@@ -8,7 +8,9 @@ import {
   Scripts,
   useLocation,
 } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode, lazy, Suspense } from "react";
+
+const VisitorAnnouncement = lazy(() => import("@/components/VisitorAnnouncement"));
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -86,6 +88,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "google-site-verification", content: "kHRehjzXkf-vr8y7HpQiB5uzuDXDSfosncplUBi_dRs" },
+      { name: "yandex-verification", content: "fc4b0f4a91430a61" },
       { name: "theme-color", content: "#0a0a0f", media: "(prefers-color-scheme: dark)" },
       { name: "theme-color", content: "#ffffff", media: "(prefers-color-scheme: light)" },
       { title: "English Typing Test — Measure your typing speed" },
@@ -133,6 +137,11 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
         <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9602707669345879"
+          crossOrigin="anonymous"
+        />
+        <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('ett-theme');var c=document.documentElement.classList;if(t==='light'){c.remove('dark')}else{c.add('dark')}var m=document.cookie.match(/(?:^|;\\s*)lang=([^;]+)/);var l=(m&&m[1])||localStorage.getItem('ett-lang')||(navigator.language||'en').split('-')[0];var s=['en','hi','mr','gu','ta','te','kn','ml','pa','bn','ur','ar','es','fr','de','pt','ru','ja','ko','zh'];if(s.indexOf(l)<0)l='en';document.documentElement.lang=l;document.documentElement.dir=(l==='ar'||l==='ur')?'rtl':'ltr';}catch(e){}})();`,
           }}
@@ -173,6 +182,9 @@ function RootComponent() {
           <Toaster position="top-center" />
           <Analytics />
           <PageViewTracker />
+          <Suspense fallback={null}>
+            <VisitorAnnouncement />
+          </Suspense>
         </LanguageProvider>
       </ThemeProvider>
     </QueryClientProvider>
