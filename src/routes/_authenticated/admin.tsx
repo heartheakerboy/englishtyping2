@@ -29,6 +29,7 @@ import {
   ShieldAlert,
   GitBranchPlus,
   FileBadge,
+  Database,
 } from "lucide-react";
 
 type NavItem = { to: string; label: string; icon: any; exact?: boolean };
@@ -94,6 +95,7 @@ const SECTIONS: Array<{ title: string; items: NavItem[] }> = [
     title: "System",
     items: [
       { to: "/admin/settings", label: "Settings", icon: Cog },
+      { to: "/admin/cache", label: "Cache Management", icon: Database },
       { to: "/admin/cms", label: "CMS", icon: FileText },
       { to: "/admin/audit", label: "Audit & Logs", icon: ScrollText },
       { to: "/admin/apikeys", label: "API Keys", icon: KeyRound },

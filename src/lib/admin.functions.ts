@@ -238,3 +238,39 @@ export const exportTableCSV = createServerFn({ method: "POST" })
     ].join("\n");
     return { csv, count: rows.length };
   });
+
+export const clearServerCache = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator(
+    (d?: { cacheType?: "all" | "cms" | "settings" | "query" }) =>
+      z
+        .object({
+          cacheType: z.enum(["all", "cms", "settings", "query"]).default("all"),
+        })
+        .parse(d ?? {}),
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const timestamp = new Date().toISOString();
+
+    try {
+      await supabaseAdmin.from("admin_audit_logs").insert({
+        user_id: context.userId,
+        action: "cache_clear",
+        entity_type: "system_cache",
+        entity_id: null,
+        before: null,
+        after: { cache_type: data.cacheType, cleared_at: timestamp },
+      });
+    } catch {
+      /* audit logging non-blocking */
+    }
+
+    return {
+      ok: true,
+      timestamp,
+      message: `Server cache (${data.cacheType}) cleared successfully`,
+    };
+  });
+

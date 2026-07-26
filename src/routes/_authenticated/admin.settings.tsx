@@ -111,6 +111,20 @@ function SettingsPage() {
           </Button>
         </div>
       </Card>
+
+      <Card className="p-4 space-y-3">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-sm font-medium">Cache & Performance</h2>
+            <p className="text-xs text-muted-foreground">
+              Purge client query data, browser storage, assets, and server CMS cache.
+            </p>
+          </div>
+          <Button size="sm" variant="outline" asChild>
+            <a href="/admin/cache">Manage Cache</a>
+          </Button>
+        </div>
+      </Card>
     </div>
   );
 }

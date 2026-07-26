@@ -58,6 +58,7 @@ import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAdminTextsRouteImport } from './routes/_authenticated/admin.texts'
 import { Route as AuthenticatedAdminTemplatesRouteImport } from './routes/_authenticated/admin.templates'
 import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin.settings'
+import { Route as AuthenticatedAdminCacheRouteImport } from './routes/_authenticated/admin.cache'
 import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
 import { Route as AuthenticatedAdminReportsRouteImport } from './routes/_authenticated/admin.reports'
 import { Route as AuthenticatedAdminRedirectsRouteImport } from './routes/_authenticated/admin.redirects'
@@ -338,6 +339,12 @@ const AuthenticatedAdminSettingsRoute =
     path: '/settings',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminCacheRoute =
+  AuthenticatedAdminCacheRouteImport.update({
+    id: '/cache',
+    path: '/cache',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminSeoRoute = AuthenticatedAdminSeoRouteImport.update({
   id: '/seo',
   path: '/seo',
@@ -572,6 +579,7 @@ export interface FileRoutesByFullPath {
   '/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
+  '/admin/cache': typeof AuthenticatedAdminCacheRoute
   '/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -646,6 +654,7 @@ export interface FileRoutesByTo {
   '/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
+  '/admin/cache': typeof AuthenticatedAdminCacheRoute
   '/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -727,6 +736,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/_authenticated/admin/settings': typeof AuthenticatedAdminSettingsRoute
+  '/_authenticated/admin/cache': typeof AuthenticatedAdminCacheRoute
   '/_authenticated/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/_authenticated/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -1341,6 +1351,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminSettingsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/cache': {
+      id: '/_authenticated/admin/cache'
+      path: '/cache'
+      fullPath: '/admin/cache'
+      preLoaderRoute: typeof AuthenticatedAdminCacheRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/seo': {
       id: '/_authenticated/admin/seo'
       path: '/seo'
@@ -1609,6 +1626,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminReportsRoute: AuthenticatedAdminReportsRoute,
   AuthenticatedAdminSeoRoute: AuthenticatedAdminSeoRoute,
   AuthenticatedAdminSettingsRoute: AuthenticatedAdminSettingsRoute,
+  AuthenticatedAdminCacheRoute: AuthenticatedAdminCacheRoute,
   AuthenticatedAdminTemplatesRoute: AuthenticatedAdminTemplatesRoute,
   AuthenticatedAdminTextsRoute: AuthenticatedAdminTextsRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
