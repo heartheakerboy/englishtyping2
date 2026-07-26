@@ -61,7 +61,6 @@ import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAdminTextsRouteImport } from './routes/_authenticated/admin.texts'
 import { Route as AuthenticatedAdminTemplatesRouteImport } from './routes/_authenticated/admin.templates'
 import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin.settings'
-import { Route as AuthenticatedAdminCacheRouteImport } from './routes/_authenticated/admin.cache'
 import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
 import { Route as AuthenticatedAdminReportsRouteImport } from './routes/_authenticated/admin.reports'
 import { Route as AuthenticatedAdminRedirectsRouteImport } from './routes/_authenticated/admin.redirects'
@@ -82,6 +81,7 @@ import { Route as AuthenticatedAdminCmsRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedAdminCertificatesRouteImport } from './routes/_authenticated/admin.certificates'
 import { Route as AuthenticatedAdminCertTemplatesRouteImport } from './routes/_authenticated/admin.cert-templates'
 import { Route as AuthenticatedAdminCategoriesRouteImport } from './routes/_authenticated/admin.categories'
+import { Route as AuthenticatedAdminCacheRouteImport } from './routes/_authenticated/admin.cache'
 import { Route as AuthenticatedAdminBlogRouteImport } from './routes/_authenticated/admin.blog'
 import { Route as AuthenticatedAdminBadgesRouteImport } from './routes/_authenticated/admin.badges'
 import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authenticated/admin.audit'
@@ -359,12 +359,6 @@ const AuthenticatedAdminSettingsRoute =
     path: '/settings',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
-const AuthenticatedAdminCacheRoute =
-  AuthenticatedAdminCacheRouteImport.update({
-    id: '/cache',
-    path: '/cache',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
 const AuthenticatedAdminSeoRoute = AuthenticatedAdminSeoRouteImport.update({
   id: '/seo',
   path: '/seo',
@@ -480,6 +474,11 @@ const AuthenticatedAdminCategoriesRoute =
     path: '/categories',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminCacheRoute = AuthenticatedAdminCacheRouteImport.update({
+  id: '/cache',
+  path: '/cache',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 const AuthenticatedAdminBlogRoute = AuthenticatedAdminBlogRouteImport.update({
   id: '/blog',
   path: '/blog',
@@ -587,6 +586,7 @@ export interface FileRoutesByFullPath {
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/badges': typeof AuthenticatedAdminBadgesRoute
   '/admin/blog': typeof AuthenticatedAdminBlogRoute
+  '/admin/cache': typeof AuthenticatedAdminCacheRoute
   '/admin/categories': typeof AuthenticatedAdminCategoriesRoute
   '/admin/cert-templates': typeof AuthenticatedAdminCertTemplatesRoute
   '/admin/certificates': typeof AuthenticatedAdminCertificatesRoute
@@ -608,7 +608,6 @@ export interface FileRoutesByFullPath {
   '/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
-  '/admin/cache': typeof AuthenticatedAdminCacheRoute
   '/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -666,6 +665,7 @@ export interface FileRoutesByTo {
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/badges': typeof AuthenticatedAdminBadgesRoute
   '/admin/blog': typeof AuthenticatedAdminBlogRoute
+  '/admin/cache': typeof AuthenticatedAdminCacheRoute
   '/admin/categories': typeof AuthenticatedAdminCategoriesRoute
   '/admin/cert-templates': typeof AuthenticatedAdminCertTemplatesRoute
   '/admin/certificates': typeof AuthenticatedAdminCertificatesRoute
@@ -687,7 +687,6 @@ export interface FileRoutesByTo {
   '/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
-  '/admin/cache': typeof AuthenticatedAdminCacheRoute
   '/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -752,6 +751,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/_authenticated/admin/badges': typeof AuthenticatedAdminBadgesRoute
   '/_authenticated/admin/blog': typeof AuthenticatedAdminBlogRoute
+  '/_authenticated/admin/cache': typeof AuthenticatedAdminCacheRoute
   '/_authenticated/admin/categories': typeof AuthenticatedAdminCategoriesRoute
   '/_authenticated/admin/cert-templates': typeof AuthenticatedAdminCertTemplatesRoute
   '/_authenticated/admin/certificates': typeof AuthenticatedAdminCertificatesRoute
@@ -773,7 +773,6 @@ export interface FileRoutesById {
   '/_authenticated/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/_authenticated/admin/settings': typeof AuthenticatedAdminSettingsRoute
-  '/_authenticated/admin/cache': typeof AuthenticatedAdminCacheRoute
   '/_authenticated/admin/templates': typeof AuthenticatedAdminTemplatesRoute
   '/_authenticated/admin/texts': typeof AuthenticatedAdminTextsRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -838,6 +837,7 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/badges'
     | '/admin/blog'
+    | '/admin/cache'
     | '/admin/categories'
     | '/admin/cert-templates'
     | '/admin/certificates'
@@ -916,6 +916,7 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/badges'
     | '/admin/blog'
+    | '/admin/cache'
     | '/admin/categories'
     | '/admin/cert-templates'
     | '/admin/certificates'
@@ -1000,6 +1001,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/audit'
     | '/_authenticated/admin/badges'
     | '/_authenticated/admin/blog'
+    | '/_authenticated/admin/cache'
     | '/_authenticated/admin/categories'
     | '/_authenticated/admin/cert-templates'
     | '/_authenticated/admin/certificates'
@@ -1423,13 +1425,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminSettingsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
-    '/_authenticated/admin/cache': {
-      id: '/_authenticated/admin/cache'
-      path: '/cache'
-      fullPath: '/admin/cache'
-      preLoaderRoute: typeof AuthenticatedAdminCacheRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
     '/_authenticated/admin/seo': {
       id: '/_authenticated/admin/seo'
       path: '/seo'
@@ -1570,6 +1565,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminCategoriesRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/cache': {
+      id: '/_authenticated/admin/cache'
+      path: '/cache'
+      fullPath: '/admin/cache'
+      preLoaderRoute: typeof AuthenticatedAdminCacheRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/blog': {
       id: '/_authenticated/admin/blog'
       path: '/blog'
@@ -1651,6 +1653,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminAuditRoute: typeof AuthenticatedAdminAuditRoute
   AuthenticatedAdminBadgesRoute: typeof AuthenticatedAdminBadgesRoute
   AuthenticatedAdminBlogRoute: typeof AuthenticatedAdminBlogRoute
+  AuthenticatedAdminCacheRoute: typeof AuthenticatedAdminCacheRoute
   AuthenticatedAdminCategoriesRoute: typeof AuthenticatedAdminCategoriesRoute
   AuthenticatedAdminCertTemplatesRoute: typeof AuthenticatedAdminCertTemplatesRoute
   AuthenticatedAdminCertificatesRoute: typeof AuthenticatedAdminCertificatesRoute
@@ -1687,6 +1690,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminAuditRoute: AuthenticatedAdminAuditRoute,
   AuthenticatedAdminBadgesRoute: AuthenticatedAdminBadgesRoute,
   AuthenticatedAdminBlogRoute: AuthenticatedAdminBlogRoute,
+  AuthenticatedAdminCacheRoute: AuthenticatedAdminCacheRoute,
   AuthenticatedAdminCategoriesRoute: AuthenticatedAdminCategoriesRoute,
   AuthenticatedAdminCertTemplatesRoute: AuthenticatedAdminCertTemplatesRoute,
   AuthenticatedAdminCertificatesRoute: AuthenticatedAdminCertificatesRoute,
@@ -1708,7 +1712,6 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminReportsRoute: AuthenticatedAdminReportsRoute,
   AuthenticatedAdminSeoRoute: AuthenticatedAdminSeoRoute,
   AuthenticatedAdminSettingsRoute: AuthenticatedAdminSettingsRoute,
-  AuthenticatedAdminCacheRoute: AuthenticatedAdminCacheRoute,
   AuthenticatedAdminTemplatesRoute: AuthenticatedAdminTemplatesRoute,
   AuthenticatedAdminTextsRoute: AuthenticatedAdminTextsRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
