@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "db:migrate": "tsx scripts/migrate-neon.ts"
+    "db:migrate": "tsx scripts/migrate-neon.ts",
+    "indexnow": "tsx scripts/submit-indexnow.ts"
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^3.0.0",
