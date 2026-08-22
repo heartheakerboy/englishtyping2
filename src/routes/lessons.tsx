@@ -7,22 +7,33 @@ import { Keyboard, Hand, Target, Timer, ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/lessons")({
   head: () => ({
     meta: [
-      { title: "Touch Typing Guide & Lessons — English Typing Test" },
+      { title: "Touch Typing Lessons & Keyboard Practice — 10 Free Step-by-Step Lessons" },
       {
         name: "description",
         content:
-          "Learn touch typing the right way. Proper finger placement, home-row drills and progressive lessons to type faster with fewer mistakes.",
+          "Learn touch typing from scratch with 10 free interactive lessons. Master home row, finger placement, top & bottom rows, number keys, and speed building drills.",
       },
-      { property: "og:title", content: "Touch Typing Guide & Lessons" },
+      {
+        name: "keywords",
+        content:
+          "english typing test lesson 1, english typing lessons, learn touch typing, touch typing practice, typing master lessons, home row lessons, typing speed lessons",
+      },
+      { property: "og:title", content: "Touch Typing Lessons & Keyboard Practice — 10 Free Lessons" },
       {
         property: "og:description",
         content:
           "Step-by-step touch typing lessons: finger placement, home row, top and bottom row drills, and speed-building practice.",
       },
-      { property: "og:url", content: "/lessons" },
+      { property: "og:url", content: "https://englishtypingtest.org/lessons" },
       { property: "og:type", content: "article" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Touch Typing Lessons & Keyboard Practice — 10 Free Lessons" },
+      {
+        name: "twitter:description",
+        content: "Learn touch typing with progressive drills and interactive keyboard feedback.",
+      },
     ],
-    links: [{ rel: "canonical", href: "/lessons" }],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/lessons" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -32,7 +43,7 @@ export const Route = createFileRoute("/lessons")({
           headline: "Touch Typing Guide & Lessons",
           description:
             "Proper finger placement and progressive drills to learn touch typing and improve WPM.",
-          url: "/lessons",
+          url: "https://englishtypingtest.org/lessons",
         }),
       },
     ],

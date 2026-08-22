@@ -58,7 +58,7 @@ export const Route = createFileRoute("/templates/$slug")({
         ? t.description.slice(0, 155)
         : `Free typing template: ${t.name}. Practice and beat the leaderboard.`);
     const image = t.og_image_url || t.banner_url || t.thumbnail_url || undefined;
-    const url = `/templates/${params.slug}`;
+    const url = `https://englishtypingtest.org/templates/${params.slug}`;
     const meta: any[] = [
       { title },
       { name: "description", content: description },

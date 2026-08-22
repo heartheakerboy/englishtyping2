@@ -47,19 +47,25 @@ export const Route = createFileRoute("/typing-test/$slug")({
   },
   head: ({ params, loaderData }) => {
     const d = loaderData?.duration as TestDuration | undefined;
-    const url = `/typing-test/${params.slug}`;
-    if (!d) return { meta: [{ title: "Typing Test" }] };
+    const url = `https://englishtypingtest.org/typing-test/${params.slug}`;
+    if (!d) return { meta: [{ title: "English Typing Test — Online Practice" }] };
     const faq = (d.faq ?? []).filter((f) => f.q && f.a);
     return {
       meta: [
         { title: d.title },
         { name: "description", content: d.meta_description },
+        {
+          name: "keywords",
+          content: `${d.nav_label.toLowerCase()}, typing test ${d.nav_label.toLowerCase()}, english typing test ${d.nav_label.toLowerCase()}, timed typing practice, wpm test`,
+        },
         { property: "og:title", content: d.title },
         { property: "og:description", content: d.meta_description },
         { property: "og:type", content: "website" },
         { property: "og:url", content: url },
         ...(d.banner_url ? [{ property: "og:image", content: d.banner_url }] : []),
         { name: "twitter:card", content: d.banner_url ? "summary_large_image" : "summary" },
+        { name: "twitter:title", content: d.title },
+        { name: "twitter:description", content: d.meta_description },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -79,8 +85,8 @@ export const Route = createFileRoute("/typing-test/$slug")({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-              { "@type": "ListItem", position: 2, name: "Typing Tests", item: "/typing-test" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://englishtypingtest.org/" },
+              { "@type": "ListItem", position: 2, name: "Typing Tests", item: "https://englishtypingtest.org/typing-test" },
               { "@type": "ListItem", position: 3, name: d.nav_label, item: url },
             ],
           }),

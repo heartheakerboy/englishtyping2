@@ -25,15 +25,47 @@ import { Sparkles, Gamepad2, Award } from "lucide-react";
 export const Route = createFileRoute("/games/balloon-burst")({
   head: () => ({
     meta: [
-      { title: "Balloon Burst — Typing Game" },
+      { title: "Balloon Typing Game — Type & Burst Balloons Online | Free Speed Drill" },
       {
         name: "description",
         content:
-          "Pop floating balloons by typing their word before they drift away. Combo scoring and leaderboards.",
+          "Play the classic Balloon Typing game online. Pop floating word balloons by typing fast before they drift away. Boost keyboard speed, reflexes, and touch typing accuracy for free.",
       },
-      { property: "og:title", content: "Balloon Burst" },
+      {
+        name: "keywords",
+        content:
+          "balloon typing, balloon typing game, type-a-balloon typing game, type balloon game, balloon shooting typing, free typing games, typing games for kids, touch typing practice",
+      },
+      { property: "og:title", content: "Balloon Typing Game — Type & Burst Balloons Online" },
+      {
+        property: "og:description",
+        content:
+          "Pop floating balloons by typing words before they drift away. Combo scoring, difficulty levels, and global leaderboards.",
+      },
+      { property: "og:url", content: "https://englishtypingtest.org/games/balloon-burst" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Balloon Typing Game — Type & Burst Balloons Online" },
+      {
+        name: "twitter:description",
+        content: "Play the free Balloon Typing game. Pop word balloons, build combo streaks, and increase your typing speed.",
+      },
     ],
-    links: [{ rel: "canonical", href: "/games/balloon-burst" }],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/balloon-burst" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Balloon Typing Game",
+          applicationCategory: "GameApplication",
+          operatingSystem: "All",
+          url: "https://englishtypingtest.org/games/balloon-burst",
+          description: "Pop floating word balloons by typing them before they leave the screen.",
+        }),
+      },
+    ],
   }),
   component: BalloonPage,
 });

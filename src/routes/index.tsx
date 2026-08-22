@@ -63,25 +63,30 @@ const LANG_BADGES = ["EN", "हि", "मर", "ES", "FR", "DE", "日", "中", "
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "English Typing Test — Free WPM & Speed Tracker | EnglishtypingTest.org" },
+      { title: "English Typing Test — Free 60s Speed Test, 5 & 10 Min Paragraphs, WPM Practice" },
       {
         name: "description",
         content:
-          "Take the ultimate free English typing test online. Track WPM, accuracy, and CPM in real-time. Practice in any language, race globally, and improve with detailed analytics. No signup needed.",
+          "Take the ultimate free English typing test online (60 seconds, 1 to 15 min). Practice with paragraphs, test live chat typing speed, check net WPM & accuracy in real-time with detailed analytics.",
       },
-      { property: "og:title", content: "English Typing Test — Free WPM & Speed Tracker" },
+      {
+        name: "keywords",
+        content:
+          "english typing test, typing test english, typing speed test 60 seconds, free typing test 60 seconds, english typing test 5 minutes, english typing test 10 minutes, live chat typing test 60 seconds, 7 minute typing test, typing test online, wpm test",
+      },
+      { property: "og:title", content: "English Typing Test — Free 60s Speed Test & WPM Practice" },
       {
         property: "og:description",
         content:
-          "Free typing tests with real-time WPM, accuracy, CPM tracking. Multi-language support, multiplayer races, arcade games, and detailed analytics.",
+          "Free online typing tests with real-time WPM, accuracy, and CPM tracking. Practice 60-second sprints, 5/10-minute paragraphs, multiplayer races, and arcade games.",
       },
       { property: "og:url", content: "https://englishtypingtest.org/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "English Typing Test — Free WPM & Speed Tracker" },
+      { name: "twitter:title", content: "English Typing Test — Free 60s Speed Test & WPM Practice" },
       {
         name: "twitter:description",
-        content: "Free typing tests with real-time WPM, accuracy, and CPM tracking. Multi-language, multiplayer, gamified.",
+        content: "Free typing tests with real-time WPM, accuracy, and CPM tracking. 60-second sprints, 5 & 10-minute paragraphs, gamified typing.",
       },
     ],
     links: [{ rel: "canonical", href: "https://englishtypingtest.org/" }],
@@ -133,42 +138,50 @@ export const Route = createFileRoute("/")({
             mainEntity: [
               {
                 "@type": "Question",
-                name: "What is a good typing speed?",
+                name: "What is a good typing speed for English typing tests?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "For most professional jobs (like writers, programmers, or office admins), a good typing speed is between 50 to 80 WPM. Anything above 80 WPM is considered highly fluent, while speeds over 100 WPM are elite.",
+                  text: "For everyday work and general office tasks, a good typing speed is between 50 to 70 WPM (Words Per Minute). For live chat support and data entry jobs, 60+ WPM with 95%+ accuracy is recommended. Speeds over 80 WPM are advanced, and 100+ WPM is considered elite.",
                 },
               },
               {
                 "@type": "Question",
-                name: "How can I increase my WPM?",
+                name: "How does the 60-second typing test work?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "The best way to increase your typing speed is by learning touch typing. This means using all ten fingers and keeping your hands on the home row without looking down. Focus on typing accurately, and speed will follow naturally.",
+                  text: "The 60-second typing test gives you a 1-minute countdown to type as many correct words as possible. The system calculates your Net WPM, Raw WPM, Accuracy, and Characters Per Minute (CPM) in real time.",
                 },
               },
               {
                 "@type": "Question",
-                name: "Does accuracy affect my WPM?",
+                name: "How can I increase my WPM and accuracy?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes, accuracy is vital. While 'Raw WPM' measures how fast you physically hit keys, 'Net WPM' deducts penalties for mistakes. Practicing with high accuracy prevents you from spending extra time pressing backspace to correct errors.",
+                  text: "The best way to increase your typing speed is by learning touch typing. Keep your fingers anchored on the home row (ASDF JKL;) without looking down at the keyboard. Focus first on high accuracy (98%+), and your speed will naturally increase.",
                 },
               },
               {
                 "@type": "Question",
-                name: "How is WPM different from CPM?",
+                name: "Does accuracy affect my Net WPM score?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "WPM stands for Words Per Minute, which counts a 'word' as 5 characters. CPM stands for Characters Per Minute, which measures the exact number of individual keystrokes (letters, numbers, spaces, and punctuation) you type in one minute.",
+                  text: "Yes, accuracy is vital. While 'Raw WPM' measures total keys pressed per minute, 'Net WPM' deducts penalties for mistyped words. Practicing with high accuracy prevents you from losing time backspacing errors.",
                 },
               },
               {
                 "@type": "Question",
-                name: "Are typing tests free on this platform?",
+                name: "Are 5-minute and 10-minute paragraph tests available for exam practice?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes! All typing tests, lessons, multiplayer modes, and analytics charts on englishtypingtest.org are 100% free. You can practice without even creating an account, though an account helps track your historical stats.",
+                  text: "Yes! You can choose 1-minute, 2-minute, 5-minute, 7-minute (GCC-TBC exam format), 10-minute, or 15-minute paragraph typing tests with realistic exam text passages.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Are typing tests free on englishtypingtest.org?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes! All typing tests, paragraph practice, lessons, multiplayer races, and arcade games on englishtypingtest.org are 100% free with no account required.",
                 },
               },
             ],

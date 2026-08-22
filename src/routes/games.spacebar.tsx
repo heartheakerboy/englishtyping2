@@ -14,16 +14,44 @@ import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 export const Route = createFileRoute("/games/spacebar")({
   head: () => ({
     meta: [
-      { title: "Spacebar Speed Test — englishtypingtest.org" },
+      { title: "Spacebar Speed Test — 10-Second Spacebar Counter Online" },
       {
         name: "description",
         content:
-          "How fast can you mash the spacebar in 10 seconds? Instant hit-count with a saved personal best.",
+          "How fast can you press the spacebar? Test your spacebar tapping speed in a 10-second sprint with real-time hit counters, HPS metrics, and high score tracking.",
       },
-      { property: "og:title", content: "Spacebar Speed Test" },
+      {
+        name: "keywords",
+        content:
+          "spacebar speed test, spacebar counter, spacebar clicker test, 10 second spacebar test, spacebar hits per second, keyboard tapping speed",
+      },
+      { property: "og:title", content: "Spacebar Speed Test — 10-Second Spacebar Counter" },
       {
         property: "og:description",
         content: "Ten-second spacebar challenge with live hit counter and personal best tracking.",
+      },
+      { property: "og:url", content: "https://englishtypingtest.org/games/spacebar" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Spacebar Speed Test — 10-Second Spacebar Counter" },
+      {
+        name: "twitter:description",
+        content: "Test how fast you can tap the spacebar in 10 seconds. Measure hits per second.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/spacebar" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Spacebar Speed Counter",
+          applicationCategory: "GameApplication",
+          operatingSystem: "All",
+          url: "https://englishtypingtest.org/games/spacebar",
+          description: "Measure spacebar tapping speed and hits per second.",
+        }),
       },
     ],
   }),

@@ -15,16 +15,44 @@ import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 export const Route = createFileRoute("/games/reaction")({
   head: () => ({
     meta: [
-      { title: "Reaction Time Test — englishtypingtest.org" },
+      { title: "Reaction Time Test Online — Reflex Speed in Milliseconds" },
       {
         name: "description",
         content:
-          "Test your reflexes — click the instant the screen flips green. Five rounds, instant millisecond results.",
+          "Test your visual reflex speed. Click the instant the screen turns green to measure your reaction time in milliseconds across 5 rounds. Compare with global averages.",
       },
-      { property: "og:title", content: "Reaction Time Test" },
+      {
+        name: "keywords",
+        content:
+          "reaction time test, reflex test online, click speed test, human benchmark reaction, reflex speed in milliseconds",
+      },
+      { property: "og:title", content: "Reaction Time Test Online — Reflex Speed in Milliseconds" },
       {
         property: "og:description",
-        content: "Measure your reflex speed in milliseconds across five rounds.",
+        content: "Measure your visual reflex speed in milliseconds across 5 rounds.",
+      },
+      { property: "og:url", content: "https://englishtypingtest.org/games/reaction" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Reaction Time Test Online — Reflex Speed in Milliseconds" },
+      {
+        name: "twitter:description",
+        content: "Measure your reaction time in milliseconds. Test reflexes and beat your personal best.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/reaction" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Reaction Time Reflex Test",
+          applicationCategory: "GameApplication",
+          operatingSystem: "All",
+          url: "https://englishtypingtest.org/games/reaction",
+          description: "Online reaction time reflex tester.",
+        }),
       },
     ],
   }),

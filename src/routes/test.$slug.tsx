@@ -19,6 +19,32 @@ import { fireConfetti } from "@/components/Confetti";
 import { Header as SiteHeader } from "@/components/Header";
 
 export const Route = createFileRoute("/test/$slug")({
+  head: ({ params }) => {
+    const slug = params.slug;
+    const formattedTitle = slug
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+    const url = `https://englishtypingtest.org/test/${slug}`;
+    return {
+      meta: [
+        { title: `${formattedTitle} — Custom Typing Test` },
+        {
+          name: "description",
+          content: `Take the ${formattedTitle} custom typing test online. Measure your typing speed (WPM), accuracy, and compete on the leaderboard.`,
+        },
+        { property: "og:title", content: `${formattedTitle} — Custom Typing Test` },
+        {
+          property: "og:description",
+          content: `Take the ${formattedTitle} custom typing test online. Measure your typing speed (WPM), accuracy, and compete on the leaderboard.`,
+        },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: `${formattedTitle} — Custom Typing Test` },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: () => (
     <>
       <SiteHeader />

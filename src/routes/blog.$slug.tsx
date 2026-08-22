@@ -28,19 +28,20 @@ export const Route = createFileRoute("/blog/$slug")({
       p?.seo_description ??
       p?.excerpt ??
       "Typing tips and product updates from englishtypingtest.org.";
+    const url = `https://englishtypingtest.org/blog/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: p?.title ?? title },
         { property: "og:description", content: desc },
-        { property: "og:url", content: `/blog/${params.slug}` },
+        { property: "og:url", content: url },
         { property: "og:type", content: "article" },
         ...(p?.og_image || p?.cover_image
           ? [{ property: "og:image", content: p.og_image ?? p.cover_image } as const]
           : []),
       ],
-      links: [{ rel: "canonical", href: `/blog/${params.slug}` }],
+      links: [{ rel: "canonical", href: url }],
     };
   },
 });

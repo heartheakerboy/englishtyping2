@@ -179,6 +179,32 @@ export function Header() {
                     {t("practice")}
                   </Link>
                   <Link
+                    to={"/gcc-tbc-typing-test" as any}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between rounded-md px-3.5 py-2 text-sm font-medium text-primary transition-colors hover:bg-surface"
+                  >
+                    <span className="flex items-center gap-2.5">
+                      <GraduationCap className="h-4 w-4 text-primary" />
+                      GCC-TBC (7 Min Exam)
+                    </span>
+                    <span className="rounded bg-primary/15 px-1.5 py-0.5 text-[10px] font-semibold text-primary">
+                      30/40 WPM
+                    </span>
+                  </Link>
+                  <Link
+                    to={"/live-chat-typing-test" as any}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between rounded-md px-3.5 py-2 text-sm font-medium text-emerald-400 transition-colors hover:bg-surface"
+                  >
+                    <span className="flex items-center gap-2.5">
+                      <Headphones className="h-4 w-4 text-emerald-400" />
+                      Live Chat Support
+                    </span>
+                    <span className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-400">
+                      60 SEC
+                    </span>
+                  </Link>
+                  <Link
                     to="/race"
                     onClick={() => setMobileOpen(false)}
                     className="flex items-center gap-2.5 rounded-md px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"

@@ -33,6 +33,30 @@ export function TypingTestsMenu({ triggerClassName }: { triggerClassName?: strin
         <ChevronDown className="h-3 w-3 opacity-60" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-60">
+        <DropdownMenuLabel>Specialized Tests</DropdownMenuLabel>
+        <DropdownMenuItem asChild>
+          <Link
+            to={"/gcc-tbc-typing-test" as any}
+            className="flex w-full items-center justify-between font-medium text-primary"
+          >
+            <span>GCC-TBC 30/40 WPM</span>
+            <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[9px] font-semibold text-primary">
+              7 MIN EXAM
+            </span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link
+            to={"/live-chat-typing-test" as any}
+            className="flex w-full items-center justify-between font-medium text-emerald-400"
+          >
+            <span>Live Chat Support</span>
+            <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-400">
+              60s CHAT
+            </span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
         <DropdownMenuLabel>Choose a duration</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {items.map((d) => (

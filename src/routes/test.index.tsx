@@ -8,16 +8,44 @@ import { ResultScreen } from "@/components/ResultScreen";
 export const Route = createFileRoute("/test/")({
   head: () => ({
     meta: [
-      { title: "Typing Test — englishtypingtest.org" },
+      { title: "Free 60-Second Typing Speed Test — Live Chat & Net WPM Practice" },
       {
         name: "description",
         content:
-          "Take a free typing test. Live WPM, accuracy, CPM and mistakes tracking. Time, words, quote, code, and custom modes.",
+          "Take a free 60-second typing test online. Check your real-time Net WPM, accuracy, CPM, and error breakdown. Practice for live chat customer support and job tests.",
       },
-      { property: "og:title", content: "Typing Test — englishtypingtest.org" },
+      {
+        name: "keywords",
+        content:
+          "typing speed test 60 seconds, free typing test 60 seconds, live chat typing test 60 seconds, typing test 60 seconds, 60 second typing test, typing test online 60 seconds, wpm test",
+      },
+      { property: "og:title", content: "Free 60-Second Typing Speed Test — Live Chat & Net WPM" },
       {
         property: "og:description",
-        content: "Take a free typing test with real-time WPM, accuracy and mistake tracking.",
+        content:
+          "Take a free 60-second typing test. Measure WPM, accuracy, CPM, and error penalty in real time.",
+      },
+      { property: "og:url", content: "https://englishtypingtest.org/test" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Free 60-Second Typing Speed Test — Live Chat & Net WPM" },
+      {
+        name: "twitter:description",
+        content: "Take a free 60-second typing test. Check your net WPM and accuracy in real time.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/test" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "60-Second English Typing Test",
+          url: "https://englishtypingtest.org/test",
+          applicationCategory: "EducationalApplication",
+          description: "Online 60-second typing test measuring Net WPM, accuracy, and keystroke errors.",
+        }),
       },
     ],
   }),

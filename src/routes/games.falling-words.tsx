@@ -24,15 +24,47 @@ import {
 export const Route = createFileRoute("/games/falling-words")({
   head: () => ({
     meta: [
-      { title: "Falling Words — Typing Game" },
+      { title: "Falling Words Typing Game — Z-Type Style Typing Defense Online" },
       {
         name: "description",
         content:
-          "Type the falling words before they hit the ground. Endless waves, combo multiplier and global leaderboards.",
+          "Type falling words before they hit the ground in this fast-paced Z-Type style typing game. Endless waves, combo multipliers, and WPM accuracy practice.",
       },
-      { property: "og:title", content: "Falling Words — Typing Game" },
+      {
+        name: "keywords",
+        content:
+          "falling words, falling words typing game, z type, ztype, z type game, type the falling word, galaxy typing games falling words, free typing games online",
+      },
+      { property: "og:title", content: "Falling Words Typing Game — Z-Type Style Speed Drill" },
+      {
+        property: "og:description",
+        content:
+          "Type falling words before they hit the bottom. Test your reaction time, keystroke accuracy, and combo score.",
+      },
+      { property: "og:url", content: "https://englishtypingtest.org/games/falling-words" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Falling Words Typing Game — Z-Type Style Speed Drill" },
+      {
+        name: "twitter:description",
+        content: "Blast falling words out of the sky with your keyboard. Fast, fun typing practice.",
+      },
     ],
-    links: [{ rel: "canonical", href: "/games/falling-words" }],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/falling-words" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Falling Words Typing Game",
+          applicationCategory: "GameApplication",
+          operatingSystem: "All",
+          url: "https://englishtypingtest.org/games/falling-words",
+          description: "Z-Type style typing game where you type descending words to clear the screen.",
+        }),
+      },
+    ],
   }),
   component: FallingWordsPage,
 });

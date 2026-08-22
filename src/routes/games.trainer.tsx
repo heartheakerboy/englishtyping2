@@ -15,17 +15,45 @@ import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 export const Route = createFileRoute("/games/trainer")({
   head: () => ({
     meta: [
-      { title: "Keyboard Trainer — englishtypingtest.org" },
+      { title: "Keyboard Trainer Online — Home Row, Top & Bottom Row Drills" },
       {
         name: "description",
         content:
-          "Drill the home, top, bottom and number rows with focused key sprints to build muscle memory and speed.",
+          "Free online keyboard trainer. Practice home row, top row, bottom row, and number keys to master touch typing, build muscle memory, and boost typing accuracy.",
       },
-      { property: "og:title", content: "Keyboard Trainer — Row Drills" },
+      {
+        name: "keywords",
+        content:
+          "keyboard trainer, keyboard keypad trainer, touch typing trainer, home row typing practice, keyboard drills, typing practice for beginners, learn touch typing",
+      },
+      { property: "og:title", content: "Keyboard Trainer Online — Home & Number Row Drills" },
       {
         property: "og:description",
         content:
-          "Targeted row-by-row keyboard drills that build muscle memory for faster, more accurate typing.",
+          "Targeted row-by-row keyboard drills that build muscle memory for faster, more accurate touch typing.",
+      },
+      { property: "og:url", content: "https://englishtypingtest.org/games/trainer" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Keyboard Trainer Online — Home & Number Row Drills" },
+      {
+        name: "twitter:description",
+        content: "Master the keyboard with focused key sprint drills. Train home, top, bottom, and number rows.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/trainer" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Keyboard Trainer Touch Typing Tool",
+          applicationCategory: "EducationalApplication",
+          operatingSystem: "All",
+          url: "https://englishtypingtest.org/games/trainer",
+          description: "Targeted keyboard drills for home row, top row, and number rows.",
+        }),
       },
     ],
   }),

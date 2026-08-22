@@ -35,30 +35,42 @@ export const Route = createFileRoute("/templates/")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Template Marketplace — English Typing Test" },
+      { title: "Typing Test Paragraphs & Exam Templates — SSC, Court & GCC-TBC Passages" },
       {
         name: "description",
         content:
-          "Browse, preview and use thousands of typing-test templates from creators worldwide. SSC, Railway, Bank, coding, kids, quotes and more.",
+          "Browse free typing test paragraphs for SSC, Railway, High Court, GCC-TBC (30/40 WPM 7 min), and job assessment exams. Practice with authentic passages and track your speed.",
       },
-      { property: "og:title", content: "Typing Template Marketplace" },
+      {
+        name: "keywords",
+        content:
+          "typing test paragraph, 10 minutes typing practice paragraph, typing test 5 minutes paragraph, typing test 7 minutes paragraph, english 30 typing passage, 40 typing passage 7 minutes, gcc-tbc typing passage, exam typing practice",
+      },
+      { property: "og:title", content: "Typing Test Paragraphs & Exam Templates — SSC & GCC-TBC" },
       {
         property: "og:description",
         content:
-          "Discover and use ready-made typing-test templates for exams, school, work and play.",
+          "Discover ready-made typing-test paragraphs for government exams (SSC, Railway, Court, GCC-TBC), coding, and general typing practice.",
       },
-      { property: "og:url", content: "/templates" },
+      { property: "og:url", content: "https://englishtypingtest.org/templates" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Typing Test Paragraphs & Exam Templates — SSC & GCC-TBC" },
+      {
+        name: "twitter:description",
+        content: "Practice with custom exam typing paragraphs and speed passages.",
+      },
     ],
-    links: [{ rel: "canonical", href: "/templates" }],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/templates" }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Typing Template Marketplace",
-          description: "Browse ready-made typing-test templates.",
-          url: "/templates",
+          name: "Typing Test Paragraphs and Exam Templates",
+          description: "Browse ready-made typing-test paragraphs and exam passages.",
+          url: "https://englishtypingtest.org/templates",
         }),
       },
     ],

@@ -10,17 +10,23 @@ export const Route = createFileRoute("/blog")({
   component: BlogIndex,
   head: () => ({
     meta: [
-      { title: "Blog — English Typing Test" },
+      { title: "Typing Tips & Speed Guides — English Typing Test Blog" },
       {
         name: "description",
-        content: "Typing tips, productivity insights and updates from englishtypingtest.org.",
+        content:
+          "Read actionable touch typing tips, WPM improvement guides, keyboard ergonomics, and exam preparation advice from englishtypingtest.org.",
       },
-      { property: "og:title", content: "Blog — English Typing Test" },
-      { property: "og:description", content: "Typing tips and product updates." },
+      {
+        name: "keywords",
+        content: "typing tips, improve typing speed, touch typing guide, wpm practice tips, how to type faster, typing test guide",
+      },
+      { property: "og:title", content: "Typing Tips & Speed Guides — English Typing Test Blog" },
+      { property: "og:description", content: "Actionable touch typing tips, WPM improvement guides, and typing insights." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/blog" },
+      { property: "og:url", content: "https://englishtypingtest.org/blog" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/blog" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -29,7 +35,7 @@ export const Route = createFileRoute("/blog")({
           "@type": "CollectionPage",
           name: "English Typing Test Blog",
           description: "Typing tips, productivity insights and product updates.",
-          url: "/blog",
+          url: "https://englishtypingtest.org/blog",
         }),
       },
     ],

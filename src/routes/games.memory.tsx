@@ -17,17 +17,45 @@ import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 export const Route = createFileRoute("/games/memory")({
   head: () => ({
     meta: [
-      { title: "Memory Sequence Game — englishtypingtest.org" },
+      { title: "Sequence Memory Test Online — Simon-Style Brain Drill" },
       {
         name: "description",
         content:
-          "Repeat the lighting sequence as it grows. A simple Simon-style memory drill to sharpen recall and focus.",
+          "Train and test your sequence memory with this Simon-style color and pattern drill. Repeat the expanding visual sequences to set a new personal record.",
       },
-      { property: "og:title", content: "Memory Sequence Game" },
+      {
+        name: "keywords",
+        content:
+          "sequence memory test, memory sequence game, practice number sequence memory test, simon game online, visual memory test, brain reaction drill",
+      },
+      { property: "og:title", content: "Sequence Memory Test Online — Simon-Style Brain Drill" },
       {
         property: "og:description",
         content:
-          "Simon-style memory drill — repeat the growing color sequence to set a new personal best.",
+          "Simon-style memory drill — repeat the growing color sequence to test pattern recall and focus.",
+      },
+      { property: "og:url", content: "https://englishtypingtest.org/games/memory" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Sequence Memory Test Online — Simon-Style Brain Drill" },
+      {
+        name: "twitter:description",
+        content: "Test how many sequence steps you can remember. Free Simon-style memory challenge.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/memory" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Sequence Memory Drill",
+          applicationCategory: "GameApplication",
+          operatingSystem: "All",
+          url: "https://englishtypingtest.org/games/memory",
+          description: "Visual sequence memory test game.",
+        }),
       },
     ],
   }),

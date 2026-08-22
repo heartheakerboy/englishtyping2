@@ -15,17 +15,45 @@ import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 export const Route = createFileRoute("/games/cps")({
   head: () => ({
     meta: [
-      { title: "Clicks Per Second Test — englishtypingtest.org" },
+      { title: "CPS Test Online — Clicks Per Second & Coreball Click Speed Test" },
       {
         name: "description",
         content:
-          "Find your CPS — how many clicks per second can you land? Five-second sprint with a personal best tracker.",
+          "Test your click speed with our free 5-second CPS Test. Measure clicks per second, practice jitter & butterfly clicking, and compare your coreball click score.",
       },
-      { property: "og:title", content: "CPS Test — Clicks Per Second" },
+      {
+        name: "keywords",
+        content:
+          "cps test, coreball, coreball cps test, coreball game cps test, clicks per second, click speed test, jitter click test, 5 second cps test",
+      },
+      { property: "og:title", content: "CPS Test Online — Clicks Per Second & Click Speed" },
       {
         property: "og:description",
         content:
-          "Time-boxed click sprint that measures your clicks per second and saves your best score.",
+          "Find your CPS — how many clicks per second can you hit in a 5-second click sprint? Track personal records and compete globally.",
+      },
+      { property: "og:url", content: "https://englishtypingtest.org/games/cps" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "CPS Test Online — Clicks Per Second & Click Speed" },
+      {
+        name: "twitter:description",
+        content: "Test your finger clicking speed in 5 seconds. Instant CPS calculations and personal best score tracking.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/cps" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "CPS Click Speed Test",
+          applicationCategory: "GameApplication",
+          operatingSystem: "All",
+          url: "https://englishtypingtest.org/games/cps",
+          description: "Measure clicks per second (CPS) in a 5-second click sprint.",
+        }),
       },
     ],
   }),

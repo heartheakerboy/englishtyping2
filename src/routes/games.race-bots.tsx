@@ -18,16 +18,45 @@ import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 export const Route = createFileRoute("/games/race-bots")({
   head: () => ({
     meta: [
-      { title: "Type Racer — Race Against Bots | englishtypingtest.org" },
+      { title: "Type Racer Against AI Bots — Nitro Style Car Racing Typing Game" },
       {
         name: "description",
         content:
-          "Race against AI typing bots in real time. Improve your WPM by outrunning opponents in a head-to-head typing race.",
+          "Race your car against AI bots in a fast-paced Nitro-style typing race. Out-type the bots, increase your WPM, and dominate the track with high accuracy.",
       },
-      { property: "og:title", content: "Type Racer — Race Against Bots" },
+      {
+        name: "keywords",
+        content:
+          "nitrotype, nitro type game, nitro typing, type racer, typeracer, type racer unblocked, racing typing game, typing race against bots, car typing game",
+      },
+      { property: "og:title", content: "Type Racer Against Bots — Nitro Style Car Typing Race" },
       {
         property: "og:description",
-        content: "Head-to-head typing race against AI opponents. Boost your WPM and accuracy.",
+        content:
+          "Compete in head-to-head typing races against smart AI opponents. Track WPM, avoid typos, and cross the finish line first.",
+      },
+      { property: "og:url", content: "https://englishtypingtest.org/games/race-bots" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Type Racer Against Bots — Nitro Style Car Typing Race" },
+      {
+        name: "twitter:description",
+        content: "Put your typing speed to the test in a high-speed car race against AI bots.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/race-bots" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Type Racer AI Bots Game",
+          applicationCategory: "GameApplication",
+          operatingSystem: "All",
+          url: "https://englishtypingtest.org/games/race-bots",
+          description: "Real-time typing car race against adaptive AI bots.",
+        }),
       },
     ],
   }),

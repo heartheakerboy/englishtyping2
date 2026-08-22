@@ -467,6 +467,8 @@ export async function getAllAvailablePages() {
   const pages = [
     { label: "Home", path: "/" },
     { label: "Typing Test Hub", path: "/typing-test" },
+    { label: "GCC-TBC 30/40 WPM 7-Min Exam", path: "/gcc-tbc-typing-test" },
+    { label: "Live Chat 60s Support Test", path: "/live-chat-typing-test" },
     { label: "Games Hub", path: "/games" },
     { label: "Memory Sequence Game", path: "/games/memory" },
     { label: "Reaction Time Test", path: "/games/reaction" },
