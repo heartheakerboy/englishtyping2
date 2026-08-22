@@ -15,32 +15,32 @@ import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 export const Route = createFileRoute("/games/reaction")({
   head: () => ({
     meta: [
-      { title: "Reaction Time Test Online — Reflex Speed in Milliseconds" },
+      { title: "Reaction Time Test Online — Reflex Speed Test" },
       {
         name: "description",
         content:
-          "Test your visual reflex speed. Click the instant the screen turns green to measure your reaction time in milliseconds across 5 rounds. Compare with global averages.",
+          "Test your visual reflex speed. Click the instant the screen turns green to measure your reaction time in milliseconds across 5 rounds.",
       },
       {
         name: "keywords",
         content:
           "reaction time test, reflex test online, click speed test, human benchmark reaction, reflex speed in milliseconds",
       },
-      { property: "og:title", content: "Reaction Time Test Online — Reflex Speed in Milliseconds" },
+      { property: "og:title", content: "Reaction Time Test Online — Reflex Speed Test" },
       {
         property: "og:description",
         content: "Measure your visual reflex speed in milliseconds across 5 rounds.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/games/reaction" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/games/reaction" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Reaction Time Test Online — Reflex Speed in Milliseconds" },
+      { name: "twitter:title", content: "Reaction Time Test Online — Reflex Speed Test" },
       {
         name: "twitter:description",
         content: "Measure your reaction time in milliseconds. Test reflexes and beat your personal best.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/reaction" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/reaction" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -50,7 +50,7 @@ export const Route = createFileRoute("/games/reaction")({
           name: "Reaction Time Reflex Test",
           applicationCategory: "GameApplication",
           operatingSystem: "All",
-          url: "https://englishtypingtest.org/games/reaction",
+          url: "https://www.englishtypingtest.org/games/reaction",
           description: "Online reaction time reflex tester.",
         }),
       },

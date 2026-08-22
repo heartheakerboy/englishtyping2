@@ -26,6 +26,7 @@ export const Route = createFileRoute("/auth")({
         name: "description",
         content: "Sign in or create an account to save your typing results and track progress.",
       },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: AuthPage,

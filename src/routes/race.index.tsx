@@ -32,33 +32,33 @@ import { SmartLink } from "@/components/ui/SmartLink";
 export const Route = createFileRoute("/race/")({
   head: () => ({
     meta: [
-      { title: "Multiplayer Typing Test & Online Race — Compete Live With Friends" },
+      { title: "Multiplayer Typing Race — Compete Live Online" },
       {
         name: "description",
         content:
-          "Race against typists worldwide in real-time multiplayer typing tests. Join public rooms, create private race lobbies with friends, and compete on global leaderboards.",
+          "Race against typists worldwide in real-time multiplayer typing tests. Join public rooms, create private race lobbies with friends, and compete on leaderboards.",
       },
       {
         name: "keywords",
         content:
           "multiplayer typing test, online multiplayer typing test, typing test race against each other, typing race, typing competition, multiplayer wpm test",
       },
-      { property: "og:title", content: "Multiplayer Typing Test & Online Race — Compete Live" },
+      { property: "og:title", content: "Multiplayer Typing Race — Compete Live Online" },
       {
         property: "og:description",
         content:
           "Join live multiplayer typing races with friends or global players. Real-time WPM competition, private rooms, and live rankings.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/race" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/race" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Multiplayer Typing Test & Online Race — Compete Live" },
+      { name: "twitter:title", content: "Multiplayer Typing Race — Compete Live Online" },
       {
         name: "twitter:description",
-        content: "Compete against players worldwide in real-time multiplayer typing races.",
+        content: "Compete live with typists worldwide. Real-time multiplayer typing tests and custom race lobbies.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/race" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/race" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -66,10 +66,9 @@ export const Route = createFileRoute("/race/")({
           "@context": "https://schema.org",
           "@type": "WebApplication",
           name: "Multiplayer Typing Race",
+          url: "https://www.englishtypingtest.org/race",
           applicationCategory: "GameApplication",
-          operatingSystem: "All",
-          url: "https://englishtypingtest.org/race",
-          description: "Real-time multiplayer typing test and racing arena.",
+          description: "Real-time multiplayer typing race with public and private lobbies.",
         }),
       },
     ],

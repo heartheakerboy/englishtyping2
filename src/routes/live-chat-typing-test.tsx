@@ -33,12 +33,12 @@ export const Route = createFileRoute("/live-chat-typing-test")({
   head: () => ({
     meta: [
       {
-        title: "Live Chat Typing Test 60 Seconds — Customer Support Assessment Practice",
+        title: "Live Chat Typing Test 60s — Customer Support Practice",
       },
       {
         name: "description",
         content:
-          "Practice the free 60-second Live Chat Typing Test simulation. Measure your live response WPM, keystroke accuracy, customer support readiness, and SLA grade online.",
+          "Practice the free 60-second Live Chat Typing Test simulation. Measure live response WPM, accuracy, customer support readiness, and SLA grade online.",
       },
       {
         name: "keywords",
@@ -47,19 +47,19 @@ export const Route = createFileRoute("/live-chat-typing-test")({
       },
       {
         property: "og:title",
-        content: "Live Chat Typing Test 60 Seconds — Customer Support Assessment",
+        content: "Live Chat Typing Test 60s — Customer Support Assessment",
       },
       {
         property: "og:description",
         content:
           "Interactive customer support chat simulation. Test your 60-second typing speed, response accuracy, and agent readiness grade.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/live-chat-typing-test" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/live-chat-typing-test" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Live Chat Typing Test 60 Seconds — Customer Support Assessment",
+        content: "Live Chat Typing Test 60s — Customer Support Assessment",
       },
       {
         name: "twitter:description",
@@ -67,7 +67,7 @@ export const Route = createFileRoute("/live-chat-typing-test")({
           "Interactive live chat typing simulator for BPO, KPO, Amazon, and customer support job assessments.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/live-chat-typing-test" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/live-chat-typing-test" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -75,7 +75,7 @@ export const Route = createFileRoute("/live-chat-typing-test")({
           "@context": "https://schema.org",
           "@type": "WebApplication",
           name: "Live Chat 60-Second Typing Test Simulator",
-          url: "https://englishtypingtest.org/live-chat-typing-test",
+          url: "https://www.englishtypingtest.org/live-chat-typing-test",
           applicationCategory: "EducationalApplication",
           operatingSystem: "All",
           description:

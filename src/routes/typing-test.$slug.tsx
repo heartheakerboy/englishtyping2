@@ -47,7 +47,7 @@ export const Route = createFileRoute("/typing-test/$slug")({
   },
   head: ({ params, loaderData }) => {
     const d = loaderData?.duration as TestDuration | undefined;
-    const url = `https://englishtypingtest.org/typing-test/${params.slug}`;
+    const url = `https://www.englishtypingtest.org/typing-test/${params.slug}`;
     if (!d) return { meta: [{ title: "English Typing Test — Online Practice" }] };
     const faq = (d.faq ?? []).filter((f) => f.q && f.a);
     return {
@@ -85,8 +85,8 @@ export const Route = createFileRoute("/typing-test/$slug")({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://englishtypingtest.org/" },
-              { "@type": "ListItem", position: 2, name: "Typing Tests", item: "https://englishtypingtest.org/typing-test" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.englishtypingtest.org/" },
+              { "@type": "ListItem", position: 2, name: "Typing Tests", item: "https://www.englishtypingtest.org/typing-test" },
               { "@type": "ListItem", position: 3, name: d.nav_label, item: url },
             ],
           }),

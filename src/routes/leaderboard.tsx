@@ -15,33 +15,33 @@ type Timeframe = "daily" | "weekly" | "monthly" | "all";
 export const Route = createFileRoute("/leaderboard")({
   head: () => ({
     meta: [
-      { title: "Typing Speed Leaderboard — Global, Country & City WPM Rankings" },
+      { title: "Typing Speed Leaderboard — Global & City Rankings" },
       {
         name: "description",
         content:
-          "See the fastest typists in the world. Real-time daily, weekly, monthly and all-time WPM rankings by city, state, and country. Test your typing speed and rank today.",
+          "See the fastest typists in the world. Real-time daily, weekly, monthly and all-time WPM rankings by city, state, and country.",
       },
       {
         name: "keywords",
         content:
           "typing leaderboard, daily typing test leaderboard, englishtypingtest leaderboard india, typing speed rank, wpm dashboard, top typing speed rankings",
       },
-      { property: "og:title", content: "Typing Speed Leaderboard — Global & City WPM Rankings" },
+      { property: "og:title", content: "Typing Speed Leaderboard — Global & City Rankings" },
       {
         property: "og:description",
         content:
           "Compete on global, country, state and city typing leaderboards across daily, weekly, monthly and all-time windows.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/leaderboard" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/leaderboard" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Typing Speed Leaderboard — Global & City WPM Rankings" },
+      { name: "twitter:title", content: "Typing Speed Leaderboard — Global & City Rankings" },
       {
         name: "twitter:description",
         content: "Track global and local typing champions. Compete and climb the WPM rankings.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/leaderboard" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/leaderboard" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -49,8 +49,8 @@ export const Route = createFileRoute("/leaderboard")({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           name: "Global Typing Speed Leaderboard",
-          description: "Global, country, and city rankings for typing speed and accuracy.",
-          url: "https://englishtypingtest.org/leaderboard",
+          description: "Real-time global, national, and city typing speed leaderboards.",
+          url: "https://www.englishtypingtest.org/leaderboard",
         }),
       },
     ],

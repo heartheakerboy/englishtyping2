@@ -35,11 +35,11 @@ export const Route = createFileRoute("/templates/")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Typing Test Paragraphs & Exam Templates — SSC, Court & GCC-TBC Passages" },
+      { title: "Typing Test Paragraphs & Exam Templates — SSC & GCC-TBC" },
       {
         name: "description",
         content:
-          "Browse free typing test paragraphs for SSC, Railway, High Court, GCC-TBC (30/40 WPM 7 min), and job assessment exams. Practice with authentic passages and track your speed.",
+          "Browse free typing test paragraphs for SSC, Railway, High Court, GCC-TBC (30/40 WPM 7 min), and job assessment exams. Practice with authentic passages.",
       },
       {
         name: "keywords",
@@ -52,25 +52,24 @@ export const Route = createFileRoute("/templates/")({
         content:
           "Discover ready-made typing-test paragraphs for government exams (SSC, Railway, Court, GCC-TBC), coding, and general typing practice.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/templates" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/templates" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Typing Test Paragraphs & Exam Templates — SSC & GCC-TBC" },
       {
         name: "twitter:description",
-        content: "Practice with custom exam typing paragraphs and speed passages.",
+        content: "Community-created and official exam typing paragraphs and templates.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/templates" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/templates" }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Typing Test Paragraphs and Exam Templates",
-          description: "Browse ready-made typing-test paragraphs and exam passages.",
-          url: "https://englishtypingtest.org/templates",
+          name: "Typing Test Paragraphs and Templates",
+          url: "https://www.englishtypingtest.org/templates",
         }),
       },
     ],

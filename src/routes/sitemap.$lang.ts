@@ -50,6 +50,9 @@ export const Route = createFileRoute("/sitemap/$lang")({
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/typing-test", changefreq: "weekly", priority: "0.9" },
+          { path: "/gcc-tbc-typing-test", changefreq: "weekly", priority: "0.9" },
+          { path: "/live-chat-typing-test", changefreq: "weekly", priority: "0.9" },
+          { path: "/test", changefreq: "weekly", priority: "0.9" },
           { path: "/lessons", changefreq: "monthly", priority: "0.8" },
           { path: "/leaderboard", changefreq: "daily", priority: "0.8" },
           { path: "/race", changefreq: "daily", priority: "0.7" },
@@ -66,7 +69,6 @@ export const Route = createFileRoute("/sitemap/$lang")({
           { path: "/tournaments", changefreq: "weekly", priority: "0.6" },
           { path: "/blog", changefreq: "weekly", priority: "0.8" },
           { path: "/templates", changefreq: "daily", priority: "0.8" },
-          { path: "/auth", changefreq: "monthly", priority: "0.4" },
         ];
 
         try {

@@ -9,34 +9,34 @@ import { listEnabledDurations } from "@/lib/test-durations.functions";
 export const Route = createFileRoute("/typing-test/")({
   head: () => ({
     meta: [
-      { title: "English Typing Tests (1, 2, 5, 7, 10 & 15 Minutes) — Practice Online" },
+      { title: "English Typing Tests (1 to 15 Min) — Practice Online" },
       {
         name: "description",
         content:
-          "Free online English typing tests for all durations: 60 seconds, 2 min, 5 min, 7 min (GCC-TBC exam format), 10 min paragraphs, and 15 min endurance. Live WPM, accuracy, CPM & leaderboards.",
+          "Free online English typing tests: 60 seconds, 2 min, 5 min, 7 min (GCC-TBC), 10 min paragraphs, and 15 min endurance. Live WPM, accuracy, CPM & leaderboards.",
       },
       {
         name: "keywords",
         content:
           "english typing test 5 minutes, english typing test 10 minutes, 7 minute typing test, typing test 2 minutes, 10 minutes typing practice paragraph, typing test english 5 minutes, english typing test 1 minute, timed typing test",
       },
-      { property: "og:title", content: "English Typing Tests — 1, 2, 5, 7, 10 & 15 Min Practice" },
+      { property: "og:title", content: "English Typing Tests (1 to 15 Min) — Practice Online" },
       {
         property: "og:description",
         content:
           "Pick your typing test duration (60s, 2m, 5m, 7m, 10m, 15m) and start typing paragraphs with real-time WPM, accuracy, and live leaderboards.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/typing-test" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/typing-test" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "English Typing Tests — 1, 2, 5, 7, 10 & 15 Min Practice" },
+      { name: "twitter:title", content: "English Typing Tests (1 to 15 Min) — Practice Online" },
       {
         name: "twitter:description",
         content:
           "Free online typing tests for every duration. Real-time WPM, accuracy, CPM, and duration-specific leaderboards.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/typing-test" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/typing-test" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/typing-test/")({
           name: "English Typing Tests by Duration",
           description:
             "Free online typing tests for 60 seconds, 2 minutes, 5 minutes, 7 minutes, 10 minutes, and 15 minutes.",
-          url: "https://englishtypingtest.org/typing-test",
+          url: "https://www.englishtypingtest.org/typing-test",
         }),
       },
     ],

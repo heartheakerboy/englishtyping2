@@ -25,11 +25,11 @@ import { Sparkles, Gamepad2, Award } from "lucide-react";
 export const Route = createFileRoute("/games/balloon-burst")({
   head: () => ({
     meta: [
-      { title: "Balloon Typing Game — Type & Burst Balloons Online | Free Speed Drill" },
+      { title: "Balloon Typing Game — Type & Burst Balloons Online" },
       {
         name: "description",
         content:
-          "Play the classic Balloon Typing game online. Pop floating word balloons by typing fast before they drift away. Boost keyboard speed, reflexes, and touch typing accuracy for free.",
+          "Play the classic Balloon Typing game online. Pop floating word balloons by typing fast before they drift away. Boost keyboard speed, reflexes, and accuracy.",
       },
       {
         name: "keywords",
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/games/balloon-burst")({
         content:
           "Pop floating balloons by typing words before they drift away. Combo scoring, difficulty levels, and global leaderboards.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/games/balloon-burst" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/games/balloon-burst" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Balloon Typing Game — Type & Burst Balloons Online" },
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/games/balloon-burst")({
         content: "Play the free Balloon Typing game. Pop word balloons, build combo streaks, and increase your typing speed.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/balloon-burst" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/balloon-burst" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -61,7 +61,7 @@ export const Route = createFileRoute("/games/balloon-burst")({
           name: "Balloon Typing Game",
           applicationCategory: "GameApplication",
           operatingSystem: "All",
-          url: "https://englishtypingtest.org/games/balloon-burst",
+          url: "https://www.englishtypingtest.org/games/balloon-burst",
           description: "Pop floating word balloons by typing them before they leave the screen.",
         }),
       },

@@ -30,12 +30,12 @@ export const Route = createFileRoute("/gcc-tbc-typing-test")({
   head: () => ({
     meta: [
       {
-        title: "GCC-TBC 30 & 40 WPM English Typing Test (7 Minutes) — Official Exam Practice",
+        title: "GCC-TBC 30 & 40 WPM 7-Minute English Typing Test — Practice",
       },
       {
         name: "description",
         content:
-          "Practice official 7-minute GCC-TBC English typing test for 30 WPM and 40 WPM exams. Real exam passages, mistake deduction rules, Net WPM calculation, and printable scorecard.",
+          "Practice official 7-minute GCC-TBC English typing test for 30 WPM and 40 WPM exams. Real exam passages, mistake deduction rules, Net WPM, and scorecard.",
       },
       {
         name: "keywords",
@@ -44,19 +44,19 @@ export const Route = createFileRoute("/gcc-tbc-typing-test")({
       },
       {
         property: "og:title",
-        content: "GCC-TBC 30 & 40 WPM English Typing Test 7 Minutes — Exam Practice",
+        content: "GCC-TBC 30 & 40 WPM 7-Minute English Typing Test",
       },
       {
         property: "og:description",
         content:
           "Official 7-minute exam simulation for GCC-TBC 30 WPM & 40 WPM. Authentic passages, instant net WPM grading, and mistake penalty scorecard.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/gcc-tbc-typing-test" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/gcc-tbc-typing-test" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "GCC-TBC 30 & 40 WPM English Typing Test 7 Minutes",
+        content: "GCC-TBC 30 & 40 WPM 7-Minute English Typing Test",
       },
       {
         name: "twitter:description",
@@ -64,7 +64,7 @@ export const Route = createFileRoute("/gcc-tbc-typing-test")({
           "Practice official 7-minute GCC-TBC passages. Real-time net WPM, mistake penalties, and pass/fail scorecard.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/gcc-tbc-typing-test" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/gcc-tbc-typing-test" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -72,7 +72,7 @@ export const Route = createFileRoute("/gcc-tbc-typing-test")({
           "@context": "https://schema.org",
           "@type": "WebApplication",
           name: "GCC-TBC 7-Minute English Typing Test Practice",
-          url: "https://englishtypingtest.org/gcc-tbc-typing-test",
+          url: "https://www.englishtypingtest.org/gcc-tbc-typing-test",
           applicationCategory: "EducationalApplication",
           operatingSystem: "All",
           description:

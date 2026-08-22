@@ -28,34 +28,34 @@ import {
 export const Route = createFileRoute("/games/")({
   head: () => ({
     meta: [
-      { title: "Typing Games Online — Balloon Typing, Zombie Defense, Nitro Racer & Z-Type" },
+      { title: "Typing Games Online — Balloon, Zombie & Nitro Racing" },
       {
         name: "description",
         content:
-          "Play free online typing games: Balloon Burst, Zombie Typing, Falling Words, AI Car Racing, Keyboard Trainer & CPS click tests. Practice typing speed and improve WPM while playing.",
+          "Play free online typing games: Balloon Burst, Zombie Typing, Falling Words, AI Car Racing, Keyboard Trainer & CPS tests. Boost WPM while playing.",
       },
       {
         name: "keywords",
         content:
           "typing games, balloon typing, zombie typing, z type, nitro type game, nitro typing, arcade typing games, typing game online, keyboard trainer, cps test",
       },
-      { property: "og:title", content: "Free Online Typing Games — Balloon, Zombie & Nitro Racing" },
+      { property: "og:title", content: "Typing Games Online — Balloon, Zombie & Nitro Racing" },
       {
         property: "og:description",
         content:
           "Play free arcade typing games: Balloon Burst, Zombie Defense, Falling Words, AI Race Bots, and Keyboard Drills. Earn XP, coins, and climb global leaderboards.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/games" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/games" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Free Online Typing Games — Balloon, Zombie & Nitro Racing" },
+      { name: "twitter:title", content: "Typing Games Online — Balloon, Zombie & Nitro Racing" },
       {
         name: "twitter:description",
         content:
           "Play fun, addictive typing games online. Boost your WPM and touch typing speed while battling zombies, popping balloons, and racing cars.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -65,7 +65,7 @@ export const Route = createFileRoute("/games/")({
           name: "Free Online Typing Games & Arcade Drills",
           description:
             "Play free typing games including Balloon Burst, Zombie Typing, Falling Words, AI Race Bots, and speed tests.",
-          url: "https://englishtypingtest.org/games",
+          url: "https://www.englishtypingtest.org/games",
         }),
       },
     ],

@@ -23,10 +23,10 @@ export const Route = createFileRoute("/blog")({
       { property: "og:title", content: "Typing Tips & Speed Guides — English Typing Test Blog" },
       { property: "og:description", content: "Actionable touch typing tips, WPM improvement guides, and typing insights." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://englishtypingtest.org/blog" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/blog" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/blog" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/blog" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/blog")({
           "@type": "CollectionPage",
           name: "English Typing Test Blog",
           description: "Typing tips, productivity insights and product updates.",
-          url: "https://englishtypingtest.org/blog",
+          url: "https://www.englishtypingtest.org/blog",
         }),
       },
     ],

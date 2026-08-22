@@ -63,11 +63,11 @@ const LANG_BADGES = ["EN", "हि", "मर", "ES", "FR", "DE", "日", "中", "
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "English Typing Test — Free 60s Speed Test, 5 & 10 Min Paragraphs, WPM Practice" },
+      { title: "English Typing Test — Free 60s Speed Test & WPM Practice" },
       {
         name: "description",
         content:
-          "Take the ultimate free English typing test online (60 seconds, 1 to 15 min). Practice with paragraphs, test live chat typing speed, check net WPM & accuracy in real-time with detailed analytics.",
+          "Take the free English typing test online (60 seconds, 1-10 min). Practice paragraphs, test live chat typing speed, check net WPM & accuracy in real time.",
       },
       {
         name: "keywords",
@@ -80,7 +80,7 @@ export const Route = createFileRoute("/")({
         content:
           "Free online typing tests with real-time WPM, accuracy, and CPM tracking. Practice 60-second sprints, 5/10-minute paragraphs, multiplayer races, and arcade games.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "English Typing Test — Free 60s Speed Test & WPM Practice" },
@@ -89,7 +89,7 @@ export const Route = createFileRoute("/")({
         content: "Free typing tests with real-time WPM, accuracy, and CPM tracking. 60-second sprints, 5 & 10-minute paragraphs, gamified typing.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -98,12 +98,12 @@ export const Route = createFileRoute("/")({
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: "English Typing Test",
-            url: "https://englishtypingtest.org/",
+            url: "https://www.englishtypingtest.org/",
             description:
               "Free modern typing test platform with real-time WPM, accuracy and CPM tracking.",
             potentialAction: {
               "@type": "SearchAction",
-              target: "https://englishtypingtest.org/blog?q={search_term_string}",
+              target: "https://www.englishtypingtest.org/blog?q={search_term_string}",
               "query-input": "required name=search_term_string",
             },
           },
@@ -111,8 +111,8 @@ export const Route = createFileRoute("/")({
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "English Typing Test",
-            url: "https://englishtypingtest.org/",
-            logo: "https://englishtypingtest.org/favicon.ico",
+            url: "https://www.englishtypingtest.org/",
+            logo: "https://www.englishtypingtest.org/favicon.ico",
           },
           {
             "@context": "https://schema.org",

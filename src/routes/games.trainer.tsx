@@ -15,7 +15,7 @@ import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 export const Route = createFileRoute("/games/trainer")({
   head: () => ({
     meta: [
-      { title: "Keyboard Trainer Online — Home Row, Top & Bottom Row Drills" },
+      { title: "Keyboard Trainer Online — Home & Number Row Drills" },
       {
         name: "description",
         content:
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/games/trainer")({
         content:
           "Targeted row-by-row keyboard drills that build muscle memory for faster, more accurate touch typing.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/games/trainer" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/games/trainer" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Keyboard Trainer Online — Home & Number Row Drills" },
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/games/trainer")({
         content: "Master the keyboard with focused key sprint drills. Train home, top, bottom, and number rows.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/trainer" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/trainer" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/games/trainer")({
           name: "Keyboard Trainer Touch Typing Tool",
           applicationCategory: "EducationalApplication",
           operatingSystem: "All",
-          url: "https://englishtypingtest.org/games/trainer",
+          url: "https://www.englishtypingtest.org/games/trainer",
           description: "Targeted keyboard drills for home row, top row, and number rows.",
         }),
       },

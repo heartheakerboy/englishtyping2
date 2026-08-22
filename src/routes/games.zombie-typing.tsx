@@ -27,7 +27,7 @@ import zombieBossImg from "@/assets/games/zombie-boss.png";
 export const Route = createFileRoute("/games/zombie-typing")({
   head: () => ({
     meta: [
-      { title: "Zombie Typing Game — Type Fast to Defeat Zombie Horde | Speed Defense" },
+      { title: "Zombie Typing Game — Defeat the Zombie Horde Online" },
       {
         name: "description",
         content:
@@ -38,22 +38,22 @@ export const Route = createFileRoute("/games/zombie-typing")({
         content:
           "zombie typing, zombie typing game, game zombie typing, wpm typing test zombie, defeat zombies by typing words, typing defense game, zombie typing game online",
       },
-      { property: "og:title", content: "Zombie Typing Game — Type to Survive the Horde" },
+      { property: "og:title", content: "Zombie Typing Game — Defeat the Zombie Horde" },
       {
         property: "og:description",
         content:
           "Defend your character by typing words accurately to blast zombies. Battle epic boss zombies and climb the leaderboard.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/games/zombie-typing" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/games/zombie-typing" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Zombie Typing Game — Type to Survive the Horde" },
+      { name: "twitter:title", content: "Zombie Typing Game — Defeat the Zombie Horde" },
       {
         name: "twitter:description",
         content: "Blast zombies with keyboard typing power. Survive boss waves and level up your WPM.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/zombie-typing" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/zombie-typing" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/games/zombie-typing")({
           name: "Zombie Typing Survival Game",
           applicationCategory: "GameApplication",
           operatingSystem: "All",
-          url: "https://englishtypingtest.org/games/zombie-typing",
+          url: "https://www.englishtypingtest.org/games/zombie-typing",
           description: "Defend against zombie waves by typing words accurately.",
         }),
       },

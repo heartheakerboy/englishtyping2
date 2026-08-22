@@ -24,7 +24,7 @@ import {
 export const Route = createFileRoute("/games/falling-words")({
   head: () => ({
     meta: [
-      { title: "Falling Words Typing Game — Z-Type Style Typing Defense Online" },
+      { title: "Falling Words Typing Game — Z-Type Style Speed Drill" },
       {
         name: "description",
         content:
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/games/falling-words")({
         content:
           "Type falling words before they hit the bottom. Test your reaction time, keystroke accuracy, and combo score.",
       },
-      { property: "og:url", content: "https://englishtypingtest.org/games/falling-words" },
+      { property: "og:url", content: "https://www.englishtypingtest.org/games/falling-words" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Falling Words Typing Game — Z-Type Style Speed Drill" },
@@ -50,7 +50,7 @@ export const Route = createFileRoute("/games/falling-words")({
         content: "Blast falling words out of the sky with your keyboard. Fast, fun typing practice.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://englishtypingtest.org/games/falling-words" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/falling-words" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -60,7 +60,7 @@ export const Route = createFileRoute("/games/falling-words")({
           name: "Falling Words Typing Game",
           applicationCategory: "GameApplication",
           operatingSystem: "All",
-          url: "https://englishtypingtest.org/games/falling-words",
+          url: "https://www.englishtypingtest.org/games/falling-words",
           description: "Z-Type style typing game where you type descending words to clear the screen.",
         }),
       },

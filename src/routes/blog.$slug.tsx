@@ -28,7 +28,7 @@ export const Route = createFileRoute("/blog/$slug")({
       p?.seo_description ??
       p?.excerpt ??
       "Typing tips and product updates from englishtypingtest.org.";
-    const url = `https://englishtypingtest.org/blog/${params.slug}`;
+    const url = `https://www.englishtypingtest.org/blog/${params.slug}`;
     return {
       meta: [
         { title },
