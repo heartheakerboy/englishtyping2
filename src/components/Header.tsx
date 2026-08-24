@@ -19,6 +19,7 @@ import {
   Menu,
   GraduationCap,
   Headphones,
+  Scale,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -179,6 +180,19 @@ export function Header() {
                   >
                     <Zap className="h-4 w-4 text-primary" />
                     {t("practice")}
+                  </Link>
+                  <Link
+                    to={"/ssc-cgl-typing-test" as any}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between rounded-md px-3.5 py-2 text-sm font-medium text-amber-400 transition-colors hover:bg-surface"
+                  >
+                    <span className="flex items-center gap-2.5">
+                      <Scale className="h-4 w-4 text-amber-400" />
+                      SSC CGL/CHSL DEST
+                    </span>
+                    <span className="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-amber-400">
+                      15 MIN / 2000
+                    </span>
                   </Link>
                   <Link
                     to={"/gcc-tbc-typing-test" as any}

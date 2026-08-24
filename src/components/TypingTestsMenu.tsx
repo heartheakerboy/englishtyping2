@@ -36,6 +36,17 @@ export function TypingTestsMenu({ triggerClassName }: { triggerClassName?: strin
         <DropdownMenuLabel>Specialized Tests</DropdownMenuLabel>
         <DropdownMenuItem asChild>
           <Link
+            to={"/ssc-cgl-typing-test" as any}
+            className="flex w-full items-center justify-between font-medium text-amber-400"
+          >
+            <span>SSC CGL / CHSL DEST</span>
+            <span className="rounded bg-amber-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-amber-400">
+              15 MIN / 2000
+            </span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link
             to={"/gcc-tbc-typing-test" as any}
             className="flex w-full items-center justify-between font-medium text-primary"
           >

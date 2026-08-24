@@ -50,6 +50,7 @@ export const Route = createFileRoute("/sitemap/$lang")({
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/typing-test", changefreq: "weekly", priority: "0.9" },
+          { path: "/ssc-cgl-typing-test", changefreq: "weekly", priority: "0.9" },
           { path: "/gcc-tbc-typing-test", changefreq: "weekly", priority: "0.9" },
           { path: "/live-chat-typing-test", changefreq: "weekly", priority: "0.9" },
           { path: "/test", changefreq: "weekly", priority: "0.9" },

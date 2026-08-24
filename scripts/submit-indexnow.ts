@@ -9,6 +9,7 @@ const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY}.txt`;
 
 const URL_LIST = [
   `https://${HOST}/`,
+  `https://${HOST}/ssc-cgl-typing-test`,
   `https://${HOST}/gcc-tbc-typing-test`,
   `https://${HOST}/live-chat-typing-test`,
   `https://${HOST}/typing-test`,

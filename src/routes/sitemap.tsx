@@ -42,7 +42,7 @@ function SitemapPage() {
     list.forEach((page) => {
       if (page.path === "/" || page.path === "/typing-test" || page.path === "/games" || page.path === "/blog" || page.path === "/leaderboard") {
         groups.core.push(page);
-      } else if (page.path.startsWith("/typing-test/") || page.path === "/gcc-tbc-typing-test" || page.path === "/live-chat-typing-test") {
+      } else if (page.path.startsWith("/typing-test/") || page.path === "/ssc-cgl-typing-test" || page.path === "/gcc-tbc-typing-test" || page.path === "/live-chat-typing-test") {
         groups.tests.push(page);
       } else if (page.path.startsWith("/games/")) {
         groups.games.push(page);
