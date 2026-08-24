@@ -25,6 +25,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { fireConfetti } from "@/components/Confetti";
+import { KeyboardMistakeHeatmap } from "@/components/KeyboardMistakeHeatmap";
 
 export const Route = createFileRoute("/gcc-tbc-typing-test")({
   head: () => ({
@@ -240,12 +241,15 @@ function GccTbcPage() {
     let mistakes = 0;
     let correctChars = 0;
     const typedLen = typedText.length;
+    const mistakeMap: Record<string, number> = {};
 
     for (let i = 0; i < typedLen; i++) {
       if (i < targetText.length && typedText[i] === targetText[i]) {
         correctChars++;
       } else {
         mistakes++;
+        const k = i < targetText.length ? targetText[i] : typedText[i];
+        mistakeMap[k] = (mistakeMap[k] ?? 0) + 1;
       }
     }
 
@@ -273,6 +277,7 @@ function GccTbcPage() {
       totalKeystrokes,
       correctChars,
       mistakes,
+      mistakeMap,
       grossWpm,
       netWpm,
       accuracy,
@@ -529,6 +534,15 @@ function GccTbcPage() {
               <p className="text-xs text-muted-foreground mt-1">
                 Total Keystrokes: {stats.totalKeystrokes} | Correct Characters: {stats.correctChars} | Time Taken: {formatTime(stats.elapsedSeconds)}
               </p>
+            </div>
+
+            {/* Keyboard Mistake Heatmap */}
+            <div className="pt-2">
+              <KeyboardMistakeHeatmap
+                mistakeMap={stats.mistakeMap}
+                targetText={targetText}
+                typedText={typedText}
+              />
             </div>
 
             {/* Action Buttons */}

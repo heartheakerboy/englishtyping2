@@ -22,6 +22,7 @@ import {
   YAxis,
 } from "recharts";
 import { AICoachPanel } from "@/components/AICoachPanel";
+import { KeyboardMistakeHeatmap } from "@/components/KeyboardMistakeHeatmap";
 import { fireConfetti } from "@/components/Confetti";
 import { sfx } from "@/lib/sound";
 import { useTranslation } from "react-i18next";
@@ -245,6 +246,12 @@ export function ResultScreen({ run, onRestart }: Props) {
           )}
         </Card>
       </div>
+
+      <KeyboardMistakeHeatmap
+        mistakeMap={run.mistakeMap}
+        targetText={run.target}
+        typedText={run.typed}
+      />
 
       <AICoachPanel run={run} language={run.language ?? "english"} />
 
