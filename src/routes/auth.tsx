@@ -28,6 +28,7 @@ export const Route = createFileRoute("/auth")({
       },
       { name: "robots", content: "noindex, nofollow" },
     ],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/auth" }],
   }),
   component: AuthPage,
 });

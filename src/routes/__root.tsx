@@ -92,30 +92,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "yandex-verification", content: "fc4b0f4a91430a61" },
       { name: "theme-color", content: "#0a0a0f", media: "(prefers-color-scheme: dark)" },
       { name: "theme-color", content: "#ffffff", media: "(prefers-color-scheme: light)" },
-      { title: "English Typing Test — Measure your typing speed" },
-      {
-        name: "description",
-        content:
-          "Free, beautiful typing test platform. Test your WPM, accuracy and CPM. Real-time engine with detailed analytics.",
-      },
       { name: "author", content: "englishtypingtest.org" },
       { name: "application-name", content: "English Typing Test" },
       { name: "apple-mobile-web-app-title", content: "TypingTest" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       { property: "og:site_name", content: "englishtypingtest.org" },
-      { property: "og:title", content: "English Typing Test — Measure your typing speed" },
-      {
-        property: "og:description",
-        content: "Test your WPM, accuracy and CPM. Real-time engine with detailed analytics.",
-      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "English Typing Test — Measure your typing speed" },
-      {
-        name: "twitter:description",
-        content: "Test your WPM, accuracy and CPM. Real-time engine with detailed analytics.",
-      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

@@ -48,24 +48,35 @@ export const Route = createFileRoute("/typing-test/$slug")({
   head: ({ params, loaderData }) => {
     const d = loaderData?.duration as TestDuration | undefined;
     const url = `https://www.englishtypingtest.org/typing-test/${params.slug}`;
-    if (!d) return { meta: [{ title: "English Typing Test — Online Practice" }] };
-    const faq = (d.faq ?? []).filter((f) => f.q && f.a);
+    const navLabel = d?.nav_label || params.slug.replace("-", " ");
+    const title =
+      d?.title && !d.title.includes("Measure your typing speed")
+        ? d.title
+        : `${navLabel} Typing Test — Practice Online`;
+    const metaDescription =
+      d?.meta_description &&
+      !d.meta_description.includes("Free, beautiful typing test platform") &&
+      !d.meta_description.includes("detailed analytics")
+        ? d.meta_description
+        : `Take the free ${navLabel} English typing test online. Test your Net WPM, accuracy, CPM, and error penalty in real-time.`;
+
+    const faq = (d?.faq ?? []).filter((f) => f.q && f.a);
     return {
       meta: [
-        { title: d.title },
-        { name: "description", content: d.meta_description },
+        { title },
+        { name: "description", content: metaDescription },
         {
           name: "keywords",
-          content: `${d.nav_label.toLowerCase()}, typing test ${d.nav_label.toLowerCase()}, english typing test ${d.nav_label.toLowerCase()}, timed typing practice, wpm test`,
+          content: `${navLabel.toLowerCase()}, typing test ${navLabel.toLowerCase()}, english typing test ${navLabel.toLowerCase()}, timed typing practice, wpm test`,
         },
-        { property: "og:title", content: d.title },
-        { property: "og:description", content: d.meta_description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: metaDescription },
         { property: "og:type", content: "website" },
         { property: "og:url", content: url },
-        ...(d.banner_url ? [{ property: "og:image", content: d.banner_url }] : []),
-        { name: "twitter:card", content: d.banner_url ? "summary_large_image" : "summary" },
-        { name: "twitter:title", content: d.title },
-        { name: "twitter:description", content: d.meta_description },
+        ...(d?.banner_url ? [{ property: "og:image", content: d.banner_url }] : []),
+        { name: "twitter:card", content: d?.banner_url ? "summary_large_image" : "summary" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: metaDescription },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
