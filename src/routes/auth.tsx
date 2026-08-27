@@ -12,24 +12,29 @@ import { lovable } from "@/integrations/lovable";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
+import { getLocalizedSeo } from "@/lib/seo-translations";
+
 const searchSchema = z.object({
   mode: z.enum(["signin", "signup"]).optional(),
   redirect: z.string().optional(),
+  lang: z.string().optional(),
 });
 
 export const Route = createFileRoute("/auth")({
   validateSearch: searchSchema,
-  head: () => ({
-    meta: [
-      { title: "Sign in — englishtypingtest.org" },
-      {
-        name: "description",
-        content: "Sign in or create an account to save your typing results and track progress.",
-      },
-      { name: "robots", content: "noindex, nofollow" },
-    ],
-    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/auth" }],
-  }),
+  head: ({ search }) => {
+    const seo = getLocalizedSeo("auth", search?.lang);
+    return {
+      meta: [
+        { title: seo.title },
+        { name: "description", content: seo.description },
+        { property: "og:title", content: seo.title },
+        { property: "og:description", content: seo.description },
+        { name: "robots", content: "noindex, nofollow" },
+      ],
+      links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/auth" }],
+    };
+  },
   component: AuthPage,
 });
 

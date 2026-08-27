@@ -15,36 +15,35 @@ import {
 } from "@/components/ui/accordion";
 import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 
+import { z } from "zod";
+import { getLocalizedSeo } from "@/lib/seo-translations";
+
 export const Route = createFileRoute("/games/race-bots")({
-  head: () => ({
-    meta: [
-      { title: "Type Racer Against AI Bots — Nitro Car Typing Game" },
-      {
-        name: "description",
-        content:
-          "Race your car against AI bots in a fast-paced Nitro-style typing race. Out-type the bots, increase your WPM, and dominate the track with high accuracy.",
-      },
-      {
-        name: "keywords",
-        content:
-          "nitrotype, nitro type game, nitro typing, type racer, typeracer, type racer unblocked, racing typing game, typing race against bots, car typing game",
-      },
-      { property: "og:title", content: "Type Racer Against Bots — Nitro Car Typing Race" },
-      {
-        property: "og:description",
-        content:
-          "Compete in head-to-head typing races against smart AI opponents. Track WPM, avoid typos, and cross the finish line first.",
-      },
-      { property: "og:url", content: "https://www.englishtypingtest.org/games/race-bots" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Type Racer Against Bots — Nitro Car Typing Race" },
-      {
-        name: "twitter:description",
-        content: "Put your typing speed to the test in a high-speed car race against AI bots.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/race-bots" }],
+  validateSearch: z.object({
+    lang: z.string().optional(),
+  }),
+  head: ({ search }) => {
+    const seo = getLocalizedSeo("race_bots", search?.lang);
+    return {
+      meta: [
+        { title: seo.title },
+        { name: "description", content: seo.description },
+        {
+          name: "keywords",
+          content:
+            "nitrotype, nitro type game, nitro typing, type racer, typeracer, type racer unblocked, racing typing game, typing race against bots, car typing game",
+        },
+        { property: "og:title", content: seo.title },
+        { property: "og:description", content: seo.description },
+        { property: "og:url", content: "https://www.englishtypingtest.org/games/race-bots" },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: seo.title },
+        { name: "twitter:description", content: seo.description },
+      ],
+      links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/race-bots" }],
+    };
+  },
     scripts: [
       {
         type: "application/ld+json",

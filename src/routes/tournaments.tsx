@@ -5,35 +5,34 @@ import { Trophy, CalendarDays, Coins, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 
+import { z } from "zod";
+import { getLocalizedSeo } from "@/lib/seo-translations";
+
 export const Route = createFileRoute("/tournaments")({
-  head: () => ({
-    meta: [
-      { title: "Typing Tournaments — Compete & Win XP" },
-      {
-        name: "description",
-        content:
-          "Compete in live scheduled typing tournaments. Climb tournament brackets, race against top global typists, and win XP and coin rewards.",
-      },
-      {
-        name: "keywords",
-        content: "typing tournaments, competitive typing test, online typing championship, typing brackets, wpm tournament",
-      },
-      { property: "og:title", content: "Typing Tournaments — Compete & Win XP" },
-      {
-        property: "og:description",
-        content: "Compete in live scheduled typing tournaments. Climb tournament brackets, race against top global typists, and win XP and coin rewards.",
-      },
-      { property: "og:url", content: "https://www.englishtypingtest.org/tournaments" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Typing Tournaments — Compete & Win XP" },
-      {
-        name: "twitter:description",
-        content: "Compete in live scheduled typing tournaments. Win XP, coins, and climb the brackets.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/tournaments" }],
+  validateSearch: z.object({
+    lang: z.string().optional(),
   }),
+  head: ({ search }) => {
+    const seo = getLocalizedSeo("tournaments", search?.lang);
+    return {
+      meta: [
+        { title: seo.title },
+        { name: "description", content: seo.description },
+        {
+          name: "keywords",
+          content: "typing tournaments, competitive typing test, online typing championship, typing brackets, wpm tournament",
+        },
+        { property: "og:title", content: seo.title },
+        { property: "og:description", content: seo.description },
+        { property: "og:url", content: "https://www.englishtypingtest.org/tournaments" },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: seo.title },
+        { name: "twitter:description", content: seo.description },
+      ],
+      links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/tournaments" }],
+    };
+  },
   component: Tournaments,
 });
 

@@ -12,36 +12,35 @@ import {
 } from "@/components/ui/accordion";
 import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 
+import { z } from "zod";
+import { getLocalizedSeo } from "@/lib/seo-translations";
+
 export const Route = createFileRoute("/games/cps")({
-  head: () => ({
-    meta: [
-      { title: "CPS Test Online — Clicks Per Second Speed Test" },
-      {
-        name: "description",
-        content:
-          "Test your click speed with our free 5-second CPS Test. Measure clicks per second, practice jitter & butterfly clicking, and compare your coreball score.",
-      },
-      {
-        name: "keywords",
-        content:
-          "cps test, coreball, coreball cps test, coreball game cps test, clicks per second, click speed test, jitter click test, 5 second cps test",
-      },
-      { property: "og:title", content: "CPS Test Online — Clicks Per Second Speed Test" },
-      {
-        property: "og:description",
-        content:
-          "Find your CPS — how many clicks per second can you hit in a 5-second click sprint? Track personal records and compete globally.",
-      },
-      { property: "og:url", content: "https://www.englishtypingtest.org/games/cps" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "CPS Test Online — Clicks Per Second Speed Test" },
-      {
-        name: "twitter:description",
-        content: "Test your finger clicking speed in 5 seconds. Instant CPS calculations and personal best score tracking.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/cps" }],
+  validateSearch: z.object({
+    lang: z.string().optional(),
+  }),
+  head: ({ search }) => {
+    const seo = getLocalizedSeo("cps", search?.lang);
+    return {
+      meta: [
+        { title: seo.title },
+        { name: "description", content: seo.description },
+        {
+          name: "keywords",
+          content:
+            "cps test, coreball, coreball cps test, coreball game cps test, clicks per second, click speed test, jitter click test, 5 second cps test",
+        },
+        { property: "og:title", content: seo.title },
+        { property: "og:description", content: seo.description },
+        { property: "og:url", content: "https://www.englishtypingtest.org/games/cps" },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: seo.title },
+        { name: "twitter:description", content: seo.description },
+      ],
+      links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/cps" }],
+    };
+  },
     scripts: [
       {
         type: "application/ld+json",

@@ -11,35 +11,35 @@ import {
 } from "@/components/ui/accordion";
 import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 
+import { z } from "zod";
+import { getLocalizedSeo } from "@/lib/seo-translations";
+
 export const Route = createFileRoute("/games/spacebar")({
-  head: () => ({
-    meta: [
-      { title: "Spacebar Speed Test — 10s Spacebar Counter" },
-      {
-        name: "description",
-        content:
-          "How fast can you press the spacebar? Test your spacebar tapping speed in a 10-second sprint with real-time hit counters, HPS metrics, and high scores.",
-      },
-      {
-        name: "keywords",
-        content:
-          "spacebar speed test, spacebar counter, spacebar clicker test, 10 second spacebar test, spacebar hits per second, keyboard tapping speed",
-      },
-      { property: "og:title", content: "Spacebar Speed Test — 10s Spacebar Counter" },
-      {
-        property: "og:description",
-        content: "Ten-second spacebar challenge with live hit counter and personal best tracking.",
-      },
-      { property: "og:url", content: "https://www.englishtypingtest.org/games/spacebar" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Spacebar Speed Test — 10s Spacebar Counter" },
-      {
-        name: "twitter:description",
-        content: "Test how fast you can tap the spacebar in 10 seconds. Measure hits per second.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/spacebar" }],
+  validateSearch: z.object({
+    lang: z.string().optional(),
+  }),
+  head: ({ search }) => {
+    const seo = getLocalizedSeo("spacebar", search?.lang);
+    return {
+      meta: [
+        { title: seo.title },
+        { name: "description", content: seo.description },
+        {
+          name: "keywords",
+          content:
+            "spacebar speed test, spacebar counter, spacebar clicker test, 10 second spacebar test, spacebar hits per second, keyboard tapping speed",
+        },
+        { property: "og:title", content: seo.title },
+        { property: "og:description", content: seo.description },
+        { property: "og:url", content: "https://www.englishtypingtest.org/games/spacebar" },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: seo.title },
+        { name: "twitter:description", content: seo.description },
+      ],
+      links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/spacebar" }],
+    };
+  },
     scripts: [
       {
         type: "application/ld+json",

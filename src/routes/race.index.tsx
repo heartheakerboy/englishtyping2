@@ -28,51 +28,48 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SmartLink } from "@/components/ui/SmartLink";
+import { z } from "zod";
+import { getLocalizedSeo } from "@/lib/seo-translations";
 
 export const Route = createFileRoute("/race/")({
-  head: () => ({
-    meta: [
-      { title: "Multiplayer Typing Race — Compete Live Online" },
-      {
-        name: "description",
-        content:
-          "Race against typists worldwide in real-time multiplayer typing tests. Join public rooms, create private race lobbies with friends, and compete on leaderboards.",
-      },
-      {
-        name: "keywords",
-        content:
-          "multiplayer typing test, online multiplayer typing test, typing test race against each other, typing race, typing competition, multiplayer wpm test",
-      },
-      { property: "og:title", content: "Multiplayer Typing Race — Compete Live Online" },
-      {
-        property: "og:description",
-        content:
-          "Join live multiplayer typing races with friends or global players. Real-time WPM competition, private rooms, and live rankings.",
-      },
-      { property: "og:url", content: "https://www.englishtypingtest.org/race" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Multiplayer Typing Race — Compete Live Online" },
-      {
-        name: "twitter:description",
-        content: "Compete live with typists worldwide. Real-time multiplayer typing tests and custom race lobbies.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/race" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          name: "Multiplayer Typing Race",
-          url: "https://www.englishtypingtest.org/race",
-          applicationCategory: "GameApplication",
-          description: "Real-time multiplayer typing race with public and private lobbies.",
-        }),
-      },
-    ],
+  validateSearch: z.object({
+    lang: z.string().optional(),
   }),
+  head: ({ search }) => {
+    const seo = getLocalizedSeo("race", search?.lang);
+    return {
+      meta: [
+        { title: seo.title },
+        { name: "description", content: seo.description },
+        {
+          name: "keywords",
+          content:
+            "multiplayer typing test, online multiplayer typing test, typing test race against each other, typing race, typing competition, multiplayer wpm test",
+        },
+        { property: "og:title", content: seo.title },
+        { property: "og:description", content: seo.description },
+        { property: "og:url", content: "https://www.englishtypingtest.org/race" },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: seo.title },
+        { name: "twitter:description", content: seo.description },
+      ],
+      links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/race" }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Multiplayer Typing Race",
+            url: "https://www.englishtypingtest.org/race",
+            applicationCategory: "GameApplication",
+            description: "Real-time multiplayer typing race with public and private lobbies.",
+          }),
+        },
+      ],
+    };
+  },
   component: RacePage,
 });
 

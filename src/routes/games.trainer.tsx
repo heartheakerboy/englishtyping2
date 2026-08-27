@@ -12,36 +12,35 @@ import {
 } from "@/components/ui/accordion";
 import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 
+import { z } from "zod";
+import { getLocalizedSeo } from "@/lib/seo-translations";
+
 export const Route = createFileRoute("/games/trainer")({
-  head: () => ({
-    meta: [
-      { title: "Keyboard Trainer Online — Home & Number Row Drills" },
-      {
-        name: "description",
-        content:
-          "Free online keyboard trainer. Practice home row, top row, bottom row, and number keys to master touch typing, build muscle memory, and boost typing accuracy.",
-      },
-      {
-        name: "keywords",
-        content:
-          "keyboard trainer, keyboard keypad trainer, touch typing trainer, home row typing practice, keyboard drills, typing practice for beginners, learn touch typing",
-      },
-      { property: "og:title", content: "Keyboard Trainer Online — Home & Number Row Drills" },
-      {
-        property: "og:description",
-        content:
-          "Targeted row-by-row keyboard drills that build muscle memory for faster, more accurate touch typing.",
-      },
-      { property: "og:url", content: "https://www.englishtypingtest.org/games/trainer" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Keyboard Trainer Online — Home & Number Row Drills" },
-      {
-        name: "twitter:description",
-        content: "Master the keyboard with focused key sprint drills. Train home, top, bottom, and number rows.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/trainer" }],
+  validateSearch: z.object({
+    lang: z.string().optional(),
+  }),
+  head: ({ search }) => {
+    const seo = getLocalizedSeo("trainer", search?.lang);
+    return {
+      meta: [
+        { title: seo.title },
+        { name: "description", content: seo.description },
+        {
+          name: "keywords",
+          content:
+            "keyboard trainer, keyboard keypad trainer, touch typing trainer, home row typing practice, keyboard drills, typing practice for beginners, learn touch typing",
+        },
+        { property: "og:title", content: seo.title },
+        { property: "og:description", content: seo.description },
+        { property: "og:url", content: "https://www.englishtypingtest.org/games/trainer" },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: seo.title },
+        { name: "twitter:description", content: seo.description },
+      ],
+      links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/trainer" }],
+    };
+  },
     scripts: [
       {
         type: "application/ld+json",

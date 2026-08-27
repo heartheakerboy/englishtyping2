@@ -12,35 +12,35 @@ import {
 } from "@/components/ui/accordion";
 import { Brain, Target, HelpCircle, Sparkles, BookOpen } from "lucide-react";
 
+import { z } from "zod";
+import { getLocalizedSeo } from "@/lib/seo-translations";
+
 export const Route = createFileRoute("/games/reaction")({
-  head: () => ({
-    meta: [
-      { title: "Reaction Time Test Online — Reflex Speed Test" },
-      {
-        name: "description",
-        content:
-          "Test your visual reflex speed. Click the instant the screen turns green to measure your reaction time in milliseconds across 5 rounds.",
-      },
-      {
-        name: "keywords",
-        content:
-          "reaction time test, reflex test online, click speed test, human benchmark reaction, reflex speed in milliseconds",
-      },
-      { property: "og:title", content: "Reaction Time Test Online — Reflex Speed Test" },
-      {
-        property: "og:description",
-        content: "Measure your visual reflex speed in milliseconds across 5 rounds.",
-      },
-      { property: "og:url", content: "https://www.englishtypingtest.org/games/reaction" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Reaction Time Test Online — Reflex Speed Test" },
-      {
-        name: "twitter:description",
-        content: "Measure your reaction time in milliseconds. Test reflexes and beat your personal best.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/reaction" }],
+  validateSearch: z.object({
+    lang: z.string().optional(),
+  }),
+  head: ({ search }) => {
+    const seo = getLocalizedSeo("reaction", search?.lang);
+    return {
+      meta: [
+        { title: seo.title },
+        { name: "description", content: seo.description },
+        {
+          name: "keywords",
+          content:
+            "reaction time test, reflex test online, click speed test, human benchmark reaction, reflex speed in milliseconds",
+        },
+        { property: "og:title", content: seo.title },
+        { property: "og:description", content: seo.description },
+        { property: "og:url", content: "https://www.englishtypingtest.org/games/reaction" },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: seo.title },
+        { name: "twitter:description", content: seo.description },
+      ],
+      links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/reaction" }],
+    };
+  },
     scripts: [
       {
         type: "application/ld+json",
