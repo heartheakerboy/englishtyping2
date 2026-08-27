@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# Disallow private authenticated and internal dashboard routes
+Disallow: /_authenticated/
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /auth
+Disallow: /profile
+Disallow: /settings
+Disallow: /missions
+Disallow: /friends
+Disallow: /builder
+
+# Disallow duplicate query parameter URLs
+Disallow: /*?lang=*
+Disallow: /*?mode=*
+Disallow: /*?redirect=*
+
 Sitemap: https://www.englishtypingtest.org/sitemap.xml

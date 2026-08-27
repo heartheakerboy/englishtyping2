@@ -50,14 +50,14 @@ export const Route = createFileRoute("/templates/$slug")({
   },
   head: ({ params, loaderData }) => {
     const t = (loaderData as any)?.template;
-    if (!t) return { meta: [{ title: "Template" }] };
-    const title = t.seo_title || `${t.name} — Typing Template`;
+    const cleanName = params.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    const title = t?.seo_title || (t?.name ? `${t.name} — Typing Template` : `${cleanName} — Typing Practice Template`);
     const description =
-      t.seo_description ||
-      (t.description
+      t?.seo_description ||
+      (t?.description
         ? t.description.slice(0, 155)
-        : `Free typing template: ${t.name}. Practice and beat the leaderboard.`);
-    const image = t.og_image_url || t.banner_url || t.thumbnail_url || undefined;
+        : `Practice typing with the ${t?.name || cleanName} template. Track your WPM, accuracy, and climb the leaderboard.`);
+    const image = t?.og_image_url || t?.banner_url || t?.thumbnail_url || undefined;
     const url = `https://www.englishtypingtest.org/templates/${params.slug}`;
     const meta: any[] = [
       { title },
