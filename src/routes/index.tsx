@@ -783,6 +783,7 @@ function FeatureCard({
   accent: string;
   iconColor: string;
 }) {
+  const { t } = useTranslation("home");
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}

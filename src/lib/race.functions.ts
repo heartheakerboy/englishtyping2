@@ -6,9 +6,8 @@ import type { Database } from "@/integrations/supabase/types";
 import { generateWordsForLanguage, type LanguageCode } from "@/lib/languages";
 
 function publicClient() {
-  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-  if (!url || !key) return null;
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "https://placeholder-offline.supabase.co";
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.placeholder";
   return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
   });
