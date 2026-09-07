@@ -61,6 +61,11 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight">{t("generic.title")}</h1>
         <p className="mt-2 text-sm text-muted-foreground">{t("generic.description")}</p>
+        {error && (
+          <div className="mt-4 p-3 bg-destructive/10 border border-destructive/20 text-destructive text-xs rounded-lg text-left overflow-auto max-h-48 font-mono">
+            {error.name}: {error.message}
+          </div>
+        )}
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
