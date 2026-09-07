@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Profil",
+    "subtitle": "Ihr öffentliches Tipp-Profil.",
+    "editProfile": "Profil bearbeiten",
+    "joinedOn": "Beigetreten am {{date}}",
+    "totalTests": "Gesamte Tests",
+    "bestWpm": "Beste WPM",
+    "avgAccuracy": "Durchschn. Genauigkeit",
+    "noActivity": "Noch keine Aktivität."
+  }
+}

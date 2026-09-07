@@ -1,0 +1,16 @@
+{
+  "page": {
+    "title": "Bestenliste",
+    "subtitle": "Top-Tipper nach WPM, Genauigkeit und Konstanz.",
+    "allTime": "Gesamt",
+    "weekly": "Wöchentlich",
+    "daily": "Täglich",
+    "rank": "Rang",
+    "player": "Spieler",
+    "wpm": "WPM",
+    "accuracy": "Genauigkeit",
+    "tests": "Tests",
+    "empty": "Noch keine Ergebnisse. Seien Sie der Erste!",
+    "loading": "Lade Bestenliste…"
+  }
+}

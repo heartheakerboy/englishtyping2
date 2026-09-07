@@ -1,0 +1,15 @@
+{
+  "page": {
+    "title": "ダッシュボード",
+    "subtitle": "あなたのタイピングの上達状況、履歴、統計情報。",
+    "recentTests": "最近のテスト",
+    "noTests": "まだテスト履歴がありません。最初のテストに挑戦しましょう！",
+    "stats": "総合統計",
+    "averageWpm": "平均WPM",
+    "bestWpm": "最高WPM",
+    "totalTests": "総テスト回数",
+    "totalTime": "総練習時間",
+    "streak": "連続日数",
+    "days": "日"
+  }
+}

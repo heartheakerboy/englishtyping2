@@ -1,0 +1,15 @@
+{
+  "page": {
+    "title": "Painel",
+    "subtitle": "Seu progresso de digitação, histórico e estatísticas.",
+    "recentTests": "Testes recentes",
+    "noTests": "Nenhum teste ainda. Faça o seu primeiro teste!",
+    "stats": "Estatísticas gerais",
+    "averageWpm": "PPM médio",
+    "bestWpm": "Melhor PPM",
+    "totalTests": "Testes totais",
+    "totalTime": "Tempo total",
+    "streak": "Sequência",
+    "days": "dias"
+  }
+}

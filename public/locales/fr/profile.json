@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Profil",
+    "subtitle": "Votre profil public de dactylographie.",
+    "editProfile": "Modifier le profil",
+    "joinedOn": "Inscrit le {{date}}",
+    "totalTests": "Total des tests",
+    "bestWpm": "Meilleur MPM",
+    "avgAccuracy": "Précision moyenne",
+    "noActivity": "Aucune activité pour l'instant."
+  }
+}

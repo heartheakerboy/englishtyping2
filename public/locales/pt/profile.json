@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Perfil",
+    "subtitle": "Seu perfil público de digitação.",
+    "editProfile": "Editar perfil",
+    "joinedOn": "Membro desde {{date}}",
+    "totalTests": "Testes totais",
+    "bestWpm": "Melhor PPM",
+    "avgAccuracy": "Precisão média",
+    "noActivity": "Sem atividade ainda."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "پروفائل",
+    "subtitle": "آپ کا عوامی ٹائپنگ پروفائل۔",
+    "editProfile": "پروفائل میں ترمیم کریں",
+    "joinedOn": "{{date}} کو شامل ہوئے",
+    "totalTests": "کل ٹیسٹ",
+    "bestWpm": "بہترین WPM",
+    "avgAccuracy": "اوسط درستگی",
+    "noActivity": "ابھی تک کوئی سرگرمی نہیں۔"
+  }
+}

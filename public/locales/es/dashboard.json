@@ -1,0 +1,15 @@
+{
+  "page": {
+    "title": "Panel de control",
+    "subtitle": "Tu progreso de mecanografía, historial y estadísticas.",
+    "recentTests": "Pruebas recientes",
+    "noTests": "Aún no hay pruebas. ¡Haz tu primera prueba!",
+    "stats": "Estadísticas generales",
+    "averageWpm": "WPM promedio",
+    "bestWpm": "Mejor WPM",
+    "totalTests": "Pruebas totales",
+    "totalTime": "Tiempo total",
+    "streak": "Racha",
+    "days": "días"
+  }
+}

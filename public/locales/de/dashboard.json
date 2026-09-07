@@ -1,0 +1,15 @@
+{
+  "page": {
+    "title": "Dashboard",
+    "subtitle": "Ihr Tippfortschritt, Verlauf und Statistiken.",
+    "recentTests": "Letzte Tests",
+    "noTests": "Noch keine Tests vorhanden. Machen Sie Ihren ersten Test!",
+    "stats": "Gesamtstatistik",
+    "averageWpm": "Durchschnitts-WPM",
+    "bestWpm": "Beste WPM",
+    "totalTests": "Gesamte Tests",
+    "totalTime": "Gesamtzeit",
+    "streak": "Strähne",
+    "days": "Tage"
+  }
+}

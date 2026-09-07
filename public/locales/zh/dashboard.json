@@ -1,0 +1,15 @@
+{
+  "page": {
+    "title": "控制面板",
+    "subtitle": "您的打字提升进度、历史记录和统计数据。",
+    "recentTests": "最近测试",
+    "noTests": "暂无测试记录，快去完成您的第一次打字测试！",
+    "stats": "总体统计",
+    "averageWpm": "平均WPM",
+    "bestWpm": "最高WPM",
+    "totalTests": "总测试次数",
+    "totalTime": "总时长",
+    "streak": "连续打卡",
+    "days": "天"
+  }
+}

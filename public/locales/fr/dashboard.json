@@ -1,0 +1,15 @@
+{
+  "page": {
+    "title": "Tableau de bord",
+    "subtitle": "Votre progression, historique et statistiques de frappe.",
+    "recentTests": "Tests récents",
+    "noTests": "Aucun test effectué. Passez votre premier test !",
+    "stats": "Statistiques globales",
+    "averageWpm": "MPM moyen",
+    "bestWpm": "Meilleur MPM",
+    "totalTests": "Total des tests",
+    "totalTime": "Temps total",
+    "streak": "Série",
+    "days": "jours"
+  }
+}

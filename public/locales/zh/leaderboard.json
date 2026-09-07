@@ -1,0 +1,16 @@
+{
+  "page": {
+    "title": "排行榜",
+    "subtitle": "按WPM、准确度和稳定性排名的顶尖打字选手。",
+    "allTime": "历史总榜",
+    "weekly": "周榜",
+    "daily": "日榜",
+    "rank": "排名",
+    "player": "玩家",
+    "wpm": "WPM",
+    "accuracy": "准确率",
+    "tests": "测试次数",
+    "empty": "暂无记录，快来成为第一名吧！",
+    "loading": "正在加载排行榜…"
+  }
+}

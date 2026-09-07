@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "个人资料",
+    "subtitle": "您的公开打字主页。",
+    "editProfile": "编辑资料",
+    "joinedOn": "加入于 {{date}}",
+    "totalTests": "总测试次数",
+    "bestWpm": "最高WPM",
+    "avgAccuracy": "平均准确率",
+    "noActivity": "暂无活动记录。"
+  }
+}

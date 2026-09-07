@@ -1,0 +1,16 @@
+{
+  "page": {
+    "title": "Classement",
+    "subtitle": "Les meilleurs dactylographes classés par MPM, précision et régularité.",
+    "allTime": "Tous les temps",
+    "weekly": "Hebdomadaire",
+    "daily": "Quotidien",
+    "rank": "Rang",
+    "player": "Joueur",
+    "wpm": "MPM",
+    "accuracy": "Précision",
+    "tests": "Tests",
+    "empty": "Aucun résultat pour le moment. Soyez le premier !",
+    "loading": "Chargement du classement…"
+  }
+}

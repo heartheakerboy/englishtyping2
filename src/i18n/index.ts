@@ -84,8 +84,9 @@ export function getI18n() {
     .init({
       fallbackLng: "en",
       supportedLngs: SUPPORTED_LANGS as unknown as string[],
-      ns: ["common", "nav"],
+      ns: NAMESPACES as unknown as string[],
       defaultNS: "common",
+      fallbackNS: ["common", "nav"],
       load: "languageOnly",
       interpolation: { escapeValue: false },
       resources: {

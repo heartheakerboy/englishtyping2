@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "プロフィール",
+    "subtitle": "あなたの公開タイピングプロフィール。",
+    "editProfile": "プロフィール編集",
+    "joinedOn": "登録日: {{date}}",
+    "totalTests": "総テスト回数",
+    "bestWpm": "最高WPM",
+    "avgAccuracy": "平均正確度",
+    "noActivity": "アクティビティはまだありません。"
+  }
+}

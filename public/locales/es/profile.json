@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Perfil",
+    "subtitle": "Tu perfil público de mecanografía.",
+    "editProfile": "Editar perfil",
+    "joinedOn": "Miembro desde {{date}}",
+    "totalTests": "Pruebas totales",
+    "bestWpm": "Mejor WPM",
+    "avgAccuracy": "Precisión promedio",
+    "noActivity": "Sin actividad aún."
+  }
+}

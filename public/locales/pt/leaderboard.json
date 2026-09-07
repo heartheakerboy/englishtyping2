@@ -1,0 +1,16 @@
+{
+  "page": {
+    "title": "Classificação",
+    "subtitle": "Melhores digitadores classificados por PPM, precisão e consistência.",
+    "allTime": "Todos os tempos",
+    "weekly": "Semanal",
+    "daily": "Diário",
+    "rank": "Posição",
+    "player": "Jogador",
+    "wpm": "PPM",
+    "accuracy": "Precisão",
+    "tests": "Testes",
+    "empty": "Ainda sem resultados. Seja o primeiro!",
+    "loading": "Carregando classificação…"
+  }
+}

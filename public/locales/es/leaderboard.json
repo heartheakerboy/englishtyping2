@@ -1,0 +1,16 @@
+{
+  "page": {
+    "title": "Tabla de clasificación",
+    "subtitle": "Los mejores mecanógrafos clasificados por WPM, precisión y consistencia.",
+    "allTime": "Todo el tiempo",
+    "weekly": "Semanal",
+    "daily": "Diario",
+    "rank": "Puesto",
+    "player": "Jugador",
+    "wpm": "WPM",
+    "accuracy": "Precisión",
+    "tests": "Pruebas",
+    "empty": "Sin resultados aún. ¡Sé el primero!",
+    "loading": "Cargando clasificación…"
+  }
+}
