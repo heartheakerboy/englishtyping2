@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="50%" stop-color="#6d28d9" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+
+    <!-- Glossy Overlay -->
+    <linearGradient id="glossGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.15" />
+    </linearGradient>
+
+    <!-- Keycap Gradient -->
+    <linearGradient id="keyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+
+    <!-- Accent Key Gradient (Spacebar/Return) -->
+    <linearGradient id="accentKeyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#4c1d95" flood-opacity="0.5" />
+    </filter>
+    <filter id="keyShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#1e1b4b" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Container with Shadow -->
+  <rect x="24" y="24" width="464" height="464" rx="112" ry="112" fill="url(#bgGrad)" filter="url(#dropShadow)" />
+  <rect x="24" y="24" width="464" height="464" rx="112" ry="112" fill="url(#glossGrad)" />
+  <rect x="25" y="25" width="462" height="462" rx="111" ry="111" fill="none" stroke="#ffffff" stroke-opacity="0.2" stroke-width="3" />
+
+  <!-- Keyboard Outer Shell -->
+  <rect x="88" y="128" width="336" height="256" rx="36" ry="36" fill="#0f172a" fill-opacity="0.4" stroke="#ffffff" stroke-opacity="0.25" stroke-width="6" />
+
+  <!-- Row 1 Keys (y=164) -->
+  <rect x="120" y="164" width="44" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <rect x="176" y="164" width="44" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <rect x="232" y="164" width="48" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <rect x="292" y="164" width="44" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <rect x="348" y="164" width="44" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+
+  <!-- Row 2 Keys (y=226) -->
+  <rect x="120" y="226" width="48" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <rect x="180" y="226" width="44" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <rect x="236" y="226" width="44" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <rect x="292" y="226" width="44" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <rect x="348" y="226" width="44" height="42" rx="10" ry="10" fill="url(#accentKeyGrad)" filter="url(#keyShadow)" />
+
+  <!-- Row 3 Keys (y=288) -->
+  <rect x="120" y="288" width="56" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <!-- Spacebar -->
+  <rect x="188" y="288" width="136" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+  <rect x="336" y="288" width="56" height="42" rx="10" ry="10" fill="url(#keyGrad)" filter="url(#keyShadow)" />
+
+  <!-- Speed Lightning Spark Accent in top-right -->
+  <g transform="translate(352, 60) scale(1.1)">
+    <polygon points="26,0 10,24 24,24 16,48 44,18 28,18" fill="#38bdf8" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round" />
+  </g>
+</svg>
