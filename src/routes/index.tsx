@@ -308,15 +308,15 @@ function LandingPage() {
               <div className="mb-5 flex items-center justify-between border-b border-border/50 pb-4 text-xs">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="flex items-center gap-1.5 font-sans text-primary font-semibold">
-                    <span className="h-2 w-2 rounded-full bg-primary animate-ping" /> Live Engine Active
+                    <span className="h-2 w-2 rounded-full bg-primary animate-ping" /> {t("mockup.liveEngine", "Live Engine Active")}
                   </span>
                   <span className="flex items-center gap-1 rounded-lg border border-border bg-surface/80 px-2.5 py-1 font-sans text-foreground cursor-pointer hover:border-primary/50 transition-colors">
                     <Globe className="h-3 w-3 text-primary" /> English ▾
                   </span>
                   <span className="flex items-center gap-1 rounded-lg border border-border bg-surface/80 px-2.5 py-1 font-sans text-muted-foreground cursor-pointer hover:border-primary/50 transition-colors">
-                    <Upload className="h-3 w-3" /> Upload .txt
+                    <Upload className="h-3 w-3" /> {t("mockup.upload", "Upload .txt")}
                   </span>
-                  <span className="font-sans text-muted-foreground hidden sm:block">● 60 Seconds</span>
+                  <span className="font-sans text-muted-foreground hidden sm:block">● {t("mockup.duration", "60 Seconds")}</span>
                 </div>
                 <div className="flex gap-1">
                   <span className="h-3.5 w-3.5 rounded-full bg-red-500/30 border border-red-500/20" />
@@ -333,18 +333,18 @@ function LandingPage() {
               <div className="mt-8 flex flex-wrap items-baseline gap-8 border-t border-border/50 pt-6 font-sans text-sm text-muted-foreground">
                 <div className="flex flex-col">
                   <span className="text-2xl md:text-3xl font-extrabold text-primary font-display tabular-nums">78</span>
-                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">WPM (Speed)</span>
+                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">{t("mockup.wpm", "WPM (Speed)")}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl md:text-3xl font-extrabold text-foreground font-display tabular-nums">97.4%</span>
-                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">Accuracy</span>
+                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">{t("mockup.accuracy", "Accuracy")}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl md:text-3xl font-extrabold text-foreground font-display tabular-nums">386</span>
-                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">CPM (Chars)</span>
+                  <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/80 mt-1">{t("mockup.cpm", "CPM (Chars)")}</span>
                 </div>
                 <div className="flex flex-col ml-auto">
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded bg-secondary text-secondary-foreground border border-border">Touch Typing Mode</span>
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded bg-secondary text-secondary-foreground border border-border">{t("mockup.touchMode", "Touch Typing Mode")}</span>
                 </div>
               </div>
             </motion.div>
@@ -377,10 +377,10 @@ function LandingPage() {
             <div className="mx-auto max-w-6xl">
               <div className="text-center max-w-2xl mx-auto mb-10">
                 <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-                  Start Your English Typing Test in Seconds
+                  {t("quickLaunch.heading", "Start Your English Typing Test in Seconds")}
                 </h2>
                 <p className="mt-3 text-muted-foreground">
-                  Choose a predefined test duration. Each one has its own global leaderboard and WPM analytics.
+                  {t("quickLaunch.subheading", "Choose a predefined test duration. Each one has its own global leaderboard and WPM analytics.")}
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -400,12 +400,12 @@ function LandingPage() {
                           <div className="flex gap-1.5">
                             {d.featured && (
                               <span className="rounded-full bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 text-[9px] font-semibold text-amber-500 uppercase tracking-wider">
-                                Featured
+                                {t("quickLaunch.featured", "Featured")}
                               </span>
                             )}
                             {d.popular && (
                               <span className="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 text-[9px] font-semibold text-emerald-500 uppercase tracking-wider">
-                                Popular
+                                {t("quickLaunch.popular", "Popular")}
                               </span>
                             )}
                           </div>
@@ -419,10 +419,10 @@ function LandingPage() {
                       </div>
                       <div className="mt-5 pt-4 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
                         <span>
-                          {d.seconds ? `${d.seconds}s` : "Custom"} · {d.difficulty}
+                          {d.seconds ? `${d.seconds}s` : t("quickLaunch.custom", "Custom")} · {d.difficulty}
                         </span>
                         <span className="flex items-center text-primary font-medium group-hover:underline">
-                          Start Test <Play className="ml-1 h-3 w-3 fill-primary" />
+                          {t("quickLaunch.startTest", "Start Test")} <Play className="ml-1 h-3 w-3 fill-primary" />
                         </span>
                       </div>
                     </div>
@@ -432,7 +432,7 @@ function LandingPage() {
               <div className="mt-10 text-center">
                 <Button asChild variant="outline">
                   <Link to="/typing-test">
-                    View All Test Durations ({items.length}) <ArrowRight className="ml-2 h-4 w-4" />
+                    {t("quickLaunch.viewAll", "View All Test Durations")} ({items.length}) <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>
@@ -499,7 +499,7 @@ function LandingPage() {
             </div>
             <div className="rounded-2xl border border-border/80 bg-surface/40 overflow-hidden glass shadow-elegant">
               <div className="grid grid-cols-[2.5rem_1fr_auto_auto] items-center gap-4 border-b border-border/50 bg-secondary/30 px-5 py-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                <span>#</span><span>Typist</span><span className="text-right hidden sm:block">WPM</span><span className="text-right">Acc.</span>
+                <span>#</span><span>{t("leaderboard.typist", "Typist")}</span><span className="text-right hidden sm:block">{t("leaderboard.wpm", "WPM")}</span><span className="text-right">{t("leaderboard.acc", "Acc.")}</span>
               </div>
               {LEADERBOARD_DATA.map((entry, i) => (
                 <motion.div
@@ -521,7 +521,7 @@ function LandingPage() {
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-sm">{FLAG_MAP[entry.country]}</span>
                       <span className={`font-semibold text-sm truncate ${i === 0 ? "text-amber-400" : "text-foreground"}`}>{entry.name}</span>
-                      {i === 0 && <span className="hidden sm:inline-flex rounded-full bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 text-[9px] font-bold text-amber-500 uppercase tracking-wider">#1 Global</span>}
+                      {i === 0 && <span className="hidden sm:inline-flex rounded-full bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 text-[9px] font-bold text-amber-500 uppercase tracking-wider">{t("leaderboard.topGlobal", "#1 Global")}</span>}
                     </div>
                     <div className="h-1.5 w-full rounded-full bg-border/50 overflow-hidden">
                       <motion.div
@@ -590,7 +590,7 @@ function LandingPage() {
                   {t(`speedEstimator.tiers.${activeCategory.key}.title`)}
                 </span>
                 <span className="text-sm font-semibold text-muted-foreground font-mono">
-                  Percentile: {activeCategory.percentile}
+                  {t("speedEstimator.percentilePrefix", "Percentile:")} {activeCategory.percentile}
                 </span>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -800,7 +800,7 @@ function FeatureCard({
       </div>
       <div className="mt-5 pt-4 border-t border-border/40 flex items-center justify-end text-xs">
         <Link to={linkTo as any} className="flex items-center text-primary font-medium group-hover:underline">
-          Explore <ArrowRight className="ml-1 h-3.5 w-3.5" />
+          {t("features.explore", "Explore")} <ArrowRight className="ml-1 h-3.5 w-3.5" />
         </Link>
       </div>
     </motion.div>

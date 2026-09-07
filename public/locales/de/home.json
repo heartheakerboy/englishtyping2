@@ -1,44 +1,226 @@
 {
-  "badge": "Phase 1 Polish — Echtzeit-Engine, Diagramme, Themen",
+  "badge": "Kostenlos · Keine Registrierung · 47 Länder · 4.9★",
   "hero": {
-    "titleA": "Schneller tippen.",
-    "titleB": "Klarer denken.",
-    "subtitle": "Eine fokussierte, schöne Tippplattform, die auf messbare Verbesserung ausgelegt ist. Echtzeit-WPM, Genauigkeit und Konsistenz – kein Schnickschnack, kein Unsinn.",
-    "ctaStart": "Tippen starten",
-    "ctaSignup": "Kostenloses Konto erstellen"
+    "titleA": "Der ultimative kostenlose",
+    "titleB": "Englisch-Tipptest",
+    "titleC": "y Medidor de Velocidad",
+    "subtitle": "Domina tu velocidad de escritura. Realiza tests en inglés o sube tu propio texto en CUALQUIER idioma. Compite globalmente sin registrarte.",
+    "ctaStart": "Empezar Test de Mecanografía",
+    "ctaSignup": "Crear Cuenta Gratis"
+  },
+  "mockup": {
+    "liveEngine": "Motor en Vivo Activo",
+    "upload": "Subir .txt",
+    "duration": "60 Segundos",
+    "wpm": "PPM (Velocidad)",
+    "accuracy": "Precisión",
+    "cpm": "CPM (Caracteres)",
+    "touchMode": "Modo Mecanografía al Tacto"
+  },
+  "stats": {
+    "tests": "1.2M+",
+    "testsLabel": "Pruebas Realizadas",
+    "rating": "4.9★",
+    "ratingLabel": "Calificación",
+    "countries": "47+",
+    "countriesLabel": "Países",
+    "signup": "Cero",
+    "signupLabel": "Registro Requerido"
+  },
+  "quickLaunch": {
+    "heading": "Comienza tu Test de Mecanografía en Segundos",
+    "subheading": "Elige una duración predefinida. Cada una tiene su tabla de clasificación global y análisis de PPM.",
+    "featured": "Destacado",
+    "popular": "Popular",
+    "custom": "Personalizado",
+    "startTest": "Comenzar Test",
+    "viewAll": "Ver Todas las Duraciones"
   },
   "features": {
-    "heading": "Für ernsthafte Verbesserungen entwickelt",
-    "subheading": "Alles, was Sie zum Messen, Analysieren und Verbessern Ihres Tippens benötigen.",
+    "heading": "Todo lo que Necesitas para Escribir Más Rápido",
+    "subheading": "Una plataforma completa de nivel e-sports: gamificada, multilingüe y guiada por datos.",
+    "explore": "Explorar",
+    "multilang": {
+      "title": "Multi-Idioma y Texto Personalizado",
+      "desc": "Practica en español, inglés, francés, alemán o cualquier idioma. Pega texto o sube un archivo .txt."
+    },
     "engine": {
-      "title": "Echtzeit-Engine",
-      "desc": "Live-WPM, Genauigkeit, CPM und Fehler, die pro Tastenanschlag verfolgt werden."
+      "title": "Motor de Escritura en Vivo",
+      "desc": "Seguimiento en tiempo real de PPM, precisión y CPM por cada pulsación de tecla sin latencia."
     },
     "chart": {
-      "title": "WPM im Zeitverlauf",
-      "desc": "Sehen Sie, wo Sie langsamer wurden, mit einem Pro-Sekunden-Diagramm bei jedem Ergebnis."
+      "title": "Analítica y Gráficos de PPM",
+      "desc": "Gráficos por segundo que muestran exactamente dónde bajó tu velocidad para corregir puntos débiles."
     },
-    "modes": {
-      "title": "Flexible Modi",
-      "desc": "Zeit, Wörter, Zitate, Absätze, Geschichten, Code, benutzerdefinierter Text oder .txt-Upload."
+    "race": {
+      "title": "Carreras Multijugador",
+      "desc": "Compite en salas públicas globales o crea salas privadas para retar a tus amigos en tiempo real."
     },
-    "dashboard": {
-      "title": "Persönliches Dashboard",
-      "desc": "Verfolgen Sie jeden Lauf, sehen Sie, wie Ihr Durchschnitt steigt und Ihre Fehler schrumpfen."
+    "games": {
+      "title": "Juegos Arcade de Mecanografía",
+      "desc": "Aprende jugando con 'Falling Words', 'Defensa Zombie', 'Explosión de Globos' y más."
     },
-    "mistakes": {
-      "title": "Häufigste Fehler",
-      "desc": "Sehen Sie, welche Zeichen Sie am häufigsten stolpern lassen, damit Sie Ihr Training darauf konzentrieren können."
+    "templates": {
+      "title": "Plantillas de Escritura",
+      "desc": "Accede a exámenes oficiales y textos creados por la comunidad para practicar temáticas específicas."
     },
-    "ai": {
-      "title": "KI-Coach",
-      "desc": "KI-Feedback, mehrsprachig, virtuelle Tastatur, intelligente Fehlererkennung."
+    "calculator": {
+      "title": "Calculadora de Rango PPM",
+      "desc": "Mueve el deslizador y descubre tu percentil global y qué empleos demandan tu velocidad actual."
+    },
+    "lessons": {
+      "title": "Lecciones de Mecanografía",
+      "desc": "Aprende la fila guía (ASDF JKL;) y mecanografía al tacto con lecciones interactivas paso a paso."
     }
   },
-  "cta": {
-    "title": "Fertig in 15 Sekunden.",
-    "desc": "Keine Anmeldung erforderlich, um Ihren ersten Test zu machen.",
-    "button": "Einen Test machen"
+  "seoBlock": {
+    "heading": "How the English Typing Test Works",
+    "subheading": "Learn how daily practice measurably improves your WPM, accuracy, and fluency across languages.",
+    "articles": [
+      {
+        "title": "Why Take a Daily English Typing Test?",
+        "body": "Taking a daily English typing test is the single most effective habit for building long-term typing fluency. Research shows that consistent, deliberate practice for even 10–15 minutes per day can increase your words-per-minute speed by 20–40% over 30 days. Our real-time engine provides instant feedback on every keystroke, so you never practice mistakes without knowing it."
+      },
+      {
+        "title": "How Custom Language & Text Upload Works",
+        "body": "Most typing platforms lock you into English. We don't. Our custom text engine lets you paste any text — in Hindi, Marathi, Spanish, German, Arabic, Japanese, or any Unicode language — and begin a precision typing session in seconds. You can also upload a .txt file directly, invaluable for students drilling their own notes or professionals practicing domain vocabulary."
+      },
+      {
+        "title": "How to Improve Your WPM Score",
+        "body": "Improving your WPM is a structured process, not a talent. Start with touch typing lessons to build proper muscle memory from the home row (ASDF / JKL;). Use the WPM analytics chart to identify your slowest character pairs. Then target those pairs with custom text sessions. Progress through Beginner (< 30 WPM) → Average (30–50) → Professional (50–80) → Elite (80–100+)."
+      }
+    ]
   },
-  "footerCopy": "Für Tipper gebaut."
+  "leaderboard": {
+    "heading": "Clasificación Global — ¿En qué puesto estás?",
+    "subheading": "Compite con mecanógrafos de más de 47 países. Tu mejor puntuación se guarda automáticamente.",
+    "typist": "Mecanógrafo",
+    "wpm": "PPM",
+    "acc": "Prec.",
+    "topGlobal": "#1 Global",
+    "ctaBtn": "Ver Clasificación Completa"
+  },
+  "speedEstimator": {
+    "heading": "¿Cuál es tu Nivel de PPM?",
+    "subheading": "Arrastra el control deslizante a tu velocidad y comprueba tu posición en la comunidad mundial.",
+    "wpmLabel": "Tu Velocidad de Escritura",
+    "percentilePrefix": "Percentil:",
+    "tiers": {
+      "slow": {
+        "title": "Principiante",
+        "desc": "Menos de 30 PPM — Escribes mirando el teclado. Las lecciones te llevarán a 45+ PPM en un mes."
+      },
+      "average": {
+        "title": "Promedio",
+        "desc": "30–45 PPM — Promedio mundial para usuarios comunes. La práctica diaria duplicará tu velocidad."
+      },
+      "aboveAverage": {
+        "title": "Por Encima del Promedio",
+        "desc": "45–65 PPM — 30% superior global. Ideal para oficinas y trabajos de entrada de datos."
+      },
+      "pro": {
+        "title": "Profesional",
+        "desc": "65–85 PPM — Top 10%. Nivel de programadores, periodistas y mecanógrafos avanzados."
+      },
+      "god": {
+        "title": "Élite",
+        "desc": "85+ PPM — Top 1% mundial. Más rápido que el 99% de los usuarios de internet."
+      }
+    }
+  },
+  "wpmTiersTable": {
+    "heading": "WPM Speed Reference Table",
+    "subheading": "Understand exactly what your typing speed means for your career and daily productivity.",
+    "cols": {
+      "wpm": "WPM Range",
+      "category": "Skill Level",
+      "percentile": "Percentile",
+      "description": "What it means"
+    },
+    "rows": [
+      {
+        "wpm": "< 30 WPM",
+        "category": "Beginner",
+        "percentile": "Bottom 15%",
+        "description": "Hunting and pecking. Learning touch typing is the #1 priority."
+      },
+      {
+        "wpm": "30–45 WPM",
+        "category": "Average",
+        "percentile": "~50th",
+        "description": "Functional for casual use. Most people plateau here without practice."
+      },
+      {
+        "wpm": "45–65 WPM",
+        "category": "Above Average",
+        "percentile": "Top 30%",
+        "description": "Comfortable for office work, emails, and general productivity tasks."
+      },
+      {
+        "wpm": "65–85 WPM",
+        "category": "Professional",
+        "percentile": "Top 10%",
+        "description": "Journalist, developer, or executive level. Thought flows faster than typing."
+      },
+      {
+        "wpm": "85–100 WPM",
+        "category": "Expert",
+        "percentile": "Top 3%",
+        "description": "Transcription-grade speed. Hands keep up with any verbal conversation."
+      },
+      {
+        "wpm": "100+ WPM",
+        "category": "Elite / Competitive",
+        "percentile": "Top 1%",
+        "description": "Competitive typist or court reporter speed. Rare and impressive."
+      }
+    ]
+  },
+  "howItWorks": {
+    "heading": "How WPM is Calculated",
+    "formulaTitle": "The WPM Formula",
+    "formulaDesc": "WPM standardizes typing speed by treating every 5 characters as one 'word'. This accounts for long words vs. short words fairly across all languages.",
+    "formulaText": "Net WPM = (Total Characters Typed ÷ 5 ÷ Minutes) − Error Penalty",
+    "accuracyDesc": "Accuracy directly impacts your Net WPM. Typing fast but incorrectly is penalized, so our engine rewards precision just as much as speed.",
+    "tipsTitle": "5 Tips to Improve Faster",
+    "tips": [
+      "Always use all 10 fingers — never revert to 2-finger typing.",
+      "Fix accuracy first, then push speed. Mistakes cost more time than they save.",
+      "Use the per-second WPM chart to find and drill your slowest character pairs.",
+      "Practice 15 minutes daily rather than 2 hours once a week — consistency wins.",
+      "Challenge friends with a private multiplayer race to add competitive pressure."
+    ]
+  },
+  "faq": {
+    "heading": "Preguntas Frecuentes",
+    "subheading": "Respuestas sobre nuestra prueba de mecanografía, cálculo de PPM y cómo mejorar.",
+    "items": [
+      {
+        "q": "¿Qué es una buena velocidad de escritura?",
+        "a": "Para la mayoría de los trabajos de oficina, 50 a 80 PPM es excelente. Superar las 80 PPM es nivel avanzado y 100+ PPM es élite mundial."
+      },
+      {
+        "q": "¿Cómo puedo aumentar mis PPM?",
+        "a": "Aprende mecanografía al tacto para no mirar el teclado y practica 10–15 minutos todos los días con nuestros tests cronometrados."
+      },
+      {
+        "q": "¿Afecta la precisión al cálculo de PPM?",
+        "a": "Sí, la velocidad neta descuenta los errores cometidos. Escribir con más del 95% de precisión es clave para ser realmente rápido."
+      },
+      {
+        "q": "¿Puedo practicar en español?",
+        "a": "¡Por supuesto! Puedes seleccionar cualquier idioma o pegar tus propios textos en español para practicar."
+      },
+      {
+        "q": "¿Todas las herramientas son gratuitas?",
+        "a": "Sí, todos los tests, juegos, carreras multijugador y lecciones son 100% gratuitos."
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para Poner a Prueba tu Velocidad?",
+    "desc": "Tu primera prueba de mecanografía dura solo 60 segundos. Sin registro. Resultados instantáneos.",
+    "button": "Empezar Test de Mecanografía Ahora"
+  },
+  "footerCopy": "Diseñado para quienes buscan máxima productividad."
 }
