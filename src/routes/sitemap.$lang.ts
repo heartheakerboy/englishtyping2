@@ -158,11 +158,7 @@ export const Route = createFileRoute("/sitemap/$lang")({
         }
 
         const urls = entries.map((e) => {
-          const connector = e.path.includes("?") ? "&" : "?";
-          const absoluteLoc =
-            lang === "en"
-              ? `${BASE_URL}${e.path}`
-              : `${BASE_URL}${e.path}${connector}lang=${lang}`;
+          const absoluteLoc = `${BASE_URL}${e.path}`;
 
           return [
             `  <url>`,
