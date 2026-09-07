@@ -38,12 +38,32 @@ function createSupabaseClient() {
 
   if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
     const missing = [
-      ...(!SUPABASE_URL ? ["SUPABASE_URL"] : []),
-      ...(!SUPABASE_PUBLISHABLE_KEY ? ["SUPABASE_PUBLISHABLE_KEY"] : []),
+      ...(!SUPABASE_URL ? ["SUPABASE_URL / VITE_SUPABASE_URL"] : []),
+      ...(!SUPABASE_PUBLISHABLE_KEY ? ["SUPABASE_PUBLISHABLE_KEY / VITE_SUPABASE_PUBLISHABLE_KEY"] : []),
     ];
-    const message = `Missing Supabase environment variable(s): ${missing.join(", ")}. Connect Supabase in Lovable Cloud.`;
-    console.error(`[Supabase] ${message}`);
-    throw new Error(message);
+    if (typeof window !== "undefined") {
+      console.warn(`[Supabase] Running in offline/guest mode: Missing ${missing.join(", ")}.`);
+    }
+    return createClient<Database>(
+      "https://placeholder-offline.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.placeholder",
+      {
+        global: {
+          fetch: () =>
+            Promise.resolve(
+              new Response(JSON.stringify([]), {
+                status: 200,
+                headers: { "content-type": "application/json" },
+              })
+            ),
+        },
+        auth: {
+          storage: typeof window !== "undefined" ? localStorage : undefined,
+          persistSession: false,
+          autoRefreshToken: false,
+        },
+      }
+    );
   }
 
   return createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {

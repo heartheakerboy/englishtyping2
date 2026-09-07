@@ -8,7 +8,10 @@ import type { Database } from "@/integrations/supabase/types";
 import { z } from "zod";
 
 function publicClient() {
-  return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return null;
+  return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
   });
 }
@@ -23,16 +26,21 @@ async function ensureAdmin(supabase: any, userId: string) {
 // =============== PUBLIC ===============
 
 export const listActiveGames = createServerFn({ method: "GET" }).handler(async () => {
-  const sb = publicClient();
-  const { data, error } = await sb
-    .from("game_configs")
-    .select(
-      "id, slug, title, description, difficulty, xp_reward, coin_reward, is_featured, sort_order, icon_url, banner_url, rules, scoring",
-    )
-    .eq("is_active", true)
-    .order("sort_order", { ascending: true });
-  if (error) throw new Error(error.message);
-  return data ?? [];
+  try {
+    const sb = publicClient();
+    if (!sb) return [];
+    const { data, error } = await sb
+      .from("game_configs")
+      .select(
+        "id, slug, title, description, difficulty, xp_reward, coin_reward, is_featured, sort_order, icon_url, banner_url, rules, scoring",
+      )
+      .eq("is_active", true)
+      .order("sort_order", { ascending: true });
+    if (error) return [];
+    return data ?? [];
+  } catch {
+    return [];
+  }
 });
 
 export const getGameLeaderboard = createServerFn({ method: "GET" })

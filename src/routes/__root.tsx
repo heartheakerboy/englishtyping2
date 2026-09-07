@@ -151,12 +151,16 @@ function RootComponent() {
   const showFooter = !location.pathname.startsWith("/admin");
 
   useEffect(() => {
-    const { data: sub } = supabase.auth.onAuthStateChange((event) => {
-      if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
-      router.invalidate();
-      if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
-    });
-    return () => sub.subscription.unsubscribe();
+    try {
+      const res = supabase?.auth?.onAuthStateChange?.((event) => {
+        if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+        router.invalidate();
+        if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+      });
+      return () => res?.data?.subscription?.unsubscribe?.();
+    } catch (e) {
+      console.warn("[Root] Supabase auth subscription skipped:", e);
+    }
   }, [router, queryClient]);
 
   return (

@@ -5,7 +5,10 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
 
 function publicClient() {
-  return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return null;
+  return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
   });
 }
@@ -16,15 +19,20 @@ async function requireAdmin(ctx: { supabase: any; userId: string }) {
 }
 
 export const listPublishedPosts = createServerFn({ method: "GET" }).handler(async () => {
-  const sb = publicClient();
-  const { data, error } = await sb
-    .from("blog_posts")
-    .select("id, slug, title, excerpt, cover_image, published_at, category_id")
-    .eq("status", "published")
-    .order("published_at", { ascending: false })
-    .limit(50);
-  if (error) throw new Error(error.message);
-  return data ?? [];
+  try {
+    const sb = publicClient();
+    if (!sb) return [];
+    const { data, error } = await sb
+      .from("blog_posts")
+      .select("id, slug, title, excerpt, cover_image, published_at, category_id")
+      .eq("status", "published")
+      .order("published_at", { ascending: false })
+      .limit(50);
+    if (error) return [];
+    return data ?? [];
+  } catch {
+    return [];
+  }
 });
 
 export const getPostBySlug = createServerFn({ method: "GET" })

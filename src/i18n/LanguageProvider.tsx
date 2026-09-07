@@ -85,30 +85,40 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let cancelled = false;
     async function syncFromProfile() {
-      const { data } = await supabase.auth.getUser();
-      const uid = data.user?.id;
-      if (!uid || profileSyncedFor.current === uid) return;
-      profileSyncedFor.current = uid;
-      const { data: prof } = await supabase
-        .from("profiles")
-        .select("preferred_language")
-        .eq("id", uid)
-        .maybeSingle();
-      if (cancelled) return;
-      const pref = (prof?.preferred_language || "").split("-")[0];
-      if (pref && (SUPPORTED_LANGS as readonly string[]).includes(pref) && pref !== lang) {
-        void i18n.changeLanguage(pref);
-        setLangState(pref as SupportedLang);
+      try {
+        const { data } = await supabase.auth.getUser();
+        const uid = data?.user?.id;
+        if (!uid || profileSyncedFor.current === uid) return;
+        profileSyncedFor.current = uid;
+        const { data: prof } = await supabase
+          .from("profiles")
+          .select("preferred_language")
+          .eq("id", uid)
+          .maybeSingle();
+        if (cancelled) return;
+        const pref = (prof?.preferred_language || "").split("-")[0];
+        if (pref && (SUPPORTED_LANGS as readonly string[]).includes(pref) && pref !== lang) {
+          void i18n.changeLanguage(pref);
+          setLangState(pref as SupportedLang);
+        }
+      } catch {
+        /* guest or offline */
       }
     }
     void syncFromProfile();
-    const { data: sub } = supabase.auth.onAuthStateChange(() => {
-      profileSyncedFor.current = null;
-      void syncFromProfile();
-    });
+    let sub: any;
+    try {
+      const res = supabase.auth.onAuthStateChange(() => {
+        profileSyncedFor.current = null;
+        void syncFromProfile();
+      });
+      sub = res?.data;
+    } catch {
+      /* offline */
+    }
     return () => {
       cancelled = true;
-      sub.subscription.unsubscribe();
+      sub?.subscription?.unsubscribe?.();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

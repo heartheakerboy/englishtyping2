@@ -5,7 +5,10 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
 
 function publicClient() {
-  return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return null;
+  return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
   });
 }
@@ -17,14 +20,19 @@ async function requireAdmin(ctx: { supabase: any; userId: string }) {
 
 // --------- Site settings ---------
 export const getPublicSettings = createServerFn({ method: "GET" }).handler(async () => {
-  const sb = publicClient();
-  const { data, error } = await sb.from("site_settings").select("key, value").eq("is_public", true);
-  if (error) throw new Error(error.message);
-  const map: Record<string, any> = {};
-  (data ?? []).forEach((r: any) => {
-    map[r.key] = r.value;
-  });
-  return map;
+  try {
+    const sb = publicClient();
+    if (!sb) return {};
+    const { data, error } = await sb.from("site_settings").select("key, value").eq("is_public", true);
+    if (error) return {};
+    const map: Record<string, any> = {};
+    (data ?? []).forEach((r: any) => {
+      map[r.key] = r.value;
+    });
+    return map;
+  } catch {
+    return {};
+  }
 });
 
 export const updateSetting = createServerFn({ method: "POST" })

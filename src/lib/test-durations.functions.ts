@@ -6,7 +6,10 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
 
 function publicClient() {
-  return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return null;
+  return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
   });
 }
@@ -43,14 +46,19 @@ export type TestDuration = {
 // ───────────────── Public reads ─────────────────
 
 export const listEnabledDurations = createServerFn({ method: "GET" }).handler(async () => {
-  const sb = publicClient();
-  const { data, error } = await sb
-    .from("test_durations" as any)
-    .select("*")
-    .eq("enabled", true)
-    .order("sort_order", { ascending: true });
-  if (error) throw new Error(error.message);
-  return (data ?? []) as unknown as TestDuration[];
+  try {
+    const sb = publicClient();
+    if (!sb) return [];
+    const { data, error } = await sb
+      .from("test_durations" as any)
+      .select("*")
+      .eq("enabled", true)
+      .order("sort_order", { ascending: true });
+    if (error) return [];
+    return (data ?? []) as unknown as TestDuration[];
+  } catch {
+    return [];
+  }
 });
 
 export const getDurationBySlug = createServerFn({ method: "GET" })

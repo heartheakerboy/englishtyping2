@@ -17,27 +17,31 @@ export default function VisitorAnnouncement() {
 
   // Check auth state
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      const authed = !!data.session;
-      setIsAuthed(authed);
-      if (authed) {
-        try {
-          localStorage.setItem("ett-has-account", "true");
-        } catch {}
-      }
-    });
+    try {
+      supabase.auth.getSession().then(({ data }) => {
+        const authed = !!data?.session;
+        setIsAuthed(authed);
+        if (authed) {
+          try {
+            localStorage.setItem("ett-has-account", "true");
+          } catch {}
+        }
+      }).catch(() => setIsAuthed(false));
 
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      const authed = !!session;
-      setIsAuthed(authed);
-      if (authed) {
-        try {
-          localStorage.setItem("ett-has-account", "true");
-        } catch {}
-      }
-    });
+      const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+        const authed = !!session;
+        setIsAuthed(authed);
+        if (authed) {
+          try {
+            localStorage.setItem("ett-has-account", "true");
+          } catch {}
+        }
+      });
 
-    return () => sub.subscription.unsubscribe();
+      return () => sub?.subscription?.unsubscribe?.();
+    } catch {
+      setIsAuthed(false);
+    }
   }, []);
 
   // Fetch active banner and evaluate conditions

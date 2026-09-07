@@ -6,7 +6,10 @@ import type { Database } from "@/integrations/supabase/types";
 import { generateWordsForLanguage, type LanguageCode } from "@/lib/languages";
 
 function publicClient() {
-  return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return null;
+  return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
   });
 }
@@ -20,9 +23,11 @@ function randomCode(len = 6) {
 
 // ===== Public listing =====
 export const listPublicRooms = createServerFn({ method: "GET" }).handler(async () => {
-  const sb = publicClient();
-  const { data: rooms, error } = await sb
-    .from("rooms")
+  try {
+    const sb = publicClient();
+    if (!sb) return [];
+    const { data: rooms, error } = await sb
+      .from("rooms")
     .select(
       "id, code, name, visibility, ranked, language, status, max_players, host_id, created_at",
     )
@@ -42,10 +47,13 @@ export const listPublicRooms = createServerFn({ method: "GET" }).handler(async (
     else c.players++;
     counts.set(m.room_id, c);
   }
-  return (rooms ?? []).map((r) => ({
-    ...r,
-    ...(counts.get(r.id) ?? { players: 0, spectators: 0 }),
-  }));
+    return (rooms ?? []).map((r) => ({
+      ...r,
+      ...(counts.get(r.id) ?? { players: 0, spectators: 0 }),
+    }));
+  } catch {
+    return [];
+  }
 });
 
 export const getRoomByCode = createServerFn({ method: "GET" })

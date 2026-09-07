@@ -9,155 +9,96 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as BlogRouteImport } from './routes/blog'
-import { Route as GamesRouteImport } from './routes/games'
-import { Route as GccTbcTypingTestRouteImport } from './routes/gcc-tbc-typing-test'
-import { Route as LeaderboardRouteImport } from './routes/leaderboard'
-import { Route as LessonsRouteImport } from './routes/lessons'
-import { Route as LiveChatTypingTestRouteImport } from './routes/live-chat-typing-test'
-import { Route as RaceRouteImport } from './routes/race'
-import { Route as SitemapRouteImport } from './routes/sitemap'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SscCglTypingTestRouteImport } from './routes/ssc-cgl-typing-test'
-import { Route as TournamentsRouteImport } from './routes/tournaments'
 import { Route as TypingTestRouteImport } from './routes/typing-test'
-import { Route as AuthenticatedAchievementsRouteImport } from './routes/_authenticated/achievements'
-import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
-import { Route as AuthenticatedBuilderRouteImport } from './routes/_authenticated/builder'
-import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
-import { Route as AuthenticatedFriendsRouteImport } from './routes/_authenticated/friends'
-import { Route as AuthenticatedMissionsRouteImport } from './routes/_authenticated/missions'
-import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
-import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
-import { Route as CertificateIdRouteImport } from './routes/certificate.$id'
-import { Route as GamesIndexRouteImport } from './routes/games.index'
-import { Route as GamesBalloonBurstRouteImport } from './routes/games.balloon-burst'
-import { Route as GamesCpsRouteImport } from './routes/games.cps'
-import { Route as GamesFallingWordsRouteImport } from './routes/games.falling-words'
-import { Route as GamesMemoryRouteImport } from './routes/games.memory'
-import { Route as GamesRaceBotsRouteImport } from './routes/games.race-bots'
-import { Route as GamesReactionRouteImport } from './routes/games.reaction'
-import { Route as GamesSpacebarRouteImport } from './routes/games.spacebar'
-import { Route as GamesTrainerRouteImport } from './routes/games.trainer'
-import { Route as GamesZombieTypingRouteImport } from './routes/games.zombie-typing'
-import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
-import { Route as RaceIndexRouteImport } from './routes/race.index'
-import { Route as RaceCodeRouteImport } from './routes/race.$code'
-import { Route as SitemapLangRouteImport } from './routes/sitemap.$lang'
-import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
-import { Route as TemplatesSlugRouteImport } from './routes/templates.$slug'
-import { Route as TestIndexRouteImport } from './routes/test.index'
-import { Route as TestSlugRouteImport } from './routes/test.$slug'
+import { Route as TournamentsRouteImport } from './routes/tournaments'
+import { Route as SscCglTypingTestRouteImport } from './routes/ssc-cgl-typing-test'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as RaceRouteImport } from './routes/race'
+import { Route as LiveChatTypingTestRouteImport } from './routes/live-chat-typing-test'
+import { Route as LessonsRouteImport } from './routes/lessons'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as GccTbcTypingTestRouteImport } from './routes/gcc-tbc-typing-test'
+import { Route as GamesRouteImport } from './routes/games'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as TypingTestIndexRouteImport } from './routes/typing-test.index'
-import { Route as TypingTestSlugRouteImport } from './routes/typing-test.$slug'
+import { Route as TestIndexRouteImport } from './routes/test.index'
+import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
+import { Route as RaceIndexRouteImport } from './routes/race.index'
+import { Route as GamesIndexRouteImport } from './routes/games.index'
 import { Route as UUsernameRouteImport } from './routes/u.$username'
-import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
-import { Route as AuthenticatedAdminAdsRouteImport } from './routes/_authenticated/admin.ads'
-import { Route as AuthenticatedAdminAnalyticsRouteImport } from './routes/_authenticated/admin.analytics'
-import { Route as AuthenticatedAdminAnnouncementsRouteImport } from './routes/_authenticated/admin.announcements'
-import { Route as AuthenticatedAdminApikeysRouteImport } from './routes/_authenticated/admin.apikeys'
-import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authenticated/admin.audit'
-import { Route as AuthenticatedAdminBadgesRouteImport } from './routes/_authenticated/admin.badges'
-import { Route as AuthenticatedAdminBlogRouteImport } from './routes/_authenticated/admin.blog'
-import { Route as AuthenticatedAdminCacheRouteImport } from './routes/_authenticated/admin.cache'
-import { Route as AuthenticatedAdminCategoriesRouteImport } from './routes/_authenticated/admin.categories'
-import { Route as AuthenticatedAdminCertTemplatesRouteImport } from './routes/_authenticated/admin.cert-templates'
-import { Route as AuthenticatedAdminCertificatesRouteImport } from './routes/_authenticated/admin.certificates'
-import { Route as AuthenticatedAdminCmsRouteImport } from './routes/_authenticated/admin.cms'
-import { Route as AuthenticatedAdminCouponsRouteImport } from './routes/_authenticated/admin.coupons'
-import { Route as AuthenticatedAdminCustomTestsRouteImport } from './routes/_authenticated/admin.custom-tests'
-import { Route as AuthenticatedAdminDurationsRouteImport } from './routes/_authenticated/admin.durations'
-import { Route as AuthenticatedAdminFooterRouteImport } from './routes/_authenticated/admin.footer'
-import { Route as AuthenticatedAdminGamesRouteImport } from './routes/_authenticated/admin.games'
-import { Route as AuthenticatedAdminLanguagesRouteImport } from './routes/_authenticated/admin.languages'
-import { Route as AuthenticatedAdminLeaderboardsRouteImport } from './routes/_authenticated/admin.leaderboards'
-import { Route as AuthenticatedAdminLegalRouteImport } from './routes/_authenticated/admin.legal'
-import { Route as AuthenticatedAdminLinkingRouteImport } from './routes/_authenticated/admin.linking'
-import { Route as AuthenticatedAdminMediaRouteImport } from './routes/_authenticated/admin.media'
-import { Route as AuthenticatedAdminModerationRouteImport } from './routes/_authenticated/admin.moderation'
-import { Route as AuthenticatedAdminNewsletterRouteImport } from './routes/_authenticated/admin.newsletter'
-import { Route as AuthenticatedAdminPaymentsRouteImport } from './routes/_authenticated/admin.payments'
-import { Route as AuthenticatedAdminRedirectsRouteImport } from './routes/_authenticated/admin.redirects'
-import { Route as AuthenticatedAdminReportsRouteImport } from './routes/_authenticated/admin.reports'
-import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
-import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin.settings'
-import { Route as AuthenticatedAdminTemplatesRouteImport } from './routes/_authenticated/admin.templates'
-import { Route as AuthenticatedAdminTextsRouteImport } from './routes/_authenticated/admin.texts'
-import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
-import { Route as AuthenticatedAdminVisitorBannersRouteImport } from './routes/_authenticated/admin.visitor-banners'
+import { Route as TypingTestSlugRouteImport } from './routes/typing-test.$slug'
+import { Route as TestSlugRouteImport } from './routes/test.$slug'
+import { Route as TemplatesSlugRouteImport } from './routes/templates.$slug'
+import { Route as SitemapLangRouteImport } from './routes/sitemap.$lang'
+import { Route as RaceCodeRouteImport } from './routes/race.$code'
+import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
+import { Route as GamesZombieTypingRouteImport } from './routes/games.zombie-typing'
+import { Route as GamesTrainerRouteImport } from './routes/games.trainer'
+import { Route as GamesSpacebarRouteImport } from './routes/games.spacebar'
+import { Route as GamesReactionRouteImport } from './routes/games.reaction'
+import { Route as GamesRaceBotsRouteImport } from './routes/games.race-bots'
+import { Route as GamesMemoryRouteImport } from './routes/games.memory'
+import { Route as GamesFallingWordsRouteImport } from './routes/games.falling-words'
+import { Route as GamesCpsRouteImport } from './routes/games.cps'
+import { Route as GamesBalloonBurstRouteImport } from './routes/games.balloon-burst'
+import { Route as CertificateIdRouteImport } from './routes/certificate.$id'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedMissionsRouteImport } from './routes/_authenticated/missions'
+import { Route as AuthenticatedFriendsRouteImport } from './routes/_authenticated/friends'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedBuilderRouteImport } from './routes/_authenticated/builder'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAchievementsRouteImport } from './routes/_authenticated/achievements'
 import { Route as AuthenticatedBuilderIndexRouteImport } from './routes/_authenticated/builder.index'
-import { Route as AuthenticatedBuilderNewRouteImport } from './routes/_authenticated/builder.new'
-import { Route as AuthenticatedTemplatesFavoritesRouteImport } from './routes/_authenticated/templates.favorites'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedTemplatesMyRouteImport } from './routes/_authenticated/templates.my'
-import { Route as AuthenticatedBuilderIdAnalyticsRouteImport } from './routes/_authenticated/builder.$id.analytics'
-import { Route as AuthenticatedBuilderIdEditRouteImport } from './routes/_authenticated/builder.$id.edit'
+import { Route as AuthenticatedTemplatesFavoritesRouteImport } from './routes/_authenticated/templates.favorites'
+import { Route as AuthenticatedBuilderNewRouteImport } from './routes/_authenticated/builder.new'
+import { Route as AuthenticatedAdminVisitorBannersRouteImport } from './routes/_authenticated/admin.visitor-banners'
+import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
+import { Route as AuthenticatedAdminTextsRouteImport } from './routes/_authenticated/admin.texts'
+import { Route as AuthenticatedAdminTemplatesRouteImport } from './routes/_authenticated/admin.templates'
+import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin.settings'
+import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
+import { Route as AuthenticatedAdminReportsRouteImport } from './routes/_authenticated/admin.reports'
+import { Route as AuthenticatedAdminRedirectsRouteImport } from './routes/_authenticated/admin.redirects'
+import { Route as AuthenticatedAdminPaymentsRouteImport } from './routes/_authenticated/admin.payments'
+import { Route as AuthenticatedAdminNewsletterRouteImport } from './routes/_authenticated/admin.newsletter'
+import { Route as AuthenticatedAdminModerationRouteImport } from './routes/_authenticated/admin.moderation'
+import { Route as AuthenticatedAdminMediaRouteImport } from './routes/_authenticated/admin.media'
+import { Route as AuthenticatedAdminLinkingRouteImport } from './routes/_authenticated/admin.linking'
+import { Route as AuthenticatedAdminLegalRouteImport } from './routes/_authenticated/admin.legal'
+import { Route as AuthenticatedAdminLeaderboardsRouteImport } from './routes/_authenticated/admin.leaderboards'
+import { Route as AuthenticatedAdminLanguagesRouteImport } from './routes/_authenticated/admin.languages'
+import { Route as AuthenticatedAdminGamesRouteImport } from './routes/_authenticated/admin.games'
+import { Route as AuthenticatedAdminFooterRouteImport } from './routes/_authenticated/admin.footer'
+import { Route as AuthenticatedAdminDurationsRouteImport } from './routes/_authenticated/admin.durations'
+import { Route as AuthenticatedAdminCustomTestsRouteImport } from './routes/_authenticated/admin.custom-tests'
+import { Route as AuthenticatedAdminCouponsRouteImport } from './routes/_authenticated/admin.coupons'
+import { Route as AuthenticatedAdminCmsRouteImport } from './routes/_authenticated/admin.cms'
+import { Route as AuthenticatedAdminCertificatesRouteImport } from './routes/_authenticated/admin.certificates'
+import { Route as AuthenticatedAdminCertTemplatesRouteImport } from './routes/_authenticated/admin.cert-templates'
+import { Route as AuthenticatedAdminCategoriesRouteImport } from './routes/_authenticated/admin.categories'
+import { Route as AuthenticatedAdminCacheRouteImport } from './routes/_authenticated/admin.cache'
+import { Route as AuthenticatedAdminBlogRouteImport } from './routes/_authenticated/admin.blog'
+import { Route as AuthenticatedAdminBadgesRouteImport } from './routes/_authenticated/admin.badges'
+import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authenticated/admin.audit'
+import { Route as AuthenticatedAdminApikeysRouteImport } from './routes/_authenticated/admin.apikeys'
+import { Route as AuthenticatedAdminAnnouncementsRouteImport } from './routes/_authenticated/admin.announcements'
+import { Route as AuthenticatedAdminAnalyticsRouteImport } from './routes/_authenticated/admin.analytics'
+import { Route as AuthenticatedAdminAdsRouteImport } from './routes/_authenticated/admin.ads'
 import { Route as AuthenticatedTemplatesBuilderIdRouteImport } from './routes/_authenticated/templates.builder.$id'
+import { Route as AuthenticatedBuilderIdEditRouteImport } from './routes/_authenticated/builder.$id.edit'
+import { Route as AuthenticatedBuilderIdAnalyticsRouteImport } from './routes/_authenticated/builder.$id.analytics'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GamesRoute = GamesRouteImport.update({
-  id: '/games',
-  path: '/games',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GccTbcTypingTestRoute = GccTbcTypingTestRouteImport.update({
-  id: '/gcc-tbc-typing-test',
-  path: '/gcc-tbc-typing-test',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LeaderboardRoute = LeaderboardRouteImport.update({
-  id: '/leaderboard',
-  path: '/leaderboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LessonsRoute = LessonsRouteImport.update({
-  id: '/lessons',
-  path: '/lessons',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LiveChatTypingTestRoute = LiveChatTypingTestRouteImport.update({
-  id: '/live-chat-typing-test',
-  path: '/live-chat-typing-test',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RaceRoute = RaceRouteImport.update({
-  id: '/race',
-  path: '/race',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapRoute = SitemapRouteImport.update({
-  id: '/sitemap',
-  path: '/sitemap',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SscCglTypingTestRoute = SscCglTypingTestRouteImport.update({
-  id: '/ssc-cgl-typing-test',
-  path: '/ssc-cgl-typing-test',
+const TypingTestRoute = TypingTestRouteImport.update({
+  id: '/typing-test',
+  path: '/typing-test',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TournamentsRoute = TournamentsRouteImport.update({
@@ -165,145 +106,68 @@ const TournamentsRoute = TournamentsRouteImport.update({
   path: '/tournaments',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TypingTestRoute = TypingTestRouteImport.update({
-  id: '/typing-test',
-  path: '/typing-test',
+const SscCglTypingTestRoute = SscCglTypingTestRouteImport.update({
+  id: '/ssc-cgl-typing-test',
+  path: '/ssc-cgl-typing-test',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAchievementsRoute =
-  AuthenticatedAchievementsRouteImport.update({
-    id: '/achievements',
-    path: '/achievements',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedBuilderRoute = AuthenticatedBuilderRouteImport.update({
-  id: '/builder',
-  path: '/builder',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedFriendsRoute = AuthenticatedFriendsRouteImport.update({
-  id: '/friends',
-  path: '/friends',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedMissionsRoute = AuthenticatedMissionsRouteImport.update({
-  id: '/missions',
-  path: '/missions',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => BlogRoute,
-} as any)
-const CertificateIdRoute = CertificateIdRouteImport.update({
-  id: '/certificate/$id',
-  path: '/certificate/$id',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GamesIndexRoute = GamesIndexRouteImport.update({
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RaceRoute = RaceRouteImport.update({
+  id: '/race',
+  path: '/race',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveChatTypingTestRoute = LiveChatTypingTestRouteImport.update({
+  id: '/live-chat-typing-test',
+  path: '/live-chat-typing-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LessonsRoute = LessonsRouteImport.update({
+  id: '/lessons',
+  path: '/lessons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GccTbcTypingTestRoute = GccTbcTypingTestRouteImport.update({
+  id: '/gcc-tbc-typing-test',
+  path: '/gcc-tbc-typing-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => GamesRoute,
-} as any)
-const GamesBalloonBurstRoute = GamesBalloonBurstRouteImport.update({
-  id: '/balloon-burst',
-  path: '/balloon-burst',
-  getParentRoute: () => GamesRoute,
-} as any)
-const GamesCpsRoute = GamesCpsRouteImport.update({
-  id: '/cps',
-  path: '/cps',
-  getParentRoute: () => GamesRoute,
-} as any)
-const GamesFallingWordsRoute = GamesFallingWordsRouteImport.update({
-  id: '/falling-words',
-  path: '/falling-words',
-  getParentRoute: () => GamesRoute,
-} as any)
-const GamesMemoryRoute = GamesMemoryRouteImport.update({
-  id: '/memory',
-  path: '/memory',
-  getParentRoute: () => GamesRoute,
-} as any)
-const GamesRaceBotsRoute = GamesRaceBotsRouteImport.update({
-  id: '/race-bots',
-  path: '/race-bots',
-  getParentRoute: () => GamesRoute,
-} as any)
-const GamesReactionRoute = GamesReactionRouteImport.update({
-  id: '/reaction',
-  path: '/reaction',
-  getParentRoute: () => GamesRoute,
-} as any)
-const GamesSpacebarRoute = GamesSpacebarRouteImport.update({
-  id: '/spacebar',
-  path: '/spacebar',
-  getParentRoute: () => GamesRoute,
-} as any)
-const GamesTrainerRoute = GamesTrainerRouteImport.update({
-  id: '/trainer',
-  path: '/trainer',
-  getParentRoute: () => GamesRoute,
-} as any)
-const GamesZombieTypingRoute = GamesZombieTypingRouteImport.update({
-  id: '/zombie-typing',
-  path: '/zombie-typing',
-  getParentRoute: () => GamesRoute,
-} as any)
-const LegalSlugRoute = LegalSlugRouteImport.update({
-  id: '/legal/$slug',
-  path: '/legal/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RaceIndexRoute = RaceIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => RaceRoute,
-} as any)
-const RaceCodeRoute = RaceCodeRouteImport.update({
-  id: '/$code',
-  path: '/$code',
-  getParentRoute: () => RaceRoute,
-} as any)
-const SitemapLangRoute = SitemapLangRouteImport.update({
-  id: '/$lang',
-  path: '/$lang',
-  getParentRoute: () => SitemapRoute,
-} as any)
-const TemplatesIndexRoute = TemplatesIndexRouteImport.update({
-  id: '/templates/',
-  path: '/templates/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TemplatesSlugRoute = TemplatesSlugRouteImport.update({
-  id: '/templates/$slug',
-  path: '/templates/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TestIndexRoute = TestIndexRouteImport.update({
-  id: '/test/',
-  path: '/test/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TestSlugRoute = TestSlugRouteImport.update({
-  id: '/test/$slug',
-  path: '/test/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TypingTestIndexRoute = TypingTestIndexRouteImport.update({
@@ -311,161 +175,217 @@ const TypingTestIndexRoute = TypingTestIndexRouteImport.update({
   path: '/',
   getParentRoute: () => TypingTestRoute,
 } as any)
-const TypingTestSlugRoute = TypingTestSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => TypingTestRoute,
+const TestIndexRoute = TestIndexRouteImport.update({
+  id: '/test/',
+  path: '/test/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemplatesIndexRoute = TemplatesIndexRouteImport.update({
+  id: '/templates/',
+  path: '/templates/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RaceIndexRoute = RaceIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => RaceRoute,
+} as any)
+const GamesIndexRoute = GamesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => GamesRoute,
 } as any)
 const UUsernameRoute = UUsernameRouteImport.update({
   id: '/u/$username',
   path: '/u/$username',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TypingTestSlugRoute = TypingTestSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => TypingTestRoute,
+} as any)
+const TestSlugRoute = TestSlugRouteImport.update({
+  id: '/test/$slug',
+  path: '/test/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemplatesSlugRoute = TemplatesSlugRouteImport.update({
+  id: '/templates/$slug',
+  path: '/templates/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapLangRoute = SitemapLangRouteImport.update({
+  id: '/$lang',
+  path: '/$lang',
+  getParentRoute: () => SitemapRoute,
+} as any)
+const RaceCodeRoute = RaceCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => RaceRoute,
+} as any)
+const LegalSlugRoute = LegalSlugRouteImport.update({
+  id: '/legal/$slug',
+  path: '/legal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesZombieTypingRoute = GamesZombieTypingRouteImport.update({
+  id: '/zombie-typing',
+  path: '/zombie-typing',
+  getParentRoute: () => GamesRoute,
+} as any)
+const GamesTrainerRoute = GamesTrainerRouteImport.update({
+  id: '/trainer',
+  path: '/trainer',
+  getParentRoute: () => GamesRoute,
+} as any)
+const GamesSpacebarRoute = GamesSpacebarRouteImport.update({
+  id: '/spacebar',
+  path: '/spacebar',
+  getParentRoute: () => GamesRoute,
+} as any)
+const GamesReactionRoute = GamesReactionRouteImport.update({
+  id: '/reaction',
+  path: '/reaction',
+  getParentRoute: () => GamesRoute,
+} as any)
+const GamesRaceBotsRoute = GamesRaceBotsRouteImport.update({
+  id: '/race-bots',
+  path: '/race-bots',
+  getParentRoute: () => GamesRoute,
+} as any)
+const GamesMemoryRoute = GamesMemoryRouteImport.update({
+  id: '/memory',
+  path: '/memory',
+  getParentRoute: () => GamesRoute,
+} as any)
+const GamesFallingWordsRoute = GamesFallingWordsRouteImport.update({
+  id: '/falling-words',
+  path: '/falling-words',
+  getParentRoute: () => GamesRoute,
+} as any)
+const GamesCpsRoute = GamesCpsRouteImport.update({
+  id: '/cps',
+  path: '/cps',
+  getParentRoute: () => GamesRoute,
+} as any)
+const GamesBalloonBurstRoute = GamesBalloonBurstRouteImport.update({
+  id: '/balloon-burst',
+  path: '/balloon-burst',
+  getParentRoute: () => GamesRoute,
+} as any)
+const CertificateIdRoute = CertificateIdRouteImport.update({
+  id: '/certificate/$id',
+  path: '/certificate/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMissionsRoute = AuthenticatedMissionsRouteImport.update({
+  id: '/missions',
+  path: '/missions',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFriendsRoute = AuthenticatedFriendsRouteImport.update({
+  id: '/friends',
+  path: '/friends',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBuilderRoute = AuthenticatedBuilderRouteImport.update({
+  id: '/builder',
+  path: '/builder',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAchievementsRoute =
+  AuthenticatedAchievementsRouteImport.update({
+    id: '/achievements',
+    path: '/achievements',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBuilderIndexRoute =
+  AuthenticatedBuilderIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedBuilderRoute,
+  } as any)
 const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const AuthenticatedAdminAdsRoute = AuthenticatedAdminAdsRouteImport.update({
-  id: '/ads',
-  path: '/ads',
+const AuthenticatedTemplatesMyRoute =
+  AuthenticatedTemplatesMyRouteImport.update({
+    id: '/templates/my',
+    path: '/templates/my',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedTemplatesFavoritesRoute =
+  AuthenticatedTemplatesFavoritesRouteImport.update({
+    id: '/templates/favorites',
+    path: '/templates/favorites',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBuilderNewRoute = AuthenticatedBuilderNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => AuthenticatedBuilderRoute,
+} as any)
+const AuthenticatedAdminVisitorBannersRoute =
+  AuthenticatedAdminVisitorBannersRouteImport.update({
+    id: '/visitor-banners',
+    path: '/visitor-banners',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const AuthenticatedAdminAnalyticsRoute =
-  AuthenticatedAdminAnalyticsRouteImport.update({
-    id: '/analytics',
-    path: '/analytics',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminAnnouncementsRoute =
-  AuthenticatedAdminAnnouncementsRouteImport.update({
-    id: '/announcements',
-    path: '/announcements',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminApikeysRoute =
-  AuthenticatedAdminApikeysRouteImport.update({
-    id: '/apikeys',
-    path: '/apikeys',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminAuditRoute = AuthenticatedAdminAuditRouteImport.update({
-  id: '/audit',
-  path: '/audit',
+const AuthenticatedAdminTextsRoute = AuthenticatedAdminTextsRouteImport.update({
+  id: '/texts',
+  path: '/texts',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const AuthenticatedAdminBadgesRoute =
-  AuthenticatedAdminBadgesRouteImport.update({
-    id: '/badges',
-    path: '/badges',
+const AuthenticatedAdminTemplatesRoute =
+  AuthenticatedAdminTemplatesRouteImport.update({
+    id: '/templates',
+    path: '/templates',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
-const AuthenticatedAdminBlogRoute = AuthenticatedAdminBlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
+const AuthenticatedAdminSettingsRoute =
+  AuthenticatedAdminSettingsRouteImport.update({
+    id: '/settings',
+    path: '/settings',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminSeoRoute = AuthenticatedAdminSeoRouteImport.update({
+  id: '/seo',
+  path: '/seo',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const AuthenticatedAdminCacheRoute = AuthenticatedAdminCacheRouteImport.update({
-  id: '/cache',
-  path: '/cache',
-  getParentRoute: () => AuthenticatedAdminRoute,
-} as any)
-const AuthenticatedAdminCategoriesRoute =
-  AuthenticatedAdminCategoriesRouteImport.update({
-    id: '/categories',
-    path: '/categories',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminCertTemplatesRoute =
-  AuthenticatedAdminCertTemplatesRouteImport.update({
-    id: '/cert-templates',
-    path: '/cert-templates',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminCertificatesRoute =
-  AuthenticatedAdminCertificatesRouteImport.update({
-    id: '/certificates',
-    path: '/certificates',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminCmsRoute = AuthenticatedAdminCmsRouteImport.update({
-  id: '/cms',
-  path: '/cms',
-  getParentRoute: () => AuthenticatedAdminRoute,
-} as any)
-const AuthenticatedAdminCouponsRoute =
-  AuthenticatedAdminCouponsRouteImport.update({
-    id: '/coupons',
-    path: '/coupons',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminCustomTestsRoute =
-  AuthenticatedAdminCustomTestsRouteImport.update({
-    id: '/custom-tests',
-    path: '/custom-tests',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminDurationsRoute =
-  AuthenticatedAdminDurationsRouteImport.update({
-    id: '/durations',
-    path: '/durations',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminFooterRoute =
-  AuthenticatedAdminFooterRouteImport.update({
-    id: '/footer',
-    path: '/footer',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminGamesRoute = AuthenticatedAdminGamesRouteImport.update({
-  id: '/games',
-  path: '/games',
-  getParentRoute: () => AuthenticatedAdminRoute,
-} as any)
-const AuthenticatedAdminLanguagesRoute =
-  AuthenticatedAdminLanguagesRouteImport.update({
-    id: '/languages',
-    path: '/languages',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminLeaderboardsRoute =
-  AuthenticatedAdminLeaderboardsRouteImport.update({
-    id: '/leaderboards',
-    path: '/leaderboards',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminLegalRoute = AuthenticatedAdminLegalRouteImport.update({
-  id: '/legal',
-  path: '/legal',
-  getParentRoute: () => AuthenticatedAdminRoute,
-} as any)
-const AuthenticatedAdminLinkingRoute =
-  AuthenticatedAdminLinkingRouteImport.update({
-    id: '/linking',
-    path: '/linking',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminMediaRoute = AuthenticatedAdminMediaRouteImport.update({
-  id: '/media',
-  path: '/media',
-  getParentRoute: () => AuthenticatedAdminRoute,
-} as any)
-const AuthenticatedAdminModerationRoute =
-  AuthenticatedAdminModerationRouteImport.update({
-    id: '/moderation',
-    path: '/moderation',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminNewsletterRoute =
-  AuthenticatedAdminNewsletterRouteImport.update({
-    id: '/newsletter',
-    path: '/newsletter',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminPaymentsRoute =
-  AuthenticatedAdminPaymentsRouteImport.update({
-    id: '/payments',
-    path: '/payments',
+const AuthenticatedAdminReportsRoute =
+  AuthenticatedAdminReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
 const AuthenticatedAdminRedirectsRoute =
@@ -474,73 +394,153 @@ const AuthenticatedAdminRedirectsRoute =
     path: '/redirects',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
-const AuthenticatedAdminReportsRoute =
-  AuthenticatedAdminReportsRouteImport.update({
-    id: '/reports',
-    path: '/reports',
+const AuthenticatedAdminPaymentsRoute =
+  AuthenticatedAdminPaymentsRouteImport.update({
+    id: '/payments',
+    path: '/payments',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
-const AuthenticatedAdminSeoRoute = AuthenticatedAdminSeoRouteImport.update({
-  id: '/seo',
-  path: '/seo',
+const AuthenticatedAdminNewsletterRoute =
+  AuthenticatedAdminNewsletterRouteImport.update({
+    id: '/newsletter',
+    path: '/newsletter',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminModerationRoute =
+  AuthenticatedAdminModerationRouteImport.update({
+    id: '/moderation',
+    path: '/moderation',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminMediaRoute = AuthenticatedAdminMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const AuthenticatedAdminSettingsRoute =
-  AuthenticatedAdminSettingsRouteImport.update({
-    id: '/settings',
-    path: '/settings',
+const AuthenticatedAdminLinkingRoute =
+  AuthenticatedAdminLinkingRouteImport.update({
+    id: '/linking',
+    path: '/linking',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
-const AuthenticatedAdminTemplatesRoute =
-  AuthenticatedAdminTemplatesRouteImport.update({
-    id: '/templates',
-    path: '/templates',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminTextsRoute = AuthenticatedAdminTextsRouteImport.update({
-  id: '/texts',
-  path: '/texts',
+const AuthenticatedAdminLegalRoute = AuthenticatedAdminLegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
-  id: '/users',
-  path: '/users',
-  getParentRoute: () => AuthenticatedAdminRoute,
-} as any)
-const AuthenticatedAdminVisitorBannersRoute =
-  AuthenticatedAdminVisitorBannersRouteImport.update({
-    id: '/visitor-banners',
-    path: '/visitor-banners',
+const AuthenticatedAdminLeaderboardsRoute =
+  AuthenticatedAdminLeaderboardsRouteImport.update({
+    id: '/leaderboards',
+    path: '/leaderboards',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
-const AuthenticatedBuilderIndexRoute =
-  AuthenticatedBuilderIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => AuthenticatedBuilderRoute,
+const AuthenticatedAdminLanguagesRoute =
+  AuthenticatedAdminLanguagesRouteImport.update({
+    id: '/languages',
+    path: '/languages',
+    getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
-const AuthenticatedBuilderNewRoute = AuthenticatedBuilderNewRouteImport.update({
-  id: '/new',
-  path: '/new',
-  getParentRoute: () => AuthenticatedBuilderRoute,
+const AuthenticatedAdminGamesRoute = AuthenticatedAdminGamesRouteImport.update({
+  id: '/games',
+  path: '/games',
+  getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const AuthenticatedTemplatesFavoritesRoute =
-  AuthenticatedTemplatesFavoritesRouteImport.update({
-    id: '/templates/favorites',
-    path: '/templates/favorites',
+const AuthenticatedAdminFooterRoute =
+  AuthenticatedAdminFooterRouteImport.update({
+    id: '/footer',
+    path: '/footer',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminDurationsRoute =
+  AuthenticatedAdminDurationsRouteImport.update({
+    id: '/durations',
+    path: '/durations',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminCustomTestsRoute =
+  AuthenticatedAdminCustomTestsRouteImport.update({
+    id: '/custom-tests',
+    path: '/custom-tests',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminCouponsRoute =
+  AuthenticatedAdminCouponsRouteImport.update({
+    id: '/coupons',
+    path: '/coupons',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminCmsRoute = AuthenticatedAdminCmsRouteImport.update({
+  id: '/cms',
+  path: '/cms',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminCertificatesRoute =
+  AuthenticatedAdminCertificatesRouteImport.update({
+    id: '/certificates',
+    path: '/certificates',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminCertTemplatesRoute =
+  AuthenticatedAdminCertTemplatesRouteImport.update({
+    id: '/cert-templates',
+    path: '/cert-templates',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminCategoriesRoute =
+  AuthenticatedAdminCategoriesRouteImport.update({
+    id: '/categories',
+    path: '/categories',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminCacheRoute = AuthenticatedAdminCacheRouteImport.update({
+  id: '/cache',
+  path: '/cache',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminBlogRoute = AuthenticatedAdminBlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminBadgesRoute =
+  AuthenticatedAdminBadgesRouteImport.update({
+    id: '/badges',
+    path: '/badges',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminAuditRoute = AuthenticatedAdminAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminApikeysRoute =
+  AuthenticatedAdminApikeysRouteImport.update({
+    id: '/apikeys',
+    path: '/apikeys',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminAnnouncementsRoute =
+  AuthenticatedAdminAnnouncementsRouteImport.update({
+    id: '/announcements',
+    path: '/announcements',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminAnalyticsRoute =
+  AuthenticatedAdminAnalyticsRouteImport.update({
+    id: '/analytics',
+    path: '/analytics',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminAdsRoute = AuthenticatedAdminAdsRouteImport.update({
+  id: '/ads',
+  path: '/ads',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedTemplatesBuilderIdRoute =
+  AuthenticatedTemplatesBuilderIdRouteImport.update({
+    id: '/templates/builder/$id',
+    path: '/templates/builder/$id',
     getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedTemplatesMyRoute =
-  AuthenticatedTemplatesMyRouteImport.update({
-    id: '/templates/my',
-    path: '/templates/my',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedBuilderIdAnalyticsRoute =
-  AuthenticatedBuilderIdAnalyticsRouteImport.update({
-    id: '/$id/analytics',
-    path: '/$id/analytics',
-    getParentRoute: () => AuthenticatedBuilderRoute,
   } as any)
 const AuthenticatedBuilderIdEditRoute =
   AuthenticatedBuilderIdEditRouteImport.update({
@@ -548,11 +548,11 @@ const AuthenticatedBuilderIdEditRoute =
     path: '/$id/edit',
     getParentRoute: () => AuthenticatedBuilderRoute,
   } as any)
-const AuthenticatedTemplatesBuilderIdRoute =
-  AuthenticatedTemplatesBuilderIdRouteImport.update({
-    id: '/templates/builder/$id',
-    path: '/templates/builder/$id',
-    getParentRoute: () => AuthenticatedRouteRoute,
+const AuthenticatedBuilderIdAnalyticsRoute =
+  AuthenticatedBuilderIdAnalyticsRouteImport.update({
+    id: '/$id/analytics',
+    path: '/$id/analytics',
+    getParentRoute: () => AuthenticatedBuilderRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -1100,95 +1100,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/games': {
-      id: '/games'
-      path: '/games'
-      fullPath: '/games'
-      preLoaderRoute: typeof GamesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gcc-tbc-typing-test': {
-      id: '/gcc-tbc-typing-test'
-      path: '/gcc-tbc-typing-test'
-      fullPath: '/gcc-tbc-typing-test'
-      preLoaderRoute: typeof GccTbcTypingTestRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/leaderboard': {
-      id: '/leaderboard'
-      path: '/leaderboard'
-      fullPath: '/leaderboard'
-      preLoaderRoute: typeof LeaderboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lessons': {
-      id: '/lessons'
-      path: '/lessons'
-      fullPath: '/lessons'
-      preLoaderRoute: typeof LessonsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/live-chat-typing-test': {
-      id: '/live-chat-typing-test'
-      path: '/live-chat-typing-test'
-      fullPath: '/live-chat-typing-test'
-      preLoaderRoute: typeof LiveChatTypingTestRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/race': {
-      id: '/race'
-      path: '/race'
-      fullPath: '/race'
-      preLoaderRoute: typeof RaceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap': {
-      id: '/sitemap'
-      path: '/sitemap'
-      fullPath: '/sitemap'
-      preLoaderRoute: typeof SitemapRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ssc-cgl-typing-test': {
-      id: '/ssc-cgl-typing-test'
-      path: '/ssc-cgl-typing-test'
-      fullPath: '/ssc-cgl-typing-test'
-      preLoaderRoute: typeof SscCglTypingTestRouteImport
+    '/typing-test': {
+      id: '/typing-test'
+      path: '/typing-test'
+      fullPath: '/typing-test'
+      preLoaderRoute: typeof TypingTestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tournaments': {
@@ -1198,200 +1114,95 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TournamentsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/typing-test': {
-      id: '/typing-test'
-      path: '/typing-test'
-      fullPath: '/typing-test'
-      preLoaderRoute: typeof TypingTestRouteImport
+    '/ssc-cgl-typing-test': {
+      id: '/ssc-cgl-typing-test'
+      path: '/ssc-cgl-typing-test'
+      fullPath: '/ssc-cgl-typing-test'
+      preLoaderRoute: typeof SscCglTypingTestRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/achievements': {
-      id: '/_authenticated/achievements'
-      path: '/achievements'
-      fullPath: '/achievements'
-      preLoaderRoute: typeof AuthenticatedAchievementsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/admin': {
-      id: '/_authenticated/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AuthenticatedAdminRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/builder': {
-      id: '/_authenticated/builder'
-      path: '/builder'
-      fullPath: '/builder'
-      preLoaderRoute: typeof AuthenticatedBuilderRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/dashboard': {
-      id: '/_authenticated/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/friends': {
-      id: '/_authenticated/friends'
-      path: '/friends'
-      fullPath: '/friends'
-      preLoaderRoute: typeof AuthenticatedFriendsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/missions': {
-      id: '/_authenticated/missions'
-      path: '/missions'
-      fullPath: '/missions'
-      preLoaderRoute: typeof AuthenticatedMissionsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/profile': {
-      id: '/_authenticated/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof AuthenticatedProfileRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
-      parentRoute: typeof BlogRoute
-    }
-    '/certificate/$id': {
-      id: '/certificate/$id'
-      path: '/certificate/$id'
-      fullPath: '/certificate/$id'
-      preLoaderRoute: typeof CertificateIdRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/games/': {
-      id: '/games/'
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/race': {
+      id: '/race'
+      path: '/race'
+      fullPath: '/race'
+      preLoaderRoute: typeof RaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-chat-typing-test': {
+      id: '/live-chat-typing-test'
+      path: '/live-chat-typing-test'
+      fullPath: '/live-chat-typing-test'
+      preLoaderRoute: typeof LiveChatTypingTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lessons': {
+      id: '/lessons'
+      path: '/lessons'
+      fullPath: '/lessons'
+      preLoaderRoute: typeof LessonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gcc-tbc-typing-test': {
+      id: '/gcc-tbc-typing-test'
+      path: '/gcc-tbc-typing-test'
+      fullPath: '/gcc-tbc-typing-test'
+      preLoaderRoute: typeof GccTbcTypingTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
       path: '/'
-      fullPath: '/games/'
-      preLoaderRoute: typeof GamesIndexRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/games/balloon-burst': {
-      id: '/games/balloon-burst'
-      path: '/balloon-burst'
-      fullPath: '/games/balloon-burst'
-      preLoaderRoute: typeof GamesBalloonBurstRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/games/cps': {
-      id: '/games/cps'
-      path: '/cps'
-      fullPath: '/games/cps'
-      preLoaderRoute: typeof GamesCpsRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/games/falling-words': {
-      id: '/games/falling-words'
-      path: '/falling-words'
-      fullPath: '/games/falling-words'
-      preLoaderRoute: typeof GamesFallingWordsRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/games/memory': {
-      id: '/games/memory'
-      path: '/memory'
-      fullPath: '/games/memory'
-      preLoaderRoute: typeof GamesMemoryRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/games/race-bots': {
-      id: '/games/race-bots'
-      path: '/race-bots'
-      fullPath: '/games/race-bots'
-      preLoaderRoute: typeof GamesRaceBotsRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/games/reaction': {
-      id: '/games/reaction'
-      path: '/reaction'
-      fullPath: '/games/reaction'
-      preLoaderRoute: typeof GamesReactionRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/games/spacebar': {
-      id: '/games/spacebar'
-      path: '/spacebar'
-      fullPath: '/games/spacebar'
-      preLoaderRoute: typeof GamesSpacebarRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/games/trainer': {
-      id: '/games/trainer'
-      path: '/trainer'
-      fullPath: '/games/trainer'
-      preLoaderRoute: typeof GamesTrainerRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/games/zombie-typing': {
-      id: '/games/zombie-typing'
-      path: '/zombie-typing'
-      fullPath: '/games/zombie-typing'
-      preLoaderRoute: typeof GamesZombieTypingRouteImport
-      parentRoute: typeof GamesRoute
-    }
-    '/legal/$slug': {
-      id: '/legal/$slug'
-      path: '/legal/$slug'
-      fullPath: '/legal/$slug'
-      preLoaderRoute: typeof LegalSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/race/': {
-      id: '/race/'
-      path: '/'
-      fullPath: '/race/'
-      preLoaderRoute: typeof RaceIndexRouteImport
-      parentRoute: typeof RaceRoute
-    }
-    '/race/$code': {
-      id: '/race/$code'
-      path: '/$code'
-      fullPath: '/race/$code'
-      preLoaderRoute: typeof RaceCodeRouteImport
-      parentRoute: typeof RaceRoute
-    }
-    '/sitemap/$lang': {
-      id: '/sitemap/$lang'
-      path: '/$lang'
-      fullPath: '/sitemap/$lang'
-      preLoaderRoute: typeof SitemapLangRouteImport
-      parentRoute: typeof SitemapRoute
-    }
-    '/templates/': {
-      id: '/templates/'
-      path: '/templates'
-      fullPath: '/templates/'
-      preLoaderRoute: typeof TemplatesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/templates/$slug': {
-      id: '/templates/$slug'
-      path: '/templates/$slug'
-      fullPath: '/templates/$slug'
-      preLoaderRoute: typeof TemplatesSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/test/': {
-      id: '/test/'
-      path: '/test'
-      fullPath: '/test/'
-      preLoaderRoute: typeof TestIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/test/$slug': {
-      id: '/test/$slug'
-      path: '/test/$slug'
-      fullPath: '/test/$slug'
-      preLoaderRoute: typeof TestSlugRouteImport
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/typing-test/': {
@@ -1401,12 +1212,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TypingTestIndexRouteImport
       parentRoute: typeof TypingTestRoute
     }
-    '/typing-test/$slug': {
-      id: '/typing-test/$slug'
-      path: '/$slug'
-      fullPath: '/typing-test/$slug'
-      preLoaderRoute: typeof TypingTestSlugRouteImport
-      parentRoute: typeof TypingTestRoute
+    '/test/': {
+      id: '/test/'
+      path: '/test'
+      fullPath: '/test/'
+      preLoaderRoute: typeof TestIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/templates/': {
+      id: '/templates/'
+      path: '/templates'
+      fullPath: '/templates/'
+      preLoaderRoute: typeof TemplatesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/race/': {
+      id: '/race/'
+      path: '/'
+      fullPath: '/race/'
+      preLoaderRoute: typeof RaceIndexRouteImport
+      parentRoute: typeof RaceRoute
+    }
+    '/games/': {
+      id: '/games/'
+      path: '/'
+      fullPath: '/games/'
+      preLoaderRoute: typeof GamesIndexRouteImport
+      parentRoute: typeof GamesRoute
     }
     '/u/$username': {
       id: '/u/$username'
@@ -1415,6 +1247,181 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UUsernameRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/typing-test/$slug': {
+      id: '/typing-test/$slug'
+      path: '/$slug'
+      fullPath: '/typing-test/$slug'
+      preLoaderRoute: typeof TypingTestSlugRouteImport
+      parentRoute: typeof TypingTestRoute
+    }
+    '/test/$slug': {
+      id: '/test/$slug'
+      path: '/test/$slug'
+      fullPath: '/test/$slug'
+      preLoaderRoute: typeof TestSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/templates/$slug': {
+      id: '/templates/$slug'
+      path: '/templates/$slug'
+      fullPath: '/templates/$slug'
+      preLoaderRoute: typeof TemplatesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap/$lang': {
+      id: '/sitemap/$lang'
+      path: '/$lang'
+      fullPath: '/sitemap/$lang'
+      preLoaderRoute: typeof SitemapLangRouteImport
+      parentRoute: typeof SitemapRoute
+    }
+    '/race/$code': {
+      id: '/race/$code'
+      path: '/$code'
+      fullPath: '/race/$code'
+      preLoaderRoute: typeof RaceCodeRouteImport
+      parentRoute: typeof RaceRoute
+    }
+    '/legal/$slug': {
+      id: '/legal/$slug'
+      path: '/legal/$slug'
+      fullPath: '/legal/$slug'
+      preLoaderRoute: typeof LegalSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games/zombie-typing': {
+      id: '/games/zombie-typing'
+      path: '/zombie-typing'
+      fullPath: '/games/zombie-typing'
+      preLoaderRoute: typeof GamesZombieTypingRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/games/trainer': {
+      id: '/games/trainer'
+      path: '/trainer'
+      fullPath: '/games/trainer'
+      preLoaderRoute: typeof GamesTrainerRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/games/spacebar': {
+      id: '/games/spacebar'
+      path: '/spacebar'
+      fullPath: '/games/spacebar'
+      preLoaderRoute: typeof GamesSpacebarRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/games/reaction': {
+      id: '/games/reaction'
+      path: '/reaction'
+      fullPath: '/games/reaction'
+      preLoaderRoute: typeof GamesReactionRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/games/race-bots': {
+      id: '/games/race-bots'
+      path: '/race-bots'
+      fullPath: '/games/race-bots'
+      preLoaderRoute: typeof GamesRaceBotsRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/games/memory': {
+      id: '/games/memory'
+      path: '/memory'
+      fullPath: '/games/memory'
+      preLoaderRoute: typeof GamesMemoryRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/games/falling-words': {
+      id: '/games/falling-words'
+      path: '/falling-words'
+      fullPath: '/games/falling-words'
+      preLoaderRoute: typeof GamesFallingWordsRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/games/cps': {
+      id: '/games/cps'
+      path: '/cps'
+      fullPath: '/games/cps'
+      preLoaderRoute: typeof GamesCpsRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/games/balloon-burst': {
+      id: '/games/balloon-burst'
+      path: '/balloon-burst'
+      fullPath: '/games/balloon-burst'
+      preLoaderRoute: typeof GamesBalloonBurstRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/certificate/$id': {
+      id: '/certificate/$id'
+      path: '/certificate/$id'
+      fullPath: '/certificate/$id'
+      preLoaderRoute: typeof CertificateIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/missions': {
+      id: '/_authenticated/missions'
+      path: '/missions'
+      fullPath: '/missions'
+      preLoaderRoute: typeof AuthenticatedMissionsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/friends': {
+      id: '/_authenticated/friends'
+      path: '/friends'
+      fullPath: '/friends'
+      preLoaderRoute: typeof AuthenticatedFriendsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/builder': {
+      id: '/_authenticated/builder'
+      path: '/builder'
+      fullPath: '/builder'
+      preLoaderRoute: typeof AuthenticatedBuilderRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/achievements': {
+      id: '/_authenticated/achievements'
+      path: '/achievements'
+      fullPath: '/achievements'
+      preLoaderRoute: typeof AuthenticatedAchievementsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/builder/': {
+      id: '/_authenticated/builder/'
+      path: '/'
+      fullPath: '/builder/'
+      preLoaderRoute: typeof AuthenticatedBuilderIndexRouteImport
+      parentRoute: typeof AuthenticatedBuilderRoute
+    }
     '/_authenticated/admin/': {
       id: '/_authenticated/admin/'
       path: '/'
@@ -1422,221 +1429,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
-    '/_authenticated/admin/ads': {
-      id: '/_authenticated/admin/ads'
-      path: '/ads'
-      fullPath: '/admin/ads'
-      preLoaderRoute: typeof AuthenticatedAdminAdsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+    '/_authenticated/templates/my': {
+      id: '/_authenticated/templates/my'
+      path: '/templates/my'
+      fullPath: '/templates/my'
+      preLoaderRoute: typeof AuthenticatedTemplatesMyRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/admin/analytics': {
-      id: '/_authenticated/admin/analytics'
-      path: '/analytics'
-      fullPath: '/admin/analytics'
-      preLoaderRoute: typeof AuthenticatedAdminAnalyticsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+    '/_authenticated/templates/favorites': {
+      id: '/_authenticated/templates/favorites'
+      path: '/templates/favorites'
+      fullPath: '/templates/favorites'
+      preLoaderRoute: typeof AuthenticatedTemplatesFavoritesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/admin/announcements': {
-      id: '/_authenticated/admin/announcements'
-      path: '/announcements'
-      fullPath: '/admin/announcements'
-      preLoaderRoute: typeof AuthenticatedAdminAnnouncementsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+    '/_authenticated/builder/new': {
+      id: '/_authenticated/builder/new'
+      path: '/new'
+      fullPath: '/builder/new'
+      preLoaderRoute: typeof AuthenticatedBuilderNewRouteImport
+      parentRoute: typeof AuthenticatedBuilderRoute
     }
-    '/_authenticated/admin/apikeys': {
-      id: '/_authenticated/admin/apikeys'
-      path: '/apikeys'
-      fullPath: '/admin/apikeys'
-      preLoaderRoute: typeof AuthenticatedAdminApikeysRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/audit': {
-      id: '/_authenticated/admin/audit'
-      path: '/audit'
-      fullPath: '/admin/audit'
-      preLoaderRoute: typeof AuthenticatedAdminAuditRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/badges': {
-      id: '/_authenticated/admin/badges'
-      path: '/badges'
-      fullPath: '/admin/badges'
-      preLoaderRoute: typeof AuthenticatedAdminBadgesRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/blog': {
-      id: '/_authenticated/admin/blog'
-      path: '/blog'
-      fullPath: '/admin/blog'
-      preLoaderRoute: typeof AuthenticatedAdminBlogRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/cache': {
-      id: '/_authenticated/admin/cache'
-      path: '/cache'
-      fullPath: '/admin/cache'
-      preLoaderRoute: typeof AuthenticatedAdminCacheRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/categories': {
-      id: '/_authenticated/admin/categories'
-      path: '/categories'
-      fullPath: '/admin/categories'
-      preLoaderRoute: typeof AuthenticatedAdminCategoriesRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/cert-templates': {
-      id: '/_authenticated/admin/cert-templates'
-      path: '/cert-templates'
-      fullPath: '/admin/cert-templates'
-      preLoaderRoute: typeof AuthenticatedAdminCertTemplatesRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/certificates': {
-      id: '/_authenticated/admin/certificates'
-      path: '/certificates'
-      fullPath: '/admin/certificates'
-      preLoaderRoute: typeof AuthenticatedAdminCertificatesRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/cms': {
-      id: '/_authenticated/admin/cms'
-      path: '/cms'
-      fullPath: '/admin/cms'
-      preLoaderRoute: typeof AuthenticatedAdminCmsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/coupons': {
-      id: '/_authenticated/admin/coupons'
-      path: '/coupons'
-      fullPath: '/admin/coupons'
-      preLoaderRoute: typeof AuthenticatedAdminCouponsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/custom-tests': {
-      id: '/_authenticated/admin/custom-tests'
-      path: '/custom-tests'
-      fullPath: '/admin/custom-tests'
-      preLoaderRoute: typeof AuthenticatedAdminCustomTestsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/durations': {
-      id: '/_authenticated/admin/durations'
-      path: '/durations'
-      fullPath: '/admin/durations'
-      preLoaderRoute: typeof AuthenticatedAdminDurationsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/footer': {
-      id: '/_authenticated/admin/footer'
-      path: '/footer'
-      fullPath: '/admin/footer'
-      preLoaderRoute: typeof AuthenticatedAdminFooterRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/games': {
-      id: '/_authenticated/admin/games'
-      path: '/games'
-      fullPath: '/admin/games'
-      preLoaderRoute: typeof AuthenticatedAdminGamesRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/languages': {
-      id: '/_authenticated/admin/languages'
-      path: '/languages'
-      fullPath: '/admin/languages'
-      preLoaderRoute: typeof AuthenticatedAdminLanguagesRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/leaderboards': {
-      id: '/_authenticated/admin/leaderboards'
-      path: '/leaderboards'
-      fullPath: '/admin/leaderboards'
-      preLoaderRoute: typeof AuthenticatedAdminLeaderboardsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/legal': {
-      id: '/_authenticated/admin/legal'
-      path: '/legal'
-      fullPath: '/admin/legal'
-      preLoaderRoute: typeof AuthenticatedAdminLegalRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/linking': {
-      id: '/_authenticated/admin/linking'
-      path: '/linking'
-      fullPath: '/admin/linking'
-      preLoaderRoute: typeof AuthenticatedAdminLinkingRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/media': {
-      id: '/_authenticated/admin/media'
-      path: '/media'
-      fullPath: '/admin/media'
-      preLoaderRoute: typeof AuthenticatedAdminMediaRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/moderation': {
-      id: '/_authenticated/admin/moderation'
-      path: '/moderation'
-      fullPath: '/admin/moderation'
-      preLoaderRoute: typeof AuthenticatedAdminModerationRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/newsletter': {
-      id: '/_authenticated/admin/newsletter'
-      path: '/newsletter'
-      fullPath: '/admin/newsletter'
-      preLoaderRoute: typeof AuthenticatedAdminNewsletterRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/payments': {
-      id: '/_authenticated/admin/payments'
-      path: '/payments'
-      fullPath: '/admin/payments'
-      preLoaderRoute: typeof AuthenticatedAdminPaymentsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/redirects': {
-      id: '/_authenticated/admin/redirects'
-      path: '/redirects'
-      fullPath: '/admin/redirects'
-      preLoaderRoute: typeof AuthenticatedAdminRedirectsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/reports': {
-      id: '/_authenticated/admin/reports'
-      path: '/reports'
-      fullPath: '/admin/reports'
-      preLoaderRoute: typeof AuthenticatedAdminReportsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/seo': {
-      id: '/_authenticated/admin/seo'
-      path: '/seo'
-      fullPath: '/admin/seo'
-      preLoaderRoute: typeof AuthenticatedAdminSeoRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/settings': {
-      id: '/_authenticated/admin/settings'
-      path: '/settings'
-      fullPath: '/admin/settings'
-      preLoaderRoute: typeof AuthenticatedAdminSettingsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/templates': {
-      id: '/_authenticated/admin/templates'
-      path: '/templates'
-      fullPath: '/admin/templates'
-      preLoaderRoute: typeof AuthenticatedAdminTemplatesRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/texts': {
-      id: '/_authenticated/admin/texts'
-      path: '/texts'
-      fullPath: '/admin/texts'
-      preLoaderRoute: typeof AuthenticatedAdminTextsRouteImport
+    '/_authenticated/admin/visitor-banners': {
+      id: '/_authenticated/admin/visitor-banners'
+      path: '/visitor-banners'
+      fullPath: '/admin/visitor-banners'
+      preLoaderRoute: typeof AuthenticatedAdminVisitorBannersRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
     '/_authenticated/admin/users': {
@@ -1646,47 +1464,229 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
-    '/_authenticated/admin/visitor-banners': {
-      id: '/_authenticated/admin/visitor-banners'
-      path: '/visitor-banners'
-      fullPath: '/admin/visitor-banners'
-      preLoaderRoute: typeof AuthenticatedAdminVisitorBannersRouteImport
+    '/_authenticated/admin/texts': {
+      id: '/_authenticated/admin/texts'
+      path: '/texts'
+      fullPath: '/admin/texts'
+      preLoaderRoute: typeof AuthenticatedAdminTextsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
-    '/_authenticated/builder/': {
-      id: '/_authenticated/builder/'
-      path: '/'
-      fullPath: '/builder/'
-      preLoaderRoute: typeof AuthenticatedBuilderIndexRouteImport
-      parentRoute: typeof AuthenticatedBuilderRoute
+    '/_authenticated/admin/templates': {
+      id: '/_authenticated/admin/templates'
+      path: '/templates'
+      fullPath: '/admin/templates'
+      preLoaderRoute: typeof AuthenticatedAdminTemplatesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
     }
-    '/_authenticated/builder/new': {
-      id: '/_authenticated/builder/new'
-      path: '/new'
-      fullPath: '/builder/new'
-      preLoaderRoute: typeof AuthenticatedBuilderNewRouteImport
-      parentRoute: typeof AuthenticatedBuilderRoute
+    '/_authenticated/admin/settings': {
+      id: '/_authenticated/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AuthenticatedAdminSettingsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
     }
-    '/_authenticated/templates/favorites': {
-      id: '/_authenticated/templates/favorites'
-      path: '/templates/favorites'
-      fullPath: '/templates/favorites'
-      preLoaderRoute: typeof AuthenticatedTemplatesFavoritesRouteImport
+    '/_authenticated/admin/seo': {
+      id: '/_authenticated/admin/seo'
+      path: '/seo'
+      fullPath: '/admin/seo'
+      preLoaderRoute: typeof AuthenticatedAdminSeoRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/reports': {
+      id: '/_authenticated/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AuthenticatedAdminReportsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/redirects': {
+      id: '/_authenticated/admin/redirects'
+      path: '/redirects'
+      fullPath: '/admin/redirects'
+      preLoaderRoute: typeof AuthenticatedAdminRedirectsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/payments': {
+      id: '/_authenticated/admin/payments'
+      path: '/payments'
+      fullPath: '/admin/payments'
+      preLoaderRoute: typeof AuthenticatedAdminPaymentsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/newsletter': {
+      id: '/_authenticated/admin/newsletter'
+      path: '/newsletter'
+      fullPath: '/admin/newsletter'
+      preLoaderRoute: typeof AuthenticatedAdminNewsletterRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/moderation': {
+      id: '/_authenticated/admin/moderation'
+      path: '/moderation'
+      fullPath: '/admin/moderation'
+      preLoaderRoute: typeof AuthenticatedAdminModerationRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/media': {
+      id: '/_authenticated/admin/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AuthenticatedAdminMediaRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/linking': {
+      id: '/_authenticated/admin/linking'
+      path: '/linking'
+      fullPath: '/admin/linking'
+      preLoaderRoute: typeof AuthenticatedAdminLinkingRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/legal': {
+      id: '/_authenticated/admin/legal'
+      path: '/legal'
+      fullPath: '/admin/legal'
+      preLoaderRoute: typeof AuthenticatedAdminLegalRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/leaderboards': {
+      id: '/_authenticated/admin/leaderboards'
+      path: '/leaderboards'
+      fullPath: '/admin/leaderboards'
+      preLoaderRoute: typeof AuthenticatedAdminLeaderboardsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/languages': {
+      id: '/_authenticated/admin/languages'
+      path: '/languages'
+      fullPath: '/admin/languages'
+      preLoaderRoute: typeof AuthenticatedAdminLanguagesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/games': {
+      id: '/_authenticated/admin/games'
+      path: '/games'
+      fullPath: '/admin/games'
+      preLoaderRoute: typeof AuthenticatedAdminGamesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/footer': {
+      id: '/_authenticated/admin/footer'
+      path: '/footer'
+      fullPath: '/admin/footer'
+      preLoaderRoute: typeof AuthenticatedAdminFooterRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/durations': {
+      id: '/_authenticated/admin/durations'
+      path: '/durations'
+      fullPath: '/admin/durations'
+      preLoaderRoute: typeof AuthenticatedAdminDurationsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/custom-tests': {
+      id: '/_authenticated/admin/custom-tests'
+      path: '/custom-tests'
+      fullPath: '/admin/custom-tests'
+      preLoaderRoute: typeof AuthenticatedAdminCustomTestsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/coupons': {
+      id: '/_authenticated/admin/coupons'
+      path: '/coupons'
+      fullPath: '/admin/coupons'
+      preLoaderRoute: typeof AuthenticatedAdminCouponsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/cms': {
+      id: '/_authenticated/admin/cms'
+      path: '/cms'
+      fullPath: '/admin/cms'
+      preLoaderRoute: typeof AuthenticatedAdminCmsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/certificates': {
+      id: '/_authenticated/admin/certificates'
+      path: '/certificates'
+      fullPath: '/admin/certificates'
+      preLoaderRoute: typeof AuthenticatedAdminCertificatesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/cert-templates': {
+      id: '/_authenticated/admin/cert-templates'
+      path: '/cert-templates'
+      fullPath: '/admin/cert-templates'
+      preLoaderRoute: typeof AuthenticatedAdminCertTemplatesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/categories': {
+      id: '/_authenticated/admin/categories'
+      path: '/categories'
+      fullPath: '/admin/categories'
+      preLoaderRoute: typeof AuthenticatedAdminCategoriesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/cache': {
+      id: '/_authenticated/admin/cache'
+      path: '/cache'
+      fullPath: '/admin/cache'
+      preLoaderRoute: typeof AuthenticatedAdminCacheRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/blog': {
+      id: '/_authenticated/admin/blog'
+      path: '/blog'
+      fullPath: '/admin/blog'
+      preLoaderRoute: typeof AuthenticatedAdminBlogRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/badges': {
+      id: '/_authenticated/admin/badges'
+      path: '/badges'
+      fullPath: '/admin/badges'
+      preLoaderRoute: typeof AuthenticatedAdminBadgesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/audit': {
+      id: '/_authenticated/admin/audit'
+      path: '/audit'
+      fullPath: '/admin/audit'
+      preLoaderRoute: typeof AuthenticatedAdminAuditRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/apikeys': {
+      id: '/_authenticated/admin/apikeys'
+      path: '/apikeys'
+      fullPath: '/admin/apikeys'
+      preLoaderRoute: typeof AuthenticatedAdminApikeysRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/announcements': {
+      id: '/_authenticated/admin/announcements'
+      path: '/announcements'
+      fullPath: '/admin/announcements'
+      preLoaderRoute: typeof AuthenticatedAdminAnnouncementsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/analytics': {
+      id: '/_authenticated/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AuthenticatedAdminAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/ads': {
+      id: '/_authenticated/admin/ads'
+      path: '/ads'
+      fullPath: '/admin/ads'
+      preLoaderRoute: typeof AuthenticatedAdminAdsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/templates/builder/$id': {
+      id: '/_authenticated/templates/builder/$id'
+      path: '/templates/builder/$id'
+      fullPath: '/templates/builder/$id'
+      preLoaderRoute: typeof AuthenticatedTemplatesBuilderIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/templates/my': {
-      id: '/_authenticated/templates/my'
-      path: '/templates/my'
-      fullPath: '/templates/my'
-      preLoaderRoute: typeof AuthenticatedTemplatesMyRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/builder/$id/analytics': {
-      id: '/_authenticated/builder/$id/analytics'
-      path: '/$id/analytics'
-      fullPath: '/builder/$id/analytics'
-      preLoaderRoute: typeof AuthenticatedBuilderIdAnalyticsRouteImport
-      parentRoute: typeof AuthenticatedBuilderRoute
     }
     '/_authenticated/builder/$id/edit': {
       id: '/_authenticated/builder/$id/edit'
@@ -1695,12 +1695,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBuilderIdEditRouteImport
       parentRoute: typeof AuthenticatedBuilderRoute
     }
-    '/_authenticated/templates/builder/$id': {
-      id: '/_authenticated/templates/builder/$id'
-      path: '/templates/builder/$id'
-      fullPath: '/templates/builder/$id'
-      preLoaderRoute: typeof AuthenticatedTemplatesBuilderIdRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+    '/_authenticated/builder/$id/analytics': {
+      id: '/_authenticated/builder/$id/analytics'
+      path: '/$id/analytics'
+      fullPath: '/builder/$id/analytics'
+      preLoaderRoute: typeof AuthenticatedBuilderIdAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedBuilderRoute
     }
   }
 }
@@ -1930,3 +1930,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

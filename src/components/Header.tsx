@@ -49,17 +49,21 @@ export function Header() {
   const adminFn = useServerFn(amIAdmin);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      setAuthed(!!data.session);
-      setEmail(data.session?.user.email ?? null);
-      setUserId(data.session?.user.id ?? null);
-    });
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
-      setAuthed(!!s);
-      setEmail(s?.user.email ?? null);
-      setUserId(s?.user.id ?? null);
-    });
-    return () => sub.subscription.unsubscribe();
+    try {
+      supabase.auth.getSession().then(({ data }) => {
+        setAuthed(!!data?.session);
+        setEmail(data?.session?.user?.email ?? null);
+        setUserId(data?.session?.user?.id ?? null);
+      }).catch(() => {});
+      const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
+        setAuthed(!!s);
+        setEmail(s?.user?.email ?? null);
+        setUserId(s?.user?.id ?? null);
+      });
+      return () => sub?.subscription?.unsubscribe?.();
+    } catch {
+      /* offline or unconfigured */
+    }
   }, []);
 
   useEffect(() => {

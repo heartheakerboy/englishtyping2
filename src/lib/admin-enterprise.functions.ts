@@ -9,7 +9,10 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
 
 function publicClient() {
-  return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return null;
+  return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
   });
 }
@@ -1038,16 +1041,21 @@ export const deleteVisitorBanner = createServerFn({ method: "POST" })
   });
 
 export const getActiveVisitorBanner = createServerFn({ method: "GET" }).handler(async () => {
-  const sb = publicClient();
-  const now = new Date().toISOString();
-  const { data } = await (sb as any)
-    .from("visitor_announcements")
-    .select("*")
-    .eq("is_active", true)
-    .order("created_at", { ascending: false });
-  const row = (data ?? []).find(
-    (a: any) => (!a.starts_at || a.starts_at <= now) && (!a.ends_at || a.ends_at >= now),
-  );
-  return row ?? null;
+  try {
+    const sb = publicClient();
+    if (!sb) return null;
+    const now = new Date().toISOString();
+    const { data } = await (sb as any)
+      .from("visitor_announcements")
+      .select("*")
+      .eq("is_active", true)
+      .order("created_at", { ascending: false });
+    const row = (data ?? []).find(
+      (a: any) => (!a.starts_at || a.starts_at <= now) && (!a.ends_at || a.ends_at >= now),
+    );
+    return row ?? null;
+  } catch {
+    return null;
+  }
 });
 

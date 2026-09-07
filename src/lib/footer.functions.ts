@@ -5,7 +5,10 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
 
 function pub() {
-  return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return null;
+  return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
   });
 }
@@ -14,53 +17,66 @@ async function requireAdmin(ctx: { supabase: any; userId: string }) {
   if (!data) throw new Error("Forbidden");
 }
 
+const DEFAULT_FOOTER = {
+  sections: [],
+  links: [],
+  legalPages: [],
+  brand: {
+    name: "English Typing Test",
+    description: "The world's most beautiful typing platform.",
+    logo: "",
+  },
+  bottom: {
+    copyright: "All rights reserved.",
+    company: "English Typing Test",
+    version: "1.0.0",
+    build: "",
+  },
+};
+
 // ---------- PUBLIC ----------
 export const getFooterData = createServerFn({ method: "GET" }).handler(async () => {
-  const sb = pub();
-  const [{ data: sections }, { data: links }, { data: legal }, { data: settings }] =
-    await Promise.all([
-      sb
-        .from("footer_sections" as any)
-        .select("*")
-        .eq("is_active", true)
-        .order("sort_order"),
-      sb
-        .from("footer_links" as any)
-        .select("*")
-        .eq("is_active", true)
-        .order("sort_order"),
-      sb
-        .from("legal_pages" as any)
-        .select("slug,title,sort_order,show_in_footer")
-        .eq("status", "published")
-        .eq("show_in_footer", true)
-        .order("sort_order"),
-      sb
-        .from("site_settings")
-        .select("key,value")
-        .eq("is_public", true)
-        .in("key", ["footer_brand", "footer_bottom"]),
-    ]);
-  const settingsMap: Record<string, any> = {};
-  (settings ?? []).forEach((s: any) => {
-    settingsMap[s.key] = s.value;
-  });
-  return {
-    sections: (sections ?? []) as any[],
-    links: (links ?? []) as any[],
-    legalPages: (legal ?? []) as any[],
-    brand: settingsMap.footer_brand ?? {
-      name: "English Typing Test",
-      description: "The world's most beautiful typing platform.",
-      logo: "",
-    },
-    bottom: settingsMap.footer_bottom ?? {
-      copyright: "All rights reserved.",
-      company: "English Typing Test",
-      version: "1.0.0",
-      build: "",
-    },
-  };
+  try {
+    const sb = pub();
+    if (!sb) return DEFAULT_FOOTER;
+    const [{ data: sections }, { data: links }, { data: legal }, { data: settings }] =
+      await Promise.all([
+        sb
+          .from("footer_sections" as any)
+          .select("*")
+          .eq("is_active", true)
+          .order("sort_order"),
+        sb
+          .from("footer_links" as any)
+          .select("*")
+          .eq("is_active", true)
+          .order("sort_order"),
+        sb
+          .from("legal_pages" as any)
+          .select("slug,title,sort_order,show_in_footer")
+          .eq("status", "published")
+          .eq("show_in_footer", true)
+          .order("sort_order"),
+        sb
+          .from("site_settings")
+          .select("key,value")
+          .eq("is_public", true)
+          .in("key", ["footer_brand", "footer_bottom"]),
+      ]);
+    const settingsMap: Record<string, any> = {};
+    (settings ?? []).forEach((s: any) => {
+      settingsMap[s.key] = s.value;
+    });
+    return {
+      sections: (sections ?? []) as any[],
+      links: (links ?? []) as any[],
+      legalPages: (legal ?? []) as any[],
+      brand: settingsMap.footer_brand ?? DEFAULT_FOOTER.brand,
+      bottom: settingsMap.footer_bottom ?? DEFAULT_FOOTER.bottom,
+    };
+  } catch {
+    return DEFAULT_FOOTER;
+  }
 });
 
 export const getLegalPage = createServerFn({ method: "GET" })
