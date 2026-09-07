@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TypingTest, type FinishedRun } from "@/components/TypingTest";
 import { ResultScreen } from "@/components/ResultScreen";
+import { AdSlot } from "@/components/AdSlot";
 import { useTestConfig } from "@/lib/test-store";
 import {
   getDurationBySlug,
@@ -231,6 +232,9 @@ function Page() {
           )}
         </header>
 
+        {/* Top Responsive Ad Banner */}
+        <AdSlot slotKey="duration-top-banner" format="horizontal" className="mb-6" />
+
         <AnimatePresence mode="wait">
           {run ? (
             <motion.div
@@ -258,17 +262,24 @@ function Page() {
                 <div className="font-display text-5xl font-bold">
                   {duration.seconds ? `${duration.seconds}s` : "Custom"}
                 </div>
+                <p className="max-w-md text-sm text-muted-foreground">
+                  A focused {duration.nav_label} test. Your WPM and accuracy will count towards the
+                  leaderboard below.
+                </p>
                 <Button
                   size="lg"
-                  className="bg-gradient-primary text-primary-foreground shadow-glow"
+                  className="bg-gradient-primary text-primary-foreground shadow-glow gap-2"
                   onClick={() => setStarted(true)}
                 >
-                  <Play className="mr-2 h-4 w-4" /> Start Test
+                  <Play className="h-4 w-4" /> Start {duration.nav_label} Test
                 </Button>
               </Card>
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Responsive Mid Banner */}
+        <AdSlot slotKey="duration-mid-banner" format="auto" className="my-8" />
 
         {duration.description_md && (
           <section className="mt-10">

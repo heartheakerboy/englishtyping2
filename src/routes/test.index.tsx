@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Header } from "@/components/Header";
 import { TypingTest, type FinishedRun } from "@/components/TypingTest";
 import { ResultScreen } from "@/components/ResultScreen";
+import { AdSlot } from "@/components/AdSlot";
 
 export const Route = createFileRoute("/test/")({
   head: () => ({
@@ -57,8 +58,16 @@ function TestPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="mx-auto max-w-5xl px-4 pt-8 pb-20 md:px-6 md:pt-16">
+      <main className="mx-auto max-w-5xl px-4 pt-6 pb-20 md:px-6 md:pt-10">
         <h1 className="sr-only">English Typing Test — Live WPM & Accuracy</h1>
+
+        {/* Top Responsive Ad Banner */}
+        <AdSlot
+          slotKey="test-top-leaderboard"
+          format="horizontal"
+          className="mb-8"
+        />
+
         <AnimatePresence mode="wait">
           {run ? (
             <motion.div
@@ -82,6 +91,13 @@ function TestPage() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Bottom Responsive Ad Banner */}
+        <AdSlot
+          slotKey="test-below-box"
+          format="auto"
+          className="mt-12"
+        />
       </main>
     </div>
   );

@@ -653,6 +653,30 @@ export const listAds = createServerFn({ method: "GET" })
       .order("created_at", { ascending: false });
     return data ?? [];
   });
+
+export const getActiveAds = createServerFn({ method: "GET" }).handler(async () => {
+  try {
+    const sb = publicClient();
+    const { data, error } = await (sb as any)
+      .from("ad_placements")
+      .select("*")
+      .eq("is_active", true);
+    if (error) return [];
+    return (data ?? []) as Array<{
+      id: string;
+      name: string;
+      slot_key: string;
+      kind: "adsense" | "custom";
+      adsense_client?: string | null;
+      adsense_slot?: string | null;
+      custom_html?: string | null;
+      page_match?: string | null;
+      is_active: boolean;
+    }>;
+  } catch {
+    return [];
+  }
+});
 export const upsertAd = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: z.input<typeof AdInput>) => AdInput.parse(d))

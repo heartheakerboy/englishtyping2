@@ -26,6 +26,7 @@ import { KeyboardMistakeHeatmap } from "@/components/KeyboardMistakeHeatmap";
 import { fireConfetti } from "@/components/Confetti";
 import { sfx } from "@/lib/sound";
 import { useTranslation } from "react-i18next";
+import { AdSlot } from "@/components/AdSlot";
 
 interface Props {
   run: FinishedRun;
@@ -247,6 +248,8 @@ export function ResultScreen({ run, onRestart }: Props) {
         </Card>
       </div>
 
+      <AdSlot slotKey="result-screen-mid" format="horizontal" className="my-6" />
+
       <KeyboardMistakeHeatmap
         mistakeMap={run.mistakeMap}
         targetText={run.target}
@@ -254,6 +257,8 @@ export function ResultScreen({ run, onRestart }: Props) {
       />
 
       <AICoachPanel run={run} language={run.language ?? "english"} />
+
+      <AdSlot slotKey="result-screen-bottom" format="auto" className="my-6" />
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="text-sm text-muted-foreground">

@@ -7,6 +7,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
+import { AdSlot } from "@/components/AdSlot";
 import {
   Accordion,
   AccordionContent,
@@ -440,6 +441,11 @@ function LandingPage() {
           </section>
         )}
 
+        {/* ── RESPONSIVE MID-PAGE AD SLOT ───────────────────── */}
+        <div className="mx-auto max-w-5xl px-4 py-4 md:px-6">
+          <AdSlot slotKey="home-mid-leaderboard" format="horizontal" />
+        </div>
+
         {/* ── CORE FEATURES 8-CARD GRID ────────────────────── */}
         <section aria-label="Core platform features" className="border-t border-border/50 bg-surface/5 px-4 py-20 md:px-6">
           <div className="mx-auto max-w-6xl">
@@ -743,6 +749,11 @@ function LandingPage() {
             </Accordion>
           </div>
         </section>
+
+        {/* ── RESPONSIVE PRE-CTA AD SLOT ───────────────────── */}
+        <div className="mx-auto max-w-5xl px-4 py-6 md:px-6">
+          <AdSlot slotKey="home-bottom-banner" format="auto" />
+        </div>
 
         {/* ── FINAL CTA ─────────────────────────────────────── */}
         <section aria-label="Final call to action" className="px-4 py-20 md:px-6 md:py-28">

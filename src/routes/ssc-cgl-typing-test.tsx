@@ -30,6 +30,7 @@ import {
 import { fireConfetti } from "@/components/Confetti";
 import { KeyboardMistakeHeatmap } from "@/components/KeyboardMistakeHeatmap";
 import { sfx } from "@/lib/sound";
+import { AdSlot } from "@/components/AdSlot";
 
 export const Route = createFileRoute("/ssc-cgl-typing-test")({
   head: () => ({
@@ -388,6 +389,9 @@ function SscTypingPage() {
           </p>
         </header>
 
+        {/* Top Responsive Ad Banner */}
+        <AdSlot slotKey="ssc-cgl-top" format="horizontal" className="my-6" />
+
         {/* Control Bar: Passage Selector & Candidate Category */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border bg-surface/50 p-4 backdrop-blur">
           <div className="flex flex-wrap items-center gap-2">
@@ -711,6 +715,9 @@ function SscTypingPage() {
             </Card>
           </div>
         )}
+
+        {/* Bottom Responsive Ad Banner */}
+        <AdSlot slotKey="ssc-cgl-bottom" format="auto" className="my-10" />
 
         {/* Informational SEO & Exam Evaluation Guide Section */}
         <section className="mt-16 space-y-8">
