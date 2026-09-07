@@ -42,23 +42,22 @@ export const Route = createFileRoute("/games/race-bots")({
         { name: "twitter:description", content: seo.description },
       ],
       links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/race-bots" }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Type Racer AI Bots Game",
+            applicationCategory: "GameApplication",
+            operatingSystem: "All",
+            url: "https://www.englishtypingtest.org/games/race-bots",
+            description: "Real-time typing car race against adaptive AI bots.",
+          }),
+        },
+      ],
     };
   },
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          name: "Type Racer AI Bots Game",
-          applicationCategory: "GameApplication",
-          operatingSystem: "All",
-          url: "https://www.englishtypingtest.org/games/race-bots",
-          description: "Real-time typing car race against adaptive AI bots.",
-        }),
-      },
-    ],
-  }),
   component: RaceBotsGame,
 });
 

@@ -38,23 +38,22 @@ export const Route = createFileRoute("/games/spacebar")({
         { name: "twitter:description", content: seo.description },
       ],
       links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/spacebar" }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Spacebar Speed Counter",
+            applicationCategory: "GameApplication",
+            operatingSystem: "All",
+            url: "https://www.englishtypingtest.org/games/spacebar",
+            description: "Measure spacebar tapping speed and hits per second.",
+          }),
+        },
+      ],
     };
   },
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          name: "Spacebar Speed Counter",
-          applicationCategory: "GameApplication",
-          operatingSystem: "All",
-          url: "https://www.englishtypingtest.org/games/spacebar",
-          description: "Measure spacebar tapping speed and hits per second.",
-        }),
-      },
-    ],
-  }),
   component: SpacebarGame,
 });
 

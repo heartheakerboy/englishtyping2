@@ -39,23 +39,22 @@ export const Route = createFileRoute("/games/reaction")({
         { name: "twitter:description", content: seo.description },
       ],
       links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/reaction" }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Reaction Time Reflex Test",
+            applicationCategory: "GameApplication",
+            operatingSystem: "All",
+            url: "https://www.englishtypingtest.org/games/reaction",
+            description: "Online reaction time reflex tester.",
+          }),
+        },
+      ],
     };
   },
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          name: "Reaction Time Reflex Test",
-          applicationCategory: "GameApplication",
-          operatingSystem: "All",
-          url: "https://www.englishtypingtest.org/games/reaction",
-          description: "Online reaction time reflex tester.",
-        }),
-      },
-    ],
-  }),
   component: ReactionGame,
 });
 

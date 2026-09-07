@@ -39,23 +39,22 @@ export const Route = createFileRoute("/games/trainer")({
         { name: "twitter:description", content: seo.description },
       ],
       links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/trainer" }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Keyboard Trainer Touch Typing Tool",
+            applicationCategory: "EducationalApplication",
+            operatingSystem: "All",
+            url: "https://www.englishtypingtest.org/games/trainer",
+            description: "Targeted keyboard drills for home row, top row, and number rows.",
+          }),
+        },
+      ],
     };
   },
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          name: "Keyboard Trainer Touch Typing Tool",
-          applicationCategory: "EducationalApplication",
-          operatingSystem: "All",
-          url: "https://www.englishtypingtest.org/games/trainer",
-          description: "Targeted keyboard drills for home row, top row, and number rows.",
-        }),
-      },
-    ],
-  }),
   component: TrainerGame,
 });
 

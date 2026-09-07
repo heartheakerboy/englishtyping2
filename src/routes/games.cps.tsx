@@ -39,23 +39,22 @@ export const Route = createFileRoute("/games/cps")({
         { name: "twitter:description", content: seo.description },
       ],
       links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/games/cps" }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "CPS Click Speed Test",
+            applicationCategory: "GameApplication",
+            operatingSystem: "All",
+            url: "https://www.englishtypingtest.org/games/cps",
+            description: "Measure clicks per second (CPS) in a 5-second click sprint.",
+          }),
+        },
+      ],
     };
   },
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          name: "CPS Click Speed Test",
-          applicationCategory: "GameApplication",
-          operatingSystem: "All",
-          url: "https://www.englishtypingtest.org/games/cps",
-          description: "Measure clicks per second (CPS) in a 5-second click sprint.",
-        }),
-      },
-    ],
-  }),
   component: CpsGame,
 });
 
