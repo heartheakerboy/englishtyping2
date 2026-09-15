@@ -28,6 +28,9 @@ export const Route = createFileRoute("/certificate/$id")({
           },
         ]
       : [],
+    links: loaderData
+      ? [{ rel: "canonical", href: `https://www.englishtypingtest.org/certificate/${loaderData.id}` }]
+      : [],
   }),
   errorComponent: NotFoundView,
   notFoundComponent: NotFoundView,
@@ -215,7 +218,7 @@ function CertificatePage() {
                 <div className="text-center text-[10px] uppercase tracking-wider text-muted-foreground">
                   <img
                     src={qrUrl}
-                    alt="Verify"
+                    alt="Certificate verification QR code"
                     className="rounded bg-white p-1.5"
                     width={100}
                     height={100}

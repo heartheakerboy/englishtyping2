@@ -12,17 +12,20 @@ export const Route = createFileRoute("/legal/$slug")({
     const p: any = loaderData?.page ?? {};
     const title = p.meta_title || p.title || "Legal";
     const desc = p.meta_description || `${p.title} — official legal page.`;
+    const canonical = p.canonical_url?.startsWith("http")
+      ? p.canonical_url
+      : `https://www.englishtypingtest.org/legal/${params.slug}`;
     const meta: any[] = [
       { title },
       { name: "description", content: desc },
       { name: "robots", content: p.robots || "index,follow" },
       { property: "og:title", content: title },
       { property: "og:description", content: desc },
-      { property: "og:url", content: `/legal/${params.slug}` },
+      { property: "og:url", content: canonical },
       { property: "og:type", content: "article" },
     ];
     if (p.og_image) meta.push({ property: "og:image", content: p.og_image });
-    const links: any[] = [{ rel: "canonical", href: p.canonical_url || `/legal/${params.slug}` }];
+    const links: any[] = [{ rel: "canonical", href: canonical }];
     const scripts: any[] = [];
     if (p.schema_jsonld)
       scripts.push({ type: "application/ld+json", children: JSON.stringify(p.schema_jsonld) });

@@ -60,7 +60,7 @@ function BlogIndex() {
                 {p.cover_image && (
                   <img
                     src={p.cover_image}
-                    alt=""
+                    alt={p.title}
                     className="aspect-video w-full object-cover"
                     loading="lazy"
                   />

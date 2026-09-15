@@ -34,6 +34,9 @@ export const Route = createFileRoute("/u/$username")({
           },
         ]
       : [],
+    links: loaderData
+      ? [{ rel: "canonical", href: `https://www.englishtypingtest.org/u/${loaderData.profile.username}` }]
+      : [],
   }),
   errorComponent: () => <ErrorView />,
   notFoundComponent: () => <ErrorView />,

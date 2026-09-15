@@ -17,7 +17,7 @@ export const Route = createFileRoute("/sitemap")({
         content: "Explore the complete directory of typing tests, games, articles, calculators, and tutorials.",
       },
     ],
-    links: [{ rel: "canonical", href: "/sitemap" }],
+    links: [{ rel: "canonical", href: "https://www.englishtypingtest.org/sitemap" }],
   }),
 });
 

@@ -36,6 +36,11 @@ export function Breadcrumbs({ customItems }: BreadcrumbsProps) {
   if (items.length <= 1) return null;
 
   // Render schema structured data
+  const baseUrl =
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "https://www.englishtypingtest.org";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -43,7 +48,7 @@ export function Breadcrumbs({ customItems }: BreadcrumbsProps) {
       "@type": "ListItem",
       "position": index + 1,
       "name": item.label,
-      "item": typeof window !== "undefined" ? `${window.location.origin}${item.to}` : item.to,
+      "item": `${baseUrl}${item.to}`,
     })),
   };
 

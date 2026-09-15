@@ -104,7 +104,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       { property: "og:site_name", content: "englishtypingtest.org" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.englishtypingtest.org/apple-touch-icon.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://www.englishtypingtest.org/apple-touch-icon.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

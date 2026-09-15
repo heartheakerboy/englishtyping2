@@ -14,7 +14,10 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async ({ request }) => {
         const reqUrl = new URL(request.url);
-        const BASE_URL = `${reqUrl.protocol}//${reqUrl.host}`;
+        const BASE_URL =
+          process.env.NODE_ENV === "production" || !reqUrl.host.includes("localhost")
+            ? "https://www.englishtypingtest.org"
+            : `${reqUrl.protocol}//${reqUrl.host}`;
 
         // Base canonical routes
         const entries: SitemapEntry[] = [

@@ -66,7 +66,13 @@ export function Footer() {
         <div className="lg:col-span-2">
           <div className="flex items-center gap-2">
             {brand.logo ? (
-              <img src={brand.logo} alt="" className="h-8 w-8 rounded" />
+              <img
+                src={brand.logo}
+                alt={brand.name || "English Typing Test"}
+                width={32}
+                height={32}
+                className="h-8 w-8 rounded"
+              />
             ) : (
               <div className="h-8 w-8 rounded bg-gradient-primary" />
             )}

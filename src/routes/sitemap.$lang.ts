@@ -44,7 +44,10 @@ export const Route = createFileRoute("/sitemap/$lang")({
         }
 
         const reqUrl = new URL(request.url);
-        const BASE_URL = `${reqUrl.protocol}//${reqUrl.host}`;
+        const BASE_URL =
+          process.env.NODE_ENV === "production" || !reqUrl.host.includes("localhost")
+            ? "https://www.englishtypingtest.org"
+            : `${reqUrl.protocol}//${reqUrl.host}`;
 
         // Base route entries matching the actual routes
         const entries: SitemapEntry[] = [

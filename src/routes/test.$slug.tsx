@@ -24,7 +24,7 @@ export const Route = createFileRoute("/test/$slug")({
     const formattedTitle = slug
       .replace(/-/g, " ")
       .replace(/\b\w/g, (c) => c.toUpperCase());
-    const url = `https://englishtypingtest.org/test/${slug}`;
+    const url = `https://www.englishtypingtest.org/test/${slug}`;
     return {
       meta: [
         { title: `${formattedTitle} — Custom Typing Test` },
@@ -203,11 +203,19 @@ function Header({ test }: { test: any }) {
   return (
     <div className="space-y-3">
       {test.banner_url && (
-        <img src={test.banner_url} alt="" className="h-32 w-full rounded-xl object-cover" />
+        <img
+          src={test.banner_url}
+          alt={test.name ? `${test.name} banner` : "Custom typing test banner"}
+          className="h-32 w-full rounded-xl object-cover"
+        />
       )}
       <div className="flex items-start gap-4">
         {test.cover_image_url && (
-          <img src={test.cover_image_url} alt="" className="h-16 w-16 rounded-lg object-cover" />
+          <img
+            src={test.cover_image_url}
+            alt={test.name ? `${test.name} thumbnail` : "Custom typing test cover"}
+            className="h-16 w-16 rounded-lg object-cover"
+          />
         )}
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">

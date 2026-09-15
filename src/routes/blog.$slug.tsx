@@ -42,6 +42,42 @@ export const Route = createFileRoute("/blog/$slug")({
           : []),
       ],
       links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.englishtypingtest.org/" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.englishtypingtest.org/blog" },
+              { "@type": "ListItem", position: 3, name: p?.title ?? params.slug, item: url },
+            ],
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: p?.title ?? title,
+            description: desc,
+            url,
+            datePublished: p?.published_at,
+            dateModified: p?.updated_at ?? p?.published_at,
+            image: p?.cover_image ?? p?.og_image ?? "https://www.englishtypingtest.org/apple-touch-icon.png",
+            publisher: {
+              "@type": "Organization",
+              name: "English Typing Test",
+              url: "https://www.englishtypingtest.org/",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.englishtypingtest.org/favicon.ico",
+              },
+            },
+          }),
+        },
+      ],
     };
   },
 });

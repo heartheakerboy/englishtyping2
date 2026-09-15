@@ -225,7 +225,7 @@ function Page() {
           {duration.banner_url && (
             <img
               src={duration.banner_url}
-              alt=""
+              alt={`${duration.h1} banner`}
               loading="lazy"
               className="mt-4 w-full rounded-xl object-cover"
             />
@@ -307,7 +307,13 @@ function Page() {
                     {i + 1}
                   </div>
                   {r.avatar_url ? (
-                    <img src={r.avatar_url} alt="" className="h-7 w-7 rounded-full" />
+                    <img
+                      src={r.avatar_url}
+                      alt={r.display_name || "User avatar"}
+                      width={28}
+                      height={28}
+                      className="h-7 w-7 rounded-full"
+                    />
                   ) : (
                     <div className="grid h-7 w-7 place-items-center rounded-full bg-surface">
                       <UserIcon className="h-3.5 w-3.5" />

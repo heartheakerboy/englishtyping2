@@ -102,14 +102,14 @@ export const Route = createFileRoute("/templates/$slug")({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Templates", item: "/templates" },
+                { "@type": "ListItem", position: 1, name: "Templates", item: "https://www.englishtypingtest.org/templates" },
                 ...(t.category_slug
                   ? [
                       {
                         "@type": "ListItem",
                         position: 2,
                         name: t.category_name,
-                        item: `/templates?category=${t.category_slug}`,
+                        item: `https://www.englishtypingtest.org/templates?category=${t.category_slug}`,
                       },
                     ]
                   : []),
