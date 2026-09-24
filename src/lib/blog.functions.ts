@@ -12,53 +12,86 @@ function publicClient() {
   });
 }
 
+import { BUILTIN_POSTS } from "@/lib/blog.builtin-posts";
+
 async function requireAdmin(ctx: { supabase: any; userId: string }) {
   const { data } = await ctx.supabase.rpc("is_admin", { _user_id: ctx.userId });
   if (!data) throw new Error("Forbidden");
 }
 
 export const listPublishedPosts = createServerFn({ method: "GET" }).handler(async () => {
+  const builtinSummaries = BUILTIN_POSTS.map((p) => ({
+    id: p.id,
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    cover_image: p.cover_image,
+    published_at: p.published_at,
+    category_id: p.category_id ?? null,
+  }));
+
   try {
     const sb = publicClient();
-    if (!sb) return [];
+    if (!sb) return builtinSummaries;
     const { data, error } = await sb
       .from("blog_posts")
       .select("id, slug, title, excerpt, cover_image, published_at, category_id")
       .eq("status", "published")
       .order("published_at", { ascending: false })
       .limit(50);
-    if (error) return [];
-    return data ?? [];
+
+    if (error || !data || data.length === 0) {
+      return builtinSummaries;
+    }
+
+    const existingSlugs = new Set(data.map((d: any) => d.slug));
+    const merged = [...data, ...builtinSummaries.filter((b) => !existingSlugs.has(b.slug))];
+    return merged;
   } catch {
-    return [];
+    return builtinSummaries;
   }
 });
 
 export const getPostBySlug = createServerFn({ method: "GET" })
   .inputValidator((d: { slug: string }) => z.object({ slug: z.string().min(1).max(200) }).parse(d))
   .handler(async ({ data }) => {
-    const sb = publicClient();
-    const { data: post, error } = await sb
-      .from("blog_posts")
-      .select("*")
-      .eq("slug", data.slug)
-      .eq("status", "published")
-      .maybeSingle();
-    if (error) throw new Error(error.message);
-    if (!post) return null;
-    const [author, category] = await Promise.all([
-      post.author_id
-        ? sb
-            .from("blog_authors")
-            .select("name, avatar_url, bio")
-            .eq("id", post.author_id)
-            .maybeSingle()
-        : Promise.resolve({ data: null }),
-      post.category_id
-        ? sb.from("blog_categories").select("name, slug").eq("id", post.category_id).maybeSingle()
-        : Promise.resolve({ data: null }),
-    ]);
-    return { ...post, author: author.data, category: category.data };
+    const builtin = BUILTIN_POSTS.find((p) => p.slug === data.slug);
+
+    try {
+      const sb = publicClient();
+      if (sb) {
+        const { data: post, error } = await sb
+          .from("blog_posts")
+          .select("*")
+          .eq("slug", data.slug)
+          .eq("status", "published")
+          .maybeSingle();
+
+        if (!error && post) {
+          const [author, category] = await Promise.all([
+            post.author_id
+              ? sb
+                  .from("blog_authors")
+                  .select("name, avatar_url, bio")
+                  .eq("id", post.author_id)
+                  .maybeSingle()
+              : Promise.resolve({ data: null }),
+            post.category_id
+              ? sb.from("blog_categories").select("name, slug").eq("id", post.category_id).maybeSingle()
+              : Promise.resolve({ data: null }),
+          ]);
+          return { ...post, author: author.data, category: category.data };
+        }
+      }
+    } catch {
+      // Fallback to builtin post
+    }
+
+    if (builtin) {
+      return builtin;
+    }
+
+    return null;
   });
 
 // Admin: all posts

@@ -72,6 +72,7 @@ export const Route = createFileRoute("/sitemap/$lang")({
           { path: "/games/balloon-burst", changefreq: "monthly", priority: "0.5" },
           { path: "/tournaments", changefreq: "weekly", priority: "0.6" },
           { path: "/blog", changefreq: "weekly", priority: "0.8" },
+          { path: "/blog/what-is-a-good-typing-speed", changefreq: "weekly", priority: "0.8", lastmod: "2026-09-24T00:00:00.000Z" },
           { path: "/templates", changefreq: "daily", priority: "0.8" },
           { path: "/about", changefreq: "monthly", priority: "0.7" },
           { path: "/methodology", changefreq: "monthly", priority: "0.8" },
@@ -101,6 +102,7 @@ export const Route = createFileRoute("/sitemap/$lang")({
               .order("published_at", { ascending: false })
               .limit(500);
             for (const p of blogData ?? []) {
+              if (entries.some((e) => e.path === `/blog/${p.slug}`)) continue;
               entries.push({
                 path: `/blog/${p.slug}`,
                 changefreq: "monthly",
