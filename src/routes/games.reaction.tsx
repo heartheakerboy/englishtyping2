@@ -250,12 +250,12 @@ function ReactionGame() {
                 This entire sequence happens in a fraction of a second. The average human reaction time to visual stimuli is roughly <strong>200 to 250 milliseconds (ms)</strong>. In contrast, reaction time to sound is faster, averaging about <strong>170 ms</strong>, because auditory pathways require fewer synapses to process.
               </p>
               <p>
-                Several key factors influence your response time:
+                Several key factors influence response time:
               </p>
               <ul className="list-disc pl-5 space-y-2">
-                <li><strong>Fatigue:</strong> Sleep deprivation can slow your reaction time by 50ms or more, mimicking the effects of alcohol.</li>
-                <li><strong>Distraction:</strong> Attempting to split your attention introduces cognitive bottlenecking, increasing latency.</li>
-                <li><strong>Age:</strong> Reflexes typically peak in your late teens and early twenties, gradually slowing by 2-3ms per year thereafter.</li>
+                <li><strong>Fatigue:</strong> Lack of sleep and physical exhaustion can noticeably slow response time and impair motor coordination.</li>
+                <li><strong>Distraction:</strong> Attempting to split your attention introduces cognitive delay, increasing measurable latency.</li>
+                <li><strong>Individual Variation:</strong> Response latency naturally varies across individuals based on alertness, age, and environmental factors.</li>
               </ul>
             </div>
           </Card>
@@ -346,7 +346,7 @@ function ReactionGame() {
                   Can I train my brain to react faster?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4 pt-1">
-                  Yes! Although genetic factors establish a base speed, regular practice of reaction games, touch typing, and fast-paced video games can shave 20ms to 50ms off your average score by optimizing your visual chunking and motor responses.
+                  While baseline biological limits exist, practice with reaction tasks and typing drills helps maximize familiarity with the interface, reduce hesitation, and optimize motor readiness to reach your personal best.
                 </AccordionContent>
               </AccordionItem>
 

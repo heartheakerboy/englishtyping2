@@ -243,7 +243,7 @@ function TrainerGame() {
               </div>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li className="flex gap-2">
-                  <span className="font-semibold text-foreground">Subconscious Mapping:</span> Establishes direct neural pathways between the visual representation of a letter and the physical movement.
+                  <span className="font-semibold text-foreground">Tactile Familiarity:</span> Builds automatic muscle memory between recognizing a letter and extending the correct finger without looking.
                 </li>
                 <li className="flex gap-2">
                   <span className="font-semibold text-foreground">Reach Coordination:</span> Teaches fingers how to stretch upward (Top row) and curl downward (Bottom row) from a home row anchor.
@@ -277,7 +277,7 @@ function TrainerGame() {
                 <li><strong>Number Row (12345 67890):</strong> The longest reach, requiring fingers to stretch two rows upward. Drilling this row is essential for coding and spreadsheet management.</li>
               </ul>
               <p>
-                By practicing these rows in isolation, you create a <strong>sensory integration pathway</strong>. When your eyes see a letter, the brain automatically converts that image into a finger movement script, bypassing the conscious thought process of locating the key.
+                By practicing these rows in isolation, you build tactile habits. When your eyes see a letter, your finger automatically moves to the target key, bypassing the conscious need to search the layout.
               </p>
             </div>
           </Card>

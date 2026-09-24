@@ -179,7 +179,7 @@ function MemoryGame() {
               In today's fast-paced digital world, typing speed and accuracy are more than just technical skills; they are the primary channels through which we express our thoughts, execute tasks, and communicate. However, truly masterful typing requires a seamless fusion of physical dexterity and mental agility. This is where the <strong>Memory Sequence Game</strong> comes into play. Inspired by classic Simon-style memory training, this interactive drill merges cognitive recall with rapid physical reactions, training your brain to absorb, retain, and execute sequences in rapid succession.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Unlike traditional typing practice that relies on reading static text, sequence memory drills force your working memory to interface with your motor controls in real-time. By tracking a series of flashing colors and sounds that grow progressively longer, you build cognitive connections that translate directly into faster typing, quicker reflexes, and superior focus. Whether you are a programmer, transcriptionist, competitive typist, or simply looking to keep your brain sharp, this memory game offers an engaging, scientifically-backed way to upgrade your typing intelligence.
+              Unlike traditional typing practice that relies on reading static text, sequence memory drills encourage quick short-term recall and sequential hand-eye coordination. By tracking a series of flashing colors and sounds that grow progressively longer, you practice sustained concentration and pattern recognition. Whether you are a programmer, student, or casual typist, this memory game offers an engaging visual and auditory drill to practice focus and sequential recall.
             </p>
           </section>
 
@@ -248,7 +248,7 @@ function MemoryGame() {
                 To break past this limit and achieve high scores (such as rounds 15, 20, or more), players must utilize a cognitive strategy known as <strong>chunking</strong>. Chunking is the process of grouping individual pieces of information into larger, meaningful units. For example, instead of memorizing "Blue, Green, Red, Yellow," a player might group them into a single visual shape or rhythmic sound pattern. In touch typing, chunking is the exact mechanism that allows you to type whole words and phrases as fluid units rather than individual letter keys.
               </p>
               <p>
-                Furthermore, this game stimulates <strong>neuroplasticity</strong>—the brain's ability to reorganize itself by forming new neural connections. When you repeatedly connect visual and audio stimuli to finger movements, you are reinforcing the pathways between your visual cortex, auditory cortex, and motor cortex. Over time, this makes your hand-eye coordination fluid, automatic, and incredibly fast.
+                Repeatedly linking visual cues and sound tones to rapid motor inputs provides focused exercise for attention span, working memory retention, and sequential coordination.
               </p>
             </div>
           </Card>

@@ -464,7 +464,7 @@ function RaceBotsGame() {
                 However, competition also introduces the risk of "racing panic." When you see a bot's car pull ahead of you, your brain may try to force your fingers to move faster than your current muscle memory supports. This leads to typing mistakes, which require corrections and ultimately slow you down. The key to mastering Type Racer is maintaining **cognitive equilibrium**—the ability to recognize that an opponent is ahead while keeping your hands relaxed and focusing purely on the accuracy of your own inputs.
               </p>
               <p>
-                WPM is calculated using a standard formula: <code>(Total Characters Typed / 5) / (Time Elapsed in Minutes)</code>. Because errors require you to press Backspace and retype the correct character, a single mistake effectively costs you three keystrokes (the wrong key, the backspace, and the correct key). Keeping your accuracy above 96% is scientifically proven to produce higher overall WPM scores than mashing keys at a frantic, error-prone pace.
+                Net WPM is calculated using the platform formula: <code>(Correct Characters / 5) / (Elapsed Minutes)</code>. Because errors require you to press Backspace and retype the correct character, mistakes consume valuable seconds without contributing to your correct character count. Prioritizing consistent accuracy naturally yields higher, more sustained WPM scores than rushing at an erratic, error-prone pace.
               </p>
             </div>
           </Card>

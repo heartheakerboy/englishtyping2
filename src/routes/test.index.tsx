@@ -24,7 +24,7 @@ export const Route = createFileRoute("/test/")({
       {
         property: "og:description",
         content:
-          "Take a free 60-second typing test. Measure WPM, accuracy, CPM, and error penalty in real time.",
+          "Take a free 60-second typing test. Measure WPM, accuracy, CPM, and mistake breakdown in real time.",
       },
       { property: "og:url", content: "https://www.englishtypingtest.org/test" },
       { property: "og:type", content: "website" },

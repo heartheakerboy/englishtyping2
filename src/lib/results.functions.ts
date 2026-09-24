@@ -5,10 +5,10 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 const ResultInput = z.object({
   mode: z.enum(["time", "words", "quote", "paragraph", "code", "custom", "ai"]),
   mode_value: z.number().int().nonnegative(),
-  wpm: z.number().nonnegative(),
-  raw_wpm: z.number().nonnegative(),
+  wpm: z.number().min(0).max(350),
+  raw_wpm: z.number().min(0).max(400),
   accuracy: z.number().min(0).max(100),
-  cpm: z.number().nonnegative(),
+  cpm: z.number().min(0).max(1750),
   consistency: z.number().min(0).max(100).nullable(),
   chars_correct: z.number().int().nonnegative(),
   chars_incorrect: z.number().int().nonnegative(),

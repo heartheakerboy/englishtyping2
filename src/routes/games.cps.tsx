@@ -164,7 +164,7 @@ function CpsGame() {
               Clicks Per Second (CPS) is a standard metric used to measure finger speed, physical dexterity, and clicking responsiveness. Primarily popularized in competitive gaming—specifically Minecraft PvP, rhythm games, and clicker games—your CPS determines how quickly you can trigger inputs, placing you at a distinct advantage during fast-paced encounters. The <strong>CPS Test</strong> measures your clicking rate over a focused 5-second sprint, challenging your muscles to operate at peak frequencies.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Beyond gaming, a high click frequency reflects strong neural conductivity and motor control. Working on your click reflex trains the muscles in your hand, fingers, and forearm to react quickly, building muscle stamina and reducing input lag. Whether you are benchmarking a new gaming mouse or training for competitive gaming, improving your CPS requires physical control and understanding clicking techniques.
+              Beyond gaming, click frequency is an indicator of finger speed, rhythm, and local muscle coordination. Working on your click reflex trains the muscles in your hand, fingers, and forearm to react quickly, building muscle stamina and reducing input lag. Whether you are benchmarking a new gaming mouse or training for competitive gaming, improving your CPS requires physical control and understanding clicking techniques.
             </p>
           </section>
 
@@ -211,7 +211,7 @@ function CpsGame() {
                   <span className="font-semibold text-foreground">Hardware Familiarity:</span> Helps you identify the tension, actuation force, and bounce of your mouse switch.
                 </li>
                 <li className="flex gap-2">
-                  <span className="font-semibold text-foreground">Reaction Carryover:</span> Enhances the neural pathways between sight and immediate physical response.
+                  <span className="font-semibold text-foreground">Hand-Eye Coordination:</span> Strengthens rapid motor responses to visual gaming situations.
                 </li>
               </ul>
             </Card>

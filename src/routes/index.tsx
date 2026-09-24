@@ -161,7 +161,7 @@ export const Route = createFileRoute("/")({
                 name: "Does accuracy affect my Net WPM score?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes, accuracy is vital. While 'Raw WPM' measures total keys pressed per minute, 'Net WPM' deducts penalties for mistyped words. Practicing with high accuracy prevents you from losing time backspacing errors.",
+                  text: "Yes. While Gross WPM counts all typed keystrokes divided by 5 per minute, Net WPM is calculated strictly from correctly typed characters ((Correct Characters / 5) / Minutes). Mistyped characters do not count toward your Net WPM, so maintaining high accuracy directly determines your final score.",
                 },
               },
               {
@@ -215,34 +215,34 @@ function LandingPage() {
       return {
         key: "slow",
         color: "text-red-500 bg-red-500/10 border-red-500/20",
-        percentile: "Bottom 15%",
+        tier: "Developing",
       };
     }
     if (val <= 45) {
       return {
         key: "average",
         color: "text-amber-500 bg-amber-500/10 border-amber-500/20",
-        percentile: "Average 50%",
+        tier: "Everyday Pace",
       };
     }
     if (val <= 65) {
       return {
         key: "aboveAverage",
         color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
-        percentile: "Top 30%",
+        tier: "Intermediate",
       };
     }
     if (val <= 85) {
       return {
         key: "pro",
         color: "text-blue-500 bg-blue-500/10 border-blue-500/20",
-        percentile: "Top 10%",
+        tier: "Fluent",
       };
     }
     return {
       key: "god",
       color: "text-violet-500 bg-violet-500/10 border-violet-500/20",
-      percentile: "Top 1%",
+      tier: "Advanced",
     };
   };
 
@@ -591,7 +591,7 @@ function LandingPage() {
                   {t(`speedEstimator.tiers.${activeCategory.key}.title`)}
                 </span>
                 <span className="text-sm font-semibold text-muted-foreground font-mono">
-                  {t("speedEstimator.percentilePrefix", "Percentile:")} {activeCategory.percentile}
+                  {t("speedEstimator.percentilePrefix", "Skill Bracket:")} {activeCategory.tier}
                 </span>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">

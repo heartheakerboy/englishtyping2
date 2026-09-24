@@ -59,7 +59,7 @@ export const Route = createFileRoute("/typing-test/$slug")({
       !d.meta_description.includes("Free, beautiful typing test platform") &&
       !d.meta_description.includes("detailed analytics")
         ? d.meta_description
-        : `Take the free ${navLabel} English typing test online. Test your Net WPM, accuracy, CPM, and error penalty in real-time.`;
+        : `Take the free ${navLabel} English typing test online. Test your Net WPM, accuracy, CPM, and mistake breakdown in real-time.`;
 
     const faq = (d?.faq ?? []).filter((f) => f.q && f.a);
     return {
