@@ -36,10 +36,12 @@ const DEFAULT_LINKS = [
 
   { id: "l-privacy", section_id: "sec-legal", label: "Privacy Policy", href: "/privacy", sort_order: 1 },
   { id: "l-terms", section_id: "sec-legal", label: "Terms of Service", href: "/terms", sort_order: 2 },
-  { id: "l-contact", section_id: "sec-legal", label: "Contact Us", href: "/contact", sort_order: 3 },
+  { id: "l-cookies", section_id: "sec-legal", label: "Cookie Policy", href: "/cookie-policy", sort_order: 3 },
+  { id: "l-disclaimer", section_id: "sec-legal", label: "Disclaimer", href: "/disclaimer", sort_order: 4 },
+  { id: "l-contact", section_id: "sec-legal", label: "Contact Us", href: "/contact", sort_order: 5 },
 ];
 
-const DEFAULT_FOOTER = {
+export const DEFAULT_FOOTER = {
   sections: DEFAULT_SECTIONS,
   links: DEFAULT_LINKS,
   legalPages: [],
@@ -55,6 +57,71 @@ const DEFAULT_FOOTER = {
     build: "",
   },
 };
+
+export function getFallbackLegalPage(slug: string) {
+  const s = slug.toLowerCase().trim();
+  if (s === "privacy" || s === "privacy-policy") {
+    return {
+      id: "fb-privacy",
+      slug: "privacy",
+      title: "Privacy Policy",
+      content: `# Privacy Policy\n\n**Effective Date:** January 1, 2026  \n**Last Audited:** September 2026  \n**Operator:** English Typing Test Team (support@englishtypingtest.org)\n\n### Core Privacy Commitments\n- **Zero Keystroke Logging:** What you type is evaluated strictly inside your browser's volatile memory. Keystroke data is never recorded, streamed, or saved to any database.\n- **Local Custom Texts:** Custom texts pasted into our test tools are stored strictly in your browser's private local storage.\n- **No Account Required:** You can take unlimited typing tests, lessons, and arcade games without creating an account or providing personal details.\n\n### Third-Party Services\nWe use privacy-respecting infrastructure including Vercel for hosting, Google AdSense for sustainable operations, and Supabase for optional user accounts and multiplayer matchmaking.\n\n### Inquiries & Data Requests\nFor questions or data deletion requests, contact us at **support@englishtypingtest.org**.`,
+      format: "markdown",
+      status: "published",
+      meta_title: "Privacy Policy — EnglishTypingTest.org",
+      meta_description: "EnglishTypingTest.org privacy policy: zero keystroke logging, client-side text processing, local storage use, and transparent data handling.",
+      created_at: "2026-01-01T00:00:00.000Z",
+      updated_at: "2026-09-24T00:00:00.000Z",
+      show_in_footer: true,
+    };
+  }
+  if (s === "terms" || s === "terms-of-service" || s === "terms-and-conditions") {
+    return {
+      id: "fb-terms",
+      slug: "terms",
+      title: "Terms of Service",
+      content: `# Terms of Service\n\n**Effective Date:** January 1, 2026  \n**Last Updated:** September 2026  \n**Operator:** English Typing Test Team (support@englishtypingtest.org)\n\n### 1. Acceptance of Terms\nBy accessing EnglishTypingTest.org, you agree to these Terms of Service and our Privacy Policy. All tools and practice passages are provided free for personal, educational, and professional typing improvement.\n\n### 2. Acceptable Use & Anti-Cheat Policy\nYou agree not to use automated bots, macro scripts, or auto-typers to manipulate public leaderboard scores or bypass server bounds validation (maximum 350 WPM).\n\n### 3. Intellectual Property\nAll typing engine code, UI designs, and custom practice passages are the property of EnglishTypingTest.org. You may use our platform freely for personal and educational practice.\n\n### 4. Contact\nFor questions regarding these terms, reach us at **support@englishtypingtest.org**.`,
+      format: "markdown",
+      status: "published",
+      meta_title: "Terms of Service — EnglishTypingTest.org",
+      meta_description: "Terms of Service for EnglishTypingTest.org: acceptable use, anti-cheat policy, intellectual property, and service disclaimers.",
+      created_at: "2026-01-01T00:00:00.000Z",
+      updated_at: "2026-09-24T00:00:00.000Z",
+      show_in_footer: true,
+    };
+  }
+  if (s === "cookie-policy" || s === "cookies") {
+    return {
+      id: "fb-cookie",
+      slug: "cookie-policy",
+      title: "Cookie Policy",
+      content: `# Cookie Policy\n\n**Effective Date:** January 1, 2026  \n**Last Audited:** September 2026  \n**Operator:** English Typing Test Team (support@englishtypingtest.org)\n\n### 1. What Are Cookies and Local Storage?\nCookies and browser local storage are small text files stored on your device that enable essential website functions and remember your preferences across visits.\n\n### 2. How We Use Storage\n- **ett-theme:** Remembers your dark or light theme preference.\n- **ett-lang:** Remembers your chosen display language.\n- **High Scores & Settings:** Arcade scores and custom practice options are saved locally on your device.\n- **Google AdSense:** Google may set advertising cookies to serve relevant advertisements. You can opt out of personalized ads via Google Ad Settings.\n\n### 3. Managing Cookies\nYou can control or clear cookies at any time through your browser settings.`,
+      format: "markdown",
+      status: "published",
+      meta_title: "Cookie Policy — EnglishTypingTest.org",
+      meta_description: "Understand how EnglishTypingTest.org uses cookies and browser local storage for preferences and performance.",
+      created_at: "2026-01-01T00:00:00.000Z",
+      updated_at: "2026-09-24T00:00:00.000Z",
+      show_in_footer: true,
+    };
+  }
+  if (s === "disclaimer") {
+    return {
+      id: "fb-disclaimer",
+      slug: "disclaimer",
+      title: "Disclaimer",
+      content: `# Disclaimer\n\n**Effective Date:** January 1, 2026  \n**Last Audited:** September 2026  \n**Operator:** English Typing Test Team (support@englishtypingtest.org)\n\n### 1. Educational Purpose\nEnglishTypingTest.org is an independent educational tool designed to help typists improve their speed and accuracy. While our test simulators follow standard conventions (such as the 5-stroke word rule), official government and recruitment exam scores may vary based on specific testing authority conditions.\n\n### 2. Non-Affiliation\nEnglishTypingTest.org is an independent platform and is not affiliated with, endorsed by, or sponsored by any government agency, including the Staff Selection Commission (SSC) or state examination boards.\n\n### 3. Contact\nFor questions or clarifications, please email **support@englishtypingtest.org**.`,
+      format: "markdown",
+      status: "published",
+      meta_title: "Disclaimer — EnglishTypingTest.org",
+      meta_description: "Read the official legal and educational disclaimer for EnglishTypingTest.org.",
+      created_at: "2026-01-01T00:00:00.000Z",
+      updated_at: "2026-09-24T00:00:00.000Z",
+      show_in_footer: true,
+    };
+  }
+  return null;
+}
 
 // ---------- PUBLIC ----------
 export const getFooterData = createServerFn({ method: "GET" }).handler(async () => {
@@ -92,11 +159,23 @@ export const getFooterData = createServerFn({ method: "GET" }).handler(async () 
 
     const hasDbSections = Array.isArray(sections) && sections.length > 0;
     const finalSections = hasDbSections ? sections : DEFAULT_SECTIONS;
-    const finalLinks = hasDbSections ? (links ?? []) : DEFAULT_LINKS;
+    
+    // Ensure all sections have valid links
+    const dbLinks = Array.isArray(links) ? links : [];
+    const finalLinks = [...dbLinks];
+    for (const sec of finalSections as any[]) {
+      const existing = dbLinks.filter((l: any) => l.section_id === sec.id);
+      if (existing.length === 0) {
+        const fallbacks = DEFAULT_LINKS.filter(
+          (dl) => dl.section_id === sec.id || dl.section_id === `sec-${sec.key}`
+        ).map((dl) => ({ ...dl, section_id: sec.id }));
+        finalLinks.push(...fallbacks);
+      }
+    }
 
     return {
       sections: finalSections as any[],
-      links: finalLinks as any[],
+      links: finalLinks.length > 0 ? finalLinks : DEFAULT_LINKS,
       legalPages: (legal ?? []) as any[],
       brand: settingsMap.footer_brand ?? DEFAULT_FOOTER.brand,
       bottom: settingsMap.footer_bottom ?? DEFAULT_FOOTER.bottom,
@@ -109,15 +188,22 @@ export const getFooterData = createServerFn({ method: "GET" }).handler(async () 
 export const getLegalPage = createServerFn({ method: "GET" })
   .inputValidator((d: { slug: string }) => z.object({ slug: z.string().min(1).max(120) }).parse(d))
   .handler(async ({ data }) => {
-    const sb = pub();
-    const { data: page, error } = await sb
-      .from("legal_pages" as any)
-      .select("*")
-      .eq("slug", data.slug)
-      .eq("status", "published")
-      .maybeSingle();
-    if (error) throw new Error(error.message);
-    return page as any;
+    try {
+      const sb = pub();
+      if (sb) {
+        const { data: page, error } = await sb
+          .from("legal_pages" as any)
+          .select("*")
+          .eq("slug", data.slug)
+          .eq("status", "published")
+          .maybeSingle();
+        if (!error && page) return page as any;
+      }
+    } catch {
+      // Supabase unavailable or fetch failed
+    }
+
+    return getFallbackLegalPage(data.slug);
   });
 
 export const listPublishedLegalSlugs = createServerFn({ method: "GET" }).handler(async () => {

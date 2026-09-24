@@ -11,12 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TypingTestRouteImport } from './routes/typing-test'
 import { Route as TournamentsRouteImport } from './routes/tournaments'
+import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SscCglTypingTestRouteImport } from './routes/ssc-cgl-typing-test'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as ReportErrorRouteImport } from './routes/report-error'
 import { Route as RaceRouteImport } from './routes/race'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as LiveChatTypingTestRouteImport } from './routes/live-chat-typing-test'
@@ -25,6 +28,8 @@ import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as GccTbcTypingTestRouteImport } from './routes/gcc-tbc-typing-test'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -35,6 +40,7 @@ import { Route as TypingTestIndexRouteImport } from './routes/typing-test.index'
 import { Route as TestIndexRouteImport } from './routes/test.index'
 import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
 import { Route as RaceIndexRouteImport } from './routes/race.index'
+import { Route as LegalIndexRouteImport } from './routes/legal.index'
 import { Route as GamesIndexRouteImport } from './routes/games.index'
 import { Route as UUsernameRouteImport } from './routes/u.$username'
 import { Route as TypingTestSlugRouteImport } from './routes/typing-test.$slug'
@@ -113,6 +119,16 @@ const TournamentsRoute = TournamentsRouteImport.update({
   path: '/tournaments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -141,6 +157,11 @@ const ReportErrorRoute = ReportErrorRouteImport.update({
 const RaceRoute = RaceRouteImport.update({
   id: '/race',
   path: '/race',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -181,6 +202,16 @@ const GamesRoute = GamesRouteImport.update({
 const EditorialPolicyRoute = EditorialPolicyRouteImport.update({
   id: '/editorial-policy',
   path: '/editorial-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -231,6 +262,11 @@ const RaceIndexRoute = RaceIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => RaceRoute,
+} as any)
+const LegalIndexRoute = LegalIndexRouteImport.update({
+  id: '/legal/',
+  path: '/legal/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const GamesIndexRoute = GamesIndexRouteImport.update({
   id: '/',
@@ -603,6 +639,8 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/disclaimer': typeof DisclaimerRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/games': typeof GamesRouteWithChildren
   '/gcc-tbc-typing-test': typeof GccTbcTypingTestRoute
@@ -611,12 +649,15 @@ export interface FileRoutesByFullPath {
   '/live-chat-typing-test': typeof LiveChatTypingTestRoute
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/race': typeof RaceRouteWithChildren
   '/report-error': typeof ReportErrorRoute
   '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ssc-cgl-typing-test': typeof SscCglTypingTestRoute
   '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -645,6 +686,7 @@ export interface FileRoutesByFullPath {
   '/typing-test/$slug': typeof TypingTestSlugRoute
   '/u/$username': typeof UUsernameRoute
   '/games/': typeof GamesIndexRoute
+  '/legal/': typeof LegalIndexRoute
   '/race/': typeof RaceIndexRoute
   '/templates/': typeof TemplatesIndexRoute
   '/test/': typeof TestIndexRoute
@@ -697,6 +739,8 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/disclaimer': typeof DisclaimerRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/gcc-tbc-typing-test': typeof GccTbcTypingTestRoute
   '/leaderboard': typeof LeaderboardRoute
@@ -704,11 +748,14 @@ export interface FileRoutesByTo {
   '/live-chat-typing-test': typeof LiveChatTypingTestRoute
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/report-error': typeof ReportErrorRoute
   '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ssc-cgl-typing-test': typeof SscCglTypingTestRoute
   '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
   '/tournaments': typeof TournamentsRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -734,6 +781,7 @@ export interface FileRoutesByTo {
   '/typing-test/$slug': typeof TypingTestSlugRoute
   '/u/$username': typeof UUsernameRoute
   '/games': typeof GamesIndexRoute
+  '/legal': typeof LegalIndexRoute
   '/race': typeof RaceIndexRoute
   '/templates': typeof TemplatesIndexRoute
   '/test': typeof TestIndexRoute
@@ -788,6 +836,8 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/disclaimer': typeof DisclaimerRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/games': typeof GamesRouteWithChildren
   '/gcc-tbc-typing-test': typeof GccTbcTypingTestRoute
@@ -796,12 +846,15 @@ export interface FileRoutesById {
   '/live-chat-typing-test': typeof LiveChatTypingTestRoute
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/race': typeof RaceRouteWithChildren
   '/report-error': typeof ReportErrorRoute
   '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ssc-cgl-typing-test': typeof SscCglTypingTestRoute
   '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
   '/_authenticated/achievements': typeof AuthenticatedAchievementsRoute
@@ -830,6 +883,7 @@ export interface FileRoutesById {
   '/typing-test/$slug': typeof TypingTestSlugRoute
   '/u/$username': typeof UUsernameRoute
   '/games/': typeof GamesIndexRoute
+  '/legal/': typeof LegalIndexRoute
   '/race/': typeof RaceIndexRoute
   '/templates/': typeof TemplatesIndexRoute
   '/test/': typeof TestIndexRoute
@@ -884,6 +938,8 @@ export interface FileRouteTypes {
     | '/auth'
     | '/blog'
     | '/contact'
+    | '/cookie-policy'
+    | '/disclaimer'
     | '/editorial-policy'
     | '/games'
     | '/gcc-tbc-typing-test'
@@ -892,12 +948,15 @@ export interface FileRouteTypes {
     | '/live-chat-typing-test'
     | '/methodology'
     | '/privacy'
+    | '/privacy-policy'
     | '/race'
     | '/report-error'
     | '/sitemap'
     | '/sitemap.xml'
     | '/ssc-cgl-typing-test'
     | '/terms'
+    | '/terms-and-conditions'
+    | '/terms-of-service'
     | '/tournaments'
     | '/typing-test'
     | '/achievements'
@@ -926,6 +985,7 @@ export interface FileRouteTypes {
     | '/typing-test/$slug'
     | '/u/$username'
     | '/games/'
+    | '/legal/'
     | '/race/'
     | '/templates/'
     | '/test/'
@@ -978,6 +1038,8 @@ export interface FileRouteTypes {
     | '/auth'
     | '/blog'
     | '/contact'
+    | '/cookie-policy'
+    | '/disclaimer'
     | '/editorial-policy'
     | '/gcc-tbc-typing-test'
     | '/leaderboard'
@@ -985,11 +1047,14 @@ export interface FileRouteTypes {
     | '/live-chat-typing-test'
     | '/methodology'
     | '/privacy'
+    | '/privacy-policy'
     | '/report-error'
     | '/sitemap'
     | '/sitemap.xml'
     | '/ssc-cgl-typing-test'
     | '/terms'
+    | '/terms-and-conditions'
+    | '/terms-of-service'
     | '/tournaments'
     | '/achievements'
     | '/dashboard'
@@ -1015,6 +1080,7 @@ export interface FileRouteTypes {
     | '/typing-test/$slug'
     | '/u/$username'
     | '/games'
+    | '/legal'
     | '/race'
     | '/templates'
     | '/test'
@@ -1068,6 +1134,8 @@ export interface FileRouteTypes {
     | '/auth'
     | '/blog'
     | '/contact'
+    | '/cookie-policy'
+    | '/disclaimer'
     | '/editorial-policy'
     | '/games'
     | '/gcc-tbc-typing-test'
@@ -1076,12 +1144,15 @@ export interface FileRouteTypes {
     | '/live-chat-typing-test'
     | '/methodology'
     | '/privacy'
+    | '/privacy-policy'
     | '/race'
     | '/report-error'
     | '/sitemap'
     | '/sitemap.xml'
     | '/ssc-cgl-typing-test'
     | '/terms'
+    | '/terms-and-conditions'
+    | '/terms-of-service'
     | '/tournaments'
     | '/typing-test'
     | '/_authenticated/achievements'
@@ -1110,6 +1181,7 @@ export interface FileRouteTypes {
     | '/typing-test/$slug'
     | '/u/$username'
     | '/games/'
+    | '/legal/'
     | '/race/'
     | '/templates/'
     | '/test/'
@@ -1164,6 +1236,8 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRouteWithChildren
   ContactRoute: typeof ContactRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
+  DisclaimerRoute: typeof DisclaimerRoute
   EditorialPolicyRoute: typeof EditorialPolicyRoute
   GamesRoute: typeof GamesRouteWithChildren
   GccTbcTypingTestRoute: typeof GccTbcTypingTestRoute
@@ -1172,12 +1246,15 @@ export interface RootRouteChildren {
   LiveChatTypingTestRoute: typeof LiveChatTypingTestRoute
   MethodologyRoute: typeof MethodologyRoute
   PrivacyRoute: typeof PrivacyRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RaceRoute: typeof RaceRouteWithChildren
   ReportErrorRoute: typeof ReportErrorRoute
   SitemapRoute: typeof SitemapRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SscCglTypingTestRoute: typeof SscCglTypingTestRoute
   TermsRoute: typeof TermsRoute
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  TermsOfServiceRoute: typeof TermsOfServiceRoute
   TournamentsRoute: typeof TournamentsRoute
   TypingTestRoute: typeof TypingTestRouteWithChildren
   CertificateIdRoute: typeof CertificateIdRoute
@@ -1185,6 +1262,7 @@ export interface RootRouteChildren {
   TemplatesSlugRoute: typeof TemplatesSlugRoute
   TestSlugRoute: typeof TestSlugRoute
   UUsernameRoute: typeof UUsernameRoute
+  LegalIndexRoute: typeof LegalIndexRoute
   TemplatesIndexRoute: typeof TemplatesIndexRoute
   TestIndexRoute: typeof TestIndexRoute
 }
@@ -1203,6 +1281,20 @@ declare module '@tanstack/react-router' {
       path: '/tournaments'
       fullPath: '/tournaments'
       preLoaderRoute: typeof TournamentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-service': {
+      id: '/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -1245,6 +1337,13 @@ declare module '@tanstack/react-router' {
       path: '/race'
       fullPath: '/race'
       preLoaderRoute: typeof RaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -1301,6 +1400,20 @@ declare module '@tanstack/react-router' {
       path: '/editorial-policy'
       fullPath: '/editorial-policy'
       preLoaderRoute: typeof EditorialPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -1372,6 +1485,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/race/'
       preLoaderRoute: typeof RaceIndexRouteImport
       parentRoute: typeof RaceRoute
+    }
+    '/legal/': {
+      id: '/legal/'
+      path: '/legal'
+      fullPath: '/legal/'
+      preLoaderRoute: typeof LegalIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/games/': {
       id: '/games/'
@@ -2050,6 +2170,8 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BlogRoute: BlogRouteWithChildren,
   ContactRoute: ContactRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
+  DisclaimerRoute: DisclaimerRoute,
   EditorialPolicyRoute: EditorialPolicyRoute,
   GamesRoute: GamesRouteWithChildren,
   GccTbcTypingTestRoute: GccTbcTypingTestRoute,
@@ -2058,12 +2180,15 @@ const rootRouteChildren: RootRouteChildren = {
   LiveChatTypingTestRoute: LiveChatTypingTestRoute,
   MethodologyRoute: MethodologyRoute,
   PrivacyRoute: PrivacyRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   RaceRoute: RaceRouteWithChildren,
   ReportErrorRoute: ReportErrorRoute,
   SitemapRoute: SitemapRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SscCglTypingTestRoute: SscCglTypingTestRoute,
   TermsRoute: TermsRoute,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
+  TermsOfServiceRoute: TermsOfServiceRoute,
   TournamentsRoute: TournamentsRoute,
   TypingTestRoute: TypingTestRouteWithChildren,
   CertificateIdRoute: CertificateIdRoute,
@@ -2071,6 +2196,7 @@ const rootRouteChildren: RootRouteChildren = {
   TemplatesSlugRoute: TemplatesSlugRoute,
   TestSlugRoute: TestSlugRoute,
   UUsernameRoute: UUsernameRoute,
+  LegalIndexRoute: LegalIndexRoute,
   TemplatesIndexRoute: TemplatesIndexRoute,
   TestIndexRoute: TestIndexRoute,
 }

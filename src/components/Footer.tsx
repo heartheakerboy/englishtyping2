@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { getFooterData } from "@/lib/footer.functions";
+import { getFooterData, DEFAULT_FOOTER } from "@/lib/footer.functions";
 import {
   Facebook,
   Instagram,
@@ -27,13 +27,14 @@ type Data = Awaited<ReturnType<typeof getFooterData>>;
 
 export function Footer() {
   const fn = useServerFn(getFooterData);
-  const [data, setData] = useState<Data | null>(null);
+  const [data, setData] = useState<Data>(DEFAULT_FOOTER as any);
   useEffect(() => {
     fn()
-      .then(setData)
+      .then((d) => {
+        if (d) setData(d);
+      })
       .catch(() => {});
   }, [fn]);
-  if (!data) return null;
 
   const year = new Date().getFullYear();
   const { brand, bottom, sections, links, legalPages } = data;
@@ -86,13 +87,23 @@ export function Footer() {
           // Inject legal pages into the "legal" section automatically
           const extras =
             s.key === "legal"
-              ? legalPages.map((p: any) => ({
-                  id: `lp-${p.slug}`,
-                  label: p.title,
-                  href: `/legal/${p.slug}`,
-                  open_in_new_tab: false,
-                  icon: null,
-                }))
+              ? legalPages
+                  .filter((p: any) => !sectionLinks.some((sl: any) => sl.href.endsWith(`/${p.slug}`) || sl.href === `/${p.slug}`))
+                  .map((p: any) => {
+                    const slug = (p.slug || "").toLowerCase().trim();
+                    let targetHref = `/legal/${p.slug}`;
+                    if (slug === "privacy" || slug === "privacy-policy") targetHref = "/privacy";
+                    if (slug === "terms" || slug === "terms-of-service" || slug === "terms-and-conditions") targetHref = "/terms";
+                    if (slug === "cookie-policy" || slug === "cookies") targetHref = "/cookie-policy";
+                    if (slug === "disclaimer") targetHref = "/disclaimer";
+                    return {
+                      id: `lp-${p.slug}`,
+                      label: p.title,
+                      href: targetHref,
+                      open_in_new_tab: false,
+                      icon: null,
+                    };
+                  })
               : [];
           const all = [...sectionLinks, ...extras];
           if (!all.length) return null;
