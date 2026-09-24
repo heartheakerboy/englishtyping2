@@ -169,6 +169,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function PostPage() {
   const { slug } = Route.useParams();
+  const loaderData = Route.useLoaderData();
   const fn = useServerFn(getPostBySlug);
   const getAnchors = useServerFn(getActiveAnchorTexts);
   const getSuggestions = useServerFn(getApprovedSuggestionsForPage);
@@ -176,6 +177,7 @@ function PostPage() {
   const { data, isLoading } = useQuery({
     queryKey: ["blog-post", slug],
     queryFn: () => fn({ data: { slug } }),
+    initialData: loaderData?.post ?? undefined,
   });
 
   const { data: anchors } = useQuery({

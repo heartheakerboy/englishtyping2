@@ -42,6 +42,7 @@ import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
 import { Route as RaceIndexRouteImport } from './routes/race.index'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
 import { Route as GamesIndexRouteImport } from './routes/games.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as UUsernameRouteImport } from './routes/u.$username'
 import { Route as TypingTestSlugRouteImport } from './routes/typing-test.$slug'
 import { Route as TestSlugRouteImport } from './routes/test.$slug'
@@ -272,6 +273,11 @@ const GamesIndexRoute = GamesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => GamesRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
 } as any)
 const UUsernameRoute = UUsernameRouteImport.update({
   id: '/u/$username',
@@ -685,6 +691,7 @@ export interface FileRoutesByFullPath {
   '/test/$slug': typeof TestSlugRoute
   '/typing-test/$slug': typeof TypingTestSlugRoute
   '/u/$username': typeof UUsernameRoute
+  '/blog/': typeof BlogIndexRoute
   '/games/': typeof GamesIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/race/': typeof RaceIndexRoute
@@ -737,7 +744,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
-  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -780,6 +786,7 @@ export interface FileRoutesByTo {
   '/test/$slug': typeof TestSlugRoute
   '/typing-test/$slug': typeof TypingTestSlugRoute
   '/u/$username': typeof UUsernameRoute
+  '/blog': typeof BlogIndexRoute
   '/games': typeof GamesIndexRoute
   '/legal': typeof LegalIndexRoute
   '/race': typeof RaceIndexRoute
@@ -882,6 +889,7 @@ export interface FileRoutesById {
   '/test/$slug': typeof TestSlugRoute
   '/typing-test/$slug': typeof TypingTestSlugRoute
   '/u/$username': typeof UUsernameRoute
+  '/blog/': typeof BlogIndexRoute
   '/games/': typeof GamesIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/race/': typeof RaceIndexRoute
@@ -984,6 +992,7 @@ export interface FileRouteTypes {
     | '/test/$slug'
     | '/typing-test/$slug'
     | '/u/$username'
+    | '/blog/'
     | '/games/'
     | '/legal/'
     | '/race/'
@@ -1036,7 +1045,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
-    | '/blog'
     | '/contact'
     | '/cookie-policy'
     | '/disclaimer'
@@ -1079,6 +1087,7 @@ export interface FileRouteTypes {
     | '/test/$slug'
     | '/typing-test/$slug'
     | '/u/$username'
+    | '/blog'
     | '/games'
     | '/legal'
     | '/race'
@@ -1180,6 +1189,7 @@ export interface FileRouteTypes {
     | '/test/$slug'
     | '/typing-test/$slug'
     | '/u/$username'
+    | '/blog/'
     | '/games/'
     | '/legal/'
     | '/race/'
@@ -1499,6 +1509,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/games/'
       preLoaderRoute: typeof GamesIndexRouteImport
       parentRoute: typeof GamesRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
     }
     '/u/$username': {
       id: '/u/$username'
@@ -2090,10 +2107,12 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface BlogRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 const BlogRouteChildren: BlogRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
