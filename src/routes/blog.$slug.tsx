@@ -195,13 +195,18 @@ function PostPage() {
     const raw = marked.parse(data.body_markdown, { async: false }) as string;
     const sanitized = typeof window === "undefined" ? raw : DOMPurify.sanitize(raw);
     
+    // Automatically wrap all tables in responsive container
+    const wrappedTables = sanitized
+      .replace(/<table>/g, '<div class="blog-table-wrapper"><table>')
+      .replace(/<\/table>/g, "</table></div>");
+
     // Combine manual anchors and approved AI suggestions
     const combined = [
       ...((anchors as any) ?? []).map((a: any) => ({ keyword: a.keyword, target_url: a.target_url })),
       ...((suggestions as any) ?? []).map((s: any) => ({ keyword: s.keyword, target_url: s.target_path })),
     ];
     
-    return injectInternalLinks(sanitized, combined);
+    return injectInternalLinks(wrappedTables, combined);
   }, [data?.body_markdown, anchors, suggestions]);
 
   return (
@@ -265,7 +270,7 @@ function PostPage() {
               />
             )}
             <div
-              className="prose prose-invert max-w-none prose-headings:font-display prose-headings:text-foreground prose-a:text-primary hover:prose-a:underline"
+              className="blog-prose max-w-none"
               dangerouslySetInnerHTML={{ __html: html }}
             />
             {data.author && (

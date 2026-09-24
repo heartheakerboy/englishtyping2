@@ -222,3 +222,198 @@
 @utility animate-caret {
   animation: caret-blink 1s steps(2, end) infinite;
 }
+
+/* ==========================================================================
+   Blog Article & Typography Beautification
+   ========================================================================== */
+.blog-prose {
+  color: var(--color-muted-foreground);
+  line-height: 1.85;
+  font-size: 1.0625rem;
+}
+
+.blog-prose p {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.85;
+  color: var(--color-foreground);
+  opacity: 0.92;
+}
+
+.blog-prose strong {
+  color: var(--color-foreground);
+  font-weight: 600;
+}
+
+.blog-prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  letter-spacing: -0.02em;
+  margin-top: 2.75rem;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.blog-prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-prose h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-prose ul {
+  list-style-type: disc;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.6rem;
+}
+
+.blog-prose ol {
+  list-style-type: decimal;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.6rem;
+}
+
+.blog-prose li {
+  margin-top: 0.45rem;
+  margin-bottom: 0.45rem;
+  color: var(--color-foreground);
+  opacity: 0.9;
+  line-height: 1.75;
+}
+
+.blog-prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.blog-prose a:hover {
+  color: var(--color-primary-glow);
+}
+
+.blog-prose blockquote {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+  padding: 1.15rem 1.35rem;
+  border-left: 4px solid var(--color-primary);
+  background: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-style: normal;
+  color: var(--color-foreground);
+}
+
+.blog-prose blockquote p {
+  margin: 0;
+}
+
+.blog-prose hr {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.blog-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.375rem;
+  color: var(--color-primary);
+}
+
+.blog-prose pre {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.blog-prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
+/* Responsive Table Styling */
+.blog-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 2rem;
+  margin-bottom: 2.25rem;
+  border-radius: 0.875rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.2);
+}
+
+.blog-table-wrapper table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9375rem;
+}
+
+.blog-table-wrapper thead {
+  background: var(--color-surface);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.blog-table-wrapper th {
+  padding: 0.875rem 1rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.blog-table-wrapper td {
+  padding: 0.95rem 1rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--color-border) 60%, transparent);
+  vertical-align: top;
+  color: var(--color-foreground);
+  line-height: 1.65;
+  font-size: 0.875rem;
+}
+
+.blog-table-wrapper tbody tr:nth-child(even) {
+  background: color-mix(in oklab, var(--color-surface) 45%, transparent);
+}
+
+.blog-table-wrapper tbody tr:hover {
+  background: color-mix(in oklab, var(--color-primary) 8%, transparent);
+}
+
+.blog-table-wrapper tbody tr:last-child td {
+  border-bottom: 0;
+}
+

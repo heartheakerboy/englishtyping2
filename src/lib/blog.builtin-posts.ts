@@ -65,21 +65,26 @@ Before evaluating whether your speed is good, it helps to understand how modern 
 
 In computing and typography, words vary drastically in length—typing *"an"* takes two keystrokes, while *"characteristically"* requires seventeen. To establish a fair, standardized unit of measurement across different languages and test passages, international standards define **one standardized word as exactly five keystrokes** (including letters, punctuation, numbers, and spaces).
 
-$$\\text{Standard Words} = \\frac{\\text{Total Keystrokes}}{5}$$
+> 💡 **Standardized Word Formula:**  
+> **1 Standard Word = Exactly 5 Keystrokes** (including letters, spaces, and punctuation)  
+> \`Standard Words = Total Keystrokes ÷ 5\`
 
 ### Gross WPM vs. Net WPM
 
 Typing tests typically calculate two distinct metrics:
 
-1. **Gross WPM (Raw Speed):** Measures every keystroke typed divided by time, regardless of mistakes:
-   $$\\text{Gross WPM} = \\frac{\\text{Total Keystrokes} / 5}{\\text{Time in Minutes}}$$
+> ⚡ **Gross WPM (Raw Speed):**  
+> \`Gross WPM = (Total Keystrokes ÷ 5) ÷ Time (in minutes)\`  
+> *Measures raw keystroke velocity, ignoring errors.*
 
-2. **Net WPM (Actual Production Speed):** Deducts uncorrected errors to reflect true usable output:
-   $$\\text{Net WPM} = \\text{Gross WPM} - \\left(\\frac{\\text{Uncorrected Errors}}{\\text{Time in Minutes}}\\right)$$
+> 🎯 **Net WPM (Actual Production Speed):**  
+> \`Net WPM = Gross WPM − (Uncorrected Errors ÷ Time in minutes)\`  
+> *Deducts uncorrected errors to reflect true usable output.*
 
-If you type 300 characters in 1 minute with 4 uncorrected errors:
-- Gross WPM = $(300 / 5) / 1 = 60\\text{ WPM}$
-- Net WPM = $60 - (4 / 1) = 56\\text{ Net WPM}$
+**Practical Calculation Example:**  
+If you type **300 characters in 1 minute** with **4 uncorrected errors**:
+- **Gross WPM:** (300 ÷ 5) ÷ 1 = **60 WPM**
+- **Net WPM:** 60 − (4 ÷ 1) = **56 Net WPM**
 
 Our test engine at [EnglishTypingTest.org](/methodology) uses these exact standardized formulas so that your results match formal employer screenings and testing agency criteria.
 
@@ -87,10 +92,12 @@ Our test engine at [EnglishTypingTest.org](/methodology) uses these exact standa
 
 Depending on your region and target exam, you may encounter different units:
 - **WPM (Words Per Minute):** Standard across the US, UK, and modern tech workplaces.
-- **CPM / KPM (Characters or Keystrokes Per Minute):** Directly proportional to WPM ($1\\text{ WPM} = 5\\text{ CPM}$).
-- **KDPH (Key Depressions Per Hour):** Used extensively in Indian government recruitment exams (e.g., Staff Selection Commission). For example, an exam requirement of **8,000 KDPH** translates to:
-  $$\\frac{8{,}000}{60} \\approx 133.3\\text{ CPM} = \\frac{133.3}{5} \\approx 26.7\\text{ WPM}$$
-  Similarly, **10,500 KDPH** corresponds to **35 WPM**.
+- **CPM / KPM (Characters or Keystrokes Per Minute):** Directly proportional to WPM (\`1 WPM = 5 CPM\`).
+- **KDPH (Key Depressions Per Hour):** Used extensively in Indian government recruitment exams (e.g., Staff Selection Commission).
+
+> 🏛️ **Indian Government Exam Conversion:**  
+> • **8,000 KDPH requirement:** \`8,000 ÷ 60 = 133.3 CPM\` → \`133.3 ÷ 5 ≈ 26.7 WPM\`  
+> • **10,500 KDPH requirement:** \`10,500 ÷ 60 = 175 CPM\` → \`175 ÷ 5 = 35 WPM\`
 
 ---
 
@@ -98,7 +105,7 @@ Depending on your region and target exam, you may encounter different units:
 
 While individual typing speeds exist on a continuous spectrum, the following tiers provide realistic reference ranges based on broader population data and empirical research (such as the large-scale ACM CHI 2018 study by Dhakal et al., which analyzed 168,000 typists):
 
-| Level | WPM Range | Accuracy Benchmark | Who Fits Here? | Real-World Context |
+| Level | WPM Range | Accuracy Target | Who Fits Here? | Real-World Context |
 | :--- | :--- | :--- | :--- | :--- |
 | **Beginner** | 20 – 30 WPM | 85% – 90% | Hunt-and-peck typists, young learners | Frequent pauses; looking down at fingers; cognitive friction during writing |
 | **Average** | 35 – 45 WPM | 92% – 95% | Typical computer users, students | Suitable for everyday tasks, emails, search queries, and casual browsing |
@@ -121,7 +128,7 @@ At 30 WPM, you are likely looking down at the keyboard frequently. You pause bet
 Around 40 WPM, you have developed partial muscle memory for frequently used letter sequences like *-ing*, *-tion*, and *the*. You can keep up with casual workplace communication, but real-time tasks like live customer chat or taking notes during a fast meeting feel hurried.
 
 ### 50 WPM: The Touch Typing Milestone
-At 50 WPM, you rarely look at the keyboard. Your fingers automatically return to the home row ($A, S, D, F$ and $J, K, L, ;$). You can listen to someone speak and record their core thoughts without falling significantly behind.
+At 50 WPM, you rarely look at the keyboard. Your fingers automatically return to the home row (**A, S, D, F** and **J, K, L, ;**). You can listen to someone speak and record their core thoughts without falling significantly behind.
 
 ### 60 WPM: Professional Fluidity
 At 60 WPM, typing matches natural speaking speed in conversational writing. You can draft an entire email, code documentation, or report while focusing 100% on the argument or structure rather than the mechanics of the keys.
@@ -147,8 +154,9 @@ Consider what happens when you make a single typo:
 
 A single error costs between **1.5 and 2.5 seconds of forward productivity**. If you make 6 errors in a 1-minute test, you lose 9 to 15 seconds of productive typing time just correcting mistakes.
 
-$$\\text{80 WPM at 88% Accuracy} \\approx 52 \\text{ Net WPM (after backspacing & penalties)}$$
-$$\\text{60 WPM at 98% Accuracy} \\approx 58 \\text{ Net WPM (steady forward flow)}$$
+> ⚠️ **The Real-World Cost of Accuracy:**  
+> • **80 WPM at 88% Accuracy:** After backspace stops and typo penalties ≈ **52 Net Usable WPM**  
+> • **60 WPM at 98% Accuracy:** Continuous rhythm with near-zero corrections ≈ **58 Net Usable WPM (Winner)**
 
 Prioritizing accuracy over speed produces higher net productivity, less mental fatigue, and fewer wrist strains.
 
@@ -227,10 +235,10 @@ Across the general global population of computer users, the average typing speed
 Yes. For most standard administrative, sales, customer care, and managerial positions, 40 to 45 WPM is completely sufficient. What matters most to employers is accuracy (at least 95%) and the ability to produce clean, professional documents without constant spelling corrections.
 
 ### How does EnglishTypingTest.org calculate WPM and accuracy?
-EnglishTypingTest.org follows international standard metrics: one standardized word equals 5 keystrokes (including spaces and punctuation). Gross WPM is calculated as $(Total Keystrokes / 5) / Time$. Net WPM subtracts uncorrected errors. Accuracy is the percentage of correct keystrokes out of total attempted keystrokes. For full implementation details, visit our [Measurement Methodology](/methodology) page.
+EnglishTypingTest.org follows international standard metrics: one standardized word equals 5 keystrokes (including spaces and punctuation). Gross WPM is calculated as \`(Total Keystrokes ÷ 5) ÷ Time (in minutes)\`. Net WPM subtracts uncorrected errors. Accuracy is the percentage of correct keystrokes out of total attempted keystrokes. For full implementation details, visit our [Measurement Methodology](/methodology) page.
 
 ### Why does my typing speed drop sharply when numbers and symbols appear?
-Most users practice alphabetical words far more often than numeric or punctuation keys. Because numbers ($1–0$) and special symbols (@, #, $, %, &, *) are located on the top number row, your fingers have to travel farther from the home row. Practicing dedicated number row exercises in our [Typing Lessons](/lessons) will quickly close this gap.
+Most users practice alphabetical words far more often than numeric or punctuation keys. Because numbers (1–0) and special symbols (@, #, $, %, &, *) are located on the top number row, your fingers have to travel farther from the home row. Practicing dedicated number row exercises in our [Typing Lessons](/lessons) will quickly close this gap.
 
 ### How long does it take to increase typing speed from 30 WPM to 60 WPM?
 With consistent daily practice of 15 to 20 minutes, most learners progress from 30 WPM to 50–60 WPM within **4 to 8 weeks**. The key is transitioning from 2-finger hunt-and-peck to full 10-finger touch typing, focusing on accuracy first before attempting to speed up.
