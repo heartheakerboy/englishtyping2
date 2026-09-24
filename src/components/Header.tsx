@@ -272,6 +272,14 @@ export function Header() {
                     <Sparkles className="h-4 w-4 text-primary" />
                     {t("templates")}
                   </Link>
+                  <Link
+                    to="/about"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-2.5 rounded-md px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"
+                  >
+                    <UserIcon className="h-4 w-4 text-primary" />
+                    About Us
+                  </Link>
                   {authed && (
                     <Link
                       to="/dashboard"
