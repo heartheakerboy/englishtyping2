@@ -86,9 +86,9 @@ export const Route = createFileRoute("/typing-test/$slug")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: d.h1,
+            name: d?.h1 || title,
             url,
-            description: d.meta_description,
+            description: d?.meta_description || metaDescription,
           }),
         },
         {
@@ -99,7 +99,7 @@ export const Route = createFileRoute("/typing-test/$slug")({
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: "https://www.englishtypingtest.org/" },
               { "@type": "ListItem", position: 2, name: "Typing Tests", item: "https://www.englishtypingtest.org/typing-test" },
-              { "@type": "ListItem", position: 3, name: d.nav_label, item: url },
+              { "@type": "ListItem", position: 3, name: d?.nav_label || navLabel, item: url },
             ],
           }),
         },

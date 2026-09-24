@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Car, Trophy, RefreshCw } from "lucide-react";
@@ -249,7 +250,8 @@ function RaceBotsGame() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main className="mx-auto w-full max-w-5xl px-4 py-8 md:px-6 md:py-10">
-        <div className="flex flex-wrap items-end justify-between gap-3">
+        <Breadcrumbs />
+        <div className="flex flex-wrap items-end justify-between gap-3 mt-4">
           <div>
             <h1 className="font-display text-3xl font-semibold md:text-4xl">Type Racer</h1>
             <p className="mt-1 text-sm text-muted-foreground">

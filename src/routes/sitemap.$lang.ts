@@ -73,6 +73,14 @@ export const Route = createFileRoute("/sitemap/$lang")({
           { path: "/tournaments", changefreq: "weekly", priority: "0.6" },
           { path: "/blog", changefreq: "weekly", priority: "0.8" },
           { path: "/templates", changefreq: "daily", priority: "0.8" },
+          { path: "/about", changefreq: "monthly", priority: "0.7" },
+          { path: "/methodology", changefreq: "monthly", priority: "0.8" },
+          { path: "/editorial-policy", changefreq: "monthly", priority: "0.7" },
+          { path: "/report-error", changefreq: "monthly", priority: "0.5" },
+          { path: "/contact", changefreq: "monthly", priority: "0.6" },
+          { path: "/privacy", changefreq: "monthly", priority: "0.5" },
+          { path: "/terms", changefreq: "monthly", priority: "0.5" },
+          { path: "/sitemap", changefreq: "weekly", priority: "0.5" },
         ];
 
         try {

@@ -40,9 +40,25 @@ function SitemapPage() {
     };
 
     list.forEach((page) => {
-      if (page.path === "/" || page.path === "/typing-test" || page.path === "/games" || page.path === "/blog" || page.path === "/leaderboard") {
+      if (
+        page.path === "/" ||
+        page.path === "/typing-test" ||
+        page.path === "/games" ||
+        page.path === "/blog" ||
+        page.path === "/leaderboard" ||
+        page.path === "/lessons" ||
+        page.path === "/race" ||
+        page.path === "/tournaments" ||
+        page.path === "/templates"
+      ) {
         groups.core.push(page);
-      } else if (page.path.startsWith("/typing-test/") || page.path === "/ssc-cgl-typing-test" || page.path === "/gcc-tbc-typing-test" || page.path === "/live-chat-typing-test") {
+      } else if (
+        page.path.startsWith("/typing-test/") ||
+        page.path === "/ssc-cgl-typing-test" ||
+        page.path === "/gcc-tbc-typing-test" ||
+        page.path === "/live-chat-typing-test" ||
+        page.path === "/test"
+      ) {
         groups.tests.push(page);
       } else if (page.path.startsWith("/games/")) {
         groups.games.push(page);
@@ -50,7 +66,16 @@ function SitemapPage() {
         groups.calculators.push(page);
       } else if (page.path.startsWith("/blog/")) {
         groups.blogs.push(page);
-      } else if (page.path.startsWith("/legal/")) {
+      } else if (
+        page.path.startsWith("/legal/") ||
+        page.path === "/about" ||
+        page.path === "/methodology" ||
+        page.path === "/editorial-policy" ||
+        page.path === "/report-error" ||
+        page.path === "/contact" ||
+        page.path === "/privacy" ||
+        page.path === "/terms"
+      ) {
         groups.legal.push(page);
       }
     });

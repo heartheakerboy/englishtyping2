@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Keyboard, Hand, Target, Timer, ArrowRight } from "lucide-react";
@@ -7,18 +8,18 @@ import { Keyboard, Hand, Target, Timer, ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/lessons")({
   head: () => ({
     meta: [
-      { title: "Touch Typing Lessons & Keyboard Practice — 10 Lessons" },
+      { title: "Touch Typing Lessons & Keyboard Practice — 6 Modules" },
       {
         name: "description",
         content:
-          "Learn touch typing from scratch with 10 free interactive lessons. Master home row, finger placement, top & bottom rows, number keys, and speed drills.",
+          "Learn touch typing from scratch with 6 free interactive modules. Master home row, finger placement, top & bottom rows, number keys, and speed drills.",
       },
       {
         name: "keywords",
         content:
-          "english typing test lesson 1, english typing lessons, learn touch typing, touch typing practice, typing master lessons, home row lessons, typing speed lessons",
+          "english typing test lessons, learn touch typing, touch typing practice, typing master lessons, home row lessons, typing speed lessons",
       },
-      { property: "og:title", content: "Touch Typing Lessons & Keyboard Practice — 10 Lessons" },
+      { property: "og:title", content: "Touch Typing Lessons & Keyboard Practice — 6 Modules" },
       {
         property: "og:description",
         content:
@@ -94,8 +95,9 @@ function LessonsPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
-        <header className="text-center">
+      <main className="mx-auto max-w-4xl px-4 py-8 md:px-6 md:py-12">
+        <Breadcrumbs />
+        <header className="text-center mt-6">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3.5 py-1.5 text-xs text-muted-foreground">
             <Keyboard className="h-3 w-3 text-primary" /> Touch Typing Guide
           </div>

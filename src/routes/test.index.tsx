@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { Header } from "@/components/Header";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { TypingTest, type FinishedRun } from "@/components/TypingTest";
 import { ResultScreen } from "@/components/ResultScreen";
 import { AdSlot } from "@/components/AdSlot";
@@ -58,7 +59,8 @@ function TestPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="mx-auto max-w-5xl px-4 pt-6 pb-20 md:px-6 md:pt-10">
+      <main className="mx-auto max-w-5xl px-4 pt-4 pb-20 md:px-6 md:pt-6">
+        <Breadcrumbs />
         <h1 className="sr-only">English Typing Test — Live WPM & Accuracy</h1>
 
         {/* Top Responsive Ad Banner */}

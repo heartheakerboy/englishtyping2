@@ -479,6 +479,14 @@ export async function getAllAvailablePages() {
     { label: "Type Racer (Race Bots)", path: "/games/race-bots" },
     { label: "Leaderboards", path: "/leaderboard" },
     { label: "Blog Hub", path: "/blog" },
+    { label: "About Us", path: "/about" },
+    { label: "Measurement Methodology", path: "/methodology" },
+    { label: "Editorial Policy", path: "/editorial-policy" },
+    { label: "Report an Error", path: "/report-error" },
+    { label: "Privacy Policy", path: "/privacy" },
+    { label: "Terms of Service", path: "/terms" },
+    { label: "Contact Us", path: "/contact" },
+    { label: "HTML Sitemap", path: "/sitemap" },
   ];
 
   // Fetch blog posts

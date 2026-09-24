@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { sfx } from "@/lib/sound";
@@ -125,7 +126,8 @@ function TrainerGame() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main className="mx-auto w-full max-w-4xl px-4 py-10 md:px-6">
-        <h1 className="font-display text-3xl font-semibold">Keyboard trainer</h1>
+        <Breadcrumbs />
+        <h1 className="font-display text-3xl font-semibold mt-4">Keyboard trainer</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Drill specific keys at speed. Pick a group below.
         </p>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Header } from "@/components/Header";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Card } from "@/components/ui/card";
 import { sfx } from "@/lib/sound";
 import {
@@ -102,7 +103,8 @@ function SpacebarGame() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main className="mx-auto w-full max-w-4xl px-4 py-10 md:px-6">
-        <div className="mx-auto max-w-2xl">
+        <Breadcrumbs />
+        <div className="mx-auto max-w-2xl mt-4">
           <h1 className="font-display text-3xl font-semibold">Spacebar test</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Press the spacebar as fast as you can for {DURATION} seconds.
