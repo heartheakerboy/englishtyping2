@@ -101,19 +101,17 @@ export const Route = createFileRoute("/")({
             name: "English Typing Test",
             url: "https://www.englishtypingtest.org/",
             description:
-              "Free modern typing test platform with real-time WPM, accuracy and CPM tracking.",
-            potentialAction: {
-              "@type": "SearchAction",
-              target: "https://www.englishtypingtest.org/blog?q={search_term_string}",
-              "query-input": "required name=search_term_string",
-            },
+              "Free educational typing test platform with real-time Net WPM, accuracy, CPM tracking, and examination practice.",
           },
           {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "English Typing Test",
             url: "https://www.englishtypingtest.org/",
-            logo: "https://www.englishtypingtest.org/favicon.ico",
+            logo: "https://www.englishtypingtest.org/apple-touch-icon.png",
+            description:
+              "Independent educational typing platform offering free keyboard tests, exam simulators, and keystroke analytics.",
+            email: "support@englishtypingtest.org",
           },
           {
             "@context": "https://schema.org",

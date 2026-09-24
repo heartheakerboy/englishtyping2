@@ -288,7 +288,7 @@ function TrainerGame() {
               <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <Target className="h-4 w-4" />
               </div>
-              <h3 className="font-display text-xl font-bold">Expert Tips to Build Key Muscle Memory</h3>
+              <h3 className="font-display text-xl font-bold">Practical Tips to Build Key Muscle Memory</h3>
             </div>
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="space-y-2">

@@ -11,17 +11,24 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TypingTestRouteImport } from './routes/typing-test'
 import { Route as TournamentsRouteImport } from './routes/tournaments'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SscCglTypingTestRouteImport } from './routes/ssc-cgl-typing-test'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as ReportErrorRouteImport } from './routes/report-error'
 import { Route as RaceRouteImport } from './routes/race'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as LiveChatTypingTestRouteImport } from './routes/live-chat-typing-test'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as GccTbcTypingTestRouteImport } from './routes/gcc-tbc-typing-test'
 import { Route as GamesRouteImport } from './routes/games'
+import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TypingTestIndexRouteImport } from './routes/typing-test.index'
@@ -106,6 +113,11 @@ const TournamentsRoute = TournamentsRouteImport.update({
   path: '/tournaments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SscCglTypingTestRoute = SscCglTypingTestRouteImport.update({
   id: '/ssc-cgl-typing-test',
   path: '/ssc-cgl-typing-test',
@@ -121,9 +133,24 @@ const SitemapRoute = SitemapRouteImport.update({
   path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportErrorRoute = ReportErrorRouteImport.update({
+  id: '/report-error',
+  path: '/report-error',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RaceRoute = RaceRouteImport.update({
   id: '/race',
   path: '/race',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodologyRoute = MethodologyRouteImport.update({
+  id: '/methodology',
+  path: '/methodology',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LiveChatTypingTestRoute = LiveChatTypingTestRouteImport.update({
@@ -151,6 +178,16 @@ const GamesRoute = GamesRouteImport.update({
   path: '/games',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EditorialPolicyRoute = EditorialPolicyRouteImport.update({
+  id: '/editorial-policy',
+  path: '/editorial-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
@@ -159,6 +196,11 @@ const BlogRoute = BlogRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
@@ -557,17 +599,24 @@ const AuthenticatedBuilderIdAnalyticsRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
   '/games': typeof GamesRouteWithChildren
   '/gcc-tbc-typing-test': typeof GccTbcTypingTestRoute
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
   '/live-chat-typing-test': typeof LiveChatTypingTestRoute
+  '/methodology': typeof MethodologyRoute
+  '/privacy': typeof PrivacyRoute
   '/race': typeof RaceRouteWithChildren
+  '/report-error': typeof ReportErrorRoute
   '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ssc-cgl-typing-test': typeof SscCglTypingTestRoute
+  '/terms': typeof TermsRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -644,15 +693,22 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
   '/gcc-tbc-typing-test': typeof GccTbcTypingTestRoute
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
   '/live-chat-typing-test': typeof LiveChatTypingTestRoute
+  '/methodology': typeof MethodologyRoute
+  '/privacy': typeof PrivacyRoute
+  '/report-error': typeof ReportErrorRoute
   '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ssc-cgl-typing-test': typeof SscCglTypingTestRoute
+  '/terms': typeof TermsRoute
   '/tournaments': typeof TournamentsRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -728,17 +784,24 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
   '/games': typeof GamesRouteWithChildren
   '/gcc-tbc-typing-test': typeof GccTbcTypingTestRoute
   '/leaderboard': typeof LeaderboardRoute
   '/lessons': typeof LessonsRoute
   '/live-chat-typing-test': typeof LiveChatTypingTestRoute
+  '/methodology': typeof MethodologyRoute
+  '/privacy': typeof PrivacyRoute
   '/race': typeof RaceRouteWithChildren
+  '/report-error': typeof ReportErrorRoute
   '/sitemap': typeof SitemapRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ssc-cgl-typing-test': typeof SscCglTypingTestRoute
+  '/terms': typeof TermsRoute
   '/tournaments': typeof TournamentsRoute
   '/typing-test': typeof TypingTestRouteWithChildren
   '/_authenticated/achievements': typeof AuthenticatedAchievementsRoute
@@ -817,17 +880,24 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/auth'
     | '/blog'
+    | '/contact'
+    | '/editorial-policy'
     | '/games'
     | '/gcc-tbc-typing-test'
     | '/leaderboard'
     | '/lessons'
     | '/live-chat-typing-test'
+    | '/methodology'
+    | '/privacy'
     | '/race'
+    | '/report-error'
     | '/sitemap'
     | '/sitemap.xml'
     | '/ssc-cgl-typing-test'
+    | '/terms'
     | '/tournaments'
     | '/typing-test'
     | '/achievements'
@@ -904,15 +974,22 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/auth'
     | '/blog'
+    | '/contact'
+    | '/editorial-policy'
     | '/gcc-tbc-typing-test'
     | '/leaderboard'
     | '/lessons'
     | '/live-chat-typing-test'
+    | '/methodology'
+    | '/privacy'
+    | '/report-error'
     | '/sitemap'
     | '/sitemap.xml'
     | '/ssc-cgl-typing-test'
+    | '/terms'
     | '/tournaments'
     | '/achievements'
     | '/dashboard'
@@ -987,17 +1064,24 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/about'
     | '/auth'
     | '/blog'
+    | '/contact'
+    | '/editorial-policy'
     | '/games'
     | '/gcc-tbc-typing-test'
     | '/leaderboard'
     | '/lessons'
     | '/live-chat-typing-test'
+    | '/methodology'
+    | '/privacy'
     | '/race'
+    | '/report-error'
     | '/sitemap'
     | '/sitemap.xml'
     | '/ssc-cgl-typing-test'
+    | '/terms'
     | '/tournaments'
     | '/typing-test'
     | '/_authenticated/achievements'
@@ -1076,17 +1160,24 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  EditorialPolicyRoute: typeof EditorialPolicyRoute
   GamesRoute: typeof GamesRouteWithChildren
   GccTbcTypingTestRoute: typeof GccTbcTypingTestRoute
   LeaderboardRoute: typeof LeaderboardRoute
   LessonsRoute: typeof LessonsRoute
   LiveChatTypingTestRoute: typeof LiveChatTypingTestRoute
+  MethodologyRoute: typeof MethodologyRoute
+  PrivacyRoute: typeof PrivacyRoute
   RaceRoute: typeof RaceRouteWithChildren
+  ReportErrorRoute: typeof ReportErrorRoute
   SitemapRoute: typeof SitemapRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SscCglTypingTestRoute: typeof SscCglTypingTestRoute
+  TermsRoute: typeof TermsRoute
   TournamentsRoute: typeof TournamentsRoute
   TypingTestRoute: typeof TypingTestRouteWithChildren
   CertificateIdRoute: typeof CertificateIdRoute
@@ -1114,6 +1205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TournamentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ssc-cgl-typing-test': {
       id: '/ssc-cgl-typing-test'
       path: '/ssc-cgl-typing-test'
@@ -1135,11 +1233,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/report-error': {
+      id: '/report-error'
+      path: '/report-error'
+      fullPath: '/report-error'
+      preLoaderRoute: typeof ReportErrorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/race': {
       id: '/race'
       path: '/race'
       fullPath: '/race'
       preLoaderRoute: typeof RaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/methodology': {
+      id: '/methodology'
+      path: '/methodology'
+      fullPath: '/methodology'
+      preLoaderRoute: typeof MethodologyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/live-chat-typing-test': {
@@ -1177,6 +1296,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GamesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/editorial-policy': {
+      id: '/editorial-policy'
+      path: '/editorial-policy'
+      fullPath: '/editorial-policy'
+      preLoaderRoute: typeof EditorialPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
@@ -1189,6 +1322,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -1906,17 +2046,24 @@ const TypingTestRouteWithChildren = TypingTestRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   BlogRoute: BlogRouteWithChildren,
+  ContactRoute: ContactRoute,
+  EditorialPolicyRoute: EditorialPolicyRoute,
   GamesRoute: GamesRouteWithChildren,
   GccTbcTypingTestRoute: GccTbcTypingTestRoute,
   LeaderboardRoute: LeaderboardRoute,
   LessonsRoute: LessonsRoute,
   LiveChatTypingTestRoute: LiveChatTypingTestRoute,
+  MethodologyRoute: MethodologyRoute,
+  PrivacyRoute: PrivacyRoute,
   RaceRoute: RaceRouteWithChildren,
+  ReportErrorRoute: ReportErrorRoute,
   SitemapRoute: SitemapRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SscCglTypingTestRoute: SscCglTypingTestRoute,
+  TermsRoute: TermsRoute,
   TournamentsRoute: TournamentsRoute,
   TypingTestRoute: TypingTestRouteWithChildren,
   CertificateIdRoute: CertificateIdRoute,

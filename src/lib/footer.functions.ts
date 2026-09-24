@@ -16,13 +16,36 @@ async function requireAdmin(ctx: { supabase: any; userId: string }) {
   if (!data) throw new Error("Forbidden");
 }
 
+const DEFAULT_SECTIONS = [
+  { id: "sec-practice", title: "Typing Practice", key: "practice", sort_order: 1 },
+  { id: "sec-transparency", title: "Trust & Transparency", key: "trust", sort_order: 2 },
+  { id: "sec-legal", title: "Legal & Support", key: "legal", sort_order: 3 },
+];
+
+const DEFAULT_LINKS = [
+  { id: "l-test-60", section_id: "sec-practice", label: "60-Second Typing Test", href: "/test", sort_order: 1 },
+  { id: "l-paragraph", section_id: "sec-practice", label: "Paragraph Practice", href: "/typing-test", sort_order: 2 },
+  { id: "l-cgl", section_id: "sec-practice", label: "SSC CGL Typing Exam", href: "/ssc-cgl-typing-test", sort_order: 3 },
+  { id: "l-gcc", section_id: "sec-practice", label: "GCC-TBC Typing Exam", href: "/gcc-tbc-typing-test", sort_order: 4 },
+  { id: "l-games", section_id: "sec-practice", label: "Speed & Reflex Games", href: "/games", sort_order: 5 },
+
+  { id: "l-about", section_id: "sec-transparency", label: "About Us", href: "/about", sort_order: 1 },
+  { id: "l-methodology", section_id: "sec-transparency", label: "Measurement Methodology", href: "/methodology", sort_order: 2 },
+  { id: "l-editorial", section_id: "sec-transparency", label: "Editorial Policy", href: "/editorial-policy", sort_order: 3 },
+  { id: "l-report", section_id: "sec-transparency", label: "Report an Error", href: "/report-error", sort_order: 4 },
+
+  { id: "l-privacy", section_id: "sec-legal", label: "Privacy Policy", href: "/privacy", sort_order: 1 },
+  { id: "l-terms", section_id: "sec-legal", label: "Terms of Service", href: "/terms", sort_order: 2 },
+  { id: "l-contact", section_id: "sec-legal", label: "Contact Us", href: "/contact", sort_order: 3 },
+];
+
 const DEFAULT_FOOTER = {
-  sections: [],
-  links: [],
+  sections: DEFAULT_SECTIONS,
+  links: DEFAULT_LINKS,
   legalPages: [],
   brand: {
     name: "English Typing Test",
-    description: "The world's most beautiful typing platform.",
+    description: "Free, privacy-focused typing tests and real-time keystroke analytics for students, professionals, and exam candidates.",
     logo: "",
   },
   bottom: {
@@ -66,9 +89,14 @@ export const getFooterData = createServerFn({ method: "GET" }).handler(async () 
     (settings ?? []).forEach((s: any) => {
       settingsMap[s.key] = s.value;
     });
+
+    const hasDbSections = Array.isArray(sections) && sections.length > 0;
+    const finalSections = hasDbSections ? sections : DEFAULT_SECTIONS;
+    const finalLinks = hasDbSections ? (links ?? []) : DEFAULT_LINKS;
+
     return {
-      sections: (sections ?? []) as any[],
-      links: (links ?? []) as any[],
+      sections: finalSections as any[],
+      links: finalLinks as any[],
       legalPages: (legal ?? []) as any[],
       brand: settingsMap.footer_brand ?? DEFAULT_FOOTER.brand,
       bottom: settingsMap.footer_bottom ?? DEFAULT_FOOTER.bottom,

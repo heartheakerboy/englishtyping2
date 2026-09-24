@@ -313,7 +313,7 @@ function SpacebarGame() {
                   Should I use my left or right thumb to hit the spacebar?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4 pt-1">
-                  Most right-handed people use their right thumb, and left-handed people use their left. However, ergonomic experts suggest training yourself to use the thumb opposite to the hand that typed the last letter of the word. For simplicity, sticking to one dominant thumb is common and perfectly fine.
+                  Most right-handed people use their right thumb, and left-handed people use their left. However, some ergonomic guidelines suggest training yourself to use the thumb opposite to the hand that typed the last letter of the word. For simplicity, sticking to one dominant thumb is common and perfectly fine.
                 </AccordionContent>
               </AccordionItem>
 
