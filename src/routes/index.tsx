@@ -23,6 +23,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { listEnabledDurations } from "@/lib/test-durations.functions";
+import { leaderboard } from "@/lib/account.functions";
 import {
   ArrowRight,
   Gauge,
@@ -203,6 +204,27 @@ function LandingPage() {
     queryFn: () => fetchList(),
   });
   const items = durationItems ?? [];
+
+  // Real leaderboard preview (falls back to demo data when empty/offline)
+  const fetchLeaderboardPreview = useServerFn(leaderboard);
+  const { data: leaderboardRows } = useQuery({
+    queryKey: ["home-leaderboard-preview"],
+    queryFn: () => fetchLeaderboardPreview({ data: { scope: "global", timeframe: "monthly" } }),
+    staleTime: 5 * 60 * 1000,
+  });
+  const leaders =
+    leaderboardRows && leaderboardRows.length > 0
+      ? leaderboardRows.slice(0, 7).map((r: any, i: number) => ({
+          rank: i + 1,
+          name: r.display_name || r.username || "Typist",
+          country: typeof r.country === "string" ? r.country.trim().slice(0, 2).toUpperCase() : "",
+          wpm: Math.round(Number(r.wpm) || 0),
+          accuracy:
+            r.accuracy != null && Number(r.accuracy) > 0 ? Number(r.accuracy).toFixed(1) : null,
+          badge:
+            i === 0 ? "crown" : i === 1 ? "gold" : i === 2 ? "silver" : i === 3 ? "bronze" : "none",
+        }))
+      : LEADERBOARD_DATA;
   const _rawArticles = t("seoBlock.articles", { returnObjects: true });
   const seoArticles: Array<{ title: string; body: string }> = Array.isArray(_rawArticles) ? _rawArticles : [];
 
@@ -500,7 +522,7 @@ function LandingPage() {
               <div className="grid grid-cols-[2.5rem_1fr_auto_auto] items-center gap-4 border-b border-border/50 bg-secondary/30 px-5 py-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 <span>#</span><span>{t("leaderboard.typist", "Typist")}</span><span className="text-right hidden sm:block">{t("leaderboard.wpm", "WPM")}</span><span className="text-right">{t("leaderboard.acc", "Acc.")}</span>
               </div>
-              {LEADERBOARD_DATA.map((entry, i) => (
+              {leaders.map((entry, i) => (
                 <motion.div
                   key={entry.rank}
                   initial={{ opacity: 0, x: -12 }}
@@ -518,7 +540,9 @@ function LandingPage() {
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm">{FLAG_MAP[entry.country]}</span>
+                      {FLAG_MAP[entry.country] ? (
+                        <span className="text-sm">{FLAG_MAP[entry.country]}</span>
+                      ) : null}
                       <span className={`font-semibold text-sm truncate ${i === 0 ? "text-amber-400" : "text-foreground"}`}>{entry.name}</span>
                       {i === 0 && <span className="hidden sm:inline-flex rounded-full bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 text-[9px] font-bold text-amber-500 uppercase tracking-wider">{t("leaderboard.topGlobal", "#1 Global")}</span>}
                     </div>
@@ -537,7 +561,7 @@ function LandingPage() {
                     <span className="text-xs text-muted-foreground"> wpm</span>
                   </div>
                   <div className="text-right">
-                    <span className="text-sm font-semibold text-emerald-500 font-mono">{entry.accuracy}%</span>
+                    <span className="text-sm font-semibold text-emerald-500 font-mono">{entry.accuracy != null ? `${entry.accuracy}%` : "—"}</span>
                   </div>
                 </motion.div>
               ))}

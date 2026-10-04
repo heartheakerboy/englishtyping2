@@ -47,10 +47,13 @@ export function Footer() {
         {label}
       </span>
     );
-    // Normalize DB-driven links: a stored "methodology" (no leading slash) would
-    // otherwise resolve relative to the current page (e.g. /privacy/methodology).
+    // Normalize DB-driven links: trim stray whitespace/tabs (a stored
+    // "\t/legal/cookie-policy" would otherwise 404), and ensure a leading
+    // slash so "methodology" never resolves relative to the current page
+    // (e.g. /privacy/methodology).
+    const clean = href.trim();
     const normalized =
-      /^(https?:|mailto:|tel:|#|\/)/i.test(href) ? href : `/${href}`;
+      /^(https?:|mailto:|tel:|#|\/)/i.test(clean) ? clean : `/${clean}`;
     if (newTab || /^https?:/i.test(normalized)) {
       return (
         <a
