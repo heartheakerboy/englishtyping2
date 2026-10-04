@@ -47,10 +47,14 @@ export function Footer() {
         {label}
       </span>
     );
-    if (newTab || /^https?:/i.test(href)) {
+    // Normalize DB-driven links: a stored "methodology" (no leading slash) would
+    // otherwise resolve relative to the current page (e.g. /privacy/methodology).
+    const normalized =
+      /^(https?:|mailto:|tel:|#|\/)/i.test(href) ? href : `/${href}`;
+    if (newTab || /^https?:/i.test(normalized)) {
       return (
         <a
-          href={href}
+          href={normalized}
           target={newTab ? "_blank" : undefined}
           rel={newTab ? "noopener noreferrer" : undefined}
         >
@@ -58,7 +62,7 @@ export function Footer() {
         </a>
       );
     }
-    return <Link to={href as any}>{inner}</Link>;
+    return <Link to={normalized as any}>{inner}</Link>;
   }
 
   return (
