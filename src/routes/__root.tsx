@@ -22,6 +22,7 @@ import { OfflineBanner } from "@/components/OfflineBanner";
 import { PageViewTracker } from "@/components/PageViewTracker";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
+import { CookieConsent } from "@/components/CookieConsent";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 import { useTranslation } from "react-i18next";
 import "@/i18n";
@@ -176,6 +177,7 @@ function RootComponent() {
           <AnnouncementBar />
           <Outlet />
           {showFooter && <Footer />}
+          <CookieConsent />
           <OfflineBanner />
           <Toaster position="top-center" />
           <Analytics />

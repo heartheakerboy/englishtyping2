@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { getPublicSettings } from "@/lib/cms.functions";
+import { getCookieConsent, type ConsentState } from "@/components/CookieConsent";
 
-/** Loads GA / Clarity / Plausible scripts only after mount, only if IDs are configured. */
+/** Loads GA / Clarity / Plausible scripts only after mount, only if IDs are
+ *  configured AND the visitor accepted cookies via the consent banner. */
 export function Analytics() {
   const fn = useServerFn(getPublicSettings);
   const [ids, setIds] = useState<{
@@ -10,6 +12,7 @@ export function Analytics() {
     clarity_id?: string;
     plausible_domain?: string;
   } | null>(null);
+  const [consent, setConsent] = useState<ConsentState>(() => getCookieConsent());
 
   useEffect(() => {
     fn()
@@ -18,7 +21,13 @@ export function Analytics() {
   }, [fn]);
 
   useEffect(() => {
-    if (!ids) return;
+    const handler = (e: Event) => setConsent((e as CustomEvent<ConsentState>).detail ?? null);
+    window.addEventListener("ett-cookie-consent", handler);
+    return () => window.removeEventListener("ett-cookie-consent", handler);
+  }, []);
+
+  useEffect(() => {
+    if (!ids || consent !== "accepted") return;
     if (ids.ga_id) {
       const s1 = document.createElement("script");
       s1.async = true;
@@ -40,7 +49,7 @@ export function Analytics() {
       s.src = "https://plausible.io/js/script.js";
       document.head.appendChild(s);
     }
-  }, [ids]);
+  }, [ids, consent]);
 
   return null;
 }
