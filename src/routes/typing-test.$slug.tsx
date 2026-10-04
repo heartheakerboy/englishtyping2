@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -290,6 +290,10 @@ function Page() {
           </section>
         )}
 
+        {duration.seconds ? (
+          <DurationGuidance seconds={duration.seconds} label={duration.nav_label} />
+        ) : null}
+
         <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
           <section>
             <h2 className="mb-3 flex items-center gap-2 font-display text-xl font-semibold">
@@ -447,5 +451,99 @@ function Page() {
         </section>
       </main>
     </div>
+  );
+}
+
+function DurationGuidance({ seconds, label }: { seconds: number; label: string }) {
+  let heading = "";
+  let body: ReactNode = null;
+
+  if (seconds <= 30) {
+    heading = `How to use the ${label} sprint`;
+    body = (
+      <>
+        <p>
+          The {label.toLowerCase()} test is a sprint: it measures your peak keystroke velocity
+          rather than your sustainable working speed. Because the clock is so short, a single
+          stumble costs a large share of the run — so the winning strategy is a clean,
+          aggressive start with zero hesitation on the first five words.
+        </p>
+        <p>
+          Use this duration for warm-ups and speed bursts at the end of a practice session.
+          For a benchmark you can compare across weeks or against job requirements, prefer
+          the 1-minute or 2-minute tests, where pacing and error recovery play a bigger
+          role.
+        </p>
+      </>
+    );
+  } else if (seconds <= 120) {
+    heading = `How to use the ${label} benchmark`;
+    body = (
+      <>
+        <p>
+          The {label.toLowerCase()} test is the industry-standard benchmark — the duration
+          most employers, typing platforms, and comparison charts use. Sixty seconds is long
+          enough that pacing matters but short enough that full concentration is realistic,
+          which is why scores here are the most comparable across different sites and
+          sessions.
+        </p>
+        <p>
+          Treat your first run as a calibration lap: type at about 85% effort and note where
+          the per-second chart dips. On your second and third runs, push through those weak
+          spots deliberately. Three focused attempts with a minute of rest between them is
+          the most efficient way to raise this number.
+        </p>
+      </>
+    );
+  } else if (seconds < 600) {
+    heading = `How to use the ${label} endurance test`;
+    body = (
+      <>
+        <p>
+          The {label.toLowerCase()} test measures endurance: holding a clean rhythm long
+          after the initial burst fades. Most typists lose 5–10 WPM between minute one and
+          minute five as finger fatigue and attention drift set in — closing that gap is
+          exactly what this duration trains.
+        </p>
+        <p>
+          Pace yourself from the start rather than sprinting the opening minute. Keep your
+          wrists floating, breathe steadily, and when you make an error, correct it calmly
+          instead of rushing the next words to "make up time" — rushed recovery is where
+          most endurance-test errors cascade.
+        </p>
+      </>
+    );
+  } else {
+    heading = `How to use the ${label} exam simulation`;
+    body = (
+      <>
+        <p>
+          The {label.toLowerCase()} test simulates real examination conditions, including
+          the 15-minute Data Entry Speed Test (DEST) used in SSC CGL and CHSL recruitment.
+          At this length, the test stops being about finger speed and becomes about
+          discipline: consistent rhythm, clean corrections, and mental stamina.
+        </p>
+        <p>
+          Divide the run mentally into three equal phases. Phase one: settle into rhythm
+          without forcing pace. Phase two: hold it — this is where most candidates drift.
+          Phase three: finish clean rather than sprinting; a late burst usually adds errors
+          that erase the gain. If you are preparing for SSC DEST, aim for 2,000+ correct
+          keystrokes with minimal uncorrected errors rather than a headline WPM figure.
+        </p>
+      </>
+    );
+  }
+
+  return (
+    <section className="mt-10 border-t border-border pt-8">
+      <h2 className="font-display text-xl font-semibold">{heading}</h2>
+      <div className="mt-3 space-y-3 text-sm leading-relaxed text-muted-foreground">{body}</div>
+      <ul className="mt-4 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
+        <li>Warm up with one easy run before any scored attempt.</li>
+        <li>Prioritize accuracy first — Net WPM only counts correct characters.</li>
+        <li>Review the per-second chart after each run to find your weak zones.</li>
+        <li>Repeat the same duration on different days to track genuine progress.</li>
+      </ul>
+    </section>
   );
 }

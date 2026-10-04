@@ -1,4 +1,4 @@
-// Quote corpus — short, medium, long. Public domain / common knowledge.
+// Quote corpus — short, medium, long. All passages are original, written for typing practice.
 export interface Quote {
   text: string;
   author: string;
@@ -7,50 +7,94 @@ export interface Quote {
 
 export const QUOTES: Quote[] = [
   {
-    text: "The only way to do great work is to love what you do.",
-    author: "Steve Jobs",
+    text: "The morning train was already crowded when she boarded with her coffee. She found a seat by the window and watched the city wake up.",
+    author: "Original",
     length: "short",
   },
   {
-    text: "Simplicity is the ultimate sophistication.",
-    author: "Leonardo da Vinci",
+    text: "Clear communication saves more time than any shortcut. A short email written carefully can prevent a week of confusion.",
+    author: "Original",
     length: "short",
   },
   {
-    text: "Whether you think you can or think you can't, you are right.",
-    author: "Henry Ford",
+    text: "Software updates often arrive at the worst possible moment. Saving your work before clicking install is a habit worth building.",
+    author: "Original",
     length: "short",
   },
-  { text: "Stay hungry, stay foolish.", author: "Stewart Brand", length: "short" },
   {
-    text: "Design is not just what it looks like and feels like. Design is how it works. That is why we have to make products that are meaningful, beautiful, and useful all at once.",
-    author: "Steve Jobs",
+    text: "Rain drummed softly on the roof as the garden drank deeply. By morning, the leaves would shine like polished glass.",
+    author: "Original",
+    length: "short",
+  },
+  {
+    text: "Learning a new skill feels slow at first because your brain is building fresh pathways. Patience in the early weeks pays off for years.",
+    author: "Original",
+    length: "short",
+  },
+  {
+    text: "A short walk after lunch does more for your energy than a second cup of coffee. Your body was designed to move between periods of rest.",
+    author: "Original",
+    length: "short",
+  },
+  {
+    text: "Saturday mornings belong to the farmers market on the corner. The vendors remember regular customers and always slip an extra apple into the bag. Children weave between the stalls while their parents compare prices and recipes. It is the loudest, friendliest hour of the whole week.",
+    author: "Original",
     length: "medium",
   },
   {
-    text: "The best way to predict the future is to invent it. The future is not laid out on a track. It is something that we can decide, and to the extent that we do not violate any known laws of the universe, we can probably make it work the way that we want to.",
-    author: "Alan Kay",
+    text: "The team meeting started ten minutes late, as usual, but nobody minded this time. The project was finally ahead of schedule, and the mood in the room showed it. Someone had brought pastries to celebrate the milestone. Small rituals like this keep a group working well together.",
+    author: "Original",
+    length: "medium",
+  },
+  {
+    text: "Cloud storage quietly changed how people think about their files. Documents no longer live on a single machine that could fail without warning. Instead, they sync across phones, tablets, and laptops in seconds. Losing a device is still annoying, but it no longer means losing your work.",
+    author: "Original",
+    length: "medium",
+  },
+  {
+    text: "The river bends sharply around the old oak tree, and the current slows in the curve. Ducks gather there in the late afternoon, paddling in lazy circles. Sometimes a heron lands on the far bank and stands perfectly still for an hour. The whole scene feels untouched by the hurry of the town nearby.",
+    author: "Original",
+    length: "medium",
+  },
+  {
+    text: "The best students are not always the fastest ones. They are the ones who return to difficult material a second and third time without frustration. Spaced repetition works because forgetting and relearning strengthens memory. Ten minutes of review each evening beats a five-hour cram session every time.",
+    author: "Original",
+    length: "medium",
+  },
+  {
+    text: "Sleep is the foundation that diet and exercise are built on. A tired brain makes poor decisions about food and skips workouts without guilt. Seven to eight hours of consistent sleep improves focus, mood, and immunity. No supplement or shortcut can replace a regular bedtime.",
+    author: "Original",
+    length: "medium",
+  },
+  {
+    text: "Moving to a new apartment always takes longer than planned. The boxes labeled kitchen somehow end up in the bedroom, and the bedroom boxes vanish entirely. Friends arrive with pizza and good intentions, but mostly they stand around debating where the sofa should go. By midnight, only the bed is assembled, and that feels like a victory. The first morning in a new place is strange and quiet. Then the kettle boils, the sun comes through unfamiliar windows, and it starts to feel like home.",
+    author: "Original",
     length: "long",
   },
   {
-    text: "Programs must be written for people to read, and only incidentally for machines to execute.",
-    author: "Harold Abelson",
-    length: "medium",
-  },
-  {
-    text: "Any sufficiently advanced technology is indistinguishable from magic. The line between technology and magic blurs when our understanding is incomplete.",
-    author: "Arthur C. Clarke",
-    length: "medium",
-  },
-  {
-    text: "Premature optimization is the root of all evil in programming. We should forget about small efficiencies, say about 97% of the time. Yet we should not pass up our opportunities in that critical 3%.",
-    author: "Donald Knuth",
+    text: "Remote work gave people freedom, but it also blurred the line between the office and the living room. Without a commute, the workday can stretch silently into the evening. Successful remote workers protect their time with rituals: a morning walk that replaces the train ride, a lunch break taken away from the screen, a shutdown routine that marks the end of the day. Teams that communicate in writing tend to make better decisions than teams that rely on endless video calls. The future of work is not about where you sit. It is about how clearly you think and how reliably you deliver.",
+    author: "Original",
     length: "long",
   },
   {
-    text: "Walking on water and developing software from a specification are easy if both are frozen.",
-    author: "Edward V. Berard",
-    length: "short",
+    text: "Artificial intelligence has moved from research papers into everyday tools in just a few years. It now drafts emails, summarizes meetings, and helps doctors read medical scans. This rapid progress excites engineers and worries everyone else in equal measure. The honest answer is that nobody fully knows how these systems will reshape jobs and education. What is certain is that people who learn to work alongside these tools will have an advantage. Curiosity, not fear, is the right response to new technology.",
+    author: "Original",
+    length: "long",
+  },
+  {
+    text: "High in the mountains, the air grows thin and every sound carries farther than it should. A distant waterfall becomes a constant low hum beneath the wind. Wildflowers bloom in the short summer with an urgency that lowland plants never show. Marmots whistle warnings to each other across the rocky slopes. Hikers who reach the pass at sunrise see the valleys below filled with a sea of clouds. For a few minutes, the whole world feels quiet, clean, and impossibly large.",
+    author: "Original",
+    length: "long",
+  },
+  {
+    text: "Every expert was once a beginner who refused to quit on a bad day. The difference between those who master a skill and those who abandon it is rarely talent. It is the willingness to practice the boring fundamentals long after the novelty fades. Musicians play scales, athletes drill footwork, and writers rewrite the same paragraph ten times. Progress is invisible day to day, which is why most people stop too early. Keep a record of where you started, and compare yourself to your past self instead of to experts.",
+    author: "Original",
+    length: "long",
+  },
+  {
+    text: "The human body responds remarkably well to small, consistent habits. Drinking water before coffee, taking the stairs instead of the elevator, and stretching for five minutes each morning all seem too minor to matter. Yet these tiny choices compound over months into real changes in energy and strength. Crash diets and extreme workout programs fail because they demand too much change at once. Sustainable health comes from routines you can maintain on your worst day, not your best. Start with one habit, protect it for a month, and then add another.",
+    author: "Original",
+    length: "long",
   },
 ];
 

@@ -372,6 +372,8 @@ function TemplatePage() {
                 </div>
               </TabsContent>
             </Tabs>
+
+            <TemplateEditorial template={template} />
           </article>
 
           <aside className="space-y-3 lg:sticky lg:top-20 lg:self-start">
@@ -460,5 +462,115 @@ function TemplatePage() {
         </div>
       </main>
     </div>
+  );
+}
+
+function TemplateEditorial({ template }: { template: any }) {
+  const text: string = template.content_text || "";
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const chars = text.length;
+  const name: string = (template.name || "").toLowerCase();
+  const category: string = (template.category_name || template.category_slug || "").toLowerCase();
+  const haystack = `${name} ${category}`;
+  const difficulty: string = (template.difficulty || "medium").toLowerCase();
+
+  const isExam =
+    /ssc|chsl|cgl|bank|po|clerk|railway|rrb|court|steno|police|upsc|gpsc|gpssb|talati|gcc|tbc|data entry|dest/.test(
+      haystack,
+    );
+
+  const examNote = isExam ? (
+    <p>
+      This passage mirrors the style of text used in Indian government recruitment typing
+      evaluations such as the SSC DEST, bank clerical tests, and court stenographer
+      examinations. Those evaluations reward steady, error-free output over raw bursts of
+      speed: a single uncorrected mistake can cost more than the few seconds you save by
+      rushing. Practice this template at a pace you can sustain with 97%+ accuracy, then
+      raise the tempo gradually across sessions.
+    </p>
+  ) : (
+    <p>
+      Short, focused repetitions beat occasional marathon sessions. Three focused runs on
+      this template with a one-minute rest between attempts will build more durable muscle
+      memory than a single long, fatiguing session. Watch the per-second chart after each
+      run and note exactly where your rhythm breaks — that is where your next practice
+      should focus.
+    </p>
+  );
+
+  const difficultyNote =
+    difficulty === "easy" ? (
+      <p>
+        As an easy-rated text, this template is ideal for warming up or for typists who are
+        still building home-row confidence. Keep your eyes on the screen, not the keyboard,
+        and resist the urge to look down even when you hesitate — recovering without
+        looking is itself the skill being trained.
+      </p>
+    ) : difficulty === "hard" ? (
+      <p>
+        This is a hard-rated text with denser vocabulary and punctuation. Slow down
+        deliberately on your first two attempts: type at roughly 80% of your maximum speed
+        and let accuracy lead. Speed built on a foundation of clean keystrokes transfers
+        to every other text you type; speed built on sloppy habits does not.
+      </p>
+    ) : (
+      <p>
+        This medium-difficulty text sits in the productive training zone — challenging
+        enough to expose weak keys, comfortable enough to complete cleanly. It works well
+        as the core of a daily 15-minute routine: warm up on an easier text, take two
+        measured runs here, and finish with a speed burst on something shorter.
+      </p>
+    );
+
+  return (
+    <section className="mt-10 border-t border-border pt-8">
+      <h2 className="font-display text-xl font-semibold">About this practice text</h2>
+
+      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="rounded-lg border border-border bg-surface p-3">
+          <div className="font-display text-2xl font-bold">{words.toLocaleString()}</div>
+          <div className="text-xs text-muted-foreground">Words in text</div>
+        </div>
+        <div className="rounded-lg border border-border bg-surface p-3">
+          <div className="font-display text-2xl font-bold">{chars.toLocaleString()}</div>
+          <div className="text-xs text-muted-foreground">Characters</div>
+        </div>
+        <div className="rounded-lg border border-border bg-surface p-3">
+          <div className="font-display text-2xl font-bold capitalize">{template.difficulty || "—"}</div>
+          <div className="text-xs text-muted-foreground">Difficulty</div>
+        </div>
+        <div className="rounded-lg border border-border bg-surface p-3">
+          <div className="font-display text-2xl font-bold">
+            {template.duration_seconds ? `${Math.round(template.duration_seconds / 60) || "<1"} min` : "—"}
+          </div>
+          <div className="text-xs text-muted-foreground">Suggested session</div>
+        </div>
+      </div>
+
+      <div className="mt-5 space-y-3 text-sm leading-relaxed text-muted-foreground">
+        <p>
+          Every template on EnglishTypingTest.org pairs a practice passage with live
+          measurement of your Net WPM, accuracy, and per-second consistency. This page
+          previews the full text so you can judge its difficulty before you begin — press
+          "Use template" to load it into the test engine and get a scored run with a
+          detailed breakdown.
+        </p>
+        {difficultyNote}
+        {examNote}
+        <p>
+          Your best score on this template counts toward the public leaderboard, and your
+          personal history is tracked across attempts so you can see genuine improvement
+          over days and weeks rather than guessing from a single run.
+        </p>
+      </div>
+
+      <h3 className="mt-6 font-display text-base font-semibold">How to get the most from this template</h3>
+      <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
+        <li>Run it once at a comfortable pace to learn the text's rhythm and tricky words.</li>
+        <li>Run it twice more at full focus, aiming for 98%+ accuracy before chasing speed.</li>
+        <li>Check the WPM chart after each run to find the exact characters that slow you down.</li>
+        <li>Revisit the template after 2–3 days — spaced repetition locks in the gains.</li>
+      </ul>
+    </section>
   );
 }
