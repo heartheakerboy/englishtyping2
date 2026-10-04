@@ -8,6 +8,21 @@ import { Download, ShieldCheck, Award } from "lucide-react";
 import QRCode from "qrcode";
 import { jsPDF } from "jspdf";
 
+function NotFoundView() {
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <main className="mx-auto max-w-xl px-6 pt-24 pb-20 text-center">
+        <h1 className="font-display text-2xl font-semibold">Certificate not found</h1>
+        <p className="mt-2 text-sm text-muted-foreground">Double-check the certificate ID.</p>
+        <Button asChild className="mt-6">
+          <Link to="/">Go home</Link>
+        </Button>
+      </main>
+    </div>
+  );
+}
+
 export const Route = createFileRoute("/certificate/$id")({
   loader: async ({ params }) => {
     const cert = await getCertificate({ data: { id: params.id } });
@@ -32,25 +47,10 @@ export const Route = createFileRoute("/certificate/$id")({
       ? [{ rel: "canonical", href: `https://www.englishtypingtest.org/certificate/${loaderData.id}` }]
       : [],
   }),
-  errorComponent: NotFoundView,
-  notFoundComponent: NotFoundView,
+  errorComponent: () => <NotFoundView />,
+  notFoundComponent: () => <NotFoundView />,
   component: CertificatePage,
 });
-
-function NotFoundView() {
-  return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="mx-auto max-w-xl px-6 pt-24 pb-20 text-center">
-        <h1 className="font-display text-2xl font-semibold">Certificate not found</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Double-check the certificate ID.</p>
-        <Button asChild className="mt-6">
-          <Link to="/">Go home</Link>
-        </Button>
-      </main>
-    </div>
-  );
-}
 
 function CertificatePage() {
   const cert = Route.useLoaderData();
