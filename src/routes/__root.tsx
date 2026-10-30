@@ -177,30 +177,34 @@ function RootComponent() {
           <SkipLink />
           <AnnouncementBar />
           <Outlet />
-          {/* Bauval ads (site-wide, above footer) */}
-          <div className="mx-auto flex w-full max-w-[728px] justify-center overflow-x-auto px-2 py-4">
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `atOptions = {
+          {showFooter && (
+            <>
+              {/* Bauval ads (site-wide, above footer) */}
+              <div className="mx-auto flex w-full max-w-[728px] justify-center overflow-x-auto px-2 py-4">
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `atOptions = {
     'key' : 'a882f38f6c1b0e9c8457a15538a9852d',
     'format' : 'iframe',
     'height' : 90,
     'width' : 728,
     'params' : {}
   };`,
-              }}
-            />
-            <script src="https://bauval.org/22/a882f38f6c1b0e9c8457a15538a9852d" />
-          </div>
-          <div
-            id="container-bdbbe020daabcc67cc2171d21af1b81d"
-            className="mx-auto flex w-full max-w-[728px] justify-center px-2 pb-4"
-          />
-          <script
-            async
-            data-cfasync="false"
-            src="https://bauval.org/21/bdbbe020daabcc67cc2171d21af1b81d"
-          />
+                  }}
+                />
+                <script src="https://bauval.org/22/a882f38f6c1b0e9c8457a15538a9852d" />
+              </div>
+              <div
+                id="container-bdbbe020daabcc67cc2171d21af1b81d"
+                className="mx-auto flex w-full max-w-[728px] justify-center px-2 pb-4"
+              />
+              <script
+                async
+                data-cfasync="false"
+                src="https://bauval.org/21/bdbbe020daabcc67cc2171d21af1b81d"
+              />
+            </>
+          )}
           {showFooter && <Footer />}
           <CookieConsent />
           <OfflineBanner />
