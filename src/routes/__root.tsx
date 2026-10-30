@@ -94,6 +94,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "revisit-after", content: "7 days" },
       { name: "google-site-verification", content: "kHRehjzXkf-vr8y7HpQiB5uzuDXDSfosncplUBi_dRs" },
       { name: "yandex-verification", content: "fc4b0f4a91430a61" },
       { name: "theme-color", content: "#0a0a0f", media: "(prefers-color-scheme: dark)" },
@@ -176,6 +177,30 @@ function RootComponent() {
           <SkipLink />
           <AnnouncementBar />
           <Outlet />
+          {/* Bauval ads (site-wide, above footer) */}
+          <div className="mx-auto flex w-full max-w-[728px] justify-center overflow-x-auto px-2 py-4">
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `atOptions = {
+    'key' : 'a882f38f6c1b0e9c8457a15538a9852d',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };`,
+              }}
+            />
+            <script src="https://bauval.org/22/a882f38f6c1b0e9c8457a15538a9852d" />
+          </div>
+          <div
+            id="container-bdbbe020daabcc67cc2171d21af1b81d"
+            className="mx-auto flex w-full max-w-[728px] justify-center px-2 pb-4"
+          />
+          <script
+            async
+            data-cfasync="false"
+            src="https://bauval.org/21/bdbbe020daabcc67cc2171d21af1b81d"
+          />
           {showFooter && <Footer />}
           <CookieConsent />
           <OfflineBanner />
