@@ -34,7 +34,7 @@ async function ensureAdmin(supabase: any, userId: string) {
 
 // ============= PUBLIC LISTING =============
 export const listPublicTemplates = createServerFn({ method: "GET" })
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         search: z.string().optional().default(""),
@@ -112,7 +112,7 @@ export const listCategories = createServerFn({ method: "GET" }).handler(async ()
 });
 
 export const getPublicTemplateBySlug = createServerFn({ method: "GET" })
-  .inputValidator((d: unknown) => z.object({ slug: z.string() }).parse(d))
+  .validator((d: unknown) => z.object({ slug: z.string() }).parse(d))
   .handler(async ({ data }) => {
     const sb = publicClient();
     const { data: tpl, error } = await sb
@@ -273,7 +273,7 @@ async function hashPassword(pw: string) {
 
 export const saveTemplate = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => TemplateInput.parse(d))
+  .validator((d: unknown) => TemplateInput.parse(d))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
     const category_id = await resolveCategoryId(supabase, data.category_slug);
@@ -352,7 +352,7 @@ export const saveTemplate = createServerFn({ method: "POST" })
 
 export const deleteTemplate = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { error } = await context.supabase.from("templates").delete().eq("id", data.id);
     if (error) throw error;
@@ -361,7 +361,7 @@ export const deleteTemplate = createServerFn({ method: "POST" })
 
 export const duplicateTemplate = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
     const { data: src } = await supabase
@@ -405,7 +405,7 @@ export const duplicateTemplate = createServerFn({ method: "POST" })
 
 export const setTemplateStatus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         id: z.string().uuid(),
@@ -442,7 +442,7 @@ export const myTemplates = createServerFn({ method: "GET" })
 
 export const getMyTemplate = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { data: tpl, error } = await context.supabase
       .from("templates")
@@ -470,7 +470,7 @@ export const getMyTemplate = createServerFn({ method: "GET" })
 
 export const toggleFavorite = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ template_id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ template_id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
     const { data: existing } = await supabase
@@ -531,7 +531,7 @@ export const myRecentlyUsed = createServerFn({ method: "GET" })
 
 export const logTemplateUsage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         template_id: z.string().uuid(),
@@ -548,7 +548,7 @@ export const logTemplateUsage = createServerFn({ method: "POST" })
 
 export const reviewTemplate = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         template_id: z.string().uuid(),
@@ -576,7 +576,7 @@ export const reviewTemplate = createServerFn({ method: "POST" })
 
 export const reportTemplate = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         template_id: z.string().uuid(),
@@ -597,7 +597,7 @@ export const reportTemplate = createServerFn({ method: "POST" })
   });
 
 export const verifyTemplatePassword = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => z.object({ slug: z.string(), password: z.string() }).parse(d))
+  .validator((d: unknown) => z.object({ slug: z.string(), password: z.string() }).parse(d))
   .handler(async ({ data }) => {
     const sb = publicClient();
     const { data: tpl } = await sb
@@ -615,7 +615,7 @@ export const verifyTemplatePassword = createServerFn({ method: "POST" })
 
 export const exportTemplateJson = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { data: tpl } = await context.supabase
       .from("templates")
@@ -628,7 +628,7 @@ export const exportTemplateJson = createServerFn({ method: "GET" })
 
 export const importTemplateJson = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ payload: z.record(z.string(), z.any()) }).parse(d))
+  .validator((d: unknown) => z.object({ payload: z.record(z.string(), z.any()) }).parse(d))
   .handler(async ({ data, context }) => {
     const p = data.payload as Record<string, any>;
     const name = String(p.name ?? "Imported template").slice(0, 160);
@@ -667,7 +667,7 @@ export const importTemplateJson = createServerFn({ method: "POST" })
 // ============= ADMIN =============
 export const adminListTemplates = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ status: z.string().optional() }).parse(d ?? {}))
+  .validator((d: unknown) => z.object({ status: z.string().optional() }).parse(d ?? {}))
   .handler(async ({ data, context }) => {
     await ensureAdmin(context.supabase, context.userId);
     let q = context.supabase
@@ -685,7 +685,7 @@ export const adminListTemplates = createServerFn({ method: "GET" })
 
 export const adminUpdateTemplate = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         id: z.string().uuid(),
@@ -710,7 +710,7 @@ export const adminUpdateTemplate = createServerFn({ method: "POST" })
 // ============= AI GENERATOR =============
 export const generateTemplateFromBrief = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         topic: z.string().min(2).max(200),

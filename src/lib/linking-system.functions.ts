@@ -47,7 +47,7 @@ export const listExternalResources = createServerFn({ method: "GET" })
 
 export const upsertExternalResource = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: z.input<typeof ExternalResourceInput>) => ExternalResourceInput.parse(d))
+  .validator((d: z.input<typeof ExternalResourceInput>) => ExternalResourceInput.parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const db = await getAdminClient();
@@ -61,7 +61,7 @@ export const upsertExternalResource = createServerFn({ method: "POST" })
 
 export const deleteExternalResource = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const db = await getAdminClient();
@@ -93,7 +93,7 @@ export const listAnchorTexts = createServerFn({ method: "GET" })
 
 export const upsertAnchorText = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: z.input<typeof AnchorTextInput>) => AnchorTextInput.parse(d))
+  .validator((d: z.input<typeof AnchorTextInput>) => AnchorTextInput.parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const db = await getAdminClient();
@@ -107,7 +107,7 @@ export const upsertAnchorText = createServerFn({ method: "POST" })
 
 export const deleteAnchorText = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const db = await getAdminClient();
@@ -143,7 +143,7 @@ export const clear404Logs = createServerFn({ method: "POST" })
 
 // Public endpoint to log 404 errors (called from routing error boundary or not found handler)
 export const record404 = createServerFn({ method: "POST" })
-  .inputValidator(
+  .validator(
     (d: { path: string; referrer?: string; user_agent?: string }) =>
       z.object({
         path: z.string(),
@@ -177,7 +177,7 @@ export const listLinkAnalytics = createServerFn({ method: "GET" })
 
 // Public click tracking endpoint
 export const recordLinkClick = createServerFn({ method: "POST" })
-  .inputValidator(
+  .validator(
     (d: { link_type: "internal" | "external"; source_path: string; target_url: string; anchor_text: string }) =>
       z.object({
         link_type: z.enum(["internal", "external"]),
@@ -230,7 +230,7 @@ export const listBrokenLinks = createServerFn({ method: "GET" })
 
 export const markBrokenLinkFixed = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const db = await getAdminClient();
@@ -342,7 +342,7 @@ export const runBrokenLinkCheck = createServerFn({ method: "POST" })
 // ───────────────────────── Dynamic Related Content & Link suggestions ─────────────────────────
 export const getLinkSuggestions = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { textContent: string }) => z.object({ textContent: z.string() }).parse(d))
+  .validator((d: { textContent: string }) => z.object({ textContent: z.string() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const db = await getAdminClient();
@@ -397,7 +397,7 @@ export const getLinkingSettings = createServerFn({ method: "GET" })
 
 export const updateLinkingSetting = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { key: string; value: any }) =>
+  .validator((d: { key: string; value: any }) =>
     z.object({ key: z.string(), value: z.any() }).parse(d)
   )
   .handler(async ({ data, context }) => {
@@ -429,7 +429,7 @@ export const listLinkSuggestions = createServerFn({ method: "GET" })
 
 export const updateSuggestionStatus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string; status: "approved" | "rejected" }) =>
+  .validator((d: { id: string; status: "approved" | "rejected" }) =>
     z.object({ id: z.string().uuid(), status: z.enum(["approved", "rejected"]) }).parse(d)
   )
   .handler(async ({ data, context }) => {
@@ -445,7 +445,7 @@ export const updateSuggestionStatus = createServerFn({ method: "POST" })
 
 export const bulkUpdateSuggestions = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { ids: string[]; status: "approved" | "rejected" }) =>
+  .validator((d: { ids: string[]; status: "approved" | "rejected" }) =>
     z.object({ ids: z.array(z.string().uuid()), status: z.enum(["approved", "rejected"]) }).parse(d)
   )
   .handler(async ({ data, context }) => {
@@ -517,7 +517,7 @@ export async function getAllAvailablePages() {
 // ───────────────────────── AI Linking Engine ─────────────────────────
 export const generateInternalLinksForPage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { path: string; content: string }) =>
+  .validator((d: { path: string; content: string }) =>
     z.object({ path: z.string(), content: z.string() }).parse(d)
   )
   .handler(async ({ data, context }) => {
@@ -760,7 +760,7 @@ export const getSiteSitemap = createServerFn({ method: "GET" })
   });
 
 export const getApprovedSuggestionsForPage = createServerFn({ method: "GET" })
-  .inputValidator((d: { path: string }) => z.object({ path: z.string() }).parse(d))
+  .validator((d: { path: string }) => z.object({ path: z.string() }).parse(d))
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: rows } = await (supabaseAdmin as any)

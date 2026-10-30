@@ -158,7 +158,7 @@ async function ensureUniqueSlug(
 // Create or update
 export const saveCustomTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => TestInput.parse(d))
+  .validator((d: unknown) => TestInput.parse(d))
   .handler(async ({ data, context }) => {
     if (
       hasProfanity(data.name) ||
@@ -221,7 +221,7 @@ export const listMyTests = createServerFn({ method: "GET" })
 
 export const getMyTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { data: t, error } = await context.supabase
       .from("custom_tests")
@@ -234,7 +234,7 @@ export const getMyTest = createServerFn({ method: "POST" })
 
 export const deleteCustomTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { error } = await context.supabase.from("custom_tests").delete().eq("id", data.id);
     if (error) throw new Error(error.message);
@@ -243,7 +243,7 @@ export const deleteCustomTest = createServerFn({ method: "POST" })
 
 export const duplicateTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const sb = context.supabase;
     const { data: src, error } = await sb
@@ -272,7 +272,7 @@ export const duplicateTest = createServerFn({ method: "POST" })
 
 export const setTestStatus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({ id: z.string().uuid(), status: z.enum(["draft", "published", "archived"]) })
       .parse(d),
@@ -287,7 +287,7 @@ export const setTestStatus = createServerFn({ method: "POST" })
 
 // Public: fetch by slug (no auth)
 export const getPublicTestBySlug = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => z.object({ slug: z.string().min(1).max(100) }).parse(d))
+  .validator((d: unknown) => z.object({ slug: z.string().min(1).max(100) }).parse(d))
   .handler(async ({ data }) => {
     const sb = publicClient();
     const userId = getOptionalUserId();
@@ -333,7 +333,7 @@ export const getPublicTestBySlug = createServerFn({ method: "POST" })
 
 
 export const verifyTestPassword = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => z.object({ slug: z.string(), password: z.string() }).parse(d))
+  .validator((d: unknown) => z.object({ slug: z.string(), password: z.string() }).parse(d))
   .handler(async ({ data }) => {
     const sb = publicClient();
     const { data: t } = await sb
@@ -361,7 +361,7 @@ const AttemptInput = z.object({
 });
 
 export const submitAttempt = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => AttemptInput.parse(d))
+  .validator((d: unknown) => AttemptInput.parse(d))
   .handler(async ({ data }) => {
     const sb = publicClient();
     const flagged = data.flag_reasons.length > 0 || data.wpm > 250;
@@ -381,7 +381,7 @@ export const submitAttempt = createServerFn({ method: "POST" })
   });
 
 export const incrementTestView = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => z.object({ test_id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ test_id: z.string().uuid() }).parse(d))
   .handler(async ({ data }) => {
     const sb = publicClient();
     await sb.rpc("increment_custom_test_views", { _test_id: data.test_id });
@@ -390,7 +390,7 @@ export const incrementTestView = createServerFn({ method: "POST" })
 
 // Leaderboard for a test
 export const getTestLeaderboard = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({ test_id: z.string().uuid(), limit: z.number().int().min(1).max(1000).default(100) })
       .parse(d),
@@ -412,7 +412,7 @@ export const getTestLeaderboard = createServerFn({ method: "POST" })
 // Creator analytics
 export const getTestAnalytics = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const sb = context.supabase;
     const { data: t } = await sb.from("custom_tests").select("*").eq("id", data.id).single();
@@ -480,7 +480,7 @@ export const adminListAllTests = createServerFn({ method: "GET" })
 
 export const adminBulkAction = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         ids: z.array(z.string().uuid()).min(1).max(500),
@@ -523,7 +523,7 @@ export const adminBulkAction = createServerFn({ method: "POST" })
 // ---------- AI generation tailored for builder ----------
 export const aiGenerateTestParagraph = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         topic: z.string().max(120).optional(),

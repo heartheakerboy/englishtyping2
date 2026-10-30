@@ -18,7 +18,7 @@ async function callAI(system: string, prompt: string, maxTokens = 600): Promise<
 
 // ---------- AI paragraph generator ----------
 export const generateParagraph = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         language: z.string().default("english"),
@@ -38,7 +38,7 @@ export const generateParagraph = createServerFn({ method: "POST" })
 
 // ---------- AI weakness analysis + coach ----------
 export const analyzeWeakness = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         wpm: z.number(),
@@ -102,7 +102,7 @@ Return strict JSON with this shape:
 
 // ---------- Daily AI challenge ----------
 export const dailyChallenge = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => z.object({ language: z.string().default("english") }).parse(d))
+  .validator((d: unknown) => z.object({ language: z.string().default("english") }).parse(d))
   .handler(async ({ data }) => {
     const today = new Date().toISOString().slice(0, 10);
     const sys = "Generate a single typing-practice paragraph. Output ONLY plain text.";
@@ -113,7 +113,7 @@ export const dailyChallenge = createServerFn({ method: "POST" })
 
 // ---------- Grammar practice ----------
 export const grammarPractice = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         language: z.string().default("english"),
@@ -130,7 +130,7 @@ export const grammarPractice = createServerFn({ method: "POST" })
 
 // ---------- Vocabulary practice ----------
 export const vocabPractice = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         language: z.string().default("english"),

@@ -43,7 +43,7 @@ export const listActiveGames = createServerFn({ method: "GET" }).handler(async (
 });
 
 export const getGameLeaderboard = createServerFn({ method: "GET" })
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         slug: z.string().min(1),
@@ -103,7 +103,7 @@ export const getGameLeaderboard = createServerFn({ method: "GET" })
 
 export const submitGameScore = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({
         slug: z.string().min(1),
@@ -139,7 +139,7 @@ export const submitGameScore = createServerFn({ method: "POST" })
 
 export const getMyGameStats = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ slug: z.string().min(1) }).parse(d))
+  .validator((d: unknown) => z.object({ slug: z.string().min(1) }).parse(d))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
     const { data: rows } = await supabase

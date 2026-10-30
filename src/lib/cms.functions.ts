@@ -36,7 +36,7 @@ export const getPublicSettings = createServerFn({ method: "GET" }).handler(async
 
 export const updateSetting = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { key: string; value: Record<string, any>; is_public?: boolean }) =>
+  .validator((d: { key: string; value: Record<string, any>; is_public?: boolean }) =>
     z
       .object({
         key: z.string().min(1).max(60),
@@ -86,7 +86,7 @@ const TextInput = z.object({
 
 export const upsertTypingText = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: z.input<typeof TextInput>) => TextInput.parse(d))
+  .validator((d: z.input<typeof TextInput>) => TextInput.parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -99,7 +99,7 @@ export const upsertTypingText = createServerFn({ method: "POST" })
 
 export const deleteTypingText = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -141,7 +141,7 @@ const CouponInput = z.object({
 
 export const upsertCoupon = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: z.input<typeof CouponInput>) => CouponInput.parse(d))
+  .validator((d: z.input<typeof CouponInput>) => CouponInput.parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -155,7 +155,7 @@ export const upsertCoupon = createServerFn({ method: "POST" })
 
 export const deleteCoupon = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -166,7 +166,7 @@ export const deleteCoupon = createServerFn({ method: "POST" })
 
 // --------- Newsletter ---------
 export const subscribeNewsletter = createServerFn({ method: "POST" })
-  .inputValidator((d: { email: string; source?: string }) =>
+  .validator((d: { email: string; source?: string }) =>
     z
       .object({ email: z.string().trim().email().max(254), source: z.string().max(40).optional() })
       .parse(d),
@@ -196,7 +196,7 @@ export const listNewsletterSubscribers = createServerFn({ method: "GET" })
 
 export const deleteSubscriber = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");

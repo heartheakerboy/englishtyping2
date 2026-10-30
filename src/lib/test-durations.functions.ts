@@ -61,7 +61,7 @@ export const listEnabledDurations = createServerFn({ method: "GET" }).handler(as
 });
 
 export const getDurationBySlug = createServerFn({ method: "GET" })
-  .inputValidator((d: { slug: string }) => z.object({ slug: z.string().min(1).max(80) }).parse(d))
+  .validator((d: { slug: string }) => z.object({ slug: z.string().min(1).max(80) }).parse(d))
   .handler(async ({ data }) => {
     const sb = publicClient();
     const { data: row, error } = await sb
@@ -75,7 +75,7 @@ export const getDurationBySlug = createServerFn({ method: "GET" })
   });
 
 export const getDurationLeaderboard = createServerFn({ method: "GET" })
-  .inputValidator((d: { seconds: number; limit?: number }) =>
+  .validator((d: { seconds: number; limit?: number }) =>
     z
       .object({
         seconds: z.number().int().positive(),
@@ -121,7 +121,7 @@ export const getDurationLeaderboard = createServerFn({ method: "GET" })
 
 export const getMyDurationStats = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { seconds: number }) =>
+  .validator((d: { seconds: number }) =>
     z.object({ seconds: z.number().int().positive() }).parse(d),
   )
   .handler(async ({ data, context }) => {
@@ -183,7 +183,7 @@ export const listDurationsAdmin = createServerFn({ method: "GET" })
 
 export const upsertDuration = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: z.input<typeof Input>) => Input.parse(d))
+  .validator((d: z.input<typeof Input>) => Input.parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -199,7 +199,7 @@ export const upsertDuration = createServerFn({ method: "POST" })
 
 export const deleteDuration = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -213,7 +213,7 @@ export const deleteDuration = createServerFn({ method: "POST" })
 
 export const reorderDurations = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { ids: string[] }) =>
+  .validator((d: { ids: string[] }) =>
     z.object({ ids: z.array(z.string().uuid()).min(1).max(200) }).parse(d),
   )
   .handler(async ({ data, context }) => {

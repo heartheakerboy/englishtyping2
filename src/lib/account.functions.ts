@@ -67,7 +67,7 @@ const ProfileUpdateInput = z.object({
 
 export const updateMyProfile = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => ProfileUpdateInput.parse(d))
+  .validator((d: unknown) => ProfileUpdateInput.parse(d))
   .handler(async ({ data, context }) => {
     const payload = { ...data } as z.infer<typeof ProfileUpdateInput>;
     if (typeof payload.username === "string") payload.username = payload.username.toLowerCase();
@@ -86,7 +86,7 @@ export const updateMyProfile = createServerFn({ method: "POST" })
   });
 
 export const getPublicProfile = createServerFn({ method: "GET" })
-  .inputValidator((d: unknown) => z.object({ username: z.string().trim().min(1) }).parse(d))
+  .validator((d: unknown) => z.object({ username: z.string().trim().min(1) }).parse(d))
   .handler(async ({ data }) => {
     const supabase = publicClient();
     const username = data.username.toLowerCase();
@@ -134,7 +134,7 @@ export const getPublicProfile = createServerFn({ method: "GET" })
 
 export const toggleFollow = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ targetUserId: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ targetUserId: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     if (data.targetUserId === context.userId) throw new Error("You can't follow yourself.");
     const { data: existing } = await context.supabase
@@ -161,7 +161,7 @@ export const toggleFollow = createServerFn({ method: "POST" })
 
 export const isFollowing = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ targetUserId: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ targetUserId: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { data: row } = await context.supabase
       .from("follows")
@@ -269,7 +269,7 @@ async function getLeaderboardClient() {
 }
 
 export const leaderboard = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => LeaderboardInput.parse(d ?? {}))
+  .validator((d: unknown) => LeaderboardInput.parse(d ?? {}))
   .handler(async ({ data }) => {
     const supabase = await getLeaderboardClient();
 
@@ -436,7 +436,7 @@ function randomCertId() {
 
 export const createCertificate = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => CertInput.parse(d))
+  .validator((d: unknown) => CertInput.parse(d))
   .handler(async ({ data, context }) => {
     const { data: prof } = await context.supabase
       .from("profiles")
@@ -455,7 +455,7 @@ export const createCertificate = createServerFn({ method: "POST" })
   });
 
 export const getCertificate = createServerFn({ method: "GET" })
-  .inputValidator((d: unknown) => z.object({ id: z.string().trim().min(1) }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().trim().min(1) }).parse(d))
   .handler(async ({ data }) => {
     const supabase = publicClient();
     const { data: row, error } = await supabase

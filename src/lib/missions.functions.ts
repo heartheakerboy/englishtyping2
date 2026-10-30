@@ -48,7 +48,7 @@ const TickInput = z.object({
 
 export const tickTestMissions = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => TickInput.parse(d))
+  .validator((d: unknown) => TickInput.parse(d))
   .handler(async ({ data, context }) => {
     const { data: missions } = await context.supabase
       .from("missions")
@@ -141,7 +141,7 @@ export const tickRaceWin = createServerFn({ method: "POST" })
 
 export const claimMission = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z.object({ mission_id: z.string().uuid(), period_key: z.string().min(4) }).parse(d),
   )
   .handler(async ({ data, context }) => {

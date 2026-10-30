@@ -62,7 +62,7 @@ export const getAdminOverview = createServerFn({ method: "GET" })
 
 export const listUsersAdmin = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { search?: string; limit?: number }) => ({
+  .validator((d: { search?: string; limit?: number }) => ({
     search: d?.search ?? "",
     limit: d?.limit ?? 50,
   }))
@@ -85,7 +85,7 @@ export const listUsersAdmin = createServerFn({ method: "GET" })
 
 export const setUserRole = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { userId: string; role: "admin" | "editor" | "user"; grant: boolean }) =>
+  .validator((d: { userId: string; role: "admin" | "editor" | "user"; grant: boolean }) =>
     z
       .object({
         userId: z.string().uuid(),
@@ -159,7 +159,7 @@ export const listReportsAdmin = createServerFn({ method: "GET" })
 
 export const updateReportStatus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string; status: "open" | "resolved" | "dismissed" }) =>
+  .validator((d: { id: string; status: "open" | "resolved" | "dismissed" }) =>
     z.object({ id: z.string().uuid(), status: z.enum(["open", "resolved", "dismissed"]) }).parse(d),
   )
   .handler(async ({ data, context }) => {
@@ -203,7 +203,7 @@ export const adminLeaderboardSummary = createServerFn({ method: "GET" })
 
 export const exportTableCSV = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator(
+  .validator(
     (d: {
       table:
         "profiles" | "typing_results" | "payments" | "subscriptions" | "newsletter_subscribers";
@@ -241,7 +241,7 @@ export const exportTableCSV = createServerFn({ method: "POST" })
 
 export const clearServerCache = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator(
+  .validator(
     (d?: { cacheType?: "all" | "cms" | "settings" | "query" }) =>
       z
         .object({
@@ -276,7 +276,7 @@ export const clearServerCache = createServerFn({ method: "POST" })
 
 export const banUser = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { userId: string; reason?: string }) =>
+  .validator((d: { userId: string; reason?: string }) =>
     z
       .object({ userId: z.string().uuid(), reason: z.string().optional() })
       .parse(d),
@@ -294,7 +294,7 @@ export const banUser = createServerFn({ method: "POST" })
 
 export const unbanUser = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { userId: string }) =>
+  .validator((d: { userId: string }) =>
     z.object({ userId: z.string().uuid() }).parse(d),
   )
   .handler(async ({ data, context }) => {
@@ -310,7 +310,7 @@ export const unbanUser = createServerFn({ method: "POST" })
 
 export const deleteUser = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { userId: string }) =>
+  .validator((d: { userId: string }) =>
     z.object({ userId: z.string().uuid() }).parse(d),
   )
   .handler(async ({ data, context }) => {

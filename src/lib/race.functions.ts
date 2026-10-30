@@ -56,7 +56,7 @@ export const listPublicRooms = createServerFn({ method: "GET" }).handler(async (
 });
 
 export const getRoomByCode = createServerFn({ method: "GET" })
-  .inputValidator((d: unknown) => z.object({ code: z.string().trim().min(1).max(12) }).parse(d))
+  .validator((d: unknown) => z.object({ code: z.string().trim().min(1).max(12) }).parse(d))
   .handler(async ({ data }) => {
     const sb = publicClient();
     const code = data.code.toUpperCase();
@@ -85,7 +85,7 @@ const CreateInput = z.object({
 
 export const createRoom = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => CreateInput.parse(d))
+  .validator((d: unknown) => CreateInput.parse(d))
   .handler(async ({ data, context }) => {
     const text = generateWordsForLanguage(data.word_count, data.language as LanguageCode);
     let code = randomCode();
@@ -134,7 +134,7 @@ const JoinInput = z.object({
 
 export const joinRoom = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => JoinInput.parse(d))
+  .validator((d: unknown) => JoinInput.parse(d))
   .handler(async ({ data, context }) => {
     const code = data.code.toUpperCase();
     const { data: room, error: re } = await context.supabase
@@ -186,7 +186,7 @@ export const joinRoom = createServerFn({ method: "POST" })
 
 export const leaveRoom = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ room_id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ room_id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await context.supabase
       .from("room_members")
@@ -199,7 +199,7 @@ export const leaveRoom = createServerFn({ method: "POST" })
 // ===== Race lifecycle =====
 export const startRoom = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ room_id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ room_id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { data: room, error } = await context.supabase
       .from("rooms")
@@ -220,7 +220,7 @@ export const startRoom = createServerFn({ method: "POST" })
 
 export const beginRace = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ room_id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ room_id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await context.supabase
       .from("rooms")
@@ -240,7 +240,7 @@ const ProgressInput = z.object({
 
 export const updateProgress = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => ProgressInput.parse(d))
+  .validator((d: unknown) => ProgressInput.parse(d))
   .handler(async ({ data, context }) => {
     const patch: {
       progress: number;
@@ -286,7 +286,7 @@ export const updateProgress = createServerFn({ method: "POST" })
 // ===== Quick match =====
 export const quickMatch = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({ ranked: z.boolean().default(false), language: z.string().default("english") })
       .parse(d),

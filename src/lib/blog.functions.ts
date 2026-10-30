@@ -53,7 +53,7 @@ export const listPublishedPosts = createServerFn({ method: "GET" }).handler(asyn
 });
 
 export const getPostBySlug = createServerFn({ method: "GET" })
-  .inputValidator((d: { slug: string }) => z.object({ slug: z.string().min(1).max(200) }).parse(d))
+  .validator((d: { slug: string }) => z.object({ slug: z.string().min(1).max(200) }).parse(d))
   .handler(async ({ data }) => {
     const builtin = BUILTIN_POSTS.find((p) => p.slug === data.slug);
 
@@ -130,7 +130,7 @@ const PostInput = z.object({
 
 export const upsertPost = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: z.input<typeof PostInput>) => PostInput.parse(d))
+  .validator((d: z.input<typeof PostInput>) => PostInput.parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -145,7 +145,7 @@ export const upsertPost = createServerFn({ method: "POST" })
 
 export const deletePost = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -164,7 +164,7 @@ export const listBlogCategories = createServerFn({ method: "GET" }).handler(asyn
 
 export const upsertBlogCategory = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id?: string; slug: string; name: string; description?: string | null }) =>
+  .validator((d: { id?: string; slug: string; name: string; description?: string | null }) =>
     z
       .object({
         id: z.string().uuid().optional(),
@@ -191,7 +191,7 @@ export const upsertBlogCategory = createServerFn({ method: "POST" })
 
 export const deleteBlogCategory = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -210,7 +210,7 @@ export const listBlogAuthors = createServerFn({ method: "GET" }).handler(async (
 
 export const upsertBlogAuthor = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator(
+  .validator(
     (d: { id?: string; name: string; bio?: string | null; avatar_url?: string | null }) =>
       z
         .object({
@@ -233,7 +233,7 @@ export const upsertBlogAuthor = createServerFn({ method: "POST" })
 
 export const deleteBlogAuthor = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");

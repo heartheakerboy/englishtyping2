@@ -186,7 +186,7 @@ export const getFooterData = createServerFn({ method: "GET" }).handler(async () 
 });
 
 export const getLegalPage = createServerFn({ method: "GET" })
-  .inputValidator((d: { slug: string }) => z.object({ slug: z.string().min(1).max(120) }).parse(d))
+  .validator((d: { slug: string }) => z.object({ slug: z.string().min(1).max(120) }).parse(d))
   .handler(async ({ data }) => {
     try {
       const sb = pub();
@@ -237,7 +237,7 @@ const SectionInput = z.object({
 });
 export const upsertFooterSection = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: z.input<typeof SectionInput>) => SectionInput.parse(d))
+  .validator((d: z.input<typeof SectionInput>) => SectionInput.parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -253,7 +253,7 @@ export const upsertFooterSection = createServerFn({ method: "POST" })
 
 export const deleteFooterSection = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -267,7 +267,7 @@ export const deleteFooterSection = createServerFn({ method: "POST" })
 
 export const reorderFooterSections = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { ids: string[] }) => z.object({ ids: z.array(z.string().uuid()) }).parse(d))
+  .validator((d: { ids: string[] }) => z.object({ ids: z.array(z.string().uuid()) }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -308,7 +308,7 @@ const LinkInput = z.object({
 });
 export const upsertFooterLink = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: z.input<typeof LinkInput>) => LinkInput.parse(d))
+  .validator((d: z.input<typeof LinkInput>) => LinkInput.parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -324,7 +324,7 @@ export const upsertFooterLink = createServerFn({ method: "POST" })
 
 export const deleteFooterLink = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -338,7 +338,7 @@ export const deleteFooterLink = createServerFn({ method: "POST" })
 
 export const reorderFooterLinks = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { ids: string[] }) => z.object({ ids: z.array(z.string().uuid()) }).parse(d))
+  .validator((d: { ids: string[] }) => z.object({ ids: z.array(z.string().uuid()) }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -392,7 +392,7 @@ const LegalInput = z.object({
 });
 export const upsertLegalPage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: z.input<typeof LegalInput>) => LegalInput.parse(d))
+  .validator((d: z.input<typeof LegalInput>) => LegalInput.parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -429,7 +429,7 @@ export const upsertLegalPage = createServerFn({ method: "POST" })
 
 export const deleteLegalPage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -443,7 +443,7 @@ export const deleteLegalPage = createServerFn({ method: "POST" })
 
 export const listLegalVersions = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { pageId: string }) => z.object({ pageId: z.string().uuid() }).parse(d))
+  .validator((d: { pageId: string }) => z.object({ pageId: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -458,7 +458,7 @@ export const listLegalVersions = createServerFn({ method: "POST" })
 
 export const restoreLegalVersion = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { versionId: string }) => z.object({ versionId: z.string().uuid() }).parse(d))
+  .validator((d: { versionId: string }) => z.object({ versionId: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");

@@ -20,7 +20,7 @@ const ResultInput = z.object({
 
 export const saveResult = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => ResultInput.parse(d))
+  .validator((d: unknown) => ResultInput.parse(d))
   .handler(async ({ data, context }) => {
     const { error, data: row } = await context.supabase
       .from("typing_results")
